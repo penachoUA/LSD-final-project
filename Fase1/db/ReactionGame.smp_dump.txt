@@ -1,0 +1,8 @@
+
+State Machine - |SingleTurnFSM|pState
+Name pState.REACTED pState.PLAY pState.FALSE_START pState.READY pState.IDLE 
+pState.IDLE 0 0 0 0 0 
+pState.READY 0 0 0 1 1 
+pState.FALSE_START 0 0 1 0 1 
+pState.PLAY 0 1 0 0 1 
+pState.REACTED 1 0 0 0 1 
