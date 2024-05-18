@@ -1,23 +1,23 @@
-|SingleTurnFSM
-clk => pState~1.DATAIN
-reset => pState.OUTPUTSELECT
-reset => pState.OUTPUTSELECT
-reset => pState.OUTPUTSELECT
-reset => pState.OUTPUTSELECT
-reset => pState.OUTPUTSELECT
-click => nState.OUTPUTSELECT
-click => nState.OUTPUTSELECT
-click => Selector1.IN3
-click => nState.FALSE_START.DATAB
-click => nState.REACTED.DATAB
-click => Selector0.IN2
-click => Selector2.IN1
-start => nState.DATAA
-start => nState.DATAA
-state[0] <= state[0].DB_MAX_OUTPUT_PORT_TYPE
-state[1] <= state[1].DB_MAX_OUTPUT_PORT_TYPE
-state[2] <= state[2].DB_MAX_OUTPUT_PORT_TYPE
-state[3] <= state[3].DB_MAX_OUTPUT_PORT_TYPE
-state[4] <= state[4].DB_MAX_OUTPUT_PORT_TYPE
+|CounterNBits
+reset => cnt_value.OUTPUTSELECT
+reset => cnt_value.OUTPUTSELECT
+reset => cnt_value.OUTPUTSELECT
+reset => cnt_value.OUTPUTSELECT
+reset => termCnt.OUTPUTSELECT
+clk => termCnt~reg0.CLK
+clk => cnt_value[0].CLK
+clk => cnt_value[1].CLK
+clk => cnt_value[2].CLK
+clk => cnt_value[3].CLK
+enable => cnt_value.OUTPUTSELECT
+enable => cnt_value.OUTPUTSELECT
+enable => cnt_value.OUTPUTSELECT
+enable => cnt_value.OUTPUTSELECT
+enable => termCnt.OUTPUTSELECT
+valOut[0] << cnt_value[0].DB_MAX_OUTPUT_PORT_TYPE
+valOut[1] << cnt_value[1].DB_MAX_OUTPUT_PORT_TYPE
+valOut[2] << cnt_value[2].DB_MAX_OUTPUT_PORT_TYPE
+valOut[3] << cnt_value[3].DB_MAX_OUTPUT_PORT_TYPE
+termCnt << termCnt~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
