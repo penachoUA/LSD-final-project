@@ -11,7 +11,8 @@ entity CounterNBits is
 	port(
 		reset		: in  std_logic;
 		clk		: in  std_logic;
-		enable 	: in  std_logic;
+		enable1 	: in  std_logic;
+		enable2 	: in  std_logic;
 		valOut	: out std_logic_vector(N-1 downto 0);
 		termCnt	: out std_logic
 	);
@@ -27,7 +28,7 @@ begin
 			if reset = '1' then
 				cnt_value <= start_value;
 				termCnt <= '0';
-			elsif enable = '1' then
+			elsif ((enable1 = '1') and (enable2 = '1')) then
 				if cnt_value = MAX then
 					cnt_value <= start_value;
 					termCnt <= '0';

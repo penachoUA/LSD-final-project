@@ -1,0 +1,24 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity ReactionGame is
+	port(
+		clk    : in  std_logic;
+		reset  : in  std_logic;
+		click  : in  std_logic;
+		start  : out std_logic;
+		r_time : out std_logic_vector(15 downto 0);
+	);
+end;
+
+architecture Structural of ReactionGame is
+begin
+	fsm: entity work.SingleTurnFSM(Behavioral)
+		port map(
+			clk   => clk,
+			reset => reset,
+			click => click,
+			start => start,
+			state => open
+		);
+end;

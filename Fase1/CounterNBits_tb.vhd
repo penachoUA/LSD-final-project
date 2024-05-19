@@ -5,11 +5,12 @@ entity CounterNBits_tb is
 end;
 
 architecture Stimulus of CounterNBits_tb is
-	signal s_reset	 : std_logic;
-	signal s_clk	 : std_logic;
-	signal s_enable : std_logic;
-	signal s_valOut : std_logic_vector(3 downto 0);
-	signal s_term	 : std_logic;
+	signal s_reset	  : std_logic;
+	signal s_clk	  : std_logic;
+	signal s_enable1 : std_logic;
+	signal s_enable2 : std_logic;
+	signal s_valOut  : std_logic_vector(3 downto 0);
+	signal s_term	  : std_logic;
 begin
 	uut: entity work.CounterNBits(Behavioral)
 		generic map(
@@ -20,7 +21,8 @@ begin
 		port map(
 			reset   => s_reset,
 			clk     => s_clk,
-			enable  => s_enable,
+			enable1  => s_enable1,
+			enable2  => s_enable2,
 			valOut  => s_valOut,
 			termCnt => s_term
 		);
@@ -34,10 +36,12 @@ begin
 	stim_proc: process
 		begin
 			s_reset  <= '0';
-			s_enable <= '0';
+			s_enable1 <= '0';
+			s_enable2 <= '0';
 			wait for 150 ns;
 			
-			s_enable <= '1';
+			s_enable1 <= '1';
+			s_enable2 <= '1';
 			wait for 2000 ns;
 			
 			s_reset <= '1';

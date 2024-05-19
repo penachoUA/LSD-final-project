@@ -4,27 +4,87 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "valOut[0]",
+					"name" : "reaction_time[0]",
 					"strict" : false
 				},
 				{
-					"name" : "valOut[1]",
+					"name" : "reaction_time[1]",
 					"strict" : false
 				},
 				{
-					"name" : "valOut[2]",
+					"name" : "reaction_time[2]",
 					"strict" : false
 				},
 				{
-					"name" : "valOut[3]",
+					"name" : "reaction_time[3]",
 					"strict" : false
 				},
 				{
-					"name" : "termCnt",
+					"name" : "reaction_time[4]",
 					"strict" : false
 				},
 				{
-					"name" : "reset",
+					"name" : "reaction_time[5]",
+					"strict" : false
+				},
+				{
+					"name" : "reaction_time[6]",
+					"strict" : false
+				},
+				{
+					"name" : "reaction_time[7]",
+					"strict" : false
+				},
+				{
+					"name" : "reaction_time[8]",
+					"strict" : false
+				},
+				{
+					"name" : "reaction_time[9]",
+					"strict" : false
+				},
+				{
+					"name" : "reaction_time[10]",
+					"strict" : false
+				},
+				{
+					"name" : "reaction_time[11]",
+					"strict" : false
+				},
+				{
+					"name" : "reaction_time[12]",
+					"strict" : false
+				},
+				{
+					"name" : "reaction_time[13]",
+					"strict" : false
+				},
+				{
+					"name" : "reaction_time[14]",
+					"strict" : false
+				},
+				{
+					"name" : "reaction_time[15]",
+					"strict" : false
+				},
+				{
+					"name" : "state[0]",
+					"strict" : false
+				},
+				{
+					"name" : "state[1]",
+					"strict" : false
+				},
+				{
+					"name" : "state[2]",
+					"strict" : false
+				},
+				{
+					"name" : "state[3]",
+					"strict" : false
+				},
+				{
+					"name" : "state[4]",
 					"strict" : false
 				},
 				{
@@ -32,7 +92,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "enable",
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "click",
 					"strict" : false
 				}
 			]

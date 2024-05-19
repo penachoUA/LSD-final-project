@@ -7,13 +7,13 @@ entity TimerAuxFSM is
 		clk     : in  std_logic;
 		reset   : in  std_logic;
 		newTime : in  std_logic;
-		timeVal : in  std_logic_vector(13 downto 0);
+		timeVal : in  std_logic_vector(31 downto 0);
 		timeExp : out std_logic
 	);
 end;
 
 architecture Behavioral of TimerAuxFSM is
-	signal s_count : unsigned(13 downto 0) := (others => '1');
+	signal s_count : unsigned(31 downto 0) := (others => '1');
 	signal s_end : std_logic := '0';
 begin
 	process(clk)
