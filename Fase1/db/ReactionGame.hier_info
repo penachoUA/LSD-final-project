@@ -1,11 +1,12 @@
 |ReactionGame
 clk => singleturnfsm:turn_fsm.clk
 clk => timerauxfsm:timer_fsm.clk
-clk => clkdividern:clk_div_1000hz.clkIn
+clk => pulsegen:pulse_1000hz.clk
 clk => counternbits:rand_counter.clk
 clk => counternbits:chronometer.clk
 reset => singleturnfsm:turn_fsm.reset
 reset => timerauxfsm:timer_fsm.reset
+reset => pulsegen:pulse_1000hz.reset
 reset => counternbits:rand_counter.reset
 reset => counternbits:chronometer.reset
 click => singleturnfsm:turn_fsm.click
@@ -261,40 +262,42 @@ timeVal[31] => Add0.IN33
 timeExp <= s_end.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|ReactionGame|ClkDividerN:clk_div_1000hz
-clkIn => s_divCounter[0].CLK
-clkIn => s_divCounter[1].CLK
-clkIn => s_divCounter[2].CLK
-clkIn => s_divCounter[3].CLK
-clkIn => s_divCounter[4].CLK
-clkIn => s_divCounter[5].CLK
-clkIn => s_divCounter[6].CLK
-clkIn => s_divCounter[7].CLK
-clkIn => s_divCounter[8].CLK
-clkIn => s_divCounter[9].CLK
-clkIn => s_divCounter[10].CLK
-clkIn => s_divCounter[11].CLK
-clkIn => s_divCounter[12].CLK
-clkIn => s_divCounter[13].CLK
-clkIn => s_divCounter[14].CLK
-clkIn => s_divCounter[15].CLK
-clkIn => s_divCounter[16].CLK
-clkIn => s_divCounter[17].CLK
-clkIn => s_divCounter[18].CLK
-clkIn => s_divCounter[19].CLK
-clkIn => s_divCounter[20].CLK
-clkIn => s_divCounter[21].CLK
-clkIn => s_divCounter[22].CLK
-clkIn => s_divCounter[23].CLK
-clkIn => s_divCounter[24].CLK
-clkIn => s_divCounter[25].CLK
-clkIn => s_divCounter[26].CLK
-clkIn => s_divCounter[27].CLK
-clkIn => s_divCounter[28].CLK
-clkIn => s_divCounter[29].CLK
-clkIn => s_divCounter[30].CLK
-clkIn => clkOut~reg0.CLK
-clkOut <= clkOut~reg0.DB_MAX_OUTPUT_PORT_TYPE
+|ReactionGame|PulseGen:pulse_1000hz
+clk => s_cnt[0].CLK
+clk => s_cnt[1].CLK
+clk => s_cnt[2].CLK
+clk => s_cnt[3].CLK
+clk => s_cnt[4].CLK
+clk => s_cnt[5].CLK
+clk => s_cnt[6].CLK
+clk => s_cnt[7].CLK
+clk => s_cnt[8].CLK
+clk => s_cnt[9].CLK
+clk => s_cnt[10].CLK
+clk => s_cnt[11].CLK
+clk => s_cnt[12].CLK
+clk => s_cnt[13].CLK
+clk => s_cnt[14].CLK
+clk => s_cnt[15].CLK
+clk => pulse~reg0.CLK
+reset => s_cnt.OUTPUTSELECT
+reset => s_cnt.OUTPUTSELECT
+reset => s_cnt.OUTPUTSELECT
+reset => s_cnt.OUTPUTSELECT
+reset => s_cnt.OUTPUTSELECT
+reset => s_cnt.OUTPUTSELECT
+reset => s_cnt.OUTPUTSELECT
+reset => s_cnt.OUTPUTSELECT
+reset => s_cnt.OUTPUTSELECT
+reset => s_cnt.OUTPUTSELECT
+reset => s_cnt.OUTPUTSELECT
+reset => s_cnt.OUTPUTSELECT
+reset => s_cnt.OUTPUTSELECT
+reset => s_cnt.OUTPUTSELECT
+reset => s_cnt.OUTPUTSELECT
+reset => s_cnt.OUTPUTSELECT
+reset => pulse.OUTPUTSELECT
+pulse <= pulse~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |ReactionGame|CounterNBits:rand_counter

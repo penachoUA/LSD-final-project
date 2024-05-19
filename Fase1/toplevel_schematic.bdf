@@ -84,34 +84,6 @@ https://fpgasoftware.intel.com/eula.
 	)
 )
 (symbol
-	(rect 1040 232 1184 312)
-	(text "ClkDividerN" (rect 5 0 67 12)(font "Arial" ))
-	(text "inst5" (rect 8 64 32 76)(font "Intel Clear" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "clkIn" (rect 0 0 24 12)(font "Arial" ))
-		(text "clkIn" (rect 21 27 45 39)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 144 32)
-		(output)
-		(text "clkOut" (rect 0 0 34 12)(font "Arial" ))
-		(text "clkOut" (rect 95 27 129 39)(font "Arial" ))
-		(line (pt 144 32)(pt 128 32))
-	)
-	(parameter
-		"K"
-		"50000"
-		""
-		(type "PARAMETER_UNSIGNED_DEC")	)
-	(drawing
-		(rectangle (rect 16 16 128 64))
-	)
-	(annotation_block (parameter)(rect 1184 200 1374 230))
-)
-(symbol
 	(rect 464 224 656 336)
 	(text "TimerAuxFSM" (rect 5 0 78 12)(font "Arial" ))
 	(text "inst1" (rect 8 96 35 108)(font "Arial" ))
@@ -391,6 +363,41 @@ https://fpgasoftware.intel.com/eula.
 	)
 	(annotation_block (parameter)(rect 1392 248 1582 308))
 )
+(symbol
+	(rect 1040 232 1184 312)
+	(text "PulseGen" (rect 5 0 55 12)(font "Arial" ))
+	(text "inst7" (rect 8 64 32 76)(font "Intel Clear" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk" (rect 0 0 16 12)(font "Arial" ))
+		(text "clk" (rect 21 27 37 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "reset" (rect 0 0 27 12)(font "Arial" ))
+		(text "reset" (rect 21 43 48 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 144 32)
+		(output)
+		(text "pulse" (rect 0 0 29 12)(font "Arial" ))
+		(text "pulse" (rect 99 27 128 39)(font "Arial" ))
+		(line (pt 144 32)(pt 128 32))
+	)
+	(parameter
+		"MAX"
+		"50000000"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(drawing
+		(rectangle (rect 16 16 128 64))
+	)
+	(annotation_block (parameter)(rect 1184 200 1384 232))
+)
 (connector
 	(pt 176 -88)
 	(pt 272 -88)
@@ -398,10 +405,6 @@ https://fpgasoftware.intel.com/eula.
 (connector
 	(pt 176 -56)
 	(pt 256 -56)
-)
-(connector
-	(pt 1000 -88)
-	(pt 1000 344)
 )
 (connector
 	(pt 1000 344)
@@ -618,6 +621,18 @@ https://fpgasoftware.intel.com/eula.
 	(pt 984 80)
 	(pt 936 80)
 )
+(connector
+	(pt 1040 280)
+	(pt 1000 280)
+)
+(connector
+	(pt 1000 -88)
+	(pt 1000 280)
+)
+(connector
+	(pt 1000 280)
+	(pt 1000 344)
+)
 (junction (pt 272 -88))
 (junction (pt 256 -56))
 (junction (pt 648 -56))
@@ -626,3 +641,4 @@ https://fpgasoftware.intel.com/eula.
 (junction (pt 272 112))
 (junction (pt 256 128))
 (junction (pt 296 144))
+(junction (pt 1000 280))

@@ -18,8 +18,8 @@ architecture Structural of ReactionGame is
 	signal s_timeVal  : std_logic_vector(31 downto 0);
 	signal s_run_time : std_logic;
 	
-	signal s_clk_1000hz : std_logic;
-	signal s_maxTime    : std_logic;
+	signal s_pulse_1000hz : std_logic;
+	signal s_maxTime      : std_logic;
 begin
 	turn_fsm: entity work.SingleTurnFSM(Behavioral)
 		port map(
@@ -43,11 +43,12 @@ begin
 			timeExp => s_timeExp
 		);
 		
-	clk_div_1000hz: entity work.ClkDividerN(Behavioral)
-		generic map(K 	=> 50_000)
+	pulse_1000hz : entity work.PulseGen(Behavioral)
+		generic map(MAX => 50_000)
 		port map(
-			clkIn	 => clk, 
-			clkOut => s_clk_1000hz
+			clk   => clk,
+			reset => reset,
+			pulse => s_pulse_1000hz
 		);
 	
 	rand_counter : entity work.CounterNBits(Behavioral)
@@ -74,7 +75,7 @@ begin
 		port map(
 			reset   => reset,
 			clk     => clk,
-			enable1 => s_clk_1000hz,
+			enable1 => s_pulse_1000hz,
 			enable2 => s_run_time,
 			valOut  => reaction_time,
 			termCnt => s_maxTime
