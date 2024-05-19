@@ -23,49 +23,28 @@
 # Copying /home/penacho/.intel_fpga_lite/22.1.2/questa_fse/linux_x86_64/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase1/CounterNBits.vhd}
+# vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase1/Bin2BCD.vhd}
 # Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 20:24:47 on May 18,2024
-# vcom -reportprogress 300 -93 -work work /home/penacho/LSD/LSD-final-project/Fase1/CounterNBits.vhd 
+# Start time: 22:38:29 on May 19,2024
+# vcom -reportprogress 300 -93 -work work /home/penacho/LSD/LSD-final-project/Fase1/Bin2BCD.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
-# -- Compiling entity CounterNBits
-# -- Compiling architecture Behavioral of CounterNBits
-# End time: 20:24:47 on May 18,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# 
+# -- Compiling entity Bin2BCD
+# -- Compiling architecture Behavioral of Bin2BCD
+# ** Error: /home/penacho/LSD/LSD-final-project/Fase1/Bin2BCD.vhd(21): Prefix of slice name cannot be type conversion (STD_LOGIC_VECTOR) expression.
+# ** Error: /home/penacho/LSD/LSD-final-project/Fase1/Bin2BCD.vhd(22): Prefix of slice name cannot be type conversion (STD_LOGIC_VECTOR) expression.
+# ** Error: /home/penacho/LSD/LSD-final-project/Fase1/Bin2BCD.vhd(23): Prefix of slice name cannot be type conversion (STD_LOGIC_VECTOR) expression.
+# ** Error: /home/penacho/LSD/LSD-final-project/Fase1/Bin2BCD.vhd(24): Prefix of slice name cannot be type conversion (STD_LOGIC_VECTOR) expression.
+# ** Error: /home/penacho/LSD/LSD-final-project/Fase1/Bin2BCD.vhd(25): Prefix of slice name cannot be type conversion (STD_LOGIC_VECTOR) expression.
+# ** Note: /home/penacho/LSD/LSD-final-project/Fase1/Bin2BCD.vhd(26): VHDL Compiler exiting
+# End time: 22:38:29 on May 19,2024, Elapsed time: 0:00:00
+# Errors: 5, Warnings: 0
+# ** Error: /home/penacho/.intel_fpga_lite/22.1.2/questa_fse/linux_x86_64/vcom failed.
+# Error in macro ./ReactionGame_run_msim_rtl_vhdl.do line 8
+# /home/penacho/.intel_fpga_lite/22.1.2/questa_fse/linux_x86_64/vcom failed.
+#     while executing
+# "vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase1/Bin2BCD.vhd}"
 # 
 # stdin: <EOF>
-vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase1/CounterNBits_tb.vhd
-# Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 20:25:01 on May 18,2024
-# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase1/CounterNBits_tb.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity CounterNBits_tb
-# -- Compiling architecture Stimulus of CounterNBits_tb
-# -- Loading package NUMERIC_STD
-# -- Loading entity CounterNBits
-# End time: 20:25:01 on May 18,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim -i -l msim_transcript work.counternbits_tb(stimulus) -voptargs=+acc
-# vsim -i -l msim_transcript work.counternbits_tb(stimulus) -voptargs="+acc" 
-# Start time: 20:25:15 on May 18,2024
-# ** Note: (vsim-3812) Design is being optimized...
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading work.counternbits_tb(stimulus)#1
-# Loading work.counternbits(behavioral)#1
-add wave -position end  sim:/counternbits_tb/s_reset
-add wave -position end  sim:/counternbits_tb/s_clk
-add wave -position end  sim:/counternbits_tb/s_enable
-add wave -position end  sim:/counternbits_tb/s_valOut
-add wave -position end  sim:/counternbits_tb/s_term
-run
-# End time: 20:25:53 on May 18,2024, Elapsed time: 0:00:38
-# Errors: 0, Warnings: 0

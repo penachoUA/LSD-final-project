@@ -4,99 +4,143 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "reaction_time[0]",
+					"name" : "bcdMili[0]",
 					"strict" : false
 				},
 				{
-					"name" : "reaction_time[1]",
+					"name" : "bcdMili[1]",
 					"strict" : false
 				},
 				{
-					"name" : "reaction_time[2]",
+					"name" : "bcdMili[2]",
 					"strict" : false
 				},
 				{
-					"name" : "reaction_time[3]",
+					"name" : "bcdMili[3]",
 					"strict" : false
 				},
 				{
-					"name" : "reaction_time[4]",
+					"name" : "bcdCent[0]",
 					"strict" : false
 				},
 				{
-					"name" : "reaction_time[5]",
+					"name" : "bcdCent[1]",
 					"strict" : false
 				},
 				{
-					"name" : "reaction_time[6]",
+					"name" : "bcdCent[2]",
 					"strict" : false
 				},
 				{
-					"name" : "reaction_time[7]",
+					"name" : "bcdCent[3]",
 					"strict" : false
 				},
 				{
-					"name" : "reaction_time[8]",
+					"name" : "bcdDec[0]",
 					"strict" : false
 				},
 				{
-					"name" : "reaction_time[9]",
+					"name" : "bcdDec[1]",
 					"strict" : false
 				},
 				{
-					"name" : "reaction_time[10]",
+					"name" : "bcdDec[2]",
 					"strict" : false
 				},
 				{
-					"name" : "reaction_time[11]",
+					"name" : "bcdDec[3]",
 					"strict" : false
 				},
 				{
-					"name" : "reaction_time[12]",
+					"name" : "bcdUni[0]",
 					"strict" : false
 				},
 				{
-					"name" : "reaction_time[13]",
+					"name" : "bcdUni[1]",
 					"strict" : false
 				},
 				{
-					"name" : "reaction_time[14]",
+					"name" : "bcdUni[2]",
 					"strict" : false
 				},
 				{
-					"name" : "reaction_time[15]",
+					"name" : "bcdUni[3]",
 					"strict" : false
 				},
 				{
-					"name" : "state[0]",
+					"name" : "bcdTen[0]",
 					"strict" : false
 				},
 				{
-					"name" : "state[1]",
+					"name" : "bcdTen[1]",
 					"strict" : false
 				},
 				{
-					"name" : "state[2]",
+					"name" : "bcdTen[2]",
 					"strict" : false
 				},
 				{
-					"name" : "state[3]",
+					"name" : "binIn[0]",
 					"strict" : false
 				},
 				{
-					"name" : "state[4]",
+					"name" : "binIn[1]",
 					"strict" : false
 				},
 				{
-					"name" : "clk",
+					"name" : "binIn[15]",
 					"strict" : false
 				},
 				{
-					"name" : "reset",
+					"name" : "binIn[14]",
 					"strict" : false
 				},
 				{
-					"name" : "click",
+					"name" : "binIn[13]",
+					"strict" : false
+				},
+				{
+					"name" : "binIn[12]",
+					"strict" : false
+				},
+				{
+					"name" : "binIn[11]",
+					"strict" : false
+				},
+				{
+					"name" : "binIn[10]",
+					"strict" : false
+				},
+				{
+					"name" : "binIn[9]",
+					"strict" : false
+				},
+				{
+					"name" : "binIn[8]",
+					"strict" : false
+				},
+				{
+					"name" : "binIn[7]",
+					"strict" : false
+				},
+				{
+					"name" : "binIn[6]",
+					"strict" : false
+				},
+				{
+					"name" : "binIn[5]",
+					"strict" : false
+				},
+				{
+					"name" : "binIn[4]",
+					"strict" : false
+				},
+				{
+					"name" : "binIn[3]",
+					"strict" : false
+				},
+				{
+					"name" : "binIn[2]",
 					"strict" : false
 				}
 			]

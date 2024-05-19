@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Sun May 19 18:27:36 2024
+Analysis & Synthesis Status : Successful - Sun May 19 22:47:34 2024
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : ReactionGame
-Top-level Entity Name : ReactionGame
+Top-level Entity Name : Bin2BCD
 Family : Cyclone IV E
-Total logic elements : 230
-    Total combinational functions : 230
-    Dedicated logic registers : 104
-Total registers : 104
-Total pins : 24
+Total logic elements : 1,699
+    Total combinational functions : 1,699
+    Dedicated logic registers : 0
+Total registers : 0
+Total pins : 36
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0
