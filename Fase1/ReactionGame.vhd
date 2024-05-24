@@ -7,7 +7,7 @@ entity ReactionGame is
 		reset         : in  std_logic;
 		click         : in  std_logic;
 		reaction_time : out std_logic_vector(15 downto 0);
-		state         : out std_logic_vector(4 downto 0)
+		state         : out std_logic_vector(2 downto 0)
 	);
 end;
 

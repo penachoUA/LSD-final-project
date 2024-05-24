@@ -35,6 +35,7 @@ https://fpgasoftware.intel.com/eula.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect -48 -48 8 -32))
 )
 (pin
 	(input)
@@ -51,6 +52,7 @@ https://fpgasoftware.intel.com/eula.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect -56 -80 8 -64))
 )
 (pin
 	(input)
@@ -67,6 +69,7 @@ https://fpgasoftware.intel.com/eula.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect 472 88 536 104))
 )
 (symbol
 	(rect 280 48 312 64)
@@ -119,7 +122,7 @@ https://fpgasoftware.intel.com/eula.
 		(pt 192 32)
 		(output)
 		(text "timeExp" (rect 0 0 43 12)(font "Arial" ))
-		(text "timeExp" (rect 135 27 171 39)(font "Arial" ))
+		(text "timeExp" (rect 135 27 178 39)(font "Arial" ))
 		(line (pt 192 32)(pt 176 32))
 	)
 	(drawing
@@ -203,28 +206,28 @@ https://fpgasoftware.intel.com/eula.
 		(pt 216 32)
 		(output)
 		(text "newTime" (rect 0 0 48 12)(font "Arial" ))
-		(text "newTime" (rect 155 27 195 39)(font "Arial" ))
+		(text "newTime" (rect 155 27 203 39)(font "Arial" ))
 		(line (pt 216 32)(pt 200 32))
 	)
 	(port
 		(pt 216 48)
 		(output)
 		(text "timeVal[31..0]" (rect 0 0 76 12)(font "Arial" ))
-		(text "timeVal[31..0]" (rect 131 43 195 55)(font "Arial" ))
+		(text "timeVal[31..0]" (rect 131 43 207 55)(font "Arial" ))
 		(line (pt 216 48)(pt 200 48)(line_width 3))
 	)
 	(port
 		(pt 216 64)
 		(output)
 		(text "run_time" (rect 0 0 47 12)(font "Arial" ))
-		(text "run_time" (rect 156 59 195 71)(font "Arial" ))
+		(text "run_time" (rect 156 59 203 71)(font "Arial" ))
 		(line (pt 216 64)(pt 200 64))
 	)
 	(port
 		(pt 216 80)
 		(output)
 		(text "state[4..0]" (rect 0 0 55 12)(font "Arial" ))
-		(text "state[4..0]" (rect 149 75 195 87)(font "Arial" ))
+		(text "state[4..0]" (rect 149 75 204 87)(font "Arial" ))
 		(line (pt 216 80)(pt 200 80)(line_width 3))
 	)
 	(drawing
@@ -267,14 +270,14 @@ https://fpgasoftware.intel.com/eula.
 		(pt 192 32)
 		(output)
 		(text "valOut[(n-1)..0]" (rect 0 0 82 12)(font "Arial" ))
-		(text "valOut[(n-1)..0]" (rect 102 27 171 39)(font "Arial" ))
+		(text "valOut[(n-1)..0]" (rect 102 27 184 39)(font "Arial" ))
 		(line (pt 192 32)(pt 176 32)(line_width 3))
 	)
 	(port
 		(pt 192 48)
 		(output)
 		(text "termCnt" (rect 0 0 43 12)(font "Arial" ))
-		(text "termCnt" (rect 135 43 171 55)(font "Arial" ))
+		(text "termCnt" (rect 135 43 178 55)(font "Arial" ))
 		(line (pt 192 48)(pt 176 48))
 	)
 	(parameter
@@ -333,14 +336,14 @@ https://fpgasoftware.intel.com/eula.
 		(pt 192 32)
 		(output)
 		(text "valOut[(n-1)..0]" (rect 0 0 82 12)(font "Arial" ))
-		(text "valOut[(n-1)..0]" (rect 102 27 171 39)(font "Arial" ))
+		(text "valOut[(n-1)..0]" (rect 102 27 184 39)(font "Arial" ))
 		(line (pt 192 32)(pt 176 32)(line_width 3))
 	)
 	(port
 		(pt 192 48)
 		(output)
 		(text "termCnt" (rect 0 0 43 12)(font "Arial" ))
-		(text "termCnt" (rect 135 43 171 55)(font "Arial" ))
+		(text "termCnt" (rect 135 43 178 55)(font "Arial" ))
 		(line (pt 192 48)(pt 176 48))
 	)
 	(parameter
@@ -449,10 +452,6 @@ https://fpgasoftware.intel.com/eula.
 (connector
 	(pt 256 128)
 	(pt 304 128)
-)
-(connector
-	(pt 1424 472)
-	(pt 1424 360)
 )
 (connector
 	(pt 648 48)
@@ -572,14 +571,6 @@ https://fpgasoftware.intel.com/eula.
 	(pt 680 240)
 )
 (connector
-	(pt 696 472)
-	(pt 1424 472)
-)
-(connector
-	(pt 696 472)
-	(pt 696 240)
-)
-(connector
 	(pt 720 80)
 	(pt 704 80)
 )
@@ -632,6 +623,18 @@ https://fpgasoftware.intel.com/eula.
 (connector
 	(pt 1000 280)
 	(pt 1000 344)
+)
+(connector
+	(pt 1424 360)
+	(pt 1424 432)
+)
+(connector
+	(pt 696 432)
+	(pt 1424 432)
+)
+(connector
+	(pt 696 240)
+	(pt 696 432)
 )
 (junction (pt 272 -88))
 (junction (pt 256 -56))

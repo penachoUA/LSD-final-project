@@ -11,20 +11,21 @@ entity SingleTurnFSM is
 		newTime  : out std_logic;
 		timeVal  : out std_logic_vector(31 downto 0);
 		run_time : out std_logic;
-		state    : out std_logic_vector(4 downto 0)
+		state    : out std_logic_vector(2 downto 0)
 	);
 end;
 
 architecture Behavioral of SingleTurnFSM is
 	type TSTATE is (IDLE, READY, FALSE_START, PLAY, REACTED);
 	signal pState, nState : TSTATE;
+	signal s_newTime      : std_logic;
 	
 	constant FALSE_START_DELAY : std_logic_vector(31 downto 0) := x"05F5E100"; -- 2 seconds
 begin
 	sync_proc: process(clk)
 		begin
 			if rising_edge(clk) then
-				newTime <= '0';
+				s_newTime <= '0';
 			
 				if reset = '1' then
 					pState <= IDLE;
@@ -33,8 +34,9 @@ begin
 					if ((nState = READY) and (pState /= READY)) or 
 						((nState = FALSE_START) and (pState /= FALSE_START)) then
 						
-						newTime <= '1';
+						s_newTime <= '1';
 					end if;
+					
 					pState <= nState;
 				end if;
 			end if;
@@ -47,7 +49,6 @@ begin
 			
 			case pState is
 				when IDLE =>
-					state <= "00001";
 					
 					if click = '1' then
 						nState <= READY;
@@ -56,9 +57,8 @@ begin
 					end if;
 					
 				when READY =>
-					state 	<= "00010";
 					timeVal	<= randTime;
-					
+
 					if click = '1' then
 						nState <= FALSE_START;
 					elsif timeExp = '1' then
@@ -66,11 +66,10 @@ begin
 					else
 						nState <= READY;
 					end if;
-					
+				
 				when FALSE_START =>
-					state <= "00100";
 					timeVal	<= FALSE_START_DELAY;
-					
+
 					if timeExp = '1' then
 						nState <= READY;
 					else
@@ -78,7 +77,6 @@ begin
 					end if;
 					
 				when PLAY =>
-					state 	<= "01000";
 					run_time <= '1';
 					
 					if click = '1' then
@@ -89,14 +87,20 @@ begin
 					end if;
 					
 				when REACTED =>
-					state <= "10000";
-					
 					nState <= READY;
 					
-				when others =>
-					state <= "00000";
-					
+				when others =>		
 					nState <= IDLE;
 			end case;
 		end process;
+		
+	with pState select
+		state <= "000" when IDLE,
+					"001" when READY,
+					"010" when FALSE_START,
+					"011" when PLAY,
+					"100" when REACTED,
+					"000" when others;
+					
+	newTime <= s_newTime;
 end;
