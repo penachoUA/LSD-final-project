@@ -16,7 +16,7 @@ entity SingleTurnFSM is
 end;
 
 architecture Behavioral of SingleTurnFSM is
-	type TSTATE is (IDLE, READY, FALSE_START, PLAY, REACTED);
+	type TSTATE is (IDLE, READY, DELAY, PLAY, REACTED);
 	signal pState, nState : TSTATE;
 	signal s_newTime      : std_logic;
 	
@@ -25,18 +25,9 @@ begin
 	sync_proc: process(clk)
 		begin
 			if rising_edge(clk) then
-				s_newTime <= '0';
-			
 				if reset = '1' then
 					pState <= IDLE;
-				else
-					-- Start time delay for states that need it
-					if ((nState = READY) and (pState /= READY)) or 
-						((nState = FALSE_START) and (pState /= FALSE_START)) then
-						
-						s_newTime <= '1';
-					end if;
-					
+				else	
 					pState <= nState;
 				end if;
 			end if;
@@ -44,6 +35,7 @@ begin
 		
 	comb_proc : process(pState, click, randTime, timeExp)
 		begin
+			s_newTime <= '0';
 			run_time <= '0';
 			timeVal	<= (others => '-');
 			
@@ -57,23 +49,15 @@ begin
 					end if;
 					
 				when READY =>
-					timeVal	<= randTime;
-
-					if click = '1' then
-						nState <= FALSE_START;
-					elsif timeExp = '1' then
+					timeVal	 <= randTime;
+					s_newTime <= '1';
+					nState    <= DELAY;
+					
+				when DELAY =>
+					if timeExp = '1' then
 						nState <= PLAY;
 					else
-						nState <= READY;
-					end if;
-				
-				when FALSE_START =>
-					timeVal	<= FALSE_START_DELAY;
-
-					if timeExp = '1' then
-						nState <= READY;
-					else
-						nState <= FALSE_START;
+						nState <= DELAY;
 					end if;
 					
 				when PLAY =>
@@ -97,7 +81,7 @@ begin
 	with pState select
 		state <= "000" when IDLE,
 					"001" when READY,
-					"010" when FALSE_START,
+					"010" when DELAY,
 					"011" when PLAY,
 					"100" when REACTED,
 					"000" when others;

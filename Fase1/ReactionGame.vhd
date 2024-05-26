@@ -60,7 +60,7 @@ begin
 		port map(
 			reset   => reset,
 			clk     => clk,
-			enable1 => '1',
+			enable1 => not s_newTime,
 			enable2 => '1',
 			valOut  => s_randTime,
 			termCnt => open
