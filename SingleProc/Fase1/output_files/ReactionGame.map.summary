@@ -1,9 +1,9 @@
-Analysis & Synthesis Status : Successful - Sun May 26 16:00:15 2024
+Analysis & Synthesis Status : Successful - Sun May 26 16:46:28 2024
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : ReactionGame
 Top-level Entity Name : SingleTurnFSM
 Family : Cyclone IV E
-Total logic elements : 55
+Total logic elements : 54
     Total combinational functions : 53
     Dedicated logic registers : 39
 Total registers : 39

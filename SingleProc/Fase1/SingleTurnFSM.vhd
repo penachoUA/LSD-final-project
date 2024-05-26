@@ -56,6 +56,7 @@ begin
 							
 							if click = '1' then
 								reacted  <= '1';
+								run_time <= '0';
 								pState   <= READY;
 							else
 								pState   <= PLAY;

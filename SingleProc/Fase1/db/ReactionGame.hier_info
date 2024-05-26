@@ -76,6 +76,7 @@ reset => reacted~reg0.ENA
 reset => ledOn~reg0.ENA
 click => pState.DATAB
 click => reacted.DATAB
+click => run_time.DATAB
 click => Selector1.IN2
 click => pState.DATAB
 randTime[0] => Selector33.IN2
@@ -110,10 +111,10 @@ randTime[28] => Selector5.IN2
 randTime[29] => Selector4.IN2
 randTime[30] => Selector3.IN2
 randTime[31] => Selector2.IN2
-run_time <= run_time~reg0.DB_MAX_OUTPUT_PORT_TYPE
-ledOn <= ledOn~reg0.DB_MAX_OUTPUT_PORT_TYPE
-reacted <= reacted~reg0.DB_MAX_OUTPUT_PORT_TYPE
-state[0] <= state.DB_MAX_OUTPUT_PORT_TYPE
-state[1] <= state.DB_MAX_OUTPUT_PORT_TYPE
+run_time << run_time~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ledOn << ledOn~reg0.DB_MAX_OUTPUT_PORT_TYPE
+reacted << reacted~reg0.DB_MAX_OUTPUT_PORT_TYPE
+state[0] << state.DB_MAX_OUTPUT_PORT_TYPE
+state[1] << state.DB_MAX_OUTPUT_PORT_TYPE
 
 

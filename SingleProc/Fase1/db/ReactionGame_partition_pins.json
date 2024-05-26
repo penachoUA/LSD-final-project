@@ -24,15 +24,15 @@
 					"strict" : false
 				},
 				{
+					"name" : "click",
+					"strict" : false
+				},
+				{
 					"name" : "clk",
 					"strict" : false
 				},
 				{
 					"name" : "reset",
-					"strict" : false
-				},
-				{
-					"name" : "click",
 					"strict" : false
 				},
 				{
@@ -116,19 +116,19 @@
 					"strict" : false
 				},
 				{
-					"name" : "randTime[20]",
-					"strict" : false
-				},
-				{
-					"name" : "randTime[21]",
-					"strict" : false
-				},
-				{
 					"name" : "randTime[22]",
 					"strict" : false
 				},
 				{
 					"name" : "randTime[23]",
+					"strict" : false
+				},
+				{
+					"name" : "randTime[20]",
+					"strict" : false
+				},
+				{
+					"name" : "randTime[21]",
 					"strict" : false
 				},
 				{
