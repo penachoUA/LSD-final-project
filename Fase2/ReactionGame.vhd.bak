@@ -5,11 +5,8 @@ entity ReactionGame is
 	port(
 		clk           : in  std_logic;
 		reset         : in  std_logic;
-		clickA        : in  std_logic;
-		clickB        : in  std_logic;
-		ledOn         : out  std_logic;
-		winA          : out std_logic;
-		winB          : out std_logic;
+		click         : in  std_logic;
+		reaction_time : out std_logic_vector(15 downto 0);
 		state         : out std_logic_vector(2 downto 0)
 	);
 end;
@@ -28,15 +25,12 @@ begin
 		port map(
 			clk      => clk,
 			reset    => reset,
-			clickA   => clickA,
-			clickB   => clickB,
+			click    => click,
 			timeExp  => s_timeExp or s_maxTime,
 			randTime => s_randTime,
 			newTime  => s_newTime,
 			timeVal  => s_timeVal,
-			ledOn    => ledOn,
-			winA     => winA,
-			winB     => winB,
+			run_time => s_run_time,
 			state    => state
 		);
 
@@ -47,6 +41,14 @@ begin
 			newTime => s_newTime,
 			timeVal => s_timeVal,
 			timeExp => s_timeExp
+		);
+		
+	pulse_1000hz : entity work.PulseGen(Behavioral)
+		generic map(MAX => 50_000)
+		port map(
+			clk   => clk,
+			reset => reset,
+			pulse => s_pulse_1000hz
 		);
 	
 	rand_counter : entity work.CounterNBits(Behavioral)
@@ -62,5 +64,20 @@ begin
 			enable2 => '1',
 			valOut  => s_randTime,
 			termCnt => open
+		);
+	
+	chronometer : entity work.CounterNBits(Behavioral)
+		generic map(
+			N	 => 16,
+			MIN => 0,
+			MAX => 500_000_000  -- 10 seconds
+		)
+		port map(
+			reset   => reset,
+			clk     => clk,
+			enable1 => s_pulse_1000hz,
+			enable2 => s_run_time,
+			valOut  => reaction_time,
+			termCnt => s_maxTime
 		);
 end;
