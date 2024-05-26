@@ -1,0 +1,34 @@
+Quartus Prime Archive log --	/home/penacho/LSD/LSD-final-project/Fase1/ReactionGame_tmp_archive.qarlog
+
+Archive:	/home/penacho/LSD/LSD-final-project/Fase1/ReactionGame_tmp_archive.qar
+Date:		Sun May 26 19:41:49 2024
+Quartus Prime		22.1std.2 Build 922 07/20/2023 SC Lite Edition
+
+	=========== Files Selected: ===========
+/home/penacho/.intel_fpga_lite/22.1.2/quartus/linux64/assignment_defaults.qdf
+/home/penacho/LSD/LSD-final-project/Fase1/Bin2BCD.vhd
+/home/penacho/LSD/LSD-final-project/Fase1/Bin2BCD.vwf
+/home/penacho/LSD/LSD-final-project/Fase1/Bin2BCD_tb.vhd
+/home/penacho/LSD/LSD-final-project/Fase1/Bin7SegDecoder.vhd
+/home/penacho/LSD/LSD-final-project/Fase1/CounterNBits.vhd
+/home/penacho/LSD/LSD-final-project/Fase1/CounterNBits_tb.vhd
+/home/penacho/LSD/LSD-final-project/Fase1/Debouncer.vhd
+/home/penacho/LSD/LSD-final-project/Fase1/PulseGen.vhd
+/home/penacho/LSD/LSD-final-project/Fase1/ReactionGame.qpf
+/home/penacho/LSD/LSD-final-project/Fase1/ReactionGame.qsf
+/home/penacho/LSD/LSD-final-project/Fase1/ReactionGame.vhd
+/home/penacho/LSD/LSD-final-project/Fase1/ReactionGame_Demo.vhd
+/home/penacho/LSD/LSD-final-project/Fase1/SingleTurnFSM.vhd
+/home/penacho/LSD/LSD-final-project/Fase1/TimerAuxFSM.vhd
+/home/penacho/LSD/LSD-final-project/Fase1/demo_schematic.bdf
+/home/penacho/LSD/LSD-final-project/Fase1/toplevel_schematic.bdf
+	======= Total: 17 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
+
+
+******* Archived project restoration attempt on Sun May 26 19:41:50 2024
+Source archive file:	/home/penacho/LSD/LSD-final-project/Fase1/ReactionGame_tmp_archive.qar
+Archive was extracted into	/home/penacho/LSD/LSD-final-project/Fase2/
+		 - successfully.

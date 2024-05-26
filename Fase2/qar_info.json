@@ -1,0 +1,7 @@
+{
+	"common_dir" : "/home/penacho/LSD/LSD-final-project/Fase1/",
+	"acds_version" : "Version 22.1std.2",
+	"platform" : "linux",
+	"os" : "Ubuntu 23.10",
+	"qpf" : "ReactionGame.qpf"
+}
