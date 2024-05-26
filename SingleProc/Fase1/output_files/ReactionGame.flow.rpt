@@ -1,5 +1,5 @@
 Flow report for ReactionGame
-Sun May 26 16:46:47 2024
+Sun May 26 17:11:10 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -41,18 +41,18 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Flow Summary                                                                        ;
 +------------------------------------+------------------------------------------------+
-; Flow Status                        ; Successful - Sun May 26 16:46:47 2024          ;
+; Flow Status                        ; Successful - Sun May 26 17:11:10 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; ReactionGame                                   ;
-; Top-level Entity Name              ; SingleTurnFSM                                  ;
+; Top-level Entity Name              ; ReactionGame_Demo                              ;
 ; Family                             ; Cyclone IV E                                   ;
 ; Device                             ; EP4CE115F29C7                                  ;
 ; Timing Models                      ; Final                                          ;
-; Total logic elements               ; 54 / 114,480 ( < 1 % )                         ;
-;     Total combinational functions  ; 53 / 114,480 ( < 1 % )                         ;
-;     Dedicated logic registers      ; 39 / 114,480 ( < 1 % )                         ;
-; Total registers                    ; 39                                             ;
-; Total pins                         ; 40 / 529 ( 8 % )                               ;
+; Total logic elements               ; 2,008 / 114,480 ( 2 % )                        ;
+;     Total combinational functions  ; 2,007 / 114,480 ( 2 % )                        ;
+;     Dedicated logic registers      ; 129 / 114,480 ( < 1 % )                        ;
+; Total registers                    ; 129                                            ;
+; Total pins                         ; 46 / 529 ( 9 % )                               ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0 / 3,981,312 ( 0 % )                          ;
 ; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                                ;
@@ -65,34 +65,34 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/26/2024 16:46:21 ;
+; Start date & time ; 05/26/2024 17:10:38 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; ReactionGame        ;
 +-------------------+---------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                                                 ;
-+-------------------------------------+----------------------------------------+---------------+---------------+-----------------------------------+
-; Assignment Name                     ; Value                                  ; Default Value ; Entity Name   ; Section Id                        ;
-+-------------------------------------+----------------------------------------+---------------+---------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 90520743358884.171673838125809         ; --            ; --            ; --                                ;
-; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --            ; eda_board_design_timing           ;
-; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --            ; eda_board_design_boundary_scan    ;
-; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --            ; eda_board_design_signal_integrity ;
-; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --            ; eda_board_design_symbol           ;
-; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                            ; --            ; --            ; eda_simulation                    ;
-; EDA_SIMULATION_TOOL                 ; Questa Intel FPGA (Verilog)            ; <None>        ; --            ; --                                ;
-; EDA_TIME_SCALE                      ; 1 ps                                   ; --            ; --            ; eda_simulation                    ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --            ; --                                ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --            ; --                                ;
-; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --            ; --            ; --                                ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; SingleTurnFSM ; Top                               ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; SingleTurnFSM ; Top                               ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; SingleTurnFSM ; Top                               ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --            ; --                                ;
-; TOP_LEVEL_ENTITY                    ; SingleTurnFSM                          ; ReactionGame  ; --            ; --                                ;
-+-------------------------------------+----------------------------------------+---------------+---------------+-----------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                     ;
++-------------------------------------+----------------------------------------+---------------+-------------------+-----------------------------------+
+; Assignment Name                     ; Value                                  ; Default Value ; Entity Name       ; Section Id                        ;
++-------------------------------------+----------------------------------------+---------------+-------------------+-----------------------------------+
+; COMPILER_SIGNATURE_ID               ; 90520743358884.171673983832085         ; --            ; --                ; --                                ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --                ; eda_board_design_timing           ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --                ; eda_board_design_boundary_scan    ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --                ; eda_board_design_signal_integrity ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --                ; eda_board_design_symbol           ;
+; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                            ; --            ; --                ; eda_simulation                    ;
+; EDA_SIMULATION_TOOL                 ; Questa Intel FPGA (Verilog)            ; <None>        ; --                ; --                                ;
+; EDA_TIME_SCALE                      ; 1 ps                                   ; --            ; --                ; eda_simulation                    ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --                ; --                                ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --                ; --                                ;
+; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --            ; --                ; --                                ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; ReactionGame_Demo ; Top                               ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; ReactionGame_Demo ; Top                               ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; ReactionGame_Demo ; Top                               ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --                ; --                                ;
+; TOP_LEVEL_ENTITY                    ; ReactionGame_Demo                      ; ReactionGame  ; --                ; --                                ;
++-------------------------------------+----------------------------------------+---------------+-------------------+-----------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -100,12 +100,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:07     ; 1.0                     ; 445 MB              ; 00:00:17                           ;
-; Fitter               ; 00:00:11     ; 1.0                     ; 1166 MB             ; 00:00:17                           ;
-; Assembler            ; 00:00:02     ; 1.0                     ; 375 MB              ; 00:00:02                           ;
-; Timing Analyzer      ; 00:00:01     ; 1.0                     ; 554 MB              ; 00:00:01                           ;
-; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 603 MB              ; 00:00:00                           ;
-; Total                ; 00:00:21     ; --                      ; --                  ; 00:00:37                           ;
+; Analysis & Synthesis ; 00:00:10     ; 1.0                     ; 468 MB              ; 00:00:20                           ;
+; Fitter               ; 00:00:13     ; 1.0                     ; 1189 MB             ; 00:00:21                           ;
+; Assembler            ; 00:00:02     ; 1.0                     ; 378 MB              ; 00:00:02                           ;
+; Timing Analyzer      ; 00:00:01     ; 1.1                     ; 557 MB              ; 00:00:02                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 621 MB              ; 00:00:01                           ;
+; Total                ; 00:00:27     ; --                      ; --                  ; 00:00:46                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

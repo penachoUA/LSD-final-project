@@ -11,7 +11,6 @@ architecture Stimulus of SingleTurnFSM_tb is
 		signal s_randTime : std_logic_vector(31 downto 0);
 		signal s_run_time : std_logic;
 		signal s_ledOn    : std_logic;
-		signal s_reacted  : std_logic;
 		signal s_state    : std_logic_vector(1 downto 0);
 begin
 	uut: entity work.SingleTurnFSM(Behavioral)
@@ -22,7 +21,6 @@ begin
 			randTime => s_randTime,
 			run_time => s_run_time,
 			ledOn    => s_ledOn,
-			reacted  => s_reacted,
 			state    => s_state
 		);
 		

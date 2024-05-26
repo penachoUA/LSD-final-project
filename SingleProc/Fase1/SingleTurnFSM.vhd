@@ -10,7 +10,6 @@ entity SingleTurnFSM is
 		randTime : in  std_logic_vector(31 downto 0);
 		run_time : out std_logic;
 		ledOn    : out std_logic;
-		reacted  : out std_logic;
 		state    : out std_logic_vector(1 downto 0)
 	);
 end;
@@ -27,7 +26,6 @@ begin
 					pState <= IDLE;
 				else
 					ledOn    <= '0';
-					reacted  <= '0';
 					run_time <= '0';
 				
 					case pState is
@@ -55,8 +53,8 @@ begin
 							run_time <= '1';
 							
 							if click = '1' then
-								reacted  <= '1';
 								run_time <= '0';
+								ledOn    <= '0';
 								pState   <= READY;
 							else
 								pState   <= PLAY;

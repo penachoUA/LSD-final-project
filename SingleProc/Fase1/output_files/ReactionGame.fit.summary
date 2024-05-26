@@ -1,15 +1,15 @@
-Fitter Status : Successful - Sun May 26 16:46:40 2024
+Fitter Status : Successful - Sun May 26 17:11:02 2024
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : ReactionGame
-Top-level Entity Name : SingleTurnFSM
+Top-level Entity Name : ReactionGame_Demo
 Family : Cyclone IV E
 Device : EP4CE115F29C7
 Timing Models : Final
-Total logic elements : 54 / 114,480 ( < 1 % )
-    Total combinational functions : 53 / 114,480 ( < 1 % )
-    Dedicated logic registers : 39 / 114,480 ( < 1 % )
-Total registers : 39
-Total pins : 40 / 529 ( 8 % )
+Total logic elements : 2,008 / 114,480 ( 2 % )
+    Total combinational functions : 2,007 / 114,480 ( 2 % )
+    Dedicated logic registers : 129 / 114,480 ( < 1 % )
+Total registers : 129
+Total pins : 46 / 529 ( 9 % )
 Total virtual pins : 0
 Total memory bits : 0 / 3,981,312 ( 0 % )
 Embedded Multiplier 9-bit elements : 0 / 532 ( 0 % )
