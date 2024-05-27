@@ -6,8 +6,10 @@ entity ReactionGame is
 		clk           : in  std_logic;
 		reset         : in  std_logic;
 		click         : in  std_logic;
+		ledOn         : out std_logic;
 		reaction_time : out std_logic_vector(15 downto 0);
-		state         : out std_logic_vector(2 downto 0)
+		timeExp       : out std_logic;
+		state         : out std_logic_vector(1 downto 0)
 	);
 end;
 
@@ -21,15 +23,18 @@ architecture Structural of ReactionGame is
 	signal s_pulse_1000hz : std_logic;
 	signal s_maxTime      : std_logic;
 begin
+	timeExp <= s_timeExp;
+
 	turn_fsm: entity work.SingleTurnFSM(Behavioral)
 		port map(
 			clk      => clk,
 			reset    => reset,
 			click    => click,
-			timeExp  => s_timeExp or s_maxTime,
+			timeExp  => s_timeExp,
 			randTime => s_randTime,
 			newTime  => s_newTime,
 			timeVal  => s_timeVal,
+			ledOn    => ledOn,
 			run_time => s_run_time,
 			state    => state
 		);
@@ -60,7 +65,7 @@ begin
 		port map(
 			reset   => reset,
 			clk     => clk,
-			enable1 => not s_newTime,
+			enable1 => '1',
 			enable2 => '1',
 			valOut  => s_randTime,
 			termCnt => open
@@ -70,7 +75,7 @@ begin
 		generic map(
 			N	 => 16,
 			MIN => 0,
-			MAX => 500_000_000  -- 10 seconds
+			MAX => 10_000  -- 10 seconds
 		)
 		port map(
 			reset   => reset,

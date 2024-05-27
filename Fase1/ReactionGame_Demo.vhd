@@ -12,7 +12,7 @@ entity ReactionGame_Demo is
 		HEX3     : out std_logic_vector(6 downto 0);
 		HEX4     : out std_logic_vector(6 downto 0);
 		LEDG     : out std_logic_vector(8 downto 0);
-		LEDR     : out std_logic_vector(7 downto 0)
+		LEDR     : out std_logic_vector(1 downto 0)
 	);
 end;
 
@@ -21,7 +21,8 @@ architecture Structural of ReactionGame_Demo is
 	signal s_click : std_logic;
 
 	signal s_reaction_time : std_logic_vector(15 downto 0);
-	signal s_state			  : std_logic_vector(2 downto 0);
+	signal s_ledOn         : std_logic;
+	signal s_state			  : std_logic_vector(1 downto 0);
 	
 	signal s_mili : std_logic_vector(3 downto 0);
 	signal s_cent : std_logic_vector(3 downto 0);
@@ -55,7 +56,9 @@ begin
 			clk           => CLOCK_50,
 			reset         => s_reset,
 			click         => s_click,
+			ledOn         => s_ledOn,
 			reaction_time => s_reaction_time,
+			timeExp       => LEDG(8),
 			state         => s_state
 		);
 
@@ -103,10 +106,8 @@ begin
 			binInput  => s_ten,
 			decOut_n  => HEX4
 		);
-		
-	LEDG(8) <= '1' when s_state = "011" else '0';
 	
-	LEDG(7 downto 0) <= (others => '1') when s_state = "011" else (others => '0');
+	LEDG(7 downto 0) <= (others => '1') when s_ledOn = '1' else (others => '0');
 	
-	LEDR <= (others => '1') when s_state = "010" else (others => '0');
+	LEDR <= s_state;
 end;

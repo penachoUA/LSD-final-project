@@ -11,23 +11,31 @@ entity SingleTurnFSM is
 		newTime  : out std_logic;
 		timeVal  : out std_logic_vector(31 downto 0);
 		run_time : out std_logic;
-		state    : out std_logic_vector(2 downto 0)
+		ledOn    : out std_logic;
+		state    : out std_logic_vector(1 downto 0)
 	);
 end;
 
 architecture Behavioral of SingleTurnFSM is
 	type TSTATE is (IDLE, READY, DELAY, PLAY, REACTED);
-	signal pState, nState : TSTATE;
-	signal s_newTime      : std_logic;
+	signal pState, nState : TSTATE := IDLE;
+	signal s_newTime      : std_logic := '0';
 	
-	constant FALSE_START_DELAY : std_logic_vector(31 downto 0) := x"05F5E100"; -- 2 seconds
+	constant FALSE_START_DELAY : std_logic_vector(31 downto 0) := x"05F5E100"; -- 2  seconds
+	constant MAX_WAIT          : std_logic_vector(31 downto 0) := x"1DCD6500"; -- 10 seconds
 begin
 	sync_proc: process(clk)
 		begin
 			if rising_edge(clk) then
 				if reset = '1' then
-					pState <= IDLE;
-				else	
+					pState    <= IDLE;
+					s_newTime <= '0';
+				else
+					if pState /= nState then
+						s_newTime <= '1';
+					else
+						s_newTime <= '0';
+					end if;
 					pState <= nState;
 				end if;
 			end if;
@@ -35,8 +43,8 @@ begin
 		
 	comb_proc : process(pState, click, randTime, timeExp)
 		begin
-			s_newTime <= '0';
-			run_time <= '0';
+			ledOn     <= '0';
+			run_time  <= '0';
 			timeVal	<= (others => '-');
 			
 			case pState is
@@ -50,7 +58,6 @@ begin
 					
 				when READY =>
 					timeVal	 <= randTime;
-					s_newTime <= '1';
 					nState    <= DELAY;
 					
 				when DELAY =>
@@ -61,17 +68,17 @@ begin
 					end if;
 					
 				when PLAY =>
+					timeVal  <= MAX_WAIT;
+					ledOn    <= '1';
 					run_time <= '1';
 					
 					if click = '1' then
+						ledOn    <= '0';
 						run_time <= '0';
-						nState <= REACTED;
+						nState <= READY;
 					else
 						nState <= PLAY;
 					end if;
-					
-				when REACTED =>
-					nState <= READY;
 					
 				when others =>		
 					nState <= IDLE;
@@ -79,12 +86,11 @@ begin
 		end process;
 		
 	with pState select
-		state <= "000" when IDLE,
-					"001" when READY,
-					"010" when DELAY,
-					"011" when PLAY,
-					"100" when REACTED,
-					"000" when others;
+		state <= "00" when IDLE,
+					"01" when READY,
+					"10" when DELAY,
+					"11" when PLAY,
+					"00" when others;
 					
 	newTime <= s_newTime;
 end;
