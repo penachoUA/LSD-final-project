@@ -41,7 +41,7 @@ begin
 
 	timer_fsm: entity work.TimerAuxFSM(Behavioral)
 		port map(
-			clk     => clk,
+			clk     => not clk,
 			reset   => reset,
 			newTime => s_newTime,
 			timeVal => s_timeVal,

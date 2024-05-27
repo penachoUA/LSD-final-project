@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ReactionGame
-Mon May 27 17:24:15 2024
+Mon May 27 22:42:08 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -61,7 +61,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon May 27 17:24:15 2024          ;
+; Analysis & Synthesis Status        ; Successful - Mon May 27 22:42:08 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; ReactionGame                                   ;
 ; Top-level Entity Name              ; ReactionGame_Demo                              ;
@@ -230,9 +230,9 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;                ;
 ; Total combinational functions               ; 2070           ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 545            ;
-;     -- 3 input functions                    ; 543            ;
-;     -- <=2 input functions                  ; 982            ;
+;     -- 4 input functions                    ; 544            ;
+;     -- 3 input functions                    ; 545            ;
+;     -- <=2 input functions                  ; 981            ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
 ;     -- normal mode                          ; 1386           ;
@@ -299,9 +299,9 @@ https://fpgasoftware.intel.com/eula.
 ;    |Bin7SegDecoder:bin7uni|               ; 14 (14)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|Bin7SegDecoder:bin7uni                                                                                          ; Bin7SegDecoder      ; work         ;
 ;    |Debouncer:debounce|                   ; 70 (70)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|Debouncer:debounce                                                                                              ; Debouncer           ; work         ;
 ;    |ReactionGame:reaction_game|           ; 238 (0)             ; 103 (0)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ReactionGame:reaction_game                                                                                      ; ReactionGame        ; work         ;
-;       |CounterNBits:chronometer|          ; 23 (23)             ; 16 (16)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ReactionGame:reaction_game|CounterNBits:chronometer                                                             ; CounterNBits        ; work         ;
+;       |CounterNBits:chronometer|          ; 24 (24)             ; 16 (16)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ReactionGame:reaction_game|CounterNBits:chronometer                                                             ; CounterNBits        ; work         ;
 ;       |CounterNBits:rand_counter|         ; 74 (74)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ReactionGame:reaction_game|CounterNBits:rand_counter                                                            ; CounterNBits        ; work         ;
-;       |PulseGen:pulse_1000hz|             ; 24 (24)             ; 17 (17)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ReactionGame:reaction_game|PulseGen:pulse_1000hz                                                                ; PulseGen            ; work         ;
+;       |PulseGen:pulse_1000hz|             ; 23 (23)             ; 17 (17)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ReactionGame:reaction_game|PulseGen:pulse_1000hz                                                                ; PulseGen            ; work         ;
 ;       |SingleTurnFSM:turn_fsm|            ; 9 (9)               ; 5 (5)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ReactionGame:reaction_game|SingleTurnFSM:turn_fsm                                                               ; SingleTurnFSM       ; work         ;
 ;       |TimerAuxFSM:timer_fsm|             ; 108 (108)           ; 33 (33)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ReactionGame:reaction_game|TimerAuxFSM:timer_fsm                                                                ; TimerAuxFSM         ; work         ;
 +-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
@@ -403,12 +403,12 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------+
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |ReactionGame_Demo|ReactionGame:reaction_game|PulseGen:pulse_1000hz|s_cnt[14]         ;
-; 3:1                ; 22 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |ReactionGame_Demo|ReactionGame:reaction_game|CounterNBits:rand_counter|cnt_value[18] ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |ReactionGame_Demo|ReactionGame:reaction_game|PulseGen:pulse_1000hz|s_cnt[2]          ;
+; 3:1                ; 22 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |ReactionGame_Demo|ReactionGame:reaction_game|CounterNBits:rand_counter|cnt_value[31] ;
 ; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |ReactionGame_Demo|ReactionGame:reaction_game|CounterNBits:chronometer|cnt_value[0]   ;
-; 5:1                ; 23 bits   ; 69 LEs        ; 46 LEs               ; 23 LEs                 ; Yes        ; |ReactionGame_Demo|Debouncer:debounce|s_debounceCnt[12]                               ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |ReactionGame_Demo|ReactionGame:reaction_game|CounterNBits:rand_counter|cnt_value[14] ;
-; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[29]       ;
+; 5:1                ; 23 bits   ; 69 LEs        ; 46 LEs               ; 23 LEs                 ; Yes        ; |ReactionGame_Demo|Debouncer:debounce|s_debounceCnt[11]                               ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |ReactionGame_Demo|ReactionGame:reaction_game|CounterNBits:rand_counter|cnt_value[8]  ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[25]       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------+
 
 
@@ -682,9 +682,9 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     normal            ; 1387                        ;
 ;         0 data inputs ; 67                          ;
 ;         1 data inputs ; 18                          ;
-;         2 data inputs ; 725                         ;
-;         3 data inputs ; 32                          ;
-;         4 data inputs ; 545                         ;
+;         2 data inputs ; 724                         ;
+;         3 data inputs ; 34                          ;
+;         4 data inputs ; 544                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 61.60                       ;
 ; Average LUT depth     ; 32.06                       ;
@@ -696,7 +696,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:04     ;
+; Top            ; 00:00:05     ;
 +----------------+--------------+
 
 
@@ -706,7 +706,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Mon May 27 17:24:04 2024
+    Info: Processing started: Mon May 27 22:41:54 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ReactionGame -c ReactionGame
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -859,8 +859,8 @@ Info (21057): Implemented 2121 device resources after synthesis - the final reso
     Info (21061): Implemented 2072 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
     Info: Peak virtual memory: 507 megabytes
-    Info: Processing ended: Mon May 27 17:24:15 2024
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:19
+    Info: Processing ended: Mon May 27 22:42:08 2024
+    Info: Elapsed time: 00:00:14
+    Info: Total CPU time (on all processors): 00:00:26
 
 

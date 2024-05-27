@@ -15,10 +15,11 @@ architecture Structural of ReactionGame_Demo is
 	signal s_clickA : std_logic;
 	signal s_clickB : std_logic;
 	signal s_ledOn  : std_logic;
+	signal s_draw   : std_logic;
 	signal s_winA   : std_logic;
 	signal s_winB   : std_logic;
 	
-	signal s_state			  : std_logic_vector(2 downto 0);
+	signal s_state  : std_logic_vector(2 downto 0);
 	
 begin
 	sync_inputs: process(CLOCK_50)
@@ -61,6 +62,7 @@ begin
 			clickA        => s_clickA,
 			clickB        => s_clickB,
 			ledOn         => s_ledOn,
+			draw          => s_draw,
 			winA          => s_winA,
 			winB          => s_winB,
 			state         => s_state

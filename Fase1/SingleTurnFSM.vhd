@@ -72,7 +72,7 @@ begin
 					ledOn    <= '1';
 					run_time <= '1';
 					
-					if click = '1' then
+					if (click = '1' or timeExp = '1') then
 						ledOn    <= '0';
 						run_time <= '0';
 						nState <= READY;

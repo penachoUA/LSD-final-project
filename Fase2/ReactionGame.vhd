@@ -3,14 +3,15 @@ use IEEE.std_logic_1164.all;
 
 entity ReactionGame is
 	port(
-		clk           : in  std_logic;
-		reset         : in  std_logic;
-		clickA        : in  std_logic;
-		clickB        : in  std_logic;
-		ledOn         : out  std_logic;
-		winA          : out std_logic;
-		winB          : out std_logic;
-		state         : out std_logic_vector(2 downto 0)
+		clk    : in  std_logic;
+		reset  : in  std_logic;
+		clickA : in  std_logic;
+		clickB : in  std_logic;
+		ledOn  : out std_logic;
+		winA   : out std_logic;
+		winB   : out std_logic;
+		draw   : out std_logic;
+		state  : out std_logic_vector(2 downto 0)
 	);
 end;
 
@@ -19,10 +20,6 @@ architecture Structural of ReactionGame is
 	signal s_newTime  : std_logic;
 	signal s_randTime	: std_logic_vector(31 downto 0);	
 	signal s_timeVal  : std_logic_vector(31 downto 0);
-	signal s_run_time : std_logic;
-	
-	signal s_pulse_1000hz : std_logic;
-	signal s_maxTime      : std_logic;
 begin
 	turn_fsm: entity work.SingleTurnFSM(Behavioral)
 		port map(
@@ -30,19 +27,20 @@ begin
 			reset    => reset,
 			clickA   => clickA,
 			clickB   => clickB,
-			timeExp  => s_timeExp or s_maxTime,
+			timeExp  => s_timeExp,
 			randTime => s_randTime,
 			newTime  => s_newTime,
 			timeVal  => s_timeVal,
 			ledOn    => ledOn,
 			winA     => winA,
 			winB     => winB,
+			draw     => draw,
 			state    => state
 		);
 
 	timer_fsm: entity work.TimerAuxFSM(Behavioral)
 		port map(
-			clk     => clk,
+			clk     => not clk,
 			reset   => reset,
 			newTime => s_newTime,
 			timeVal => s_timeVal,
@@ -58,7 +56,7 @@ begin
 		port map(
 			reset   => reset,
 			clk     => clk,
-			enable1 => not s_newTime,
+			enable1 => '1',
 			enable2 => '1',
 			valOut  => s_randTime,
 			termCnt => open
