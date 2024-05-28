@@ -1,0 +1,38 @@
+|TargetScoreSetter
+clk => counternbits:target_counter.clk
+reset => counternbits:target_counter.reset
+click => ~NO_FANOUT~
+target[0] <= comb.DB_MAX_OUTPUT_PORT_TYPE
+target[1] <= target[1].DB_MAX_OUTPUT_PORT_TYPE
+target[2] <= target[2].DB_MAX_OUTPUT_PORT_TYPE
+target[3] <= target[3].DB_MAX_OUTPUT_PORT_TYPE
+target[4] <= target[4].DB_MAX_OUTPUT_PORT_TYPE
+target[5] <= target[5].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|TargetScoreSetter|CounterNBits:target_counter
+reset => cnt_value.OUTPUTSELECT
+reset => cnt_value.OUTPUTSELECT
+reset => cnt_value.OUTPUTSELECT
+reset => cnt_value.OUTPUTSELECT
+reset => cnt_value.OUTPUTSELECT
+reset => cnt_value.OUTPUTSELECT
+reset => termCnt.OUTPUTSELECT
+clk => termCnt~reg0.CLK
+clk => cnt_value[0].CLK
+clk => cnt_value[1].CLK
+clk => cnt_value[2].CLK
+clk => cnt_value[3].CLK
+clk => cnt_value[4].CLK
+clk => cnt_value[5].CLK
+enable1 => process_0.IN0
+enable2 => process_0.IN1
+valOut[0] <= cnt_value[0].DB_MAX_OUTPUT_PORT_TYPE
+valOut[1] <= cnt_value[1].DB_MAX_OUTPUT_PORT_TYPE
+valOut[2] <= cnt_value[2].DB_MAX_OUTPUT_PORT_TYPE
+valOut[3] <= cnt_value[3].DB_MAX_OUTPUT_PORT_TYPE
+valOut[4] <= cnt_value[4].DB_MAX_OUTPUT_PORT_TYPE
+valOut[5] <= cnt_value[5].DB_MAX_OUTPUT_PORT_TYPE
+termCnt <= termCnt~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
