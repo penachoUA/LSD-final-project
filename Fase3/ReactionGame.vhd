@@ -11,7 +11,6 @@ entity ReactionGame is
 		winA       : out std_logic;
 		winB       : out std_logic;
 		draw       : out std_logic;
-		turn_count : out std_logic_vector(6 downto 0);
 		state      : out std_logic_vector(2 downto 0)
 	);
 end;

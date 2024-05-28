@@ -10,8 +10,9 @@ entity ScoreUnit is
 		max       : in  std_logic_vector(6 downto 0);
 		increment : in  std_logic;
 		decrement : in  std_logic;
-		hexTen    : out  std_logic_vector(6 downto 0);
-		hexUni    : out  std_logic_vector(6 downto 0)
+		hexTen    : out std_logic_vector(6 downto 0);
+		hexUni    : out std_logic_vector(6 downto 0);
+		victory   : out std_logic
 	);
 end;
 
@@ -35,4 +36,15 @@ begin
 			hexTen => hexTen,
 			hexUni => hexUni
 		);
+		
+	victory_proc: process(clk)
+		begin
+			if rising_edge(clk) then
+				if s_score = max then
+					victory <= '1';
+				else
+					victory <= '0';
+				end if;
+			end if;
+		end process;
 end;

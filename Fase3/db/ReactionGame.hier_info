@@ -1,24 +1,25 @@
 |ReactionGame_Demo
 CLOCK_50 => debouncer:debounce0.refClk
-CLOCK_50 => s_reset.CLK
+CLOCK_50 => s_reset_game.CLK
+CLOCK_50 => s_global_reset.CLK
 CLOCK_50 => debouncer:debounce3.refClk
 CLOCK_50 => reactiongame:reaction_game.clk
 CLOCK_50 => scoreunit:scoreA.clk
 CLOCK_50 => scoreunit:scoreB.clk
 CLOCK_50 => scoreunit:turn_count_display.clk
-SW[0] => s_reset.DATAIN
+SW[0] => s_global_reset.DATAIN
 KEY[0] => debouncer:debounce0.dirtyIn
 KEY[1] => ~NO_FANOUT~
 KEY[2] => ~NO_FANOUT~
 KEY[3] => debouncer:debounce3.dirtyIn
-LEDG[0] <= LEDG.DB_MAX_OUTPUT_PORT_TYPE
-LEDG[1] <= LEDG.DB_MAX_OUTPUT_PORT_TYPE
-LEDG[2] <= LEDG.DB_MAX_OUTPUT_PORT_TYPE
-LEDG[3] <= LEDG.DB_MAX_OUTPUT_PORT_TYPE
-LEDG[4] <= LEDG.DB_MAX_OUTPUT_PORT_TYPE
-LEDG[5] <= LEDG.DB_MAX_OUTPUT_PORT_TYPE
-LEDG[6] <= LEDG.DB_MAX_OUTPUT_PORT_TYPE
-LEDG[7] <= LEDG.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[0] <= s_greenB.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[1] <= s_greenB.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[2] <= s_greenB.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[3] <= s_greenB.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[4] <= s_greenA.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[5] <= s_greenA.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[6] <= s_greenA.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[7] <= s_greenA.DB_MAX_OUTPUT_PORT_TYPE
 LEDR[0] <= reactiongame:reaction_game.state[0]
 LEDR[1] <= reactiongame:reaction_game.state[1]
 LEDR[2] <= reactiongame:reaction_game.state[2]
@@ -141,13 +142,6 @@ ledOn <= singleturnfsm:turn_fsm.ledOn
 winA <= singleturnfsm:turn_fsm.winA
 winB <= singleturnfsm:turn_fsm.winB
 draw <= singleturnfsm:turn_fsm.draw
-turn_count[0] <= comb.DB_MAX_OUTPUT_PORT_TYPE
-turn_count[1] <= turn_count[1].DB_MAX_OUTPUT_PORT_TYPE
-turn_count[2] <= turn_count[2].DB_MAX_OUTPUT_PORT_TYPE
-turn_count[3] <= turn_count[3].DB_MAX_OUTPUT_PORT_TYPE
-turn_count[4] <= turn_count[4].DB_MAX_OUTPUT_PORT_TYPE
-turn_count[5] <= turn_count[5].DB_MAX_OUTPUT_PORT_TYPE
-turn_count[6] <= turn_count[6].DB_MAX_OUTPUT_PORT_TYPE
 state[0] <= singleturnfsm:turn_fsm.state[0]
 state[1] <= singleturnfsm:turn_fsm.state[1]
 state[2] <= singleturnfsm:turn_fsm.state[2]
@@ -494,14 +488,22 @@ termCnt <= termCnt~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 |ReactionGame_Demo|ScoreUnit:scoreA
 clk => scorecounter:counter.clk
+clk => victory~reg0.CLK
 reset => scorecounter:counter.reset
 enable => scorecounter:counter.enable
+max[0] => Equal0.IN6
 max[0] => scorecounter:counter.max[0]
+max[1] => Equal0.IN5
 max[1] => scorecounter:counter.max[1]
+max[2] => Equal0.IN4
 max[2] => scorecounter:counter.max[2]
+max[3] => Equal0.IN3
 max[3] => scorecounter:counter.max[3]
+max[4] => Equal0.IN2
 max[4] => scorecounter:counter.max[4]
+max[5] => Equal0.IN1
 max[5] => scorecounter:counter.max[5]
+max[6] => Equal0.IN0
 max[6] => scorecounter:counter.max[6]
 increment => scorecounter:counter.increment
 decrement => scorecounter:counter.decrement
@@ -519,6 +521,7 @@ hexUni[3] <= scoredisplay:display.hexUni[3]
 hexUni[4] <= scoredisplay:display.hexUni[4]
 hexUni[5] <= scoredisplay:display.hexUni[5]
 hexUni[6] <= scoredisplay:display.hexUni[6]
+victory <= victory~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |ReactionGame_Demo|ScoreUnit:scoreA|ScoreCounter:counter
@@ -713,14 +716,22 @@ decOut_n[6] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
 
 |ReactionGame_Demo|ScoreUnit:scoreB
 clk => scorecounter:counter.clk
+clk => victory~reg0.CLK
 reset => scorecounter:counter.reset
 enable => scorecounter:counter.enable
+max[0] => Equal0.IN6
 max[0] => scorecounter:counter.max[0]
+max[1] => Equal0.IN5
 max[1] => scorecounter:counter.max[1]
+max[2] => Equal0.IN4
 max[2] => scorecounter:counter.max[2]
+max[3] => Equal0.IN3
 max[3] => scorecounter:counter.max[3]
+max[4] => Equal0.IN2
 max[4] => scorecounter:counter.max[4]
+max[5] => Equal0.IN1
 max[5] => scorecounter:counter.max[5]
+max[6] => Equal0.IN0
 max[6] => scorecounter:counter.max[6]
 increment => scorecounter:counter.increment
 decrement => scorecounter:counter.decrement
@@ -738,6 +749,7 @@ hexUni[3] <= scoredisplay:display.hexUni[3]
 hexUni[4] <= scoredisplay:display.hexUni[4]
 hexUni[5] <= scoredisplay:display.hexUni[5]
 hexUni[6] <= scoredisplay:display.hexUni[6]
+victory <= victory~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |ReactionGame_Demo|ScoreUnit:scoreB|ScoreCounter:counter
@@ -932,14 +944,22 @@ decOut_n[6] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
 
 |ReactionGame_Demo|ScoreUnit:turn_count_display
 clk => scorecounter:counter.clk
+clk => victory~reg0.CLK
 reset => scorecounter:counter.reset
 enable => scorecounter:counter.enable
+max[0] => Equal0.IN6
 max[0] => scorecounter:counter.max[0]
+max[1] => Equal0.IN5
 max[1] => scorecounter:counter.max[1]
+max[2] => Equal0.IN4
 max[2] => scorecounter:counter.max[2]
+max[3] => Equal0.IN3
 max[3] => scorecounter:counter.max[3]
+max[4] => Equal0.IN2
 max[4] => scorecounter:counter.max[4]
+max[5] => Equal0.IN1
 max[5] => scorecounter:counter.max[5]
+max[6] => Equal0.IN0
 max[6] => scorecounter:counter.max[6]
 increment => scorecounter:counter.increment
 decrement => scorecounter:counter.decrement
@@ -957,6 +977,7 @@ hexUni[3] <= scoredisplay:display.hexUni[3]
 hexUni[4] <= scoredisplay:display.hexUni[4]
 hexUni[5] <= scoredisplay:display.hexUni[5]
 hexUni[6] <= scoredisplay:display.hexUni[6]
+victory <= victory~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |ReactionGame_Demo|ScoreUnit:turn_count_display|ScoreCounter:counter

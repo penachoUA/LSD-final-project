@@ -18,21 +18,30 @@ entity ReactionGame_Demo is
 end;
 
 architecture Structural of ReactionGame_Demo is
-	signal s_reset  : std_logic;
-	signal s_clickA : std_logic;
-	signal s_clickB : std_logic;
-	signal s_ledOn  : std_logic;
-	signal s_draw   : std_logic;
-	signal s_winA   : std_logic;
-	signal s_winB   : std_logic;
+	subtype LED_GROUP is std_logic_vector(3 downto 0);
+	signal s_greenA, s_greenB : LED_GROUP;
+	signal s_redA, s_redB     : LED_GROUP;
+
+	signal s_global_reset  : std_logic;
+	signal s_reset_game    : std_logic;
+	signal s_clickA        : std_logic;
+	signal s_clickB        : std_logic;
+	signal s_ledOn         : std_logic;
+	signal s_draw          : std_logic;
+	signal s_winA          : std_logic;
+	signal s_winB          : std_logic;
 	
 	signal s_state  : std_logic_vector(2 downto 0);
 	
+	constant MAX_POINTS : std_logic_vector(6 downto 0) := "0000101";
+	
+	signal s_victoryA : std_logic;
+	signal s_victoryB : std_logic;
 begin
 	sync_inputs: process(CLOCK_50)
 	 begin
 		if rising_edge(CLOCK_50) then
-			s_reset <= SW(0);
+			s_global_reset <= SW(0);
 		end if;
 	 end process;
 
@@ -65,7 +74,7 @@ begin
 	reaction_game: entity work.ReactionGame(Structural)
 		port map(
 			clk           => CLOCK_50,
-			reset         => s_reset,
+			reset         => s_global_reset or s_reset_game,
 			clickA        => s_clickA,
 			clickB        => s_clickB,
 			ledOn         => s_ledOn,
@@ -78,39 +87,61 @@ begin
 	scoreA: entity work.ScoreUnit(Structural)
 		port map(
 			clk       => CLOCK_50,
-			reset     => s_reset,
+			reset     => s_global_reset,
 			enable    => '1',
-			max       => "0000101",
+			max       => MAX_POINTS,
 			increment => s_winA,
 			decrement => '0',
 			hexTen    => HEX3,
-			hexUni    => HEX2
+			hexUni    => HEX2,
+			victory   => s_victoryA
 		);
 		
 	scoreB: entity work.ScoreUnit(Structural)
 		port map(
 			clk       => CLOCK_50,
-			reset     => s_reset,
+			reset     => s_global_reset,
 			enable    => '1',
-			max       => "0000101",
+			max       => MAX_POINTS,
 			increment => s_winB,
 			decrement => '0',
 			hexTen    => HEX1,
-			hexUni    => HEX0
+			hexUni    => HEX0,
+			victory   => s_victoryB
 		);
 	
 	turn_count_display : entity work.ScoreUnit(Structural)
 		port map(
 			clk       => CLOCK_50,
-			reset     => s_reset,
+			reset     => s_global_reset,
 			enable    => '1',
-			max       => "0000101",
+			max       => (others => '1'),
 			increment => s_winA or s_winB or s_draw,
 			decrement => '0',
 			hexTen    => HEX5,
-			hexUni    => HEX4
+			hexUni    => HEX4,
+			victory   => open
 		);
+	
+	s_greenA <= (others => '1') when (s_ledOn = '1' and s_winA = '0') else
+					(others => '1') when (s_victoryA = '1')               else
+					(others => '0');
+					
+	s_greenB <= (others => '1') when (s_ledOn = '1' and s_winB = '0') else
+					(others => '1') when (s_victoryB = '1')               else
+					(others => '0');
+	
+	end_game_proc: process(CLOCK_50)
+		begin
+			if rising_edge(CLOCK_50) then
+				if (s_victoryA = '1' or s_victoryB = '1') then
+					s_reset_game <= '1';
+				else
+					s_reset_game <= '0';
+				end if;
+			end if;
+		end process;
 		
-	LEDG(7 downto 4) <= (others => '1') when (s_ledOn = '1' and s_winA = '0') else (others => '0');
-	LEDG(3 downto 0) <= (others => '1') when (s_ledOn = '1' and s_winB = '0') else (others => '0');
+	LEDG(7 downto 4) <= s_greenA;
+	LEDG(3 downto 0) <= s_greenB;
 end;
