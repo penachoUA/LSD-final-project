@@ -4,7 +4,7 @@ use IEEE.std_logic_1164.all;
 
 entity ScoreDisplay is
 	port(
-		score     : in   std_logic_vector(5 downto 0);
+		score     : in   std_logic_vector(6 downto 0);
 		hexTen    : out  std_logic_vector(6 downto 0);
 		hexUni    : out  std_logic_vector(6 downto 0)
 	);

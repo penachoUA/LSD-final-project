@@ -3,15 +3,16 @@ use IEEE.std_logic_1164.all;
 
 entity ReactionGame is
 	port(
-		clk    : in  std_logic;
-		reset  : in  std_logic;
-		clickA : in  std_logic;
-		clickB : in  std_logic;
-		ledOn  : out std_logic;
-		winA   : out std_logic;
-		winB   : out std_logic;
-		draw   : out std_logic;
-		state  : out std_logic_vector(2 downto 0)
+		clk        : in  std_logic;
+		reset      : in  std_logic;
+		clickA     : in  std_logic;
+		clickB     : in  std_logic;
+		ledOn      : out std_logic;
+		winA       : out std_logic;
+		winB       : out std_logic;
+		draw       : out std_logic;
+		turn_count : out std_logic_vector(6 downto 0);
+		state      : out std_logic_vector(2 downto 0)
 	);
 end;
 

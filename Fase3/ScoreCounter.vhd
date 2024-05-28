@@ -7,15 +7,15 @@ entity ScoreCounter is
 		clk       : in  std_logic;
 		reset     : in  std_logic;
 		enable    : in  std_logic;
-		max       : in  std_logic_vector(5 downto 0);
+		max       : in  std_logic_vector(6 downto 0);
 		increment : in  std_logic;
 		decrement : in  std_logic;
-		score     : out std_logic_vector(5 downto 0)
+		score     : out std_logic_vector(6 downto 0)
 	);
 end;
 
 architecture Behavioral of ScoreCounter is
-	signal s_score : unsigned(5 downto 0);
+	signal s_score : unsigned(6 downto 0);
 begin
 	process(clk)
 		begin

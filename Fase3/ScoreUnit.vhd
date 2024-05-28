@@ -7,7 +7,7 @@ entity ScoreUnit is
 		clk       : in  std_logic;
 		reset     : in  std_logic;
 		enable    : in  std_logic;
-		max       : in  std_logic_vector(5 downto 0);
+		max       : in  std_logic_vector(6 downto 0);
 		increment : in  std_logic;
 		decrement : in  std_logic;
 		hexTen    : out  std_logic_vector(6 downto 0);
@@ -16,7 +16,7 @@ entity ScoreUnit is
 end;
 
 architecture Structural of ScoreUnit is
-	signal s_score : std_logic_vector(5 downto 0);
+	signal s_score : std_logic_vector(6 downto 0);
 begin
 	counter: entity work.ScoreCounter(Behavioral)
 		port map(

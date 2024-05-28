@@ -11,7 +11,9 @@ entity ReactionGame_Demo is
 		HEX0     : out std_logic_vector(6 downto 0);
 		HEX1     : out std_logic_vector(6 downto 0);
 		HEX2     : out std_logic_vector(6 downto 0);
-		HEX3     : out std_logic_vector(6 downto 0)
+		HEX3     : out std_logic_vector(6 downto 0);
+		HEX4     : out std_logic_vector(6 downto 0);
+		HEX5     : out std_logic_vector(6 downto 0)
 	);
 end;
 
@@ -78,7 +80,7 @@ begin
 			clk       => CLOCK_50,
 			reset     => s_reset,
 			enable    => '1',
-			max       => "000101",
+			max       => "0000101",
 			increment => s_winA,
 			decrement => '0',
 			hexTen    => HEX3,
@@ -90,11 +92,23 @@ begin
 			clk       => CLOCK_50,
 			reset     => s_reset,
 			enable    => '1',
-			max       => "000101",
+			max       => "0000101",
 			increment => s_winB,
 			decrement => '0',
 			hexTen    => HEX1,
 			hexUni    => HEX0
+		);
+	
+	turn_count_display : entity work.ScoreUnit(Structural)
+		port map(
+			clk       => CLOCK_50,
+			reset     => s_reset,
+			enable    => '1',
+			max       => "0000101",
+			increment => s_winA or s_winB or s_draw,
+			decrement => '0',
+			hexTen    => HEX5,
+			hexUni    => HEX4
 		);
 		
 	LEDG(7 downto 4) <= (others => '1') when (s_ledOn = '1' and s_winA = '0') else (others => '0');
