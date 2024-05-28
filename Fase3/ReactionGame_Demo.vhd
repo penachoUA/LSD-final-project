@@ -6,7 +6,12 @@ entity ReactionGame_Demo is
 		CLOCK_50 : in  std_logic;
 		SW       : in  std_logic_vector(0 downto 0);
 		KEY      : in  std_logic_vector(3 downto 0);
-		LEDG     : out std_logic_vector(7 downto 0)
+		LEDG     : out std_logic_vector(7 downto 0);
+		LEDR     : out std_logic_vector(2 downto 0);
+		HEX0     : out std_logic_vector(6 downto 0);
+		HEX1     : out std_logic_vector(6 downto 0);
+		HEX2     : out std_logic_vector(6 downto 0);
+		HEX3     : out std_logic_vector(6 downto 0)
 	);
 end;
 
@@ -54,7 +59,7 @@ begin
 			dirtyIn	 => KEY(3),
 			pulsedOut => s_clickA
 		);
-	
+		
 	reaction_game: entity work.ReactionGame(Structural)
 		port map(
 			clk           => CLOCK_50,
@@ -65,7 +70,31 @@ begin
 			draw          => s_draw,
 			winA          => s_winA,
 			winB          => s_winB,
-			state         => s_state
+			state         => LEDR
+		);
+		
+	scoreA: entity work.ScoreUnit(Structural)
+		port map(
+			clk       => CLOCK_50,
+			reset     => s_reset,
+			enable    => '1',
+			max       => "000101",
+			increment => s_winA,
+			decrement => '0',
+			hexTen    => HEX3,
+			hexUni    => HEX2
+		);
+		
+	scoreB: entity work.ScoreUnit(Structural)
+		port map(
+			clk       => CLOCK_50,
+			reset     => s_reset,
+			enable    => '1',
+			max       => "000101",
+			increment => s_winB,
+			decrement => '0',
+			hexTen    => HEX1,
+			hexUni    => HEX0
 		);
 		
 	LEDG(7 downto 4) <= (others => '1') when (s_ledOn = '1' and s_winA = '0') else (others => '0');

@@ -23,7 +23,7 @@ architecture Behavioral of SingleTurnFSM is
 	type TSTATE is (IDLE, READY, DELAY, PLAY, WIN_A, WIN_B);
 	signal pState, nState : TSTATE;
 	
-	signal s_newTime  : std_logic := '0';
+	signal s_stateChange  : std_logic := '0';
 	
 	constant MAX_WAIT : std_logic_vector(31 downto 0) := x"1DCD6500"; -- 10 seconds
 	-- constant FALSE_START_DELAY : std_logic_vector(31 downto 0) := x"05F5E100"; -- 2 seconds
@@ -33,12 +33,12 @@ begin
 			if rising_edge(clk) then
 				if reset = '1' then
 					pState    <= IDLE;
-					s_newTime <= '0';
+					s_stateChange <= '0';
 				else
 					if pState /= nState then
-						s_newTime <= '1';
+						s_stateChange <= '1';
 					else
-						s_newTime <= '0';
+						s_stateChange <= '0';
 					end if;
 					pState <= nState;
 				end if;
@@ -47,8 +47,8 @@ begin
 		
 	comb_proc : process(pState, clickA, clickB, randTime, timeExp)
 		begin
-			winA      <= '0';
-			winB      <= '0';
+			winA    <= '0';
+			winB    <= '0';
 			draw      <= '0';
 			ledOn     <= '0';
 			timeVal	 <= (others => '-');
@@ -102,6 +102,7 @@ begin
 					else
 						nState <= WIN_B;
 					end if;
+					
 				when others =>
 					nState <= IDLE;
 			end case;
@@ -116,5 +117,5 @@ begin
 					"101" when WIN_B,
 					"000" when others;
 					
-	newTime <= s_newTime;
+	newTime <= s_stateChange;
 end;

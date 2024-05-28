@@ -6,7 +6,8 @@ entity ReactionGame_Demo is
 		CLOCK_50 : in  std_logic;
 		SW       : in  std_logic_vector(0 downto 0);
 		KEY      : in  std_logic_vector(3 downto 0);
-		LEDG     : out std_logic_vector(7 downto 0)
+		LEDG     : out std_logic_vector(7 downto 0);
+		LEDR     : out std_logic_vector(2 downto 0)
 	);
 end;
 
@@ -65,7 +66,7 @@ begin
 			draw          => s_draw,
 			winA          => s_winA,
 			winB          => s_winB,
-			state         => s_state
+			state         => LEDR
 		);
 		
 	LEDG(7 downto 4) <= (others => '1') when (s_ledOn = '1' and s_winA = '0') else (others => '0');

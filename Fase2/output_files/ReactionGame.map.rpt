@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ReactionGame
-Mon May 27 23:21:22 2024
+Tue May 28 13:49:56 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -51,16 +51,16 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon May 27 23:21:22 2024          ;
+; Analysis & Synthesis Status        ; Successful - Tue May 28 13:49:56 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; ReactionGame                                   ;
 ; Top-level Entity Name              ; ReactionGame_Demo                              ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 340                                            ;
-;     Total combinational functions  ; 337                                            ;
+; Total logic elements               ; 342                                            ;
+;     Total combinational functions  ; 339                                            ;
 ;     Dedicated logic registers      ; 125                                            ;
 ; Total registers                    ; 125                                            ;
-; Total pins                         ; 14                                             ;
+; Total pins                         ; 17                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
 ; Embedded Multiplier 9-bit elements ; 0                                              ;
@@ -191,30 +191,30 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 340            ;
+; Estimated Total logic elements              ; 342            ;
 ;                                             ;                ;
-; Total combinational functions               ; 337            ;
+; Total combinational functions               ; 339            ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 140            ;
-;     -- 3 input functions                    ; 56             ;
-;     -- <=2 input functions                  ; 141            ;
+;     -- 4 input functions                    ; 144            ;
+;     -- 3 input functions                    ; 65             ;
+;     -- <=2 input functions                  ; 130            ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 200            ;
+;     -- normal mode                          ; 202            ;
 ;     -- arithmetic mode                      ; 137            ;
 ;                                             ;                ;
 ; Total registers                             ; 125            ;
 ;     -- Dedicated logic registers            ; 125            ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
-; I/O pins                                    ; 14             ;
+; I/O pins                                    ; 17             ;
 ;                                             ;                ;
 ; Embedded Multiplier 9-bit elements          ; 0              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
 ; Maximum fan-out                             ; 125            ;
-; Total fan-out                               ; 1346           ;
-; Average fan-out                             ; 2.75           ;
+; Total fan-out                               ; 1373           ;
+; Average fan-out                             ; 2.76           ;
 +---------------------------------------------+----------------+
 
 
@@ -223,12 +223,12 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------+-------------------+--------------+
 ; Compilation Hierarchy Node        ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                     ; Entity Name       ; Library Name ;
 +-----------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------+-------------------+--------------+
-; |ReactionGame_Demo                ; 337 (2)             ; 125 (1)                   ; 0           ; 0            ; 0       ; 0         ; 14   ; 0            ; |ReactionGame_Demo                                                      ; ReactionGame_Demo ; work         ;
-;    |Debouncer:debounce0|          ; 69 (69)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|Debouncer:debounce0                                  ; Debouncer         ; work         ;
+; |ReactionGame_Demo                ; 339 (2)             ; 125 (1)                   ; 0           ; 0            ; 0       ; 0         ; 17   ; 0            ; |ReactionGame_Demo                                                      ; ReactionGame_Demo ; work         ;
+;    |Debouncer:debounce0|          ; 68 (68)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|Debouncer:debounce0                                  ; Debouncer         ; work         ;
 ;    |Debouncer:debounce3|          ; 68 (68)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|Debouncer:debounce3                                  ; Debouncer         ; work         ;
-;    |ReactionGame:reaction_game|   ; 198 (0)             ; 72 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ReactionGame:reaction_game                           ; ReactionGame      ; work         ;
+;    |ReactionGame:reaction_game|   ; 201 (0)             ; 72 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ReactionGame:reaction_game                           ; ReactionGame      ; work         ;
 ;       |CounterNBits:rand_counter| ; 74 (74)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ReactionGame:reaction_game|CounterNBits:rand_counter ; CounterNBits      ; work         ;
-;       |SingleTurnFSM:turn_fsm|    ; 16 (16)             ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ReactionGame:reaction_game|SingleTurnFSM:turn_fsm    ; SingleTurnFSM     ; work         ;
+;       |SingleTurnFSM:turn_fsm|    ; 19 (19)             ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ReactionGame:reaction_game|SingleTurnFSM:turn_fsm    ; SingleTurnFSM     ; work         ;
 ;       |TimerAuxFSM:timer_fsm|     ; 108 (108)           ; 33 (33)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ReactionGame:reaction_game|TimerAuxFSM:timer_fsm     ; TimerAuxFSM       ; work         ;
 +-----------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------+-------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -378,14 +378,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "ReactionGame:reaction_game"                                                          ;
-+-------+--------+----------+-------------------------------------------------------------------------------------+
-; Port  ; Type   ; Severity ; Details                                                                             ;
-+-------+--------+----------+-------------------------------------------------------------------------------------+
-; draw  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; state ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-------+--------+----------+-------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ReactionGame:reaction_game"                                                         ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; draw ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -393,22 +392,22 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 14                          ;
+; boundary_port         ; 17                          ;
 ; cycloneiii_ff         ; 125                         ;
 ;     ENA               ; 68                          ;
 ;     SCLR              ; 2                           ;
 ;     plain             ; 55                          ;
-; cycloneiii_lcell_comb ; 337                         ;
+; cycloneiii_lcell_comb ; 339                         ;
 ;     arith             ; 137                         ;
 ;         2 data inputs ; 106                         ;
 ;         3 data inputs ; 31                          ;
-;     normal            ; 200                         ;
+;     normal            ; 202                         ;
 ;         1 data inputs ; 6                           ;
-;         2 data inputs ; 29                          ;
-;         3 data inputs ; 25                          ;
-;         4 data inputs ; 140                         ;
+;         2 data inputs ; 18                          ;
+;         3 data inputs ; 34                          ;
+;         4 data inputs ; 144                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 6.00                        ;
+; Max LUT depth         ; 7.00                        ;
 ; Average LUT depth     ; 4.20                        ;
 +-----------------------+-----------------------------+
 
@@ -418,7 +417,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -428,7 +427,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Mon May 27 23:21:13 2024
+    Info: Processing started: Tue May 28 13:49:49 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ReactionGame -c ReactionGame
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -456,7 +455,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file Bin2BCD
     Info (12022): Found design unit 1: Bin2BCD_tb-Stimulus File: /home/penacho/LSD/LSD-final-project/Fase2/Bin2BCD_tb.vhd Line: 7
     Info (12023): Found entity 1: Bin2BCD_tb File: /home/penacho/LSD/LSD-final-project/Fase2/Bin2BCD_tb.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file ReactionGame_Demo.vhd
-    Info (12022): Found design unit 1: ReactionGame_Demo-Structural File: /home/penacho/LSD/LSD-final-project/Fase2/ReactionGame_Demo.vhd Line: 13
+    Info (12022): Found design unit 1: ReactionGame_Demo-Structural File: /home/penacho/LSD/LSD-final-project/Fase2/ReactionGame_Demo.vhd Line: 14
     Info (12023): Found entity 1: ReactionGame_Demo File: /home/penacho/LSD/LSD-final-project/Fase2/ReactionGame_Demo.vhd Line: 4
 Info (12021): Found 1 design units, including 1 entities, in source file demo_schematic.bdf
     Info (12023): Found entity 1: demo_schematic
@@ -467,10 +466,9 @@ Info (12021): Found 2 design units, including 1 entities, in source file Bin7Seg
     Info (12022): Found design unit 1: Bin7SegDecoder-Behavioral File: /home/penacho/LSD/LSD-final-project/Fase2/Bin7SegDecoder.vhd Line: 10
     Info (12023): Found entity 1: Bin7SegDecoder File: /home/penacho/LSD/LSD-final-project/Fase2/Bin7SegDecoder.vhd Line: 4
 Info (12127): Elaborating entity "ReactionGame_Demo" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at ReactionGame_Demo.vhd(18): object "s_draw" assigned a value but never read File: /home/penacho/LSD/LSD-final-project/Fase2/ReactionGame_Demo.vhd Line: 18
-Warning (10036): Verilog HDL or VHDL warning at ReactionGame_Demo.vhd(22): object "s_state" assigned a value but never read File: /home/penacho/LSD/LSD-final-project/Fase2/ReactionGame_Demo.vhd Line: 22
-Info (12129): Elaborating entity "Debouncer" using architecture "A:behavioral" for hierarchy "Debouncer:debounce0" File: /home/penacho/LSD/LSD-final-project/Fase2/ReactionGame_Demo.vhd Line: 32
-Info (12129): Elaborating entity "ReactionGame" using architecture "A:structural" for hierarchy "ReactionGame:reaction_game" File: /home/penacho/LSD/LSD-final-project/Fase2/ReactionGame_Demo.vhd Line: 58
+Warning (10036): Verilog HDL or VHDL warning at ReactionGame_Demo.vhd(19): object "s_draw" assigned a value but never read File: /home/penacho/LSD/LSD-final-project/Fase2/ReactionGame_Demo.vhd Line: 19
+Info (12129): Elaborating entity "Debouncer" using architecture "A:behavioral" for hierarchy "Debouncer:debounce0" File: /home/penacho/LSD/LSD-final-project/Fase2/ReactionGame_Demo.vhd Line: 33
+Info (12129): Elaborating entity "ReactionGame" using architecture "A:structural" for hierarchy "ReactionGame:reaction_game" File: /home/penacho/LSD/LSD-final-project/Fase2/ReactionGame_Demo.vhd Line: 59
 Info (12129): Elaborating entity "SingleTurnFSM" using architecture "A:behavioral" for hierarchy "ReactionGame:reaction_game|SingleTurnFSM:turn_fsm" File: /home/penacho/LSD/LSD-final-project/Fase2/ReactionGame.vhd Line: 24
 Info (12129): Elaborating entity "TimerAuxFSM" using architecture "A:behavioral" for hierarchy "ReactionGame:reaction_game|TimerAuxFSM:timer_fsm" File: /home/penacho/LSD/LSD-final-project/Fase2/ReactionGame.vhd Line: 41
 Info (12129): Elaborating entity "CounterNBits" using architecture "A:behavioral" for hierarchy "ReactionGame:reaction_game|CounterNBits:rand_counter" File: /home/penacho/LSD/LSD-final-project/Fase2/ReactionGame.vhd Line: 50
@@ -480,14 +478,14 @@ Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
 Warning (21074): Design contains 2 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[1]" File: /home/penacho/LSD/LSD-final-project/Fase2/ReactionGame_Demo.vhd Line: 8
     Warning (15610): No output dependent on input pin "KEY[2]" File: /home/penacho/LSD/LSD-final-project/Fase2/ReactionGame_Demo.vhd Line: 8
-Info (21057): Implemented 354 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 359 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 6 input pins
-    Info (21059): Implemented 8 output pins
-    Info (21061): Implemented 340 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 6 warnings
+    Info (21059): Implemented 11 output pins
+    Info (21061): Implemented 342 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
     Info: Peak virtual memory: 465 megabytes
-    Info: Processing ended: Mon May 27 23:21:22 2024
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:22
+    Info: Processing ended: Tue May 28 13:49:56 2024
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:16
 
 

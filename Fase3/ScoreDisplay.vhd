@@ -31,7 +31,7 @@ begin
 	uni_7seg: entity work.Bin7SegDecoder(Behavioral)
 		port map(
 			enable   => '1',
-			binInput => s_bcd_ten,
+			binInput => s_bcd_uni,
 			decOut_n => hexUni
 		);
 end;
