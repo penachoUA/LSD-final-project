@@ -1,0 +1,61 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "bcdUni[0]",
+					"strict" : false
+				},
+				{
+					"name" : "bcdUni[1]",
+					"strict" : false
+				},
+				{
+					"name" : "bcdUni[2]",
+					"strict" : false
+				},
+				{
+					"name" : "bcdUni[3]",
+					"strict" : false
+				},
+				{
+					"name" : "bcdTen[0]",
+					"strict" : false
+				},
+				{
+					"name" : "bcdTen[1]",
+					"strict" : false
+				},
+				{
+					"name" : "bcdTen[2]",
+					"strict" : false
+				},
+				{
+					"name" : "binIn[0]",
+					"strict" : false
+				},
+				{
+					"name" : "binIn[1]",
+					"strict" : false
+				},
+				{
+					"name" : "binIn[5]",
+					"strict" : false
+				},
+				{
+					"name" : "binIn[4]",
+					"strict" : false
+				},
+				{
+					"name" : "binIn[3]",
+					"strict" : false
+				},
+				{
+					"name" : "binIn[2]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

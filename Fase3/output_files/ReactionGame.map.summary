@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Failed - Mon May 27 23:52:19 2024
+Analysis & Synthesis Status : Successful - Tue May 28 10:41:50 2024
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : ReactionGame
-Top-level Entity Name : ScoreCounter
+Top-level Entity Name : Bin2BCD
 Family : Cyclone IV E
-Total logic elements : N/A until Partition Merge
-    Total combinational functions : N/A until Partition Merge
-    Dedicated logic registers : N/A until Partition Merge
-Total registers : N/A until Partition Merge
-Total pins : N/A until Partition Merge
-Total virtual pins : N/A until Partition Merge
-Total memory bits : N/A until Partition Merge
-Embedded Multiplier 9-bit elements : N/A until Partition Merge
-Total PLLs : N/A until Partition Merge
+Total logic elements : 66
+    Total combinational functions : 66
+    Dedicated logic registers : 0
+Total registers : 0
+Total pins : 14
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

@@ -21,7 +21,7 @@ begin
 		begin
 			if rising_edge(clk) then
 				if reset = '1' then
-					s_score <= 0;
+					s_score <= (others => '0');
 				elsif enable = '1' then
 					if increment = '1' then
 						s_score <= s_score + 1;
@@ -32,5 +32,5 @@ begin
 			end if;
 		end process;
 		
-	score <= s_score;
+	score <= std_logic_vector(s_score);
 end;
