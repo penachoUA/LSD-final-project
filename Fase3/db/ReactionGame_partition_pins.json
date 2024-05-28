@@ -4,55 +4,79 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "bcdUni[0]",
+					"name" : "hexTen[0]",
 					"strict" : false
 				},
 				{
-					"name" : "bcdUni[1]",
+					"name" : "hexTen[1]",
 					"strict" : false
 				},
 				{
-					"name" : "bcdUni[2]",
+					"name" : "hexTen[2]",
 					"strict" : false
 				},
 				{
-					"name" : "bcdUni[3]",
+					"name" : "hexTen[3]",
 					"strict" : false
 				},
 				{
-					"name" : "bcdTen[0]",
+					"name" : "hexTen[4]",
 					"strict" : false
 				},
 				{
-					"name" : "bcdTen[1]",
+					"name" : "hexTen[5]",
 					"strict" : false
 				},
 				{
-					"name" : "bcdTen[2]",
+					"name" : "hexTen[6]",
 					"strict" : false
 				},
 				{
-					"name" : "binIn[0]",
+					"name" : "hexUni[0]",
 					"strict" : false
 				},
 				{
-					"name" : "binIn[1]",
+					"name" : "hexUni[1]",
 					"strict" : false
 				},
 				{
-					"name" : "binIn[5]",
+					"name" : "hexUni[2]",
 					"strict" : false
 				},
 				{
-					"name" : "binIn[4]",
+					"name" : "hexUni[3]",
 					"strict" : false
 				},
 				{
-					"name" : "binIn[3]",
+					"name" : "hexUni[4]",
 					"strict" : false
 				},
 				{
-					"name" : "binIn[2]",
+					"name" : "hexUni[5]",
+					"strict" : false
+				},
+				{
+					"name" : "hexUni[6]",
+					"strict" : false
+				},
+				{
+					"name" : "score[5]",
+					"strict" : false
+				},
+				{
+					"name" : "score[4]",
+					"strict" : false
+				},
+				{
+					"name" : "score[3]",
+					"strict" : false
+				},
+				{
+					"name" : "score[2]",
+					"strict" : false
+				},
+				{
+					"name" : "score[1]",
 					"strict" : false
 				}
 			]

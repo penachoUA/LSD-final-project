@@ -10,7 +10,7 @@ entity Bin2BCD is
 	);
 end;
 
-architecture Behav of Bin2BCD is
+architecture Behavioral of Bin2BCD is
 	signal s_in : unsigned(5 downto 0);
 begin
 	s_in <= unsigned(binIn);

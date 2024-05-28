@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ReactionGame
-Tue May 28 10:41:50 2024
+Tue May 28 10:56:38 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -14,11 +14,13 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0
- 10. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
- 11. Post-Synthesis Netlist Statistics for Top Partition
- 12. Elapsed Time Per Partition
- 13. Analysis & Synthesis Messages
+  9. Parameter Settings for Inferred Entity Instance: Bin2BCD:bin2bcd|lpm_divide:Div0
+ 10. Port Connectivity Checks: "Bin7SegDecoder:uni_7seg"
+ 11. Port Connectivity Checks: "Bin7SegDecoder:ten_7seg"
+ 12. Port Connectivity Checks: "Bin2BCD:bin2bcd"
+ 13. Post-Synthesis Netlist Statistics for Top Partition
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
 
 
 
@@ -45,16 +47,16 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue May 28 10:41:50 2024          ;
+; Analysis & Synthesis Status        ; Successful - Tue May 28 10:56:38 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; ReactionGame                                   ;
-; Top-level Entity Name              ; Bin2BCD                                        ;
+; Top-level Entity Name              ; ScoreDisplay                                   ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 66                                             ;
-;     Total combinational functions  ; 66                                             ;
+; Total logic elements               ; 37                                             ;
+;     Total combinational functions  ; 37                                             ;
 ;     Dedicated logic registers      ; 0                                              ;
 ; Total registers                    ; 0                                              ;
-; Total pins                         ; 14                                             ;
+; Total pins                         ; 20                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
 ; Embedded Multiplier 9-bit elements ; 0                                              ;
@@ -68,7 +70,7 @@ https://fpgasoftware.intel.com/eula.
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                           ; EP4CE115F29C7      ;                    ;
-; Top-level entity name                                            ; Bin2BCD            ; ReactionGame       ;
+; Top-level entity name                                            ; ScoreDisplay       ; ReactionGame       ;
 ; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
@@ -170,68 +172,65 @@ https://fpgasoftware.intel.com/eula.
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                              ; Library ;
 +----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------+---------+
 ; Bin2BCD.vhd                      ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase3/Bin2BCD.vhd                                     ;         ;
+; Bin7SegDecoder.vhd               ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase3/Bin7SegDecoder.vhd                              ;         ;
+; ScoreDisplay.vhd                 ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase3/ScoreDisplay.vhd                                ;         ;
 ; lpm_divide.tdf                   ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
 ; abs_divider.inc                  ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
 ; sign_div_unsign.inc              ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
 ; aglobal221.inc                   ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/aglobal221.inc      ;         ;
-; db/lpm_divide_m9m.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/penacho/LSD/LSD-final-project/Fase3/db/lpm_divide_m9m.tdf                           ;         ;
-; db/sign_div_unsign_bkh.tdf       ; yes             ; Auto-Generated Megafunction  ; /home/penacho/LSD/LSD-final-project/Fase3/db/sign_div_unsign_bkh.tdf                      ;         ;
-; db/alt_u_div_a4f.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/penacho/LSD/LSD-final-project/Fase3/db/alt_u_div_a4f.tdf                            ;         ;
-; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/penacho/LSD/LSD-final-project/Fase3/db/add_sub_7pc.tdf                              ;         ;
-; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/penacho/LSD/LSD-final-project/Fase3/db/add_sub_8pc.tdf                              ;         ;
 ; db/lpm_divide_hhm.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/penacho/LSD/LSD-final-project/Fase3/db/lpm_divide_hhm.tdf                           ;         ;
 ; db/sign_div_unsign_9kh.tdf       ; yes             ; Auto-Generated Megafunction  ; /home/penacho/LSD/LSD-final-project/Fase3/db/sign_div_unsign_9kh.tdf                      ;         ;
 ; db/alt_u_div_64f.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/penacho/LSD/LSD-final-project/Fase3/db/alt_u_div_64f.tdf                            ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/penacho/LSD/LSD-final-project/Fase3/db/add_sub_7pc.tdf                              ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/penacho/LSD/LSD-final-project/Fase3/db/add_sub_8pc.tdf                              ;         ;
 +----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------+---------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                                                                                                                             ;
-+---------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+
-; Resource                                    ; Usage                                                                                                                     ;
-+---------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 66                                                                                                                        ;
-;                                             ;                                                                                                                           ;
-; Total combinational functions               ; 66                                                                                                                        ;
-; Logic element usage by number of LUT inputs ;                                                                                                                           ;
-;     -- 4 input functions                    ; 7                                                                                                                         ;
-;     -- 3 input functions                    ; 18                                                                                                                        ;
-;     -- <=2 input functions                  ; 41                                                                                                                        ;
-;                                             ;                                                                                                                           ;
-; Logic elements by mode                      ;                                                                                                                           ;
-;     -- normal mode                          ; 43                                                                                                                        ;
-;     -- arithmetic mode                      ; 23                                                                                                                        ;
-;                                             ;                                                                                                                           ;
-; Total registers                             ; 0                                                                                                                         ;
-;     -- Dedicated logic registers            ; 0                                                                                                                         ;
-;     -- I/O registers                        ; 0                                                                                                                         ;
-;                                             ;                                                                                                                           ;
-; I/O pins                                    ; 14                                                                                                                        ;
-;                                             ;                                                                                                                           ;
-; Embedded Multiplier 9-bit elements          ; 0                                                                                                                         ;
-;                                             ;                                                                                                                           ;
-; Maximum fan-out node                        ; lpm_divide:Mod0|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider|add_sub_3_result_int[4]~6 ;
-; Maximum fan-out                             ; 11                                                                                                                        ;
-; Total fan-out                               ; 173                                                                                                                       ;
-; Average fan-out                             ; 1.84                                                                                                                      ;
-+---------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                                                                                                                             ;
++---------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; Resource                                    ; Usage                                                                                                                                     ;
++---------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; Estimated Total logic elements              ; 37                                                                                                                                        ;
+;                                             ;                                                                                                                                           ;
+; Total combinational functions               ; 37                                                                                                                                        ;
+; Logic element usage by number of LUT inputs ;                                                                                                                                           ;
+;     -- 4 input functions                    ; 2                                                                                                                                         ;
+;     -- 3 input functions                    ; 15                                                                                                                                        ;
+;     -- <=2 input functions                  ; 20                                                                                                                                        ;
+;                                             ;                                                                                                                                           ;
+; Logic elements by mode                      ;                                                                                                                                           ;
+;     -- normal mode                          ; 26                                                                                                                                        ;
+;     -- arithmetic mode                      ; 11                                                                                                                                        ;
+;                                             ;                                                                                                                                           ;
+; Total registers                             ; 0                                                                                                                                         ;
+;     -- Dedicated logic registers            ; 0                                                                                                                                         ;
+;     -- I/O registers                        ; 0                                                                                                                                         ;
+;                                             ;                                                                                                                                           ;
+; I/O pins                                    ; 20                                                                                                                                        ;
+;                                             ;                                                                                                                                           ;
+; Embedded Multiplier 9-bit elements          ; 0                                                                                                                                         ;
+;                                             ;                                                                                                                                           ;
+; Maximum fan-out node                        ; Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_hhm:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_64f:divider|add_sub_3_result_int[4]~6 ;
+; Maximum fan-out                             ; 17                                                                                                                                        ;
+; Total fan-out                               ; 121                                                                                                                                       ;
+; Average fan-out                             ; 1.57                                                                                                                                      ;
++---------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                               ;
-+----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; Compilation Hierarchy Node             ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                      ; Entity Name         ; Library Name ;
-+----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |Bin2BCD                               ; 66 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 14   ; 0            ; |Bin2BCD                                                                                                 ; Bin2BCD             ; work         ;
-;    |lpm_divide:Div0|                   ; 30 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Bin2BCD|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
-;       |lpm_divide_hhm:auto_generated|  ; 30 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Bin2BCD|lpm_divide:Div0|lpm_divide_hhm:auto_generated                                                   ; lpm_divide_hhm      ; work         ;
-;          |sign_div_unsign_9kh:divider| ; 30 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Bin2BCD|lpm_divide:Div0|lpm_divide_hhm:auto_generated|sign_div_unsign_9kh:divider                       ; sign_div_unsign_9kh ; work         ;
-;             |alt_u_div_64f:divider|    ; 30 (30)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Bin2BCD|lpm_divide:Div0|lpm_divide_hhm:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_64f:divider ; alt_u_div_64f       ; work         ;
-;    |lpm_divide:Mod0|                   ; 36 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Bin2BCD|lpm_divide:Mod0                                                                                 ; lpm_divide          ; work         ;
-;       |lpm_divide_m9m:auto_generated|  ; 36 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Bin2BCD|lpm_divide:Mod0|lpm_divide_m9m:auto_generated                                                   ; lpm_divide_m9m      ; work         ;
-;          |sign_div_unsign_bkh:divider| ; 36 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Bin2BCD|lpm_divide:Mod0|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider                       ; sign_div_unsign_bkh ; work         ;
-;             |alt_u_div_a4f:divider|    ; 36 (36)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Bin2BCD|lpm_divide:Mod0|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider ; alt_u_div_a4f       ; work         ;
-+----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+---------------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                       ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                           ; Entity Name         ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |ScoreDisplay                             ; 37 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 20   ; 0            ; |ScoreDisplay                                                                                                                 ; ScoreDisplay        ; work         ;
+;    |Bin2BCD:bin2bcd|                      ; 30 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ScoreDisplay|Bin2BCD:bin2bcd                                                                                                 ; Bin2BCD             ; work         ;
+;       |lpm_divide:Div0|                   ; 30 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ScoreDisplay|Bin2BCD:bin2bcd|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_hhm:auto_generated|  ; 30 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ScoreDisplay|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_hhm:auto_generated                                                   ; lpm_divide_hhm      ; work         ;
+;             |sign_div_unsign_9kh:divider| ; 30 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ScoreDisplay|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_hhm:auto_generated|sign_div_unsign_9kh:divider                       ; sign_div_unsign_9kh ; work         ;
+;                |alt_u_div_64f:divider|    ; 30 (30)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ScoreDisplay|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_hhm:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_64f:divider ; alt_u_div_64f       ; work         ;
+;    |Bin7SegDecoder:ten_7seg|              ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ScoreDisplay|Bin7SegDecoder:ten_7seg                                                                                         ; Bin7SegDecoder      ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -250,50 +249,54 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0 ;
-+------------------------+----------------+------------------------+
-; Parameter Name         ; Value          ; Type                   ;
-+------------------------+----------------+------------------------+
-; LPM_WIDTHN             ; 6              ; Untyped                ;
-; LPM_WIDTHD             ; 6              ; Untyped                ;
-; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
-; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
-; LPM_PIPELINE           ; 0              ; Untyped                ;
-; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
-; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
-; CBXI_PARAMETER         ; lpm_divide_m9m ; Untyped                ;
-; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
-; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
-; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
-; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
-; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
-; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
-+------------------------+----------------+------------------------+
++----------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Bin2BCD:bin2bcd|lpm_divide:Div0 ;
++------------------------+----------------+----------------------------------------+
+; Parameter Name         ; Value          ; Type                                   ;
++------------------------+----------------+----------------------------------------+
+; LPM_WIDTHN             ; 6              ; Untyped                                ;
+; LPM_WIDTHD             ; 4              ; Untyped                                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                ;
+; LPM_PIPELINE           ; 0              ; Untyped                                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                ;
+; CBXI_PARAMETER         ; lpm_divide_hhm ; Untyped                                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                         ;
++------------------------+----------------+----------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: lpm_divide:Div0 ;
-+------------------------+----------------+------------------------+
-; Parameter Name         ; Value          ; Type                   ;
-+------------------------+----------------+------------------------+
-; LPM_WIDTHN             ; 6              ; Untyped                ;
-; LPM_WIDTHD             ; 4              ; Untyped                ;
-; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
-; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
-; LPM_PIPELINE           ; 0              ; Untyped                ;
-; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
-; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
-; CBXI_PARAMETER         ; lpm_divide_hhm ; Untyped                ;
-; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
-; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
-; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
-; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
-; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
-; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
-+------------------------+----------------+------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
++-----------------------------------------------------+
+; Port Connectivity Checks: "Bin7SegDecoder:uni_7seg" ;
++--------+-------+----------+-------------------------+
+; Port   ; Type  ; Severity ; Details                 ;
++--------+-------+----------+-------------------------+
+; enable ; Input ; Info     ; Stuck at VCC            ;
++--------+-------+----------+-------------------------+
+
+
++-----------------------------------------------------+
+; Port Connectivity Checks: "Bin7SegDecoder:ten_7seg" ;
++--------+-------+----------+-------------------------+
+; Port   ; Type  ; Severity ; Details                 ;
++--------+-------+----------+-------------------------+
+; enable ; Input ; Info     ; Stuck at VCC            ;
++--------+-------+----------+-------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Bin2BCD:bin2bcd"                                                                      ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; bcduni ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -301,20 +304,20 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 14                          ;
-; cycloneiii_lcell_comb ; 70                          ;
-;     arith             ; 23                          ;
-;         2 data inputs ; 6                           ;
-;         3 data inputs ; 17                          ;
-;     normal            ; 47                          ;
-;         0 data inputs ; 7                           ;
-;         1 data inputs ; 3                           ;
-;         2 data inputs ; 29                          ;
-;         3 data inputs ; 1                           ;
-;         4 data inputs ; 7                           ;
+; boundary_port         ; 20                          ;
+; cycloneiii_lcell_comb ; 38                          ;
+;     arith             ; 11                          ;
+;         2 data inputs ; 3                           ;
+;         3 data inputs ; 8                           ;
+;     normal            ; 27                          ;
+;         0 data inputs ; 3                           ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 14                          ;
+;         3 data inputs ; 7                           ;
+;         4 data inputs ; 2                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 7.20                        ;
-; Average LUT depth     ; 6.73                        ;
+; Max LUT depth         ; 8.10                        ;
+; Average LUT depth     ; 7.77                        ;
 +-----------------------+-----------------------------+
 
 
@@ -323,7 +326,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -333,7 +336,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Tue May 28 10:41:40 2024
+    Info: Processing started: Tue May 28 10:56:29 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ReactionGame -c ReactionGame
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -355,7 +358,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file TimerAu
     Info (12022): Found design unit 1: TimerAuxFSM-Behavioral File: /home/penacho/LSD/LSD-final-project/Fase3/TimerAuxFSM.vhd Line: 15
     Info (12023): Found entity 1: TimerAuxFSM File: /home/penacho/LSD/LSD-final-project/Fase3/TimerAuxFSM.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file Bin2BCD.vhd
-    Info (12022): Found design unit 1: Bin2BCD-Behav File: /home/penacho/LSD/LSD-final-project/Fase3/Bin2BCD.vhd Line: 13
+    Info (12022): Found design unit 1: Bin2BCD-Behavioral File: /home/penacho/LSD/LSD-final-project/Fase3/Bin2BCD.vhd Line: 13
     Info (12023): Found entity 1: Bin2BCD File: /home/penacho/LSD/LSD-final-project/Fase3/Bin2BCD.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file Bin2BCD_tb.vhd
     Info (12022): Found design unit 1: Bin2BCD_tb-Stimulus File: /home/penacho/LSD/LSD-final-project/Fase3/Bin2BCD_tb.vhd Line: 7
@@ -374,28 +377,17 @@ Info (12021): Found 2 design units, including 1 entities, in source file Bin7Seg
 Info (12021): Found 2 design units, including 1 entities, in source file ScoreCounter.vhd
     Info (12022): Found design unit 1: ScoreCounter-Behavioral File: /home/penacho/LSD/LSD-final-project/Fase3/ScoreCounter.vhd Line: 17
     Info (12023): Found entity 1: ScoreCounter File: /home/penacho/LSD/LSD-final-project/Fase3/ScoreCounter.vhd Line: 5
-Info (12127): Elaborating entity "Bin2BCD" for the top level hierarchy
-Info (278001): Inferred 2 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: /home/penacho/LSD/LSD-final-project/Fase3/Bin2BCD.vhd Line: 18
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: /home/penacho/LSD/LSD-final-project/Fase3/Bin2BCD.vhd Line: 19
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod0" File: /home/penacho/LSD/LSD-final-project/Fase3/Bin2BCD.vhd Line: 18
-Info (12133): Instantiated megafunction "lpm_divide:Mod0" with the following parameter: File: /home/penacho/LSD/LSD-final-project/Fase3/Bin2BCD.vhd Line: 18
-    Info (12134): Parameter "LPM_WIDTHN" = "6"
-    Info (12134): Parameter "LPM_WIDTHD" = "6"
-    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
-    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
-Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_m9m.tdf
-    Info (12023): Found entity 1: lpm_divide_m9m File: /home/penacho/LSD/LSD-final-project/Fase3/db/lpm_divide_m9m.tdf Line: 25
-Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_bkh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_bkh File: /home/penacho/LSD/LSD-final-project/Fase3/db/sign_div_unsign_bkh.tdf Line: 25
-Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_a4f.tdf
-    Info (12023): Found entity 1: alt_u_div_a4f File: /home/penacho/LSD/LSD-final-project/Fase3/db/alt_u_div_a4f.tdf Line: 27
-Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
-    Info (12023): Found entity 1: add_sub_7pc File: /home/penacho/LSD/LSD-final-project/Fase3/db/add_sub_7pc.tdf Line: 23
-Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
-    Info (12023): Found entity 1: add_sub_8pc File: /home/penacho/LSD/LSD-final-project/Fase3/db/add_sub_8pc.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0" File: /home/penacho/LSD/LSD-final-project/Fase3/Bin2BCD.vhd Line: 19
-Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter: File: /home/penacho/LSD/LSD-final-project/Fase3/Bin2BCD.vhd Line: 19
+Info (12021): Found 2 design units, including 1 entities, in source file ScoreDisplay.vhd
+    Info (12022): Found design unit 1: ScoreDisplay-Structural File: /home/penacho/LSD/LSD-final-project/Fase3/ScoreDisplay.vhd Line: 13
+    Info (12023): Found entity 1: ScoreDisplay File: /home/penacho/LSD/LSD-final-project/Fase3/ScoreDisplay.vhd Line: 5
+Info (12127): Elaborating entity "ScoreDisplay" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at ScoreDisplay.vhd(14): object "s_bcd_uni" assigned a value but never read File: /home/penacho/LSD/LSD-final-project/Fase3/ScoreDisplay.vhd Line: 14
+Info (12129): Elaborating entity "Bin2BCD" using architecture "A:behavioral" for hierarchy "Bin2BCD:bin2bcd" File: /home/penacho/LSD/LSD-final-project/Fase3/ScoreDisplay.vhd Line: 17
+Info (12129): Elaborating entity "Bin7SegDecoder" using architecture "A:behavioral" for hierarchy "Bin7SegDecoder:ten_7seg" File: /home/penacho/LSD/LSD-final-project/Fase3/ScoreDisplay.vhd Line: 24
+Info (278001): Inferred 1 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Bin2BCD:bin2bcd|Div0" File: /home/penacho/LSD/LSD-final-project/Fase3/Bin2BCD.vhd Line: 19
+Info (12130): Elaborated megafunction instantiation "Bin2BCD:bin2bcd|lpm_divide:Div0" File: /home/penacho/LSD/LSD-final-project/Fase3/Bin2BCD.vhd Line: 19
+Info (12133): Instantiated megafunction "Bin2BCD:bin2bcd|lpm_divide:Div0" with the following parameter: File: /home/penacho/LSD/LSD-final-project/Fase3/Bin2BCD.vhd Line: 19
     Info (12134): Parameter "LPM_WIDTHN" = "6"
     Info (12134): Parameter "LPM_WIDTHD" = "4"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -406,19 +398,23 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/sign
     Info (12023): Found entity 1: sign_div_unsign_9kh File: /home/penacho/LSD/LSD-final-project/Fase3/db/sign_div_unsign_9kh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_64f.tdf
     Info (12023): Found entity 1: alt_u_div_64f File: /home/penacho/LSD/LSD-final-project/Fase3/db/alt_u_div_64f.tdf Line: 27
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "bcdTen[3]" is stuck at GND File: /home/penacho/LSD/LSD-final-project/Fase3/Bin2BCD.vhd Line: 9
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
+    Info (12023): Found entity 1: add_sub_7pc File: /home/penacho/LSD/LSD-final-project/Fase3/db/add_sub_7pc.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
+    Info (12023): Found entity 1: add_sub_8pc File: /home/penacho/LSD/LSD-final-project/Fase3/db/add_sub_8pc.tdf Line: 23
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 80 device resources after synthesis - the final resource count might be different
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "score[0]" File: /home/penacho/LSD/LSD-final-project/Fase3/ScoreDisplay.vhd Line: 7
+Info (21057): Implemented 57 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 6 input pins
-    Info (21059): Implemented 8 output pins
-    Info (21061): Implemented 66 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 445 megabytes
-    Info: Processing ended: Tue May 28 10:41:50 2024
-    Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:22
+    Info (21059): Implemented 14 output pins
+    Info (21061): Implemented 37 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 442 megabytes
+    Info: Processing ended: Tue May 28 10:56:38 2024
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:21
 
 
