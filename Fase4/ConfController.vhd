@@ -6,6 +6,10 @@ entity ConfController is
 		CLOCK_50 : in  std_logic;
 		SW       : in  std_logic_vector(0 downto 0);
 		KEY      : in  std_logic_vector(1 downto 1);
+		HEX0     : out std_logic_vector(6 downto 0);
+		HEX1     : out std_logic_vector(6 downto 0);
+		HEX2     : out std_logic_vector(6 downto 0);
+		HEX3		: out std_logic_vector(6 downto 0);
 		HEX6     : out std_logic_vector(6 downto 0);
 		HEX7     : out std_logic_vector(6 downto 0)
 	);
@@ -18,6 +22,13 @@ architecture Structural of ConfController is
 	
 	constant one_second   : std_logic_vector(31 downto 0) := x"02FAF080";
 begin
+	----- Conf word display-----
+	HEX3 <= "1000110"; -- c
+	HEX2 <= "0100011"; -- o
+	HEX1 <= "0101011"; -- n
+	HEX0 <= "0001110"; -- F
+	----------------------------
+	
 	debounce1 : entity work.Debouncer(Behavioral)
      generic map(
 			kHzClkFreq		=> 50_000,
