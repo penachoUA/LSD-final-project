@@ -1,4 +1,5 @@
 |ConfController
+CLOCK_50 => blinkgen:one_sec_blinker.clk
 CLOCK_50 => debouncer:debounce1.refClk
 CLOCK_50 => targetscoresetter:target_setter.clk
 SW[0] => targetscoresetter:target_setter.reset
@@ -31,20 +32,50 @@ HEX3[3] <= <GND>
 HEX3[4] <= <GND>
 HEX3[5] <= <GND>
 HEX3[6] <= <VCC>
-HEX6[0] <= scoredisplay:target_display.hexUni[0]
-HEX6[1] <= scoredisplay:target_display.hexUni[1]
-HEX6[2] <= scoredisplay:target_display.hexUni[2]
-HEX6[3] <= scoredisplay:target_display.hexUni[3]
-HEX6[4] <= scoredisplay:target_display.hexUni[4]
-HEX6[5] <= scoredisplay:target_display.hexUni[5]
-HEX6[6] <= scoredisplay:target_display.hexUni[6]
-HEX7[0] <= scoredisplay:target_display.hexTen[0]
-HEX7[1] <= scoredisplay:target_display.hexTen[1]
-HEX7[2] <= scoredisplay:target_display.hexTen[2]
-HEX7[3] <= scoredisplay:target_display.hexTen[3]
-HEX7[4] <= scoredisplay:target_display.hexTen[4]
-HEX7[5] <= scoredisplay:target_display.hexTen[5]
-HEX7[6] <= scoredisplay:target_display.hexTen[6]
+HEX6[0] <= HEX6[0].DB_MAX_OUTPUT_PORT_TYPE
+HEX6[1] <= HEX6[1].DB_MAX_OUTPUT_PORT_TYPE
+HEX6[2] <= HEX6[2].DB_MAX_OUTPUT_PORT_TYPE
+HEX6[3] <= HEX6[3].DB_MAX_OUTPUT_PORT_TYPE
+HEX6[4] <= HEX6[4].DB_MAX_OUTPUT_PORT_TYPE
+HEX6[5] <= HEX6[5].DB_MAX_OUTPUT_PORT_TYPE
+HEX6[6] <= HEX6[6].DB_MAX_OUTPUT_PORT_TYPE
+HEX7[0] <= HEX7[0].DB_MAX_OUTPUT_PORT_TYPE
+HEX7[1] <= HEX7[1].DB_MAX_OUTPUT_PORT_TYPE
+HEX7[2] <= HEX7[2].DB_MAX_OUTPUT_PORT_TYPE
+HEX7[3] <= HEX7[3].DB_MAX_OUTPUT_PORT_TYPE
+HEX7[4] <= HEX7[4].DB_MAX_OUTPUT_PORT_TYPE
+HEX7[5] <= HEX7[5].DB_MAX_OUTPUT_PORT_TYPE
+HEX7[6] <= HEX7[6].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ConfController|BlinkGen:one_sec_blinker
+clk => s_cnt[0].CLK
+clk => s_cnt[1].CLK
+clk => s_cnt[2].CLK
+clk => s_cnt[3].CLK
+clk => s_cnt[4].CLK
+clk => s_cnt[5].CLK
+clk => s_cnt[6].CLK
+clk => s_cnt[7].CLK
+clk => s_cnt[8].CLK
+clk => s_cnt[9].CLK
+clk => s_cnt[10].CLK
+clk => s_cnt[11].CLK
+clk => s_cnt[12].CLK
+clk => s_cnt[13].CLK
+clk => s_cnt[14].CLK
+clk => s_cnt[15].CLK
+clk => s_cnt[16].CLK
+clk => s_cnt[17].CLK
+clk => s_cnt[18].CLK
+clk => s_cnt[19].CLK
+clk => s_cnt[20].CLK
+clk => s_cnt[21].CLK
+clk => s_cnt[22].CLK
+clk => s_cnt[23].CLK
+clk => s_cnt[24].CLK
+clk => s_cnt[25].CLK
+blink <= LessThan1.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |ConfController|Debouncer:debounce1

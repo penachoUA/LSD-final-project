@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ReactionGame
-Wed May 29 15:37:29 2024
+Wed May 29 15:51:08 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -16,17 +16,18 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
   8. General Register Statistics
   9. Inverted Register Statistics
  10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Parameter Settings for User Entity Instance: Debouncer:debounce1
- 12. Parameter Settings for User Entity Instance: TargetScoreSetter:target_setter|CounterNBits:target_counter
- 13. Parameter Settings for Inferred Entity Instance: ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Mod0
- 14. Parameter Settings for Inferred Entity Instance: ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Div0
- 15. Port Connectivity Checks: "ScoreDisplay:target_display|Bin7SegDecoder:uni_7seg"
- 16. Port Connectivity Checks: "ScoreDisplay:target_display|Bin7SegDecoder:ten_7seg"
- 17. Port Connectivity Checks: "ScoreDisplay:target_display"
- 18. Port Connectivity Checks: "TargetScoreSetter:target_setter|CounterNBits:target_counter"
- 19. Post-Synthesis Netlist Statistics for Top Partition
- 20. Elapsed Time Per Partition
- 21. Analysis & Synthesis Messages
+ 11. Parameter Settings for User Entity Instance: BlinkGen:one_sec_blinker
+ 12. Parameter Settings for User Entity Instance: Debouncer:debounce1
+ 13. Parameter Settings for User Entity Instance: TargetScoreSetter:target_setter|CounterNBits:target_counter
+ 14. Parameter Settings for Inferred Entity Instance: ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Mod0
+ 15. Parameter Settings for Inferred Entity Instance: ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Div0
+ 16. Port Connectivity Checks: "ScoreDisplay:target_display|Bin7SegDecoder:uni_7seg"
+ 17. Port Connectivity Checks: "ScoreDisplay:target_display|Bin7SegDecoder:ten_7seg"
+ 18. Port Connectivity Checks: "ScoreDisplay:target_display"
+ 19. Port Connectivity Checks: "TargetScoreSetter:target_setter|CounterNBits:target_counter"
+ 20. Post-Synthesis Netlist Statistics for Top Partition
+ 21. Elapsed Time Per Partition
+ 22. Analysis & Synthesis Messages
 
 
 
@@ -53,15 +54,15 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed May 29 15:37:29 2024          ;
+; Analysis & Synthesis Status        ; Successful - Wed May 29 15:51:08 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; ReactionGame                                   ;
 ; Top-level Entity Name              ; ConfController                                 ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 171                                            ;
-;     Total combinational functions  ; 170                                            ;
-;     Dedicated logic registers      ; 32                                             ;
-; Total registers                    ; 32                                             ;
+; Total logic elements               ; 212                                            ;
+;     Total combinational functions  ; 211                                            ;
+;     Dedicated logic registers      ; 58                                             ;
+; Total registers                    ; 58                                             ;
 ; Total pins                         ; 45                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
@@ -186,6 +187,7 @@ https://fpgasoftware.intel.com/eula.
 ; ScoreDisplay.vhd                 ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/ScoreDisplay.vhd                                ;         ;
 ; TargetScoreSetter.vhd            ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/TargetScoreSetter.vhd                           ;         ;
 ; ConfController.vhd               ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd                              ;         ;
+; BlinkGen.vhd                     ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/BlinkGen.vhd                                    ;         ;
 ; lpm_divide.tdf                   ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
 ; abs_divider.inc                  ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
 ; sign_div_unsign.inc              ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
@@ -206,20 +208,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 171            ;
+; Estimated Total logic elements              ; 212            ;
 ;                                             ;                ;
-; Total combinational functions               ; 170            ;
+; Total combinational functions               ; 211            ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 55             ;
-;     -- 3 input functions                    ; 32             ;
-;     -- <=2 input functions                  ; 83             ;
+;     -- 4 input functions                    ; 65             ;
+;     -- 3 input functions                    ; 35             ;
+;     -- <=2 input functions                  ; 111            ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 116            ;
-;     -- arithmetic mode                      ; 54             ;
+;     -- normal mode                          ; 132            ;
+;     -- arithmetic mode                      ; 79             ;
 ;                                             ;                ;
-; Total registers                             ; 32             ;
-;     -- Dedicated logic registers            ; 32             ;
+; Total registers                             ; 58             ;
+;     -- Dedicated logic registers            ; 58             ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
 ; I/O pins                                    ; 45             ;
@@ -227,9 +229,9 @@ https://fpgasoftware.intel.com/eula.
 ; Embedded Multiplier 9-bit elements          ; 0              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 32             ;
-; Total fan-out                               ; 611            ;
-; Average fan-out                             ; 2.09           ;
+; Maximum fan-out                             ; 58             ;
+; Total fan-out                               ; 807            ;
+; Average fan-out                             ; 2.25           ;
 +---------------------------------------------+----------------+
 
 
@@ -238,8 +240,9 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                         ; Entity Name         ; Library Name ;
 +----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |ConfController                              ; 170 (0)             ; 32 (0)                    ; 0           ; 0            ; 0       ; 0         ; 45   ; 0            ; |ConfController                                                                                                                                             ; ConfController      ; work         ;
-;    |Debouncer:debounce1|                     ; 68 (68)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|Debouncer:debounce1                                                                                                                         ; Debouncer           ; work         ;
+; |ConfController                              ; 211 (0)             ; 58 (0)                    ; 0           ; 0            ; 0       ; 0         ; 45   ; 0            ; |ConfController                                                                                                                                             ; ConfController      ; work         ;
+;    |BlinkGen:one_sec_blinker|                ; 40 (40)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|BlinkGen:one_sec_blinker                                                                                                                    ; BlinkGen            ; work         ;
+;    |Debouncer:debounce1|                     ; 69 (69)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|Debouncer:debounce1                                                                                                                         ; Debouncer           ; work         ;
 ;    |ScoreDisplay:target_display|             ; 87 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display                                                                                                                 ; ScoreDisplay        ; work         ;
 ;       |Bin2BCD:bin2bcd|                      ; 73 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display|Bin2BCD:bin2bcd                                                                                                 ; Bin2BCD             ; work         ;
 ;          |lpm_divide:Div0|                   ; 31 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
@@ -263,8 +266,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 32    ;
-; Number of registers using Synchronous Clear  ; 0     ;
+; Total registers                              ; 58    ;
+; Number of registers using Synchronous Clear  ; 26    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
@@ -291,6 +294,16 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |ConfController|TargetScoreSetter:target_setter|CounterNBits:target_counter|cnt_value[4] ;
 ; 5:1                ; 23 bits   ; 69 LEs        ; 46 LEs               ; 23 LEs                 ; Yes        ; |ConfController|Debouncer:debounce1|s_debounceCnt[11]                                    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: BlinkGen:one_sec_blinker ;
++----------------+----------+-------------------------------------------+
+; Parameter Name ; Value    ; Type                                      ;
++----------------+----------+-------------------------------------------+
+; steps          ; 50000000 ; Signed Integer                            ;
++----------------+----------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +------------------------------------------------------------------+
@@ -407,23 +420,25 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 45                          ;
-; cycloneiii_ff         ; 32                          ;
+; cycloneiii_ff         ; 58                          ;
 ;     ENA               ; 23                          ;
+;     SCLR              ; 26                          ;
 ;     plain             ; 9                           ;
-; cycloneiii_lcell_comb ; 174                         ;
-;     arith             ; 54                          ;
+; cycloneiii_io_obuf    ; 14                          ;
+; cycloneiii_lcell_comb ; 213                         ;
+;     arith             ; 79                          ;
 ;         1 data inputs ; 2                           ;
-;         2 data inputs ; 34                          ;
+;         2 data inputs ; 59                          ;
 ;         3 data inputs ; 18                          ;
-;     normal            ; 120                         ;
+;     normal            ; 134                         ;
 ;         0 data inputs ; 8                           ;
-;         1 data inputs ; 5                           ;
-;         2 data inputs ; 38                          ;
-;         3 data inputs ; 14                          ;
-;         4 data inputs ; 55                          ;
+;         1 data inputs ; 4                           ;
+;         2 data inputs ; 40                          ;
+;         3 data inputs ; 17                          ;
+;         4 data inputs ; 65                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 9.50                        ;
-; Average LUT depth     ; 6.42                        ;
+; Max LUT depth         ; 8.50                        ;
+; Average LUT depth     ; 5.15                        ;
 +-----------------------+-----------------------------+
 
 
@@ -442,7 +457,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Wed May 29 15:37:23 2024
+    Info: Processing started: Wed May 29 15:51:01 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ReactionGame -c ReactionGame
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -495,11 +510,15 @@ Info (12021): Found 2 design units, including 1 entities, in source file TargetS
 Info (12021): Found 2 design units, including 1 entities, in source file ConfController.vhd
     Info (12022): Found design unit 1: ConfController-Structural File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 18
     Info (12023): Found entity 1: ConfController File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file BlinkGen.vhd
+    Info (12022): Found design unit 1: BlinkGen-Behavioral File: /home/penacho/LSD/LSD-final-project/Fase4/BlinkGen.vhd Line: 13
+    Info (12023): Found entity 1: BlinkGen File: /home/penacho/LSD/LSD-final-project/Fase4/BlinkGen.vhd Line: 5
 Info (12127): Elaborating entity "ConfController" for the top level hierarchy
-Info (12129): Elaborating entity "Debouncer" using architecture "A:behavioral" for hierarchy "Debouncer:debounce1" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 32
-Info (12129): Elaborating entity "TargetScoreSetter" using architecture "A:structural" for hierarchy "TargetScoreSetter:target_setter" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 45
+Info (12129): Elaborating entity "BlinkGen" using architecture "A:behavioral" for hierarchy "BlinkGen:one_sec_blinker" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 36
+Info (12129): Elaborating entity "Debouncer" using architecture "A:behavioral" for hierarchy "Debouncer:debounce1" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 43
+Info (12129): Elaborating entity "TargetScoreSetter" using architecture "A:structural" for hierarchy "TargetScoreSetter:target_setter" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 56
 Info (12129): Elaborating entity "CounterNBits" using architecture "A:behavioral" for hierarchy "TargetScoreSetter:target_setter|CounterNBits:target_counter" File: /home/penacho/LSD/LSD-final-project/Fase4/TargetScoreSetter.vhd Line: 21
-Info (12129): Elaborating entity "ScoreDisplay" using architecture "A:structural" for hierarchy "ScoreDisplay:target_display" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 53
+Info (12129): Elaborating entity "ScoreDisplay" using architecture "A:structural" for hierarchy "ScoreDisplay:target_display" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 64
 Info (12129): Elaborating entity "Bin2BCD" using architecture "A:behavioral" for hierarchy "ScoreDisplay:target_display|Bin2BCD:bin2bcd" File: /home/penacho/LSD/LSD-final-project/Fase4/ScoreDisplay.vhd Line: 18
 Info (12129): Elaborating entity "Bin7SegDecoder" using architecture "A:behavioral" for hierarchy "ScoreDisplay:target_display|Bin7SegDecoder:ten_7seg" File: /home/penacho/LSD/LSD-final-project/Fase4/ScoreDisplay.vhd Line: 25
 Info (278001): Inferred 2 megafunctions from design logic
@@ -565,14 +584,14 @@ Warning (13024): Output pins are stuck at VCC or GND
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 216 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 257 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 42 output pins
-    Info (21061): Implemented 171 logic cells
+    Info (21061): Implemented 212 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 30 warnings
-    Info: Peak virtual memory: 476 megabytes
-    Info: Processing ended: Wed May 29 15:37:29 2024
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:16
+    Info: Peak virtual memory: 479 megabytes
+    Info: Processing ended: Wed May 29 15:51:08 2024
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:17
 
 

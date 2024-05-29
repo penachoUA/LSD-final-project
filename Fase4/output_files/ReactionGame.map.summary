@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Wed May 29 15:37:29 2024
+Analysis & Synthesis Status : Successful - Wed May 29 15:51:08 2024
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : ReactionGame
 Top-level Entity Name : ConfController
 Family : Cyclone IV E
-Total logic elements : 171
-    Total combinational functions : 170
-    Dedicated logic registers : 32
-Total registers : 32
+Total logic elements : 212
+    Total combinational functions : 211
+    Dedicated logic registers : 58
+Total registers : 58
 Total pins : 45
 Total virtual pins : 0
 Total memory bits : 0
