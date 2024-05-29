@@ -1,5 +1,5 @@
 
-State Machine - |SystemFSM|pState
+State Machine - |ReactionGame_Demo|SystemFSM:systemFSM|pState
 Name pState.FINAL pState.GAME pState.CONF 
 pState.CONF 0 0 0 
 pState.GAME 0 1 1 
