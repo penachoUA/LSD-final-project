@@ -1,0 +1,115 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity SystemFSM is
+	port(
+		clk      : in  std_logic;
+		reset    : in  std_logic;
+		endConf  : in  std_logic;
+		victory  : in  std_logic;
+		timeExp  : in  std_logic;
+		newTime  : out std_logic;
+		timeVal  : out std_logic_vector(31 downto 0);
+		state    : out std_logic_vector(1 downto 0)
+	);
+end;
+
+architecture Behavioral of SystemFSM is
+	type TSTATE is (CONF, GAME, FINAL);
+	signal pState, nState : TSTATE;
+	
+	signal s_stateChange  : std_logic := '0';
+	
+	constant CELEBRATION_TIME : std_logic_vector(31 downto 0) := x"0EE6B280";
+begin
+	sync_proc: process(clk)
+		begin
+			if rising_edge(clk) then
+				if reset = '1' then
+					pState    <= IDLE;
+					s_stateChange <= '0';
+				else
+					if pState /= nState then
+						s_stateChange <= '1';
+					else
+						s_stateChange <= '0';
+					end if;
+					pState <= nState;
+				end if;
+			end if;
+		end process;
+		
+	comb_proc : process(pState, clickA, clickB, randTime, timeExp)
+		begin
+			winA    <= '0';
+			winB    <= '0';
+			draw      <= '0';
+			ledOn     <= '0';
+			timeVal	 <= (others => '-');
+			
+			case pState is
+				when IDLE =>
+					if (clickA = '1' or clickB = '1') then
+						nState <= READY;
+					else
+						nState <= IDLE;
+					end if;
+					
+				when READY =>
+					timeVal	 <= randTime;
+					nState    <= DELAY;
+					
+				when DELAY =>
+					if timeExp = '1' then
+						nState <= PLAY;
+					else
+						nState <= DELAY;
+					end if;
+					
+				when PLAY =>
+					timeVal <= MAX_WAIT;
+					ledOn   <= '1';
+		
+					if ((clickA = '1' and clickB = '1') or timeExp = '1') then
+						draw   <= '1';
+						nState <= READY;
+					elsif clickA = '1' then
+						winA   <= '1';
+						nState <= WIN_A;
+					elsif clickB = '1' then
+						winB   <= '1';
+						nState <= WIN_B;
+					else
+						nState <= PLAY;
+					end if;
+					
+				when WIN_A =>
+					if clickB = '1' then
+						nState <= READY;
+					else
+						nState <= WIN_A;
+					end if;
+					
+				when WIN_B =>
+					if clickA = '1' then
+						nState <= READY;
+					else
+						nState <= WIN_B;
+					end if;
+					
+				when others =>
+					nState <= IDLE;
+			end case;
+		end process;
+		
+	with pState select
+		state <= "000" when IDLE,
+					"001" when READY,
+					"010" when DELAY,
+					"011" when PLAY,
+					"100" when WIN_A,
+					"101" when WIN_B,
+					"000" when others;
+					
+	newTime <= s_stateChange;
+end;

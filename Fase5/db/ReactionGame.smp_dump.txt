@@ -1,0 +1,6 @@
+
+State Machine - |SystemFSM|pState
+Name pState.FINAL pState.GAME pState.CONF 
+pState.CONF 0 0 0 
+pState.GAME 0 1 1 
+pState.FINAL 1 0 1 
