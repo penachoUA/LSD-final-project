@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ReactionGame
-Wed May 29 15:51:08 2024
+Wed May 29 16:41:25 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -17,17 +17,19 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
   9. Inverted Register Statistics
  10. Multiplexer Restructuring Statistics (Restructuring Performed)
  11. Parameter Settings for User Entity Instance: BlinkGen:one_sec_blinker
- 12. Parameter Settings for User Entity Instance: Debouncer:debounce1
- 13. Parameter Settings for User Entity Instance: TargetScoreSetter:target_setter|CounterNBits:target_counter
- 14. Parameter Settings for Inferred Entity Instance: ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Mod0
- 15. Parameter Settings for Inferred Entity Instance: ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Div0
- 16. Port Connectivity Checks: "ScoreDisplay:target_display|Bin7SegDecoder:uni_7seg"
- 17. Port Connectivity Checks: "ScoreDisplay:target_display|Bin7SegDecoder:ten_7seg"
- 18. Port Connectivity Checks: "ScoreDisplay:target_display"
- 19. Port Connectivity Checks: "TargetScoreSetter:target_setter|CounterNBits:target_counter"
- 20. Post-Synthesis Netlist Statistics for Top Partition
- 21. Elapsed Time Per Partition
- 22. Analysis & Synthesis Messages
+ 12. Parameter Settings for User Entity Instance: PulseGen:pulse10hz_gen
+ 13. Parameter Settings for User Entity Instance: Debouncer:debounce1
+ 14. Parameter Settings for User Entity Instance: TargetScoreSetter:target_setter|CounterNBits:target_counter
+ 15. Parameter Settings for Inferred Entity Instance: ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Mod0
+ 16. Parameter Settings for Inferred Entity Instance: ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Div0
+ 17. Port Connectivity Checks: "ScoreDisplay:target_display|Bin7SegDecoder:uni_7seg"
+ 18. Port Connectivity Checks: "ScoreDisplay:target_display|Bin7SegDecoder:ten_7seg"
+ 19. Port Connectivity Checks: "ScoreDisplay:target_display"
+ 20. Port Connectivity Checks: "TargetScoreSetter:target_setter|CounterNBits:target_counter"
+ 21. Port Connectivity Checks: "TimerAuxFSM:timer_fsm"
+ 22. Post-Synthesis Netlist Statistics for Top Partition
+ 23. Elapsed Time Per Partition
+ 24. Analysis & Synthesis Messages
 
 
 
@@ -54,15 +56,15 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed May 29 15:51:08 2024          ;
+; Analysis & Synthesis Status        ; Successful - Wed May 29 16:41:25 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; ReactionGame                                   ;
 ; Top-level Entity Name              ; ConfController                                 ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 212                                            ;
-;     Total combinational functions  ; 211                                            ;
-;     Dedicated logic registers      ; 58                                             ;
-; Total registers                    ; 58                                             ;
+; Total logic elements               ; 324                                            ;
+;     Total combinational functions  ; 321                                            ;
+;     Dedicated logic registers      ; 114                                            ;
+; Total registers                    ; 114                                            ;
 ; Total pins                         ; 45                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
@@ -170,8 +172,7 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processors 3-4         ;   0.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -181,6 +182,7 @@ https://fpgasoftware.intel.com/eula.
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                              ; Library ;
 +----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------+---------+
 ; CounterNBits.vhd                 ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/CounterNBits.vhd                                ;         ;
+; TimerAuxFSM.vhd                  ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/TimerAuxFSM.vhd                                 ;         ;
 ; Bin2BCD.vhd                      ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/Bin2BCD.vhd                                     ;         ;
 ; Debouncer.vhd                    ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/Debouncer.vhd                                   ;         ;
 ; Bin7SegDecoder.vhd               ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/Bin7SegDecoder.vhd                              ;         ;
@@ -188,6 +190,7 @@ https://fpgasoftware.intel.com/eula.
 ; TargetScoreSetter.vhd            ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/TargetScoreSetter.vhd                           ;         ;
 ; ConfController.vhd               ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd                              ;         ;
 ; BlinkGen.vhd                     ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/BlinkGen.vhd                                    ;         ;
+; PulseGen.vhd                     ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/PulseGen.vhd                                    ;         ;
 ; lpm_divide.tdf                   ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
 ; abs_divider.inc                  ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
 ; sign_div_unsign.inc              ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
@@ -208,20 +211,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 212            ;
+; Estimated Total logic elements              ; 324            ;
 ;                                             ;                ;
-; Total combinational functions               ; 211            ;
+; Total combinational functions               ; 321            ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 65             ;
+;     -- 4 input functions                    ; 116            ;
 ;     -- 3 input functions                    ; 35             ;
-;     -- <=2 input functions                  ; 111            ;
+;     -- <=2 input functions                  ; 170            ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 132            ;
-;     -- arithmetic mode                      ; 79             ;
+;     -- normal mode                          ; 193            ;
+;     -- arithmetic mode                      ; 128            ;
 ;                                             ;                ;
-; Total registers                             ; 58             ;
-;     -- Dedicated logic registers            ; 58             ;
+; Total registers                             ; 114            ;
+;     -- Dedicated logic registers            ; 114            ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
 ; I/O pins                                    ; 45             ;
@@ -229,9 +232,9 @@ https://fpgasoftware.intel.com/eula.
 ; Embedded Multiplier 9-bit elements          ; 0              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 58             ;
-; Total fan-out                               ; 807            ;
-; Average fan-out                             ; 2.25           ;
+; Maximum fan-out                             ; 114            ;
+; Total fan-out                               ; 1271           ;
+; Average fan-out                             ; 2.42           ;
 +---------------------------------------------+----------------+
 
 
@@ -240,9 +243,10 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                         ; Entity Name         ; Library Name ;
 +----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |ConfController                              ; 211 (0)             ; 58 (0)                    ; 0           ; 0            ; 0       ; 0         ; 45   ; 0            ; |ConfController                                                                                                                                             ; ConfController      ; work         ;
-;    |BlinkGen:one_sec_blinker|                ; 40 (40)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|BlinkGen:one_sec_blinker                                                                                                                    ; BlinkGen            ; work         ;
+; |ConfController                              ; 321 (8)             ; 114 (3)                   ; 0           ; 0            ; 0       ; 0         ; 45   ; 0            ; |ConfController                                                                                                                                             ; ConfController      ; work         ;
+;    |BlinkGen:one_sec_blinker|                ; 34 (34)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|BlinkGen:one_sec_blinker                                                                                                                    ; BlinkGen            ; work         ;
 ;    |Debouncer:debounce1|                     ; 69 (69)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|Debouncer:debounce1                                                                                                                         ; Debouncer           ; work         ;
+;    |PulseGen:pulse10hz_gen|                  ; 32 (32)             ; 20 (20)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|PulseGen:pulse10hz_gen                                                                                                                      ; PulseGen            ; work         ;
 ;    |ScoreDisplay:target_display|             ; 87 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display                                                                                                                 ; ScoreDisplay        ; work         ;
 ;       |Bin2BCD:bin2bcd|                      ; 73 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display|Bin2BCD:bin2bcd                                                                                                 ; Bin2BCD             ; work         ;
 ;          |lpm_divide:Div0|                   ; 31 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
@@ -257,6 +261,7 @@ https://fpgasoftware.intel.com/eula.
 ;       |Bin7SegDecoder:uni_7seg|              ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display|Bin7SegDecoder:uni_7seg                                                                                         ; Bin7SegDecoder      ; work         ;
 ;    |TargetScoreSetter:target_setter|         ; 15 (0)              ; 6 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|TargetScoreSetter:target_setter                                                                                                             ; TargetScoreSetter   ; work         ;
 ;       |CounterNBits:target_counter|          ; 15 (15)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|TargetScoreSetter:target_setter|CounterNBits:target_counter                                                                                 ; CounterNBits        ; work         ;
+;    |TimerAuxFSM:timer_fsm|                   ; 76 (76)             ; 33 (33)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|TimerAuxFSM:timer_fsm                                                                                                                       ; TimerAuxFSM         ; work         ;
 +----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -266,12 +271,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 58    ;
+; Total registers                              ; 114   ;
 ; Number of registers using Synchronous Clear  ; 26    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 23    ;
+; Number of registers using Clock Enable       ; 55    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -282,7 +287,39 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Inverted Register                                                        ; Fan out ;
 +--------------------------------------------------------------------------+---------+
 ; TargetScoreSetter:target_setter|CounterNBits:target_counter|cnt_value[0] ; 10      ;
-; Total number of inverted registers = 1                                   ;         ;
+; TimerAuxFSM:timer_fsm|s_count[0]                                         ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[25]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[26]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[27]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[28]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[29]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[30]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[31]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[9]                                         ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[10]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[11]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[12]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[13]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[14]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[15]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[16]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[17]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[18]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[19]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[20]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[21]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[22]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[23]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[24]                                        ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[1]                                         ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[2]                                         ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[3]                                         ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[4]                                         ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[5]                                         ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[6]                                         ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[7]                                         ; 2       ;
+; TimerAuxFSM:timer_fsm|s_count[8]                                         ; 2       ;
+; Total number of inverted registers = 33                                  ;         ;
 +--------------------------------------------------------------------------+---------+
 
 
@@ -291,8 +328,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                               ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------+
-; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |ConfController|TargetScoreSetter:target_setter|CounterNBits:target_counter|cnt_value[4] ;
-; 5:1                ; 23 bits   ; 69 LEs        ; 46 LEs               ; 23 LEs                 ; Yes        ; |ConfController|Debouncer:debounce1|s_debounceCnt[11]                                    ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |ConfController|TargetScoreSetter:target_setter|CounterNBits:target_counter|cnt_value[5] ;
+; 5:1                ; 23 bits   ; 69 LEs        ; 46 LEs               ; 23 LEs                 ; Yes        ; |ConfController|Debouncer:debounce1|s_debounceCnt[19]                                    ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |ConfController|TimerAuxFSM:timer_fsm|s_count[16]                                        ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------+
 
 
@@ -303,6 +341,16 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+----------+-------------------------------------------+
 ; steps          ; 50000000 ; Signed Integer                            ;
 +----------------+----------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PulseGen:pulse10hz_gen ;
++----------------+--------+-------------------------------------------+
+; Parameter Name ; Value  ; Type                                      ;
++----------------+--------+-------------------------------------------+
+; max            ; 500000 ; Signed Integer                            ;
++----------------+--------+-------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -414,31 +462,50 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------+--------+----------+-------------------------------------------------------------------------------------+
 
 
++---------------------------------------------------+
+; Port Connectivity Checks: "TimerAuxFSM:timer_fsm" ;
++-----------------+-------+----------+--------------+
+; Port            ; Type  ; Severity ; Details      ;
++-----------------+-------+----------+--------------+
+; timeval[23..19] ; Input ; Info     ; Stuck at VCC ;
+; timeval[15..12] ; Input ; Info     ; Stuck at VCC ;
+; timeval[31..26] ; Input ; Info     ; Stuck at GND ;
+; timeval[11..8]  ; Input ; Info     ; Stuck at GND ;
+; timeval[6..0]   ; Input ; Info     ; Stuck at GND ;
+; timeval[25]     ; Input ; Info     ; Stuck at VCC ;
+; timeval[24]     ; Input ; Info     ; Stuck at GND ;
+; timeval[18]     ; Input ; Info     ; Stuck at GND ;
+; timeval[17]     ; Input ; Info     ; Stuck at VCC ;
+; timeval[16]     ; Input ; Info     ; Stuck at GND ;
+; timeval[7]      ; Input ; Info     ; Stuck at VCC ;
++-----------------+-------+----------+--------------+
+
+
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 45                          ;
-; cycloneiii_ff         ; 58                          ;
-;     ENA               ; 23                          ;
+; cycloneiii_ff         ; 114                         ;
+;     ENA               ; 55                          ;
 ;     SCLR              ; 26                          ;
-;     plain             ; 9                           ;
+;     plain             ; 33                          ;
 ; cycloneiii_io_obuf    ; 14                          ;
-; cycloneiii_lcell_comb ; 213                         ;
-;     arith             ; 79                          ;
+; cycloneiii_lcell_comb ; 323                         ;
+;     arith             ; 128                         ;
 ;         1 data inputs ; 2                           ;
-;         2 data inputs ; 59                          ;
+;         2 data inputs ; 108                         ;
 ;         3 data inputs ; 18                          ;
-;     normal            ; 134                         ;
+;     normal            ; 195                         ;
 ;         0 data inputs ; 8                           ;
-;         1 data inputs ; 4                           ;
-;         2 data inputs ; 40                          ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 48                          ;
 ;         3 data inputs ; 17                          ;
-;         4 data inputs ; 65                          ;
+;         4 data inputs ; 116                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 8.50                        ;
-; Average LUT depth     ; 5.15                        ;
+; Average LUT depth     ; 4.59                        ;
 +-----------------------+-----------------------------+
 
 
@@ -457,7 +524,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Wed May 29 15:51:01 2024
+    Info: Processing started: Wed May 29 16:41:18 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ReactionGame -c ReactionGame
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -513,12 +580,17 @@ Info (12021): Found 2 design units, including 1 entities, in source file ConfCon
 Info (12021): Found 2 design units, including 1 entities, in source file BlinkGen.vhd
     Info (12022): Found design unit 1: BlinkGen-Behavioral File: /home/penacho/LSD/LSD-final-project/Fase4/BlinkGen.vhd Line: 13
     Info (12023): Found entity 1: BlinkGen File: /home/penacho/LSD/LSD-final-project/Fase4/BlinkGen.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file PulseGen.vhd
+    Info (12022): Found design unit 1: PulseGen-Behavioral File: /home/penacho/LSD/LSD-final-project/Fase4/PulseGen.vhd Line: 13
+    Info (12023): Found entity 1: PulseGen File: /home/penacho/LSD/LSD-final-project/Fase4/PulseGen.vhd Line: 5
 Info (12127): Elaborating entity "ConfController" for the top level hierarchy
-Info (12129): Elaborating entity "BlinkGen" using architecture "A:behavioral" for hierarchy "BlinkGen:one_sec_blinker" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 36
-Info (12129): Elaborating entity "Debouncer" using architecture "A:behavioral" for hierarchy "Debouncer:debounce1" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 43
-Info (12129): Elaborating entity "TargetScoreSetter" using architecture "A:structural" for hierarchy "TargetScoreSetter:target_setter" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 56
+Info (12129): Elaborating entity "BlinkGen" using architecture "A:behavioral" for hierarchy "BlinkGen:one_sec_blinker" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 44
+Info (12129): Elaborating entity "PulseGen" using architecture "A:behavioral" for hierarchy "PulseGen:pulse10hz_gen" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 51
+Info (12129): Elaborating entity "Debouncer" using architecture "A:behavioral" for hierarchy "Debouncer:debounce1" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 58
+Info (12129): Elaborating entity "TimerAuxFSM" using architecture "A:behavioral" for hierarchy "TimerAuxFSM:timer_fsm" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 94
+Info (12129): Elaborating entity "TargetScoreSetter" using architecture "A:structural" for hierarchy "TargetScoreSetter:target_setter" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 105
 Info (12129): Elaborating entity "CounterNBits" using architecture "A:behavioral" for hierarchy "TargetScoreSetter:target_setter|CounterNBits:target_counter" File: /home/penacho/LSD/LSD-final-project/Fase4/TargetScoreSetter.vhd Line: 21
-Info (12129): Elaborating entity "ScoreDisplay" using architecture "A:structural" for hierarchy "ScoreDisplay:target_display" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 64
+Info (12129): Elaborating entity "ScoreDisplay" using architecture "A:structural" for hierarchy "ScoreDisplay:target_display" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 113
 Info (12129): Elaborating entity "Bin2BCD" using architecture "A:behavioral" for hierarchy "ScoreDisplay:target_display|Bin2BCD:bin2bcd" File: /home/penacho/LSD/LSD-final-project/Fase4/ScoreDisplay.vhd Line: 18
 Info (12129): Elaborating entity "Bin7SegDecoder" using architecture "A:behavioral" for hierarchy "ScoreDisplay:target_display|Bin7SegDecoder:ten_7seg" File: /home/penacho/LSD/LSD-final-project/Fase4/ScoreDisplay.vhd Line: 25
 Info (278001): Inferred 2 megafunctions from design logic
@@ -584,14 +656,14 @@ Warning (13024): Output pins are stuck at VCC or GND
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 257 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 371 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 42 output pins
-    Info (21061): Implemented 212 logic cells
+    Info (21061): Implemented 326 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 30 warnings
-    Info: Peak virtual memory: 479 megabytes
-    Info: Processing ended: Wed May 29 15:51:08 2024
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:17
+    Info: Peak virtual memory: 463 megabytes
+    Info: Processing ended: Wed May 29 16:41:26 2024
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:18
 
 
