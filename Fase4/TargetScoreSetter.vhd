@@ -1,5 +1,6 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
 
 entity TargetScoreSetter is
 	port(
@@ -14,6 +15,8 @@ architecture Structural of TargetScoreSetter is
 	signal s_short_click  : std_logic;
 	signal s_long_click   : std_logic;
 	signal s_target       : std_logic_vector(5 downto 0);
+	
+	constant one_second   : std_logic_vector(31 downto 0) := x"02FAF080";
 begin
 	target_counter: entity work.CounterNBits(Behavioral)
 		generic map(
@@ -24,9 +27,9 @@ begin
 		port map(
 			reset   => reset,
 			clk     => clk,
-			enable1 => s_short_click or s_long_click,
+			enable1 => click,
 			enable2 => '1',
-			valOut  => s_target,
+			valOut  => target,
 			termCnt => open
 		);
 end;

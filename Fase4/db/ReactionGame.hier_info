@@ -1,16 +1,68 @@
-|TargetScoreSetter
+|ConfController
+CLOCK_50 => debouncer:debounce1.refClk
+CLOCK_50 => targetscoresetter:target_setter.clk
+SW[0] => targetscoresetter:target_setter.reset
+KEY[1] => debouncer:debounce1.dirtyIn
+HEX6[0] << scoredisplay:target_display.hexUni[0]
+HEX6[1] << scoredisplay:target_display.hexUni[1]
+HEX6[2] << scoredisplay:target_display.hexUni[2]
+HEX6[3] << scoredisplay:target_display.hexUni[3]
+HEX6[4] << scoredisplay:target_display.hexUni[4]
+HEX6[5] << scoredisplay:target_display.hexUni[5]
+HEX6[6] << scoredisplay:target_display.hexUni[6]
+HEX7[0] << scoredisplay:target_display.hexTen[0]
+HEX7[1] << scoredisplay:target_display.hexTen[1]
+HEX7[2] << scoredisplay:target_display.hexTen[2]
+HEX7[3] << scoredisplay:target_display.hexTen[3]
+HEX7[4] << scoredisplay:target_display.hexTen[4]
+HEX7[5] << scoredisplay:target_display.hexTen[5]
+HEX7[6] << scoredisplay:target_display.hexTen[6]
+
+
+|ConfController|Debouncer:debounce1
+refClk => s_pulsedOut.CLK
+refClk => s_debounceCnt[0].CLK
+refClk => s_debounceCnt[1].CLK
+refClk => s_debounceCnt[2].CLK
+refClk => s_debounceCnt[3].CLK
+refClk => s_debounceCnt[4].CLK
+refClk => s_debounceCnt[5].CLK
+refClk => s_debounceCnt[6].CLK
+refClk => s_debounceCnt[7].CLK
+refClk => s_debounceCnt[8].CLK
+refClk => s_debounceCnt[9].CLK
+refClk => s_debounceCnt[10].CLK
+refClk => s_debounceCnt[11].CLK
+refClk => s_debounceCnt[12].CLK
+refClk => s_debounceCnt[13].CLK
+refClk => s_debounceCnt[14].CLK
+refClk => s_debounceCnt[15].CLK
+refClk => s_debounceCnt[16].CLK
+refClk => s_debounceCnt[17].CLK
+refClk => s_debounceCnt[18].CLK
+refClk => s_debounceCnt[19].CLK
+refClk => s_debounceCnt[20].CLK
+refClk => s_debounceCnt[21].CLK
+refClk => s_debounceCnt[22].CLK
+refClk => s_previousIn.CLK
+refClk => s_dirtyIn.CLK
+dirtyIn => s_dirtyIn.DATAIN
+pulsedOut <= s_pulsedOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ConfController|TargetScoreSetter:target_setter
 clk => counternbits:target_counter.clk
 reset => counternbits:target_counter.reset
-click => ~NO_FANOUT~
-target[0] <= comb.DB_MAX_OUTPUT_PORT_TYPE
-target[1] <= target[1].DB_MAX_OUTPUT_PORT_TYPE
-target[2] <= target[2].DB_MAX_OUTPUT_PORT_TYPE
-target[3] <= target[3].DB_MAX_OUTPUT_PORT_TYPE
-target[4] <= target[4].DB_MAX_OUTPUT_PORT_TYPE
-target[5] <= target[5].DB_MAX_OUTPUT_PORT_TYPE
+click => counternbits:target_counter.enable1
+target[0] <= counternbits:target_counter.valOut[0]
+target[1] <= counternbits:target_counter.valOut[1]
+target[2] <= counternbits:target_counter.valOut[2]
+target[3] <= counternbits:target_counter.valOut[3]
+target[4] <= counternbits:target_counter.valOut[4]
+target[5] <= counternbits:target_counter.valOut[5]
 
 
-|TargetScoreSetter|CounterNBits:target_counter
+|ConfController|TargetScoreSetter:target_setter|CounterNBits:target_counter
 reset => cnt_value.OUTPUTSELECT
 reset => cnt_value.OUTPUTSELECT
 reset => cnt_value.OUTPUTSELECT
@@ -34,5 +86,144 @@ valOut[3] <= cnt_value[3].DB_MAX_OUTPUT_PORT_TYPE
 valOut[4] <= cnt_value[4].DB_MAX_OUTPUT_PORT_TYPE
 valOut[5] <= cnt_value[5].DB_MAX_OUTPUT_PORT_TYPE
 termCnt <= termCnt~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ConfController|ScoreDisplay:target_display
+score[0] => bin2bcd:bin2bcd.binIn[0]
+score[1] => bin2bcd:bin2bcd.binIn[1]
+score[2] => bin2bcd:bin2bcd.binIn[2]
+score[3] => bin2bcd:bin2bcd.binIn[3]
+score[4] => bin2bcd:bin2bcd.binIn[4]
+score[5] => bin2bcd:bin2bcd.binIn[5]
+score[6] => bin2bcd:bin2bcd.binIn[6]
+hexTen[0] <= bin7segdecoder:ten_7seg.decOut_n[0]
+hexTen[1] <= bin7segdecoder:ten_7seg.decOut_n[1]
+hexTen[2] <= bin7segdecoder:ten_7seg.decOut_n[2]
+hexTen[3] <= bin7segdecoder:ten_7seg.decOut_n[3]
+hexTen[4] <= bin7segdecoder:ten_7seg.decOut_n[4]
+hexTen[5] <= bin7segdecoder:ten_7seg.decOut_n[5]
+hexTen[6] <= bin7segdecoder:ten_7seg.decOut_n[6]
+hexUni[0] <= bin7segdecoder:uni_7seg.decOut_n[0]
+hexUni[1] <= bin7segdecoder:uni_7seg.decOut_n[1]
+hexUni[2] <= bin7segdecoder:uni_7seg.decOut_n[2]
+hexUni[3] <= bin7segdecoder:uni_7seg.decOut_n[3]
+hexUni[4] <= bin7segdecoder:uni_7seg.decOut_n[4]
+hexUni[5] <= bin7segdecoder:uni_7seg.decOut_n[5]
+hexUni[6] <= bin7segdecoder:uni_7seg.decOut_n[6]
+
+
+|ConfController|ScoreDisplay:target_display|Bin2BCD:bin2bcd
+binIn[0] => Mod0.IN13
+binIn[0] => Div0.IN10
+binIn[1] => Mod0.IN12
+binIn[1] => Div0.IN9
+binIn[2] => Mod0.IN11
+binIn[2] => Div0.IN8
+binIn[3] => Mod0.IN10
+binIn[3] => Div0.IN7
+binIn[4] => Mod0.IN9
+binIn[4] => Div0.IN6
+binIn[5] => Mod0.IN8
+binIn[5] => Div0.IN5
+binIn[6] => Mod0.IN7
+binIn[6] => Div0.IN4
+bcdUni[0] <= Mod0.DB_MAX_OUTPUT_PORT_TYPE
+bcdUni[1] <= Mod0.DB_MAX_OUTPUT_PORT_TYPE
+bcdUni[2] <= Mod0.DB_MAX_OUTPUT_PORT_TYPE
+bcdUni[3] <= Mod0.DB_MAX_OUTPUT_PORT_TYPE
+bcdTen[0] <= Div0.DB_MAX_OUTPUT_PORT_TYPE
+bcdTen[1] <= Div0.DB_MAX_OUTPUT_PORT_TYPE
+bcdTen[2] <= Div0.DB_MAX_OUTPUT_PORT_TYPE
+bcdTen[3] <= Div0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ConfController|ScoreDisplay:target_display|Bin7SegDecoder:ten_7seg
+enable => decOut_n.OUTPUTSELECT
+enable => decOut_n.OUTPUTSELECT
+enable => decOut_n.OUTPUTSELECT
+enable => decOut_n.OUTPUTSELECT
+enable => decOut_n.OUTPUTSELECT
+enable => decOut_n.OUTPUTSELECT
+enable => decOut_n.OUTPUTSELECT
+binInput[0] => Mux0.IN19
+binInput[0] => Mux1.IN19
+binInput[0] => Mux2.IN19
+binInput[0] => Mux3.IN19
+binInput[0] => Mux4.IN19
+binInput[0] => Mux5.IN19
+binInput[0] => Mux6.IN19
+binInput[1] => Mux0.IN18
+binInput[1] => Mux1.IN18
+binInput[1] => Mux2.IN18
+binInput[1] => Mux3.IN18
+binInput[1] => Mux4.IN18
+binInput[1] => Mux5.IN18
+binInput[1] => Mux6.IN18
+binInput[2] => Mux0.IN17
+binInput[2] => Mux1.IN17
+binInput[2] => Mux2.IN17
+binInput[2] => Mux3.IN17
+binInput[2] => Mux4.IN17
+binInput[2] => Mux5.IN17
+binInput[2] => Mux6.IN17
+binInput[3] => Mux0.IN16
+binInput[3] => Mux1.IN16
+binInput[3] => Mux2.IN16
+binInput[3] => Mux3.IN16
+binInput[3] => Mux4.IN16
+binInput[3] => Mux5.IN16
+binInput[3] => Mux6.IN16
+decOut_n[0] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
+decOut_n[1] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
+decOut_n[2] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
+decOut_n[3] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
+decOut_n[4] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
+decOut_n[5] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
+decOut_n[6] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ConfController|ScoreDisplay:target_display|Bin7SegDecoder:uni_7seg
+enable => decOut_n.OUTPUTSELECT
+enable => decOut_n.OUTPUTSELECT
+enable => decOut_n.OUTPUTSELECT
+enable => decOut_n.OUTPUTSELECT
+enable => decOut_n.OUTPUTSELECT
+enable => decOut_n.OUTPUTSELECT
+enable => decOut_n.OUTPUTSELECT
+binInput[0] => Mux0.IN19
+binInput[0] => Mux1.IN19
+binInput[0] => Mux2.IN19
+binInput[0] => Mux3.IN19
+binInput[0] => Mux4.IN19
+binInput[0] => Mux5.IN19
+binInput[0] => Mux6.IN19
+binInput[1] => Mux0.IN18
+binInput[1] => Mux1.IN18
+binInput[1] => Mux2.IN18
+binInput[1] => Mux3.IN18
+binInput[1] => Mux4.IN18
+binInput[1] => Mux5.IN18
+binInput[1] => Mux6.IN18
+binInput[2] => Mux0.IN17
+binInput[2] => Mux1.IN17
+binInput[2] => Mux2.IN17
+binInput[2] => Mux3.IN17
+binInput[2] => Mux4.IN17
+binInput[2] => Mux5.IN17
+binInput[2] => Mux6.IN17
+binInput[3] => Mux0.IN16
+binInput[3] => Mux1.IN16
+binInput[3] => Mux2.IN16
+binInput[3] => Mux3.IN16
+binInput[3] => Mux4.IN16
+binInput[3] => Mux5.IN16
+binInput[3] => Mux6.IN16
+decOut_n[0] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
+decOut_n[1] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
+decOut_n[2] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
+decOut_n[3] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
+decOut_n[4] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
+decOut_n[5] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
+decOut_n[6] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
 
 

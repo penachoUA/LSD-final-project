@@ -1,5 +1,5 @@
 Fitter report for ReactionGame
-Tue May 28 21:41:35 2024
+Wed May 29 15:01:10 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                      ;
 +------------------------------------+------------------------------------------------+
-; Fitter Status                      ; Successful - Tue May 28 21:41:35 2024          ;
+; Fitter Status                      ; Successful - Wed May 29 15:01:10 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; ReactionGame                                   ;
 ; Top-level Entity Name              ; ReactionGame_Demo                              ;
@@ -160,7 +160,7 @@ https://fpgasoftware.intel.com/eula.
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
 ;     Processor 2            ;   0.5%      ;
-;     Processors 3-4         ;   0.4%      ;
+;     Processors 3-4         ;   0.5%      ;
 +----------------------------+-------------+
 
 
@@ -2785,10 +2785,10 @@ Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:00
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Info (144001): Generated suppressed messages file /home/penacho/LSD/LSD-final-project/Fase3/output_files/ReactionGame.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 466 warnings
-    Info: Peak virtual memory: 1162 megabytes
-    Info: Processing ended: Tue May 28 21:41:35 2024
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:19
+    Info: Peak virtual memory: 1180 megabytes
+    Info: Processing ended: Wed May 29 15:01:10 2024
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:20
 
 
 +----------------------------+
