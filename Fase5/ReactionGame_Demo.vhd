@@ -7,11 +7,45 @@ entity ReactionGame_Demo is
 		SW       : in  std_logic_vector(0 downto 0);
 		KEY      : in  std_logic_vector(2 downto 1);
 		LEDG     : out std_logic_vector(7 downto 0);
-		LEDR     : out std_logic_vector(1 downto 0)
+		LEDR     : out std_logic_vector(1 downto 0);
+		HEX7     : out std_logic_vector(6 downto 0);
+		HEX6     : out std_logic_vector(6 downto 0);
+		HEX5     : out std_logic_vector(6 downto 0);
+		HEX4     : out std_logic_vector(6 downto 0);
+		HEX3     : out std_logic_vector(6 downto 0);
+		HEX2     : out std_logic_vector(6 downto 0);
+		HEX1     : out std_logic_vector(6 downto 0);
+		HEX0     : out std_logic_vector(6 downto 0)
 	);
 end;
 
 architecture Structural of ReactionGame_Demo is
+	--- Display 7 Segment values subtype ---
+	subtype D7S_VALUE is std_logic_vector(6 downto 0); -- 2 digit counter display
+	type D7S_SCORE is array(0 to 1) of D7S_VALUE;
+	
+	signal s_d7s_target_score : D7S_SCORE;
+	signal s_d7s_round_count  : D7S_SCORE;
+	signal s_d7s_scoreA       : D7S_SCORE;
+	signal s_d7s_scoreB       : D7S_SCORE;
+	
+
+	------- Mode display words -------------
+	type D7S_WORD is array(0 to 3) of D7S_VALUE;
+	
+	constant CONF_WORD : D7S_WORD :=(
+		"1000110", -- c
+		"0100011", -- o
+		"0101011", -- n
+		"0001110"  -- F
+		);
+	constant TEST_WORD : D7S_WORD :=(
+		"0000111", -- t
+		"0000110", -- E
+		"0010010", -- S
+		"0000111"  -- t
+		);
+		
 	signal s_global_reset   : std_logic;
 	
 	-- SystemFSM signals
@@ -62,6 +96,27 @@ begin
 			timeVal => s_timeVal_system,
 			timeExp => s_timeExp_system
 		);
+	
+	HEX7 <= s_d7s_target_score(1) when s_system_state = "00" else (others => '1');	
+	HEX6 <= s_d7s_target_score(0) when s_system_state = "00" else (others => '1');
+	HEX5 <= s_d7s_round_count(1) when s_system_state = "01" else (others => '1');
+	HEX4 <= s_d7s_round_count(0) when s_system_state = "01" else (others => '1');
+	
+	HEX3 <= CONF_WORD(3) when s_system_state = "00" else
+			  TEST_WORD(3) when s_system_state = "01" else
+			  (others => '1');
+			  
+	HEX2 <= CONF_WORD(2) when s_system_state = "00" else
+			  TEST_WORD(2) when s_system_state = "01" else
+			  (others => '1');
+			  
+	HEX1 <= CONF_WORD(1) when s_system_state = "00" else
+			  TEST_WORD(1) when s_system_state = "01" else
+			  (others => '1');
+			  
+	HEX0 <= CONF_WORD(0) when s_system_state = "00" else
+			  TEST_WORD(0) when s_system_state = "01" else
+			  (others => '1');		
 		
 	LEDR <= s_system_state;
 	LEDG <= (others => '1') when s_system_state = "10" else (others => '0');

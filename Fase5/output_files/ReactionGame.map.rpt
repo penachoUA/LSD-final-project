@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ReactionGame
-Wed May 29 17:26:15 2024
+Thu May 30 23:43:24 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -47,16 +47,16 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed May 29 17:26:15 2024          ;
+; Analysis & Synthesis Status        ; Successful - Thu May 30 23:43:24 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; ReactionGame                                   ;
 ; Top-level Entity Name              ; ReactionGame_Demo                              ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 156                                            ;
-;     Total combinational functions  ; 154                                            ;
+; Total logic elements               ; 157                                            ;
+;     Total combinational functions  ; 155                                            ;
 ;     Dedicated logic registers      ; 64                                             ;
 ; Total registers                    ; 64                                             ;
-; Total pins                         ; 14                                             ;
+; Total pins                         ; 70                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
 ; Embedded Multiplier 9-bit elements ; 0                                              ;
@@ -163,8 +163,7 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processors 3-4         ;   0.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -185,30 +184,30 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 156            ;
+; Estimated Total logic elements              ; 157            ;
 ;                                             ;                ;
-; Total combinational functions               ; 154            ;
+; Total combinational functions               ; 155            ;
 ; Logic element usage by number of LUT inputs ;                ;
 ;     -- 4 input functions                    ; 38             ;
 ;     -- 3 input functions                    ; 41             ;
-;     -- <=2 input functions                  ; 75             ;
+;     -- <=2 input functions                  ; 76             ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 101            ;
+;     -- normal mode                          ; 102            ;
 ;     -- arithmetic mode                      ; 53             ;
 ;                                             ;                ;
 ; Total registers                             ; 64             ;
 ;     -- Dedicated logic registers            ; 64             ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
-; I/O pins                                    ; 14             ;
+; I/O pins                                    ; 70             ;
 ;                                             ;                ;
 ; Embedded Multiplier 9-bit elements          ; 0              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
 ; Maximum fan-out                             ; 64             ;
-; Total fan-out                               ; 626            ;
-; Average fan-out                             ; 2.54           ;
+; Total fan-out                               ; 706            ;
+; Average fan-out                             ; 1.97           ;
 +---------------------------------------------+----------------+
 
 
@@ -217,7 +216,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+-------------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                      ; Entity Name       ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+-------------------+--------------+
-; |ReactionGame_Demo         ; 154 (0)             ; 64 (1)                    ; 0           ; 0            ; 0       ; 0         ; 14   ; 0            ; |ReactionGame_Demo                       ; ReactionGame_Demo ; work         ;
+; |ReactionGame_Demo         ; 155 (1)             ; 64 (1)                    ; 0           ; 0            ; 0       ; 0         ; 70   ; 0            ; |ReactionGame_Demo                       ; ReactionGame_Demo ; work         ;
 ;    |Debouncer:debounce2|   ; 68 (68)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|Debouncer:debounce2   ; Debouncer         ; work         ;
 ;    |SystemFSM:systemFSM|   ; 9 (9)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|SystemFSM:systemFSM   ; SystemFSM         ; work         ;
 ;    |TimerAuxFSM:timer_fsm| ; 77 (77)             ; 33 (33)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|TimerAuxFSM:timer_fsm ; TimerAuxFSM       ; work         ;
@@ -299,7 +298,7 @@ Encoding Type:  One-Hot
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
 ; 5:1                ; 23 bits   ; 69 LEs        ; 46 LEs               ; 23 LEs                 ; Yes        ; |ReactionGame_Demo|Debouncer:debounce2|s_debounceCnt[22] ;
-; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|TimerAuxFSM:timer_fsm|s_counter[25]   ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|TimerAuxFSM:timer_fsm|s_counter[24]   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
 
 
@@ -321,22 +320,23 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 14                          ;
+; boundary_port         ; 70                          ;
 ; cycloneiii_ff         ; 64                          ;
 ;     ENA               ; 50                          ;
 ;     SCLR              ; 2                           ;
 ;     plain             ; 12                          ;
-; cycloneiii_lcell_comb ; 154                         ;
+; cycloneiii_lcell_comb ; 157                         ;
 ;     arith             ; 53                          ;
 ;         2 data inputs ; 53                          ;
-;     normal            ; 101                         ;
-;         1 data inputs ; 3                           ;
-;         2 data inputs ; 19                          ;
+;     normal            ; 104                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 4                           ;
+;         2 data inputs ; 20                          ;
 ;         3 data inputs ; 41                          ;
 ;         4 data inputs ; 38                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 6.00                        ;
-; Average LUT depth     ; 4.11                        ;
+; Average LUT depth     ; 4.08                        ;
 +-----------------------+-----------------------------+
 
 
@@ -355,7 +355,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Wed May 29 17:26:08 2024
+    Info: Processing started: Thu May 30 23:43:14 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ReactionGame -c ReactionGame
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -366,26 +366,65 @@ Info (12021): Found 2 design units, including 1 entities, in source file TimerAu
     Info (12022): Found design unit 1: TimerAuxFSM-Behavioral File: /home/penacho/LSD/LSD-final-project/Fase5/TimerAuxFSM.vhd Line: 13
     Info (12023): Found entity 1: TimerAuxFSM File: /home/penacho/LSD/LSD-final-project/Fase5/TimerAuxFSM.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file ReactionGame_Demo.vhd
-    Info (12022): Found design unit 1: ReactionGame_Demo-Structural File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 14
+    Info (12022): Found design unit 1: ReactionGame_Demo-Structural File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 22
     Info (12023): Found entity 1: ReactionGame_Demo File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file Debouncer.vhd
     Info (12022): Found design unit 1: Debouncer-Behavioral File: /home/penacho/LSD/LSD-final-project/Fase5/Debouncer.vhd Line: 15
     Info (12023): Found entity 1: Debouncer File: /home/penacho/LSD/LSD-final-project/Fase5/Debouncer.vhd Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file top_level_schematic.bdf
+    Info (12023): Found entity 1: top_level_schematic
 Info (12127): Elaborating entity "ReactionGame_Demo" for the top level hierarchy
-Info (12129): Elaborating entity "Debouncer" using architecture "A:behavioral" for hierarchy "Debouncer:debounce2" File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 32
-Info (12129): Elaborating entity "SystemFSM" using architecture "A:behavioral" for hierarchy "SystemFSM:systemFSM" File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 45
-Info (12129): Elaborating entity "TimerAuxFSM" using architecture "A:behavioral" for hierarchy "TimerAuxFSM:timer_fsm" File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 57
+Warning (10541): VHDL Signal Declaration warning at ReactionGame_Demo.vhd(27): used implicit default value for signal "s_d7s_target_score" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 27
+Warning (10541): VHDL Signal Declaration warning at ReactionGame_Demo.vhd(28): used implicit default value for signal "s_d7s_round_count" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 28
+Info (12129): Elaborating entity "Debouncer" using architecture "A:behavioral" for hierarchy "Debouncer:debounce2" File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 66
+Info (12129): Elaborating entity "SystemFSM" using architecture "A:behavioral" for hierarchy "SystemFSM:systemFSM" File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 79
+Info (12129): Elaborating entity "TimerAuxFSM" using architecture "A:behavioral" for hierarchy "TimerAuxFSM:timer_fsm" File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 91
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX7[0]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 11
+    Warning (13410): Pin "HEX7[1]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 11
+    Warning (13410): Pin "HEX7[2]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 11
+    Warning (13410): Pin "HEX7[3]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 11
+    Warning (13410): Pin "HEX7[4]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 11
+    Warning (13410): Pin "HEX7[5]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 11
+    Warning (13410): Pin "HEX7[6]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 11
+    Warning (13410): Pin "HEX6[0]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 12
+    Warning (13410): Pin "HEX6[1]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 12
+    Warning (13410): Pin "HEX6[2]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 12
+    Warning (13410): Pin "HEX6[3]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 12
+    Warning (13410): Pin "HEX6[4]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 12
+    Warning (13410): Pin "HEX6[5]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 12
+    Warning (13410): Pin "HEX6[6]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 12
+    Warning (13410): Pin "HEX5[0]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 13
+    Warning (13410): Pin "HEX5[1]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 13
+    Warning (13410): Pin "HEX5[2]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 13
+    Warning (13410): Pin "HEX5[3]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 13
+    Warning (13410): Pin "HEX5[4]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 13
+    Warning (13410): Pin "HEX5[5]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 13
+    Warning (13410): Pin "HEX5[6]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 13
+    Warning (13410): Pin "HEX4[0]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 14
+    Warning (13410): Pin "HEX4[1]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 14
+    Warning (13410): Pin "HEX4[2]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 14
+    Warning (13410): Pin "HEX4[3]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 14
+    Warning (13410): Pin "HEX4[4]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 14
+    Warning (13410): Pin "HEX4[5]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 14
+    Warning (13410): Pin "HEX4[6]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 14
+    Warning (13410): Pin "HEX3[1]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 15
+    Warning (13410): Pin "HEX3[2]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 15
+    Warning (13410): Pin "HEX2[1]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 16
+    Warning (13410): Pin "HEX1[1]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 17
+    Warning (13410): Pin "HEX0[1]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 18
+    Warning (13410): Pin "HEX0[2]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 18
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 170 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 227 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
-    Info (21059): Implemented 10 output pins
-    Info (21061): Implemented 156 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 465 megabytes
-    Info: Processing ended: Wed May 29 17:26:15 2024
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:16
+    Info (21059): Implemented 66 output pins
+    Info (21061): Implemented 157 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 38 warnings
+    Info: Peak virtual memory: 443 megabytes
+    Info: Processing ended: Thu May 30 23:43:24 2024
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:23
 
 
