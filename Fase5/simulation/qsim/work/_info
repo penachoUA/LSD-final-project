@@ -1,0 +1,166 @@
+m255
+K4
+z2
+Z0 !s99 nomlopt
+R0
+!s11e vcom 2021.2 2021.04, Apr 14 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 d/home/penacho/LSD/LSD-final-project/Fase5/simulation/qsim
+T_opt
+!s110 1717192253
+V6R[UMgd3UMNMFCbBnC8a;2
+04 29 22 work configurationunit_vhd_vec_tst configurationunit_arch 1
+=1-000ae431a4f1-665a463c-e3bdf-a2b3
+!s124 OEM10U3 
+o-quiet -auto_acc_if_foreign -work work -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim +acc
+tCvgOpt 0
+n@_opt
+OL;O;2021.2;73
+Econfigurationunit
+Z2 w1717192252
+Z3 DPx10 cycloneive 20 cycloneive_atom_pack 0 22 gn]m8U<PzXZH32IDQ4:hj3
+Z4 DPx10 cycloneive 21 cycloneive_components 0 22 cSe5`^NYM;IRV3WNS^Q7a2
+Z5 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
+Z6 DPx6 altera 11 dffeas_pack 0 22 ^oS01<AhH<ZbI@CNcPk2V0
+Z7 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
+Z8 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z9 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+Z10 DPx6 altera 28 altera_primitives_components 0 22 Y19K[Kjfb73Y`YfbP9Kf30
+!i122 2
+R1
+Z11 8ReactionGame.vho
+Z12 FReactionGame.vho
+l0
+L80 1
+V7]gBC1K00gRP6j4VZ4B^X3
+!s100 ]_RE0@ZY2PPjTlO;jjX8o3
+Z13 OL;C;2021.2;73
+32
+Z14 !s110 1717192252
+!i10b 1
+Z15 !s108 1717192252.000000
+Z16 !s90 -work|work|ReactionGame.vho|
+Z17 !s107 ReactionGame.vho|
+!i113 0
+Z18 o-work work
+Z19 tExplicit 1 CvgOpt 0
+Astructure
+R3
+R4
+R5
+R6
+R7
+R8
+R9
+R10
+DEx4 work 17 configurationunit 0 22 7]gBC1K00gRP6j4VZ4B^X3
+!i122 2
+l395
+L144 3704
+VZOjXP;GjDe9o>PFH7?`Km1
+!s100 0NH6SJC^GdSoVeoI[5Z=d1
+R13
+32
+R14
+!i10b 1
+R15
+R16
+R17
+!i113 0
+R18
+R19
+Econfigurationunit_vhd_vec_tst
+Z20 w1717192251
+R8
+R9
+!i122 3
+R1
+Z21 8ConfigurationUnit.vwf.vht
+Z22 FConfigurationUnit.vwf.vht
+l0
+L32 1
+VJ0BdF[>L7oM3Em@4n?_ZI1
+!s100 >W56Nd>9d<V;moJ_HUbGa1
+R13
+32
+R14
+!i10b 1
+R15
+Z23 !s90 -work|work|ConfigurationUnit.vwf.vht|
+Z24 !s107 ConfigurationUnit.vwf.vht|
+!i113 0
+R18
+R19
+Aconfigurationunit_arch
+R8
+R9
+DEx4 work 29 configurationunit_vhd_vec_tst 0 22 J0BdF[>L7oM3Em@4n?_ZI1
+!i122 3
+l61
+L34 84
+VHEdQIfUL@5^9Rk9JZE9]:2
+!s100 ;_H8Tm=izfA?h`RiQUKzZ1
+R13
+32
+R14
+!i10b 1
+R15
+R23
+R24
+!i113 0
+R18
+R19
+Ehard_block
+R2
+R5
+R3
+R7
+R8
+R9
+R4
+!i122 2
+R1
+R11
+R12
+l0
+L35 1
+VB]0;STalBkCB1_B4BXQDW2
+!s100 >mXi5[`cD`bFC`UBKA<om3
+R13
+32
+R14
+!i10b 1
+R15
+R16
+R17
+!i113 0
+R18
+R19
+Astructure
+R5
+R3
+R7
+R8
+R9
+R4
+DEx4 work 10 hard_block 0 22 B]0;STalBkCB1_B4BXQDW2
+!i122 2
+l65
+L51 20
+Via>5o7W??azG@W@@eFOTF0
+!s100 [5;Wd8QGQ>@2NGoJ1I]Y43
+R13
+32
+R14
+!i10b 1
+R15
+R16
+R17
+!i113 0
+R18
+R19

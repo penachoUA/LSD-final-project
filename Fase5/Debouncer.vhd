@@ -3,12 +3,12 @@ use IEEE.STD_LOGIC_1164.all;
 use IEEE.NUMERIC_STD.all;
 
 entity Debouncer is
-     generic(   kHzClkFreq : positive := 50_000;
+     generic(   kHzClkFreq     : positive := 50_000;
                 mSecMinInWidth : positive := 100;
-                inPolarity : std_logic := '0';
-                outPolarity : std_logic := '1');
-     port(  refClk : in std_logic;
-            dirtyIn : in std_logic;
+                inPolarity     : std_logic := '0';
+                outPolarity    : std_logic := '1');
+     port(  refClk    : in std_logic;
+            dirtyIn   : in std_logic;
             pulsedOut : out std_logic);
 end Debouncer;
 

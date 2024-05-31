@@ -1,0 +1,161 @@
+m255
+K4
+z2
+!s11e vcom 2021.2 2021.04, Apr 14 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/penacho/LSD/LSD-final-project/Fase5/simulation/questa
+Econfigurationunit
+w1717191010
+Z1 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z2 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 2
+R0
+8/home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd
+F/home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd
+l0
+L4 1
+V5m<2QHc?zNgSn@]k[VKg43
+!s100 kIB_EfA>bcOEL:W:_K6MF1
+Z3 OL;C;2021.2;73
+31
+Z4 !s110 1717191863
+!i10b 1
+Z5 !s108 1717191863.000000
+!s90 -reportprogress|300|-93|-work|work|/home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd|
+!s107 /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd|
+!i113 0
+Z6 o-93 -work work
+Z7 tExplicit 1 CvgOpt 0
+Econfigurationunit_tb
+Z8 w1717191580
+R1
+R2
+!i122 3
+R0
+Z9 8/home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit_tb.vhd
+Z10 F/home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit_tb.vhd
+l0
+L4 1
+VHi8DTz7M9LN86kJmPO2@E0
+!s100 na_i6=VVee;kZFHJ]_DIT0
+R3
+32
+Z11 !s110 1717191869
+!i10b 1
+Z12 !s108 1717191869.000000
+Z13 !s90 -reportprogress|300|-work|work|/home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit_tb.vhd|
+!s107 /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit_tb.vhd|
+!i113 0
+Z14 o-work work
+R7
+Astimulus
+DEx4 work 17 configurationunit 0 22 5m<2QHc?zNgSn@]k[VKg43
+R1
+R2
+DEx4 work 20 configurationunit_tb 0 22 Hi8DTz7M9LN86kJmPO2@E0
+!i122 3
+l17
+L7 51
+VLDh0AEGcaN7kYJJR0khKD1
+!s100 J<2<ZNIg;QLhc>B8<mz<U3
+R3
+32
+R11
+!i10b 1
+R12
+R13
+Z15 !s107 /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit_tb.vhd|
+!i113 0
+R14
+R7
+Ecounternbits
+Z16 w1716136096
+Z17 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+R1
+R2
+!i122 1
+R0
+Z18 8/home/penacho/LSD/LSD-final-project/Fase5/CounterNBits.vhd
+Z19 F/home/penacho/LSD/LSD-final-project/Fase5/CounterNBits.vhd
+l0
+L5 1
+V8f=ONTm5aTzf^o1VAJgSl1
+!s100 QHem:VbIFHR:FMDJj?IAi0
+R3
+31
+R4
+!i10b 1
+R5
+Z20 !s90 -reportprogress|300|-93|-work|work|/home/penacho/LSD/LSD-final-project/Fase5/CounterNBits.vhd|
+Z21 !s107 /home/penacho/LSD/LSD-final-project/Fase5/CounterNBits.vhd|
+!i113 0
+R6
+R7
+Abehavioral
+R17
+R1
+R2
+DEx4 work 12 counternbits 0 22 8f=ONTm5aTzf^o1VAJgSl1
+!i122 1
+l24
+L21 28
+V@IFRbT2U^WN3Kag46ggAV1
+!s100 4NHO;V`i=jAM@W4G_eFZ_3
+R3
+31
+R4
+!i10b 1
+R5
+R20
+R21
+!i113 0
+R6
+R7
+Edebouncer
+Z22 w1716999679
+R17
+R1
+R2
+!i122 0
+R0
+Z23 8/home/penacho/LSD/LSD-final-project/Fase5/Debouncer.vhd
+Z24 F/home/penacho/LSD/LSD-final-project/Fase5/Debouncer.vhd
+l0
+L5 1
+Vj`9OzPn5jC@i@9zRe?n?P2
+!s100 cU4Y<P<onKFHXW4<]ZnCm1
+R3
+31
+R4
+!i10b 1
+R5
+Z25 !s90 -reportprogress|300|-93|-work|work|/home/penacho/LSD/LSD-final-project/Fase5/Debouncer.vhd|
+Z26 !s107 /home/penacho/LSD/LSD-final-project/Fase5/Debouncer.vhd|
+!i113 0
+R6
+R7
+Abehavioral
+R17
+R1
+R2
+DEx4 work 9 debouncer 0 22 j`9OzPn5jC@i@9zRe?n?P2
+!i122 0
+l20
+L15 47
+VIM>[:WVW:Te]ERHK`RSA30
+!s100 lI2H6leMP7FgX2ImClS740
+R3
+31
+R4
+!i10b 1
+R5
+R25
+R26
+!i113 0
+R6
+R7

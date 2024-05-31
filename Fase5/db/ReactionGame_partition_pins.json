@@ -36,11 +36,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[0]",
+					"name" : "LEDG[8]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[1]",
+					"name" : "LEDR[0]",
 					"strict" : false
 				},
 				{
@@ -56,19 +56,67 @@
 					"strict" : false
 				},
 				{
+					"name" : "LEDR[8]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX7[0]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX7[1]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX7[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX7[3]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX7[4]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX7[5]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX7[6]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX6[0]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX6[1]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX6[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX6[3]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX6[4]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX6[5]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX6[6]",
+					"strict" : false
+				},
+				{
 					"name" : "HEX3[0]",
-					"strict" : false
-				},
-				{
-					"name" : "HEX3[3]",
-					"strict" : false
-				},
-				{
-					"name" : "HEX3[4]",
-					"strict" : false
-				},
-				{
-					"name" : "HEX3[5]",
 					"strict" : false
 				},
 				{
@@ -84,27 +132,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "HEX2[3]",
-					"strict" : false
-				},
-				{
-					"name" : "HEX2[4]",
-					"strict" : false
-				},
-				{
 					"name" : "HEX2[5]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX2[6]",
-					"strict" : false
-				},
-				{
 					"name" : "HEX1[0]",
-					"strict" : false
-				},
-				{
-					"name" : "HEX1[2]",
 					"strict" : false
 				},
 				{
@@ -120,27 +152,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "HEX1[6]",
-					"strict" : false
-				},
-				{
 					"name" : "HEX0[0]",
 					"strict" : false
 				},
 				{
 					"name" : "HEX0[3]",
-					"strict" : false
-				},
-				{
-					"name" : "HEX0[4]",
-					"strict" : false
-				},
-				{
-					"name" : "HEX0[5]",
-					"strict" : false
-				},
-				{
-					"name" : "HEX0[6]",
 					"strict" : false
 				},
 				{

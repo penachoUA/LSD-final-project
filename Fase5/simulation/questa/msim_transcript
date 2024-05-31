@@ -1,0 +1,100 @@
+# //  Questa Intel Starter FPGA Edition-64
+# //  Version 2021.2 linux_x86_64 Apr 14 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# do ReactionGame_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Questa Intel Starter FPGA Edition-64 vmap 2021.2 Lib Mapping Utility 2021.04 Apr 14 2021
+# vmap work rtl_work 
+# Copying /home/penacho/.intel_fpga_lite/22.1.2/questa_fse/linux_x86_64/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase5/Debouncer.vhd}
+# Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 22:44:23 on May 31,2024
+# vcom -reportprogress 300 -93 -work work /home/penacho/LSD/LSD-final-project/Fase5/Debouncer.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity Debouncer
+# -- Compiling architecture Behavioral of Debouncer
+# End time: 22:44:23 on May 31,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase5/CounterNBits.vhd}
+# Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 22:44:23 on May 31,2024
+# vcom -reportprogress 300 -93 -work work /home/penacho/LSD/LSD-final-project/Fase5/CounterNBits.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity CounterNBits
+# -- Compiling architecture Behavioral of CounterNBits
+# End time: 22:44:23 on May 31,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd}
+# Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 22:44:23 on May 31,2024
+# vcom -reportprogress 300 -93 -work work /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ConfigurationUnit
+# -- Compiling architecture Structural of ConfigurationUnit
+# ** Error: (vcom-11) Could not find work.pulsegen.
+# ** Error (suppressible): /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd(37): (vcom-1195) Cannot find expanded name "work.PulseGen".
+# ** Error: /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd(37): Unknown expanded name.
+# -- Loading package NUMERIC_STD
+# -- Loading entity Debouncer
+# -- Loading entity CounterNBits
+# ** Error: /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd(91): (vcom-1436) Actual expression (infix expression) of formal "enable1" is not globally static.
+# ** Note: /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd(97): VHDL Compiler exiting
+# End time: 22:44:23 on May 31,2024, Elapsed time: 0:00:00
+# Errors: 4, Warnings: 0
+# ** Error: /home/penacho/.intel_fpga_lite/22.1.2/questa_fse/linux_x86_64/vcom failed.
+# Error in macro ./ReactionGame_run_msim_rtl_vhdl.do line 10
+# /home/penacho/.intel_fpga_lite/22.1.2/questa_fse/linux_x86_64/vcom failed.
+#     while executing
+# "vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd}"
+# 
+# stdin: <EOF>
+vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit_tb.vhd
+# Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 22:44:29 on May 31,2024
+# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit_tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ConfigurationUnit_tb
+# -- Compiling architecture Stimulus of ConfigurationUnit_tb
+# -- Loading entity ConfigurationUnit
+# End time: 22:44:29 on May 31,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -i -l msim_transcript work.configurationunit_tb(stimulus)
+# vsim -i -l msim_transcript work.configurationunit_tb(stimulus) 
+# Start time: 22:44:40 on May 31,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: (vopt-11) Could not find work.configurationunit(structural).
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=1, Warnings=0.
+# Error loading design
+# End time: 22:44:41 on May 31,2024, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0
+# A time value could not be extracted from the current line
+# A time value could not be extracted from the current line
+# A time value could not be extracted from the current line

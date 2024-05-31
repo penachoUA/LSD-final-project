@@ -11,10 +11,8 @@ entity TimerAuxFSM is
 end TimerAuxFSM;
 
 architecture Behavioral of TimerAuxFSM is
-
 	signal s_counter : unsigned(31 downto 0) := (others => '1');
 	signal s_cntZero : std_logic := '0';
-
 begin
 	process(clk)
 	begin

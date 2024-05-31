@@ -6,8 +6,8 @@ entity ReactionGame_Demo is
 		CLOCK_50 : in  std_logic;
 		SW       : in  std_logic_vector(17 downto 0);
 		KEY      : in  std_logic_vector(3 downto 0);
-		LEDG     : out std_logic_vector(7 downto 0);
-		LEDR     : out std_logic_vector(4 downto 0);
+		LEDG     : out std_logic_vector(8 downto 0);
+		LEDR     : out std_logic_vector(8 downto 0);
 		HEX7     : out std_logic_vector(6 downto 0);
 		HEX6     : out std_logic_vector(6 downto 0);
 		HEX5     : out std_logic_vector(6 downto 0);
@@ -56,6 +56,7 @@ architecture Structural of ReactionGame_Demo is
 		
 	-- Reset signals
 	signal s_global_reset   : std_logic;
+	signal s_timer_reset    : std_logic;
 	signal s_pause          : std_logic;
 	
 	-- TimerAuxFSM signals
@@ -83,6 +84,17 @@ architecture Structural of ReactionGame_Demo is
 	signal s_draw         : std_logic;
 	signal s_turn_state   : std_logic_vector(2 downto 0);
 	
+	-- ConfigurationUnit signals
+	signal s_timeExp_press  : std_logic;
+	signal s_newTime_press  : std_logic;
+	signal s_timeVal_press  : std_logic_vector(31 downto 0);
+	signal s_press_reset    : std_logic;
+	signal s_targetScore    : std_logic_vector(5 downto 0);
+	signal s_longPress : std_logic;
+	
+	-- Blinkers
+	signal s_1hz_blink  : std_logic;
+	
 	signal s_randTime     : std_logic_vector(31 downto 0);
 begin
 	sync_inputs: process(CLOCK_50)
@@ -94,6 +106,13 @@ begin
 			s_clickB       <= not KEY(3);
 		end if;
 	 end process;
+		
+	one_sec_blinker: entity work.BlinkGen(Behavioral)
+		generic map(STEPS => 50_000_000)
+		port map(
+			clk   => CLOCK_50,
+			blink => s_1hz_blink
+	);
 
 	debounce2 : entity work.Debouncer(Behavioral)
      generic map(
@@ -113,7 +132,7 @@ begin
 			clk           => CLOCK_50,
 			reset         => s_global_reset,
 			endConf       => s_endConf,
-			victory       => not KEY(1),
+			victory       => '0',
 			timeExp       => s_timeExp_system,
 			newTime       => s_newTime_system,
 			timeVal       => s_timeVal_system,
@@ -123,12 +142,12 @@ begin
 	timer_fsm: entity work.TimerAuxFSM(Behavioral)
 		port map(
 			clk     => not CLOCK_50,
-			reset   => s_global_reset,
+			reset   => s_timer_reset,
 			newTime => s_newTime,
 			timeVal => s_timeVal,
 			timeExp => s_timeExp
 		);
-	
+		
 	rand_counter : entity work.CounterNBits(Behavioral)
 		generic map(
 			N	 => 32,
@@ -161,12 +180,42 @@ begin
 			state    => s_turn_state
 		);
 		
+	conf_unit : entity work.ConfigurationUnit(Structural)
+		port map(
+			clk           => CLOCK_50,
+			reset         => s_global_reset,
+			press         => not KEY(1),
+			timeExp       => s_timeExp_press,
+			newTime       => s_newTime_press,
+			timeVal       => s_timeVal_press,
+			targetScore   => s_targetScore,
+			resetTimer    => s_press_reset,
+			longPress     => s_longPress
+		);
+		
+	LEDG(8) <= s_newTime_press;
+	LEDR(8) <= s_press_reset;
+	
+		
+	target_score_display: entity work.ScoreDisplay(Structural)
+		port map(
+			score  => '0' & s_targetScore,
+			hexTen => s_d7s_target_score(0),
+			hexUni => s_d7s_target_score(1)
+		);
+
 	-- timerAuxFSM multiplexing and demultiplexing
 	timer_signals_proc: process(CLOCK_50)
 		begin
 			if rising_edge(CLOCK_50) then
+				s_timer_reset <= s_global_reset;
+				
 				case s_system_state is
 					when "00" =>
+						s_timer_reset   <= s_global_reset or s_press_reset;
+						s_timeExp_press <= s_timeExp;
+						s_timeVal       <= s_timeVal_press;
+						s_newTime       <= s_newTime_press;
 					when "01" =>
 						s_timeExp_turn <= s_timeExp;
 						s_timeVal      <= s_timeVal_turn;
@@ -176,6 +225,7 @@ begin
 						s_timeVal        <= s_timeVal_system;
 						s_newTime        <= s_newTime_system;
 					when others =>
+						s_timeExp_press  <= '0';
 						s_timeExp_system <= '0';
 						s_timeExp_turn   <= '0';
 						s_timeVal        <= (others => '0');
@@ -188,10 +238,17 @@ begin
 	s_greenB <= (others => '1') when (s_ledOn = '1' and s_turn_state /= "100") else (others => '0');
 	
 	---------- Board outputs ---------
-	HEX7 <= s_d7s_target_score(1) when s_system_state = "00" else (others => '1');	
-	HEX6 <= s_d7s_target_score(0) when s_system_state = "00" else (others => '1');
-	HEX5 <= s_d7s_round_count(1) when s_system_state = "01" else (others => '1');
-	HEX4 <= s_d7s_round_count(0) when s_system_state = "01" else (others => '1');
+	
+
+	HEX7 <= s_d7s_target_score(0) when (s_system_state = "00" and (s_1hz_blink = '1' or s_longPress = '1')) else 
+			  (others => '1'); -- This condition is a bit long but it provides conditional blinking only for slow
+			                   -- increment, it doesn't look good when increment is fast
+			  
+	HEX6 <= s_d7s_target_score(1) when (s_system_state = "00" and (s_1hz_blink = '1' or s_longPress = '1')) else
+	        (others => '1');
+			  
+	HEX5 <= s_d7s_round_count(0) when s_system_state = "01" else (others => '1');
+	HEX4 <= s_d7s_round_count(1) when s_system_state = "01" else (others => '1');
 	
 	HEX3 <= CONF_WORD(0) when s_system_state = "00" else
 			  TEST_WORD(0) when s_system_state = "01" else
