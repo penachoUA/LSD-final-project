@@ -102,20 +102,20 @@ begin
 	HEX5 <= s_d7s_round_count(1) when s_system_state = "01" else (others => '1');
 	HEX4 <= s_d7s_round_count(0) when s_system_state = "01" else (others => '1');
 	
-	HEX3 <= CONF_WORD(3) when s_system_state = "00" else
-			  TEST_WORD(3) when s_system_state = "01" else
+	HEX3 <= CONF_WORD(0) when s_system_state = "00" else
+			  TEST_WORD(0) when s_system_state = "01" else
 			  (others => '1');
 			  
-	HEX2 <= CONF_WORD(2) when s_system_state = "00" else
-			  TEST_WORD(2) when s_system_state = "01" else
-			  (others => '1');
-			  
-	HEX1 <= CONF_WORD(1) when s_system_state = "00" else
+	HEX2 <= CONF_WORD(1) when s_system_state = "00" else
 			  TEST_WORD(1) when s_system_state = "01" else
 			  (others => '1');
 			  
-	HEX0 <= CONF_WORD(0) when s_system_state = "00" else
-			  TEST_WORD(0) when s_system_state = "01" else
+	HEX1 <= CONF_WORD(2) when s_system_state = "00" else
+			  TEST_WORD(2) when s_system_state = "01" else
+			  (others => '1');
+			  
+	HEX0 <= CONF_WORD(3) when s_system_state = "00" else
+			  TEST_WORD(3) when s_system_state = "01" else
 			  (others => '1');		
 		
 	LEDR <= s_system_state;

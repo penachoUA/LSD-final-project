@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ReactionGame
-Wed May 29 16:41:25 2024
+Fri May 31 09:27:47 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -13,23 +13,29 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Inverted Register Statistics
- 10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Parameter Settings for User Entity Instance: BlinkGen:one_sec_blinker
- 12. Parameter Settings for User Entity Instance: PulseGen:pulse10hz_gen
- 13. Parameter Settings for User Entity Instance: Debouncer:debounce1
- 14. Parameter Settings for User Entity Instance: TargetScoreSetter:target_setter|CounterNBits:target_counter
- 15. Parameter Settings for Inferred Entity Instance: ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Mod0
- 16. Parameter Settings for Inferred Entity Instance: ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Div0
- 17. Port Connectivity Checks: "ScoreDisplay:target_display|Bin7SegDecoder:uni_7seg"
- 18. Port Connectivity Checks: "ScoreDisplay:target_display|Bin7SegDecoder:ten_7seg"
- 19. Port Connectivity Checks: "ScoreDisplay:target_display"
- 20. Port Connectivity Checks: "TargetScoreSetter:target_setter|CounterNBits:target_counter"
- 21. Port Connectivity Checks: "TimerAuxFSM:timer_fsm"
- 22. Post-Synthesis Netlist Statistics for Top Partition
- 23. Elapsed Time Per Partition
- 24. Analysis & Synthesis Messages
+  8. State Machine - |ReactionGame_Demo|ReactionGame:reaction_game|SingleTurnFSM:turn_fsm|pState
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: Debouncer:debounce0
+ 14. Parameter Settings for User Entity Instance: Debouncer:debounce3
+ 15. Parameter Settings for User Entity Instance: ReactionGame:reaction_game|CounterNBits:rand_counter
+ 16. Parameter Settings for Inferred Entity Instance: ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0
+ 17. Parameter Settings for Inferred Entity Instance: ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0
+ 18. Parameter Settings for Inferred Entity Instance: ScoreUnit:scoreA|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0
+ 19. Parameter Settings for Inferred Entity Instance: ScoreUnit:scoreA|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0
+ 20. Parameter Settings for Inferred Entity Instance: ScoreUnit:turn_count_display|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0
+ 21. Parameter Settings for Inferred Entity Instance: ScoreUnit:turn_count_display|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0
+ 22. Port Connectivity Checks: "ScoreUnit:turn_count_display"
+ 23. Port Connectivity Checks: "ScoreUnit:scoreB"
+ 24. Port Connectivity Checks: "ScoreUnit:scoreA|ScoreDisplay:display|Bin7SegDecoder:uni_7seg"
+ 25. Port Connectivity Checks: "ScoreUnit:scoreA|ScoreDisplay:display|Bin7SegDecoder:ten_7seg"
+ 26. Port Connectivity Checks: "ScoreUnit:scoreA"
+ 27. Port Connectivity Checks: "ReactionGame:reaction_game|CounterNBits:rand_counter"
+ 28. Post-Synthesis Netlist Statistics for Top Partition
+ 29. Elapsed Time Per Partition
+ 30. Analysis & Synthesis Messages
 
 
 
@@ -56,16 +62,16 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed May 29 16:41:25 2024          ;
+; Analysis & Synthesis Status        ; Successful - Fri May 31 09:27:47 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; ReactionGame                                   ;
-; Top-level Entity Name              ; ConfController                                 ;
+; Top-level Entity Name              ; ReactionGame_Demo                              ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 324                                            ;
-;     Total combinational functions  ; 321                                            ;
-;     Dedicated logic registers      ; 114                                            ;
-; Total registers                    ; 114                                            ;
-; Total pins                         ; 45                                             ;
+; Total logic elements               ; 711                                            ;
+;     Total combinational functions  ; 708                                            ;
+;     Dedicated logic registers      ; 148                                            ;
+; Total registers                    ; 148                                            ;
+; Total pins                         ; 59                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
 ; Embedded Multiplier 9-bit elements ; 0                                              ;
@@ -79,7 +85,7 @@ https://fpgasoftware.intel.com/eula.
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                           ; EP4CE115F29C7      ;                    ;
-; Top-level entity name                                            ; ConfController     ; ReactionGame       ;
+; Top-level entity name                                            ; ReactionGame_Demo  ; ReactionGame       ;
 ; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
@@ -172,7 +178,8 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -181,16 +188,17 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                              ; Library ;
 +----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------+---------+
+; SingleTurnFSM.vhd                ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/SingleTurnFSM.vhd                               ;         ;
 ; CounterNBits.vhd                 ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/CounterNBits.vhd                                ;         ;
+; ReactionGame.vhd                 ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/ReactionGame.vhd                                ;         ;
 ; TimerAuxFSM.vhd                  ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/TimerAuxFSM.vhd                                 ;         ;
 ; Bin2BCD.vhd                      ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/Bin2BCD.vhd                                     ;         ;
+; ReactionGame_Demo.vhd            ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/ReactionGame_Demo.vhd                           ;         ;
 ; Debouncer.vhd                    ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/Debouncer.vhd                                   ;         ;
 ; Bin7SegDecoder.vhd               ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/Bin7SegDecoder.vhd                              ;         ;
+; ScoreCounter.vhd                 ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/ScoreCounter.vhd                                ;         ;
 ; ScoreDisplay.vhd                 ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/ScoreDisplay.vhd                                ;         ;
-; TargetScoreSetter.vhd            ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/TargetScoreSetter.vhd                           ;         ;
-; ConfController.vhd               ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd                              ;         ;
-; BlinkGen.vhd                     ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/BlinkGen.vhd                                    ;         ;
-; PulseGen.vhd                     ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/PulseGen.vhd                                    ;         ;
+; ScoreUnit.vhd                    ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase4/ScoreUnit.vhd                                   ;         ;
 ; lpm_divide.tdf                   ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
 ; abs_divider.inc                  ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
 ; sign_div_unsign.inc              ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
@@ -211,59 +219,114 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 324            ;
+; Estimated Total logic elements              ; 711            ;
 ;                                             ;                ;
-; Total combinational functions               ; 321            ;
+; Total combinational functions               ; 708            ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 116            ;
-;     -- 3 input functions                    ; 35             ;
-;     -- <=2 input functions                  ; 170            ;
+;     -- 4 input functions                    ; 215            ;
+;     -- 3 input functions                    ; 138            ;
+;     -- <=2 input functions                  ; 355            ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 193            ;
-;     -- arithmetic mode                      ; 128            ;
+;     -- normal mode                          ; 454            ;
+;     -- arithmetic mode                      ; 254            ;
 ;                                             ;                ;
-; Total registers                             ; 114            ;
-;     -- Dedicated logic registers            ; 114            ;
+; Total registers                             ; 148            ;
+;     -- Dedicated logic registers            ; 148            ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
-; I/O pins                                    ; 45             ;
+; I/O pins                                    ; 59             ;
 ;                                             ;                ;
 ; Embedded Multiplier 9-bit elements          ; 0              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 114            ;
-; Total fan-out                               ; 1271           ;
-; Average fan-out                             ; 2.42           ;
+; Maximum fan-out                             ; 148            ;
+; Total fan-out                               ; 2445           ;
+; Average fan-out                             ; 2.51           ;
 +---------------------------------------------+----------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                        ;
-+----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                         ; Entity Name         ; Library Name ;
-+----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |ConfController                              ; 321 (8)             ; 114 (3)                   ; 0           ; 0            ; 0       ; 0         ; 45   ; 0            ; |ConfController                                                                                                                                             ; ConfController      ; work         ;
-;    |BlinkGen:one_sec_blinker|                ; 34 (34)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|BlinkGen:one_sec_blinker                                                                                                                    ; BlinkGen            ; work         ;
-;    |Debouncer:debounce1|                     ; 69 (69)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|Debouncer:debounce1                                                                                                                         ; Debouncer           ; work         ;
-;    |PulseGen:pulse10hz_gen|                  ; 32 (32)             ; 20 (20)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|PulseGen:pulse10hz_gen                                                                                                                      ; PulseGen            ; work         ;
-;    |ScoreDisplay:target_display|             ; 87 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display                                                                                                                 ; ScoreDisplay        ; work         ;
-;       |Bin2BCD:bin2bcd|                      ; 73 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display|Bin2BCD:bin2bcd                                                                                                 ; Bin2BCD             ; work         ;
-;          |lpm_divide:Div0|                   ; 31 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
-;             |lpm_divide_ihm:auto_generated|  ; 31 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated                                                   ; lpm_divide_ihm      ; work         ;
-;                |sign_div_unsign_akh:divider| ; 31 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider                       ; sign_div_unsign_akh ; work         ;
-;                   |alt_u_div_84f:divider|    ; 31 (31)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider|alt_u_div_84f:divider ; alt_u_div_84f       ; work         ;
-;          |lpm_divide:Mod0|                   ; 42 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Mod0                                                                                 ; lpm_divide          ; work         ;
-;             |lpm_divide_o9m:auto_generated|  ; 42 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated                                                   ; lpm_divide_o9m      ; work         ;
-;                |sign_div_unsign_dkh:divider| ; 42 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider                       ; sign_div_unsign_dkh ; work         ;
-;                   |alt_u_div_e4f:divider|    ; 42 (42)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider|alt_u_div_e4f:divider ; alt_u_div_e4f       ; work         ;
-;       |Bin7SegDecoder:ten_7seg|              ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display|Bin7SegDecoder:ten_7seg                                                                                         ; Bin7SegDecoder      ; work         ;
-;       |Bin7SegDecoder:uni_7seg|              ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|ScoreDisplay:target_display|Bin7SegDecoder:uni_7seg                                                                                         ; Bin7SegDecoder      ; work         ;
-;    |TargetScoreSetter:target_setter|         ; 15 (0)              ; 6 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|TargetScoreSetter:target_setter                                                                                                             ; TargetScoreSetter   ; work         ;
-;       |CounterNBits:target_counter|          ; 15 (15)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|TargetScoreSetter:target_setter|CounterNBits:target_counter                                                                                 ; CounterNBits        ; work         ;
-;    |TimerAuxFSM:timer_fsm|                   ; 76 (76)             ; 33 (33)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ConfController|TimerAuxFSM:timer_fsm                                                                                                                       ; TimerAuxFSM         ; work         ;
-+----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                                                    ;
++-------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                      ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                  ; Entity Name         ; Library Name ;
++-------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |ReactionGame_Demo                              ; 708 (6)             ; 148 (2)                   ; 0           ; 0            ; 0       ; 0         ; 59   ; 0            ; |ReactionGame_Demo                                                                                                                                                                   ; ReactionGame_Demo   ; work         ;
+;    |Debouncer:debounce0|                        ; 67 (67)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|Debouncer:debounce0                                                                                                                                               ; Debouncer           ; work         ;
+;    |Debouncer:debounce3|                        ; 67 (67)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|Debouncer:debounce3                                                                                                                                               ; Debouncer           ; work         ;
+;    |ReactionGame:reaction_game|                 ; 204 (0)             ; 71 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ReactionGame:reaction_game                                                                                                                                        ; ReactionGame        ; work         ;
+;       |CounterNBits:rand_counter|               ; 75 (75)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ReactionGame:reaction_game|CounterNBits:rand_counter                                                                                                              ; CounterNBits        ; work         ;
+;       |SingleTurnFSM:turn_fsm|                  ; 21 (21)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ReactionGame:reaction_game|SingleTurnFSM:turn_fsm                                                                                                                 ; SingleTurnFSM       ; work         ;
+;       |TimerAuxFSM:timer_fsm|                   ; 108 (108)           ; 33 (33)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ReactionGame:reaction_game|TimerAuxFSM:timer_fsm                                                                                                                  ; TimerAuxFSM         ; work         ;
+;    |ScoreUnit:scoreA|                           ; 122 (2)             ; 8 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreA                                                                                                                                                  ; ScoreUnit           ; work         ;
+;       |ScoreCounter:counter|                    ; 8 (8)               ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreA|ScoreCounter:counter                                                                                                                             ; ScoreCounter        ; work         ;
+;       |ScoreDisplay:display|                    ; 112 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreA|ScoreDisplay:display                                                                                                                             ; ScoreDisplay        ; work         ;
+;          |Bin2BCD:bin2bcd|                      ; 98 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreA|ScoreDisplay:display|Bin2BCD:bin2bcd                                                                                                             ; Bin2BCD             ; work         ;
+;             |lpm_divide:Div0|                   ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreA|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0                                                                                             ; lpm_divide          ; work         ;
+;                |lpm_divide_ihm:auto_generated|  ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreA|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated                                                               ; lpm_divide_ihm      ; work         ;
+;                   |sign_div_unsign_akh:divider| ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreA|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider                                   ; sign_div_unsign_akh ; work         ;
+;                      |alt_u_div_84f:divider|    ; 43 (43)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreA|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider|alt_u_div_84f:divider             ; alt_u_div_84f       ; work         ;
+;             |lpm_divide:Mod0|                   ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreA|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0                                                                                             ; lpm_divide          ; work         ;
+;                |lpm_divide_o9m:auto_generated|  ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreA|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated                                                               ; lpm_divide_o9m      ; work         ;
+;                   |sign_div_unsign_dkh:divider| ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreA|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider                                   ; sign_div_unsign_dkh ; work         ;
+;                      |alt_u_div_e4f:divider|    ; 55 (55)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreA|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider|alt_u_div_e4f:divider             ; alt_u_div_e4f       ; work         ;
+;          |Bin7SegDecoder:ten_7seg|              ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreA|ScoreDisplay:display|Bin7SegDecoder:ten_7seg                                                                                                     ; Bin7SegDecoder      ; work         ;
+;          |Bin7SegDecoder:uni_7seg|              ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreA|ScoreDisplay:display|Bin7SegDecoder:uni_7seg                                                                                                     ; Bin7SegDecoder      ; work         ;
+;    |ScoreUnit:scoreB|                           ; 122 (2)             ; 8 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreB                                                                                                                                                  ; ScoreUnit           ; work         ;
+;       |ScoreCounter:counter|                    ; 8 (8)               ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreB|ScoreCounter:counter                                                                                                                             ; ScoreCounter        ; work         ;
+;       |ScoreDisplay:display|                    ; 112 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreB|ScoreDisplay:display                                                                                                                             ; ScoreDisplay        ; work         ;
+;          |Bin2BCD:bin2bcd|                      ; 98 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd                                                                                                             ; Bin2BCD             ; work         ;
+;             |lpm_divide:Div0|                   ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0                                                                                             ; lpm_divide          ; work         ;
+;                |lpm_divide_ihm:auto_generated|  ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated                                                               ; lpm_divide_ihm      ; work         ;
+;                   |sign_div_unsign_akh:divider| ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider                                   ; sign_div_unsign_akh ; work         ;
+;                      |alt_u_div_84f:divider|    ; 43 (43)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider|alt_u_div_84f:divider             ; alt_u_div_84f       ; work         ;
+;             |lpm_divide:Mod0|                   ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0                                                                                             ; lpm_divide          ; work         ;
+;                |lpm_divide_o9m:auto_generated|  ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated                                                               ; lpm_divide_o9m      ; work         ;
+;                   |sign_div_unsign_dkh:divider| ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider                                   ; sign_div_unsign_dkh ; work         ;
+;                      |alt_u_div_e4f:divider|    ; 55 (55)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider|alt_u_div_e4f:divider             ; alt_u_div_e4f       ; work         ;
+;          |Bin7SegDecoder:ten_7seg|              ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreB|ScoreDisplay:display|Bin7SegDecoder:ten_7seg                                                                                                     ; Bin7SegDecoder      ; work         ;
+;          |Bin7SegDecoder:uni_7seg|              ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:scoreB|ScoreDisplay:display|Bin7SegDecoder:uni_7seg                                                                                                     ; Bin7SegDecoder      ; work         ;
+;    |ScoreUnit:turn_count_display|               ; 120 (0)             ; 7 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:turn_count_display                                                                                                                                      ; ScoreUnit           ; work         ;
+;       |ScoreCounter:counter|                    ; 8 (8)               ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:turn_count_display|ScoreCounter:counter                                                                                                                 ; ScoreCounter        ; work         ;
+;       |ScoreDisplay:display|                    ; 112 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:turn_count_display|ScoreDisplay:display                                                                                                                 ; ScoreDisplay        ; work         ;
+;          |Bin2BCD:bin2bcd|                      ; 98 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:turn_count_display|ScoreDisplay:display|Bin2BCD:bin2bcd                                                                                                 ; Bin2BCD             ; work         ;
+;             |lpm_divide:Div0|                   ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:turn_count_display|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
+;                |lpm_divide_ihm:auto_generated|  ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:turn_count_display|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated                                                   ; lpm_divide_ihm      ; work         ;
+;                   |sign_div_unsign_akh:divider| ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:turn_count_display|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider                       ; sign_div_unsign_akh ; work         ;
+;                      |alt_u_div_84f:divider|    ; 43 (43)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:turn_count_display|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider|alt_u_div_84f:divider ; alt_u_div_84f       ; work         ;
+;             |lpm_divide:Mod0|                   ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:turn_count_display|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0                                                                                 ; lpm_divide          ; work         ;
+;                |lpm_divide_o9m:auto_generated|  ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:turn_count_display|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated                                                   ; lpm_divide_o9m      ; work         ;
+;                   |sign_div_unsign_dkh:divider| ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:turn_count_display|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider                       ; sign_div_unsign_dkh ; work         ;
+;                      |alt_u_div_e4f:divider|    ; 55 (55)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:turn_count_display|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider|alt_u_div_e4f:divider ; alt_u_div_e4f       ; work         ;
+;          |Bin7SegDecoder:ten_7seg|              ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:turn_count_display|ScoreDisplay:display|Bin7SegDecoder:ten_7seg                                                                                         ; Bin7SegDecoder      ; work         ;
+;          |Bin7SegDecoder:uni_7seg|              ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:turn_count_display|ScoreDisplay:display|Bin7SegDecoder:uni_7seg                                                                                         ; Bin7SegDecoder      ; work         ;
++-------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------+
+; State Machine - |ReactionGame_Demo|ReactionGame:reaction_game|SingleTurnFSM:turn_fsm|pState          ;
++--------------+--------------+--------------+-------------+--------------+--------------+-------------+
+; Name         ; pState.WIN_B ; pState.WIN_A ; pState.PLAY ; pState.DELAY ; pState.READY ; pState.IDLE ;
++--------------+--------------+--------------+-------------+--------------+--------------+-------------+
+; pState.IDLE  ; 0            ; 0            ; 0           ; 0            ; 0            ; 0           ;
+; pState.READY ; 0            ; 0            ; 0           ; 0            ; 1            ; 1           ;
+; pState.DELAY ; 0            ; 0            ; 0           ; 1            ; 0            ; 1           ;
+; pState.PLAY  ; 0            ; 0            ; 1           ; 0            ; 0            ; 1           ;
+; pState.WIN_A ; 0            ; 1            ; 0           ; 0            ; 0            ; 1           ;
+; pState.WIN_B ; 1            ; 0            ; 0           ; 0            ; 0            ; 1           ;
++--------------+--------------+--------------+-------------+--------------+--------------+-------------+
+
+
++-------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                  ;
++----------------------------------------------------------------+--------------------+
+; Register name                                                  ; Reason for Removal ;
++----------------------------------------------------------------+--------------------+
+; ReactionGame:reaction_game|SingleTurnFSM:turn_fsm|pState.READY ; Lost fanout        ;
+; Total Number of Removed Registers = 1                          ;                    ;
++----------------------------------------------------------------+--------------------+
 
 
 +------------------------------------------------------+
@@ -271,91 +334,86 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 114   ;
-; Number of registers using Synchronous Clear  ; 26    ;
+; Total registers                              ; 148   ;
+; Number of registers using Synchronous Clear  ; 21    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 55    ;
+; Number of registers using Clock Enable       ; 89    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------+
-; Inverted Register Statistics                                                       ;
-+--------------------------------------------------------------------------+---------+
-; Inverted Register                                                        ; Fan out ;
-+--------------------------------------------------------------------------+---------+
-; TargetScoreSetter:target_setter|CounterNBits:target_counter|cnt_value[0] ; 10      ;
-; TimerAuxFSM:timer_fsm|s_count[0]                                         ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[25]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[26]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[27]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[28]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[29]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[30]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[31]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[9]                                         ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[10]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[11]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[12]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[13]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[14]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[15]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[16]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[17]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[18]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[19]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[20]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[21]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[22]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[23]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[24]                                        ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[1]                                         ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[2]                                         ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[3]                                         ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[4]                                         ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[5]                                         ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[6]                                         ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[7]                                         ; 2       ;
-; TimerAuxFSM:timer_fsm|s_count[8]                                         ; 2       ;
-; Total number of inverted registers = 33                                  ;         ;
-+--------------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------+
+; Inverted Register Statistics                                                 ;
++--------------------------------------------------------------------+---------+
+; Inverted Register                                                  ; Fan out ;
++--------------------------------------------------------------------+---------+
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[0]        ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[1]        ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[2]        ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[3]        ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[4]        ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[5]        ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[6]        ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[7]        ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[8]        ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[9]        ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[10]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[11]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[12]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[29]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[30]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[31]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[13]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[14]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[15]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[16]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[17]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[18]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[19]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[20]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[21]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[22]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[23]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[24]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[25]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[26]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[27]       ; 2       ;
+; ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[28]       ; 2       ;
+; ReactionGame:reaction_game|CounterNBits:rand_counter|cnt_value[7]  ; 3       ;
+; ReactionGame:reaction_game|CounterNBits:rand_counter|cnt_value[8]  ; 3       ;
+; ReactionGame:reaction_game|CounterNBits:rand_counter|cnt_value[12] ; 3       ;
+; ReactionGame:reaction_game|CounterNBits:rand_counter|cnt_value[27] ; 3       ;
+; ReactionGame:reaction_game|CounterNBits:rand_counter|cnt_value[23] ; 3       ;
+; ReactionGame:reaction_game|CounterNBits:rand_counter|cnt_value[22] ; 3       ;
+; ReactionGame:reaction_game|CounterNBits:rand_counter|cnt_value[21] ; 3       ;
+; ReactionGame:reaction_game|CounterNBits:rand_counter|cnt_value[20] ; 3       ;
+; ReactionGame:reaction_game|CounterNBits:rand_counter|cnt_value[15] ; 3       ;
+; ReactionGame:reaction_game|CounterNBits:rand_counter|cnt_value[14] ; 3       ;
+; Total number of inverted registers = 42                            ;         ;
++--------------------------------------------------------------------+---------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                         ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                               ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------+
-; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |ConfController|TargetScoreSetter:target_setter|CounterNBits:target_counter|cnt_value[5] ;
-; 5:1                ; 23 bits   ; 69 LEs        ; 46 LEs               ; 23 LEs                 ; Yes        ; |ConfController|Debouncer:debounce1|s_debounceCnt[19]                                    ;
-; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |ConfController|TimerAuxFSM:timer_fsm|s_count[16]                                        ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------+
-
-
-+-----------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: BlinkGen:one_sec_blinker ;
-+----------------+----------+-------------------------------------------+
-; Parameter Name ; Value    ; Type                                      ;
-+----------------+----------+-------------------------------------------+
-; steps          ; 50000000 ; Signed Integer                            ;
-+----------------+----------+-------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: PulseGen:pulse10hz_gen ;
-+----------------+--------+-------------------------------------------+
-; Parameter Name ; Value  ; Type                                      ;
-+----------------+--------+-------------------------------------------+
-; max            ; 500000 ; Signed Integer                            ;
-+----------------+--------+-------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------+
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |ReactionGame_Demo|ScoreUnit:scoreB|ScoreCounter:counter|s_score[0]                   ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |ReactionGame_Demo|ScoreUnit:scoreA|ScoreCounter:counter|s_score[5]                   ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |ReactionGame_Demo|ScoreUnit:turn_count_display|ScoreCounter:counter|s_score[0]       ;
+; 3:1                ; 22 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |ReactionGame_Demo|ReactionGame:reaction_game|CounterNBits:rand_counter|cnt_value[19] ;
+; 5:1                ; 23 bits   ; 69 LEs        ; 46 LEs               ; 23 LEs                 ; Yes        ; |ReactionGame_Demo|Debouncer:debounce0|s_debounceCnt[7]                               ;
+; 5:1                ; 23 bits   ; 69 LEs        ; 46 LEs               ; 23 LEs                 ; Yes        ; |ReactionGame_Demo|Debouncer:debounce3|s_debounceCnt[22]                              ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |ReactionGame_Demo|ReactionGame:reaction_game|CounterNBits:rand_counter|cnt_value[27] ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|ReactionGame:reaction_game|TimerAuxFSM:timer_fsm|s_count[25]       ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |ReactionGame_Demo|ReactionGame:reaction_game|SingleTurnFSM:turn_fsm|nState           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: Debouncer:debounce1 ;
+; Parameter Settings for User Entity Instance: Debouncer:debounce0 ;
 +----------------+-------+-----------------------------------------+
 ; Parameter Name ; Value ; Type                                    ;
 +----------------+-------+-----------------------------------------+
@@ -367,118 +425,236 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: TargetScoreSetter:target_setter|CounterNBits:target_counter ;
-+----------------+-------+---------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                            ;
-+----------------+-------+---------------------------------------------------------------------------------+
-; n              ; 6     ; Signed Integer                                                                  ;
-; min            ; 1     ; Signed Integer                                                                  ;
-; max            ; 50    ; Signed Integer                                                                  ;
-+----------------+-------+---------------------------------------------------------------------------------+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Debouncer:debounce3 ;
++----------------+-------+-----------------------------------------+
+; Parameter Name ; Value ; Type                                    ;
++----------------+-------+-----------------------------------------+
+; khzclkfreq     ; 50000 ; Signed Integer                          ;
+; msecmininwidth ; 100   ; Signed Integer                          ;
+; inpolarity     ; '0'   ; Enumerated                              ;
+; outpolarity    ; '1'   ; Enumerated                              ;
++----------------+-------+-----------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+--------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Mod0 ;
-+------------------------+----------------+--------------------------------------------------------------------+
-; Parameter Name         ; Value          ; Type                                                               ;
-+------------------------+----------------+--------------------------------------------------------------------+
-; LPM_WIDTHN             ; 7              ; Untyped                                                            ;
-; LPM_WIDTHD             ; 7              ; Untyped                                                            ;
-; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                            ;
-; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                            ;
-; LPM_PIPELINE           ; 0              ; Untyped                                                            ;
-; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                            ;
-; MAXIMIZE_SPEED         ; 5              ; Untyped                                                            ;
-; CBXI_PARAMETER         ; lpm_divide_o9m ; Untyped                                                            ;
-; CARRY_CHAIN            ; MANUAL         ; Untyped                                                            ;
-; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                            ;
-; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                         ;
-; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                       ;
-; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                       ;
-; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                     ;
-+------------------------+----------------+--------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ReactionGame:reaction_game|CounterNBits:rand_counter ;
++----------------+-----------+----------------------------------------------------------------------+
+; Parameter Name ; Value     ; Type                                                                 ;
++----------------+-----------+----------------------------------------------------------------------+
+; n              ; 32        ; Signed Integer                                                       ;
+; min            ; 150000000 ; Signed Integer                                                       ;
+; max            ; 350000000 ; Signed Integer                                                       ;
++----------------+-----------+----------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+--------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Div0 ;
-+------------------------+----------------+--------------------------------------------------------------------+
-; Parameter Name         ; Value          ; Type                                                               ;
-+------------------------+----------------+--------------------------------------------------------------------+
-; LPM_WIDTHN             ; 7              ; Untyped                                                            ;
-; LPM_WIDTHD             ; 4              ; Untyped                                                            ;
-; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                            ;
-; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                            ;
-; LPM_PIPELINE           ; 0              ; Untyped                                                            ;
-; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                            ;
-; MAXIMIZE_SPEED         ; 5              ; Untyped                                                            ;
-; CBXI_PARAMETER         ; lpm_divide_ihm ; Untyped                                                            ;
-; CARRY_CHAIN            ; MANUAL         ; Untyped                                                            ;
-; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                            ;
-; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                         ;
-; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                       ;
-; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                       ;
-; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                     ;
-+------------------------+----------------+--------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0 ;
++------------------------+----------------+------------------------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                                         ;
++------------------------+----------------+------------------------------------------------------------------------------+
+; LPM_WIDTHN             ; 7              ; Untyped                                                                      ;
+; LPM_WIDTHD             ; 7              ; Untyped                                                                      ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                                      ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                                      ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                                      ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                                      ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                                      ;
+; CBXI_PARAMETER         ; lpm_divide_o9m ; Untyped                                                                      ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                                      ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                                      ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                                   ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                                 ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                                 ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                               ;
++------------------------+----------------+------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------+
-; Port Connectivity Checks: "ScoreDisplay:target_display|Bin7SegDecoder:uni_7seg" ;
-+--------+-------+----------+-----------------------------------------------------+
-; Port   ; Type  ; Severity ; Details                                             ;
-+--------+-------+----------+-----------------------------------------------------+
-; enable ; Input ; Info     ; Stuck at VCC                                        ;
-+--------+-------+----------+-----------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0 ;
++------------------------+----------------+------------------------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                                         ;
++------------------------+----------------+------------------------------------------------------------------------------+
+; LPM_WIDTHN             ; 7              ; Untyped                                                                      ;
+; LPM_WIDTHD             ; 4              ; Untyped                                                                      ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                                      ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                                      ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                                      ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                                      ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                                      ;
+; CBXI_PARAMETER         ; lpm_divide_ihm ; Untyped                                                                      ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                                      ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                                      ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                                   ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                                 ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                                 ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                               ;
++------------------------+----------------+------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------+
-; Port Connectivity Checks: "ScoreDisplay:target_display|Bin7SegDecoder:ten_7seg" ;
-+--------+-------+----------+-----------------------------------------------------+
-; Port   ; Type  ; Severity ; Details                                             ;
-+--------+-------+----------+-----------------------------------------------------+
-; enable ; Input ; Info     ; Stuck at VCC                                        ;
-+--------+-------+----------+-----------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: ScoreUnit:scoreA|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0 ;
++------------------------+----------------+------------------------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                                         ;
++------------------------+----------------+------------------------------------------------------------------------------+
+; LPM_WIDTHN             ; 7              ; Untyped                                                                      ;
+; LPM_WIDTHD             ; 7              ; Untyped                                                                      ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                                      ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                                      ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                                      ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                                      ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                                      ;
+; CBXI_PARAMETER         ; lpm_divide_o9m ; Untyped                                                                      ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                                      ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                                      ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                                   ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                                 ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                                 ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                               ;
++------------------------+----------------+------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------+
-; Port Connectivity Checks: "ScoreDisplay:target_display" ;
-+----------+-------+----------+---------------------------+
-; Port     ; Type  ; Severity ; Details                   ;
-+----------+-------+----------+---------------------------+
-; score[6] ; Input ; Info     ; Stuck at GND              ;
-+----------+-------+----------+---------------------------+
++------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: ScoreUnit:scoreA|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0 ;
++------------------------+----------------+------------------------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                                         ;
++------------------------+----------------+------------------------------------------------------------------------------+
+; LPM_WIDTHN             ; 7              ; Untyped                                                                      ;
+; LPM_WIDTHD             ; 4              ; Untyped                                                                      ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                                      ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                                      ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                                      ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                                      ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                                      ;
+; CBXI_PARAMETER         ; lpm_divide_ihm ; Untyped                                                                      ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                                      ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                                      ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                                   ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                                 ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                                 ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                               ;
++------------------------+----------------+------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: ScoreUnit:turn_count_display|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0 ;
++------------------------+----------------+------------------------------------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                                                     ;
++------------------------+----------------+------------------------------------------------------------------------------------------+
+; LPM_WIDTHN             ; 7              ; Untyped                                                                                  ;
+; LPM_WIDTHD             ; 7              ; Untyped                                                                                  ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                                                  ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                                                  ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                                                  ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                                                  ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                                                  ;
+; CBXI_PARAMETER         ; lpm_divide_o9m ; Untyped                                                                                  ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                                                  ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                                                  ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                                               ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                                             ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                                             ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                                           ;
++------------------------+----------------+------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: ScoreUnit:turn_count_display|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0 ;
++------------------------+----------------+------------------------------------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                                                     ;
++------------------------+----------------+------------------------------------------------------------------------------------------+
+; LPM_WIDTHN             ; 7              ; Untyped                                                                                  ;
+; LPM_WIDTHD             ; 4              ; Untyped                                                                                  ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                                                  ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                                                  ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                                                  ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                                                  ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                                                  ;
+; CBXI_PARAMETER         ; lpm_divide_ihm ; Untyped                                                                                  ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                                                  ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                                                  ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                                               ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                                             ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                                             ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                                           ;
++------------------------+----------------+------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ScoreUnit:turn_count_display"                                                            ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; enable    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; max       ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; decrement ; Input  ; Info     ; Stuck at GND                                                                        ;
+; victory   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------+
+; Port Connectivity Checks: "ScoreUnit:scoreB" ;
++-----------+-------+----------+---------------+
+; Port      ; Type  ; Severity ; Details       ;
++-----------+-------+----------+---------------+
+; enable    ; Input ; Info     ; Stuck at VCC  ;
+; max[6..3] ; Input ; Info     ; Stuck at GND  ;
+; max[2]    ; Input ; Info     ; Stuck at VCC  ;
+; max[1]    ; Input ; Info     ; Stuck at GND  ;
+; max[0]    ; Input ; Info     ; Stuck at VCC  ;
+; decrement ; Input ; Info     ; Stuck at GND  ;
++-----------+-------+----------+---------------+
+
+
++-------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ScoreUnit:scoreA|ScoreDisplay:display|Bin7SegDecoder:uni_7seg" ;
++--------+-------+----------+---------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                       ;
++--------+-------+----------+---------------------------------------------------------------+
+; enable ; Input ; Info     ; Stuck at VCC                                                  ;
++--------+-------+----------+---------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ScoreUnit:scoreA|ScoreDisplay:display|Bin7SegDecoder:ten_7seg" ;
++--------+-------+----------+---------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                       ;
++--------+-------+----------+---------------------------------------------------------------+
+; enable ; Input ; Info     ; Stuck at VCC                                                  ;
++--------+-------+----------+---------------------------------------------------------------+
+
+
++----------------------------------------------+
+; Port Connectivity Checks: "ScoreUnit:scoreA" ;
++-----------+-------+----------+---------------+
+; Port      ; Type  ; Severity ; Details       ;
++-----------+-------+----------+---------------+
+; enable    ; Input ; Info     ; Stuck at VCC  ;
+; max[6..3] ; Input ; Info     ; Stuck at GND  ;
+; max[2]    ; Input ; Info     ; Stuck at VCC  ;
+; max[1]    ; Input ; Info     ; Stuck at GND  ;
+; max[0]    ; Input ; Info     ; Stuck at VCC  ;
+; decrement ; Input ; Info     ; Stuck at GND  ;
++-----------+-------+----------+---------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "TargetScoreSetter:target_setter|CounterNBits:target_counter"                           ;
+; Port Connectivity Checks: "ReactionGame:reaction_game|CounterNBits:rand_counter"                                  ;
 +---------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port    ; Type   ; Severity ; Details                                                                             ;
 +---------+--------+----------+-------------------------------------------------------------------------------------+
+; enable1 ; Input  ; Info     ; Stuck at VCC                                                                        ;
 ; enable2 ; Input  ; Info     ; Stuck at VCC                                                                        ;
 ; termcnt ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +---------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------+
-; Port Connectivity Checks: "TimerAuxFSM:timer_fsm" ;
-+-----------------+-------+----------+--------------+
-; Port            ; Type  ; Severity ; Details      ;
-+-----------------+-------+----------+--------------+
-; timeval[23..19] ; Input ; Info     ; Stuck at VCC ;
-; timeval[15..12] ; Input ; Info     ; Stuck at VCC ;
-; timeval[31..26] ; Input ; Info     ; Stuck at GND ;
-; timeval[11..8]  ; Input ; Info     ; Stuck at GND ;
-; timeval[6..0]   ; Input ; Info     ; Stuck at GND ;
-; timeval[25]     ; Input ; Info     ; Stuck at VCC ;
-; timeval[24]     ; Input ; Info     ; Stuck at GND ;
-; timeval[18]     ; Input ; Info     ; Stuck at GND ;
-; timeval[17]     ; Input ; Info     ; Stuck at VCC ;
-; timeval[16]     ; Input ; Info     ; Stuck at GND ;
-; timeval[7]      ; Input ; Info     ; Stuck at VCC ;
-+-----------------+-------+----------+--------------+
 
 
 +-----------------------------------------------------+
@@ -486,26 +662,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 45                          ;
-; cycloneiii_ff         ; 114                         ;
-;     ENA               ; 55                          ;
-;     SCLR              ; 26                          ;
-;     plain             ; 33                          ;
-; cycloneiii_io_obuf    ; 14                          ;
-; cycloneiii_lcell_comb ; 323                         ;
-;     arith             ; 128                         ;
-;         1 data inputs ; 2                           ;
-;         2 data inputs ; 108                         ;
-;         3 data inputs ; 18                          ;
-;     normal            ; 195                         ;
-;         0 data inputs ; 8                           ;
-;         1 data inputs ; 6                           ;
-;         2 data inputs ; 48                          ;
-;         3 data inputs ; 17                          ;
-;         4 data inputs ; 116                         ;
+; boundary_port         ; 59                          ;
+; cycloneiii_ff         ; 148                         ;
+;     ENA               ; 68                          ;
+;     ENA SCLR          ; 21                          ;
+;     plain             ; 59                          ;
+; cycloneiii_lcell_comb ; 714                         ;
+;     arith             ; 254                         ;
+;         2 data inputs ; 142                         ;
+;         3 data inputs ; 112                         ;
+;     normal            ; 460                         ;
+;         0 data inputs ; 24                          ;
+;         1 data inputs ; 15                          ;
+;         2 data inputs ; 180                         ;
+;         3 data inputs ; 26                          ;
+;         4 data inputs ; 215                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 8.50                        ;
-; Average LUT depth     ; 4.59                        ;
+; Max LUT depth         ; 11.80                       ;
+; Average LUT depth     ; 6.99                        ;
 +-----------------------+-----------------------------+
 
 
@@ -514,7 +688,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -524,7 +698,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Wed May 29 16:41:18 2024
+    Info: Processing started: Fri May 31 09:27:39 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ReactionGame -c ReactionGame
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -583,21 +757,26 @@ Info (12021): Found 2 design units, including 1 entities, in source file BlinkGe
 Info (12021): Found 2 design units, including 1 entities, in source file PulseGen.vhd
     Info (12022): Found design unit 1: PulseGen-Behavioral File: /home/penacho/LSD/LSD-final-project/Fase4/PulseGen.vhd Line: 13
     Info (12023): Found entity 1: PulseGen File: /home/penacho/LSD/LSD-final-project/Fase4/PulseGen.vhd Line: 5
-Info (12127): Elaborating entity "ConfController" for the top level hierarchy
-Info (12129): Elaborating entity "BlinkGen" using architecture "A:behavioral" for hierarchy "BlinkGen:one_sec_blinker" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 44
-Info (12129): Elaborating entity "PulseGen" using architecture "A:behavioral" for hierarchy "PulseGen:pulse10hz_gen" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 51
-Info (12129): Elaborating entity "Debouncer" using architecture "A:behavioral" for hierarchy "Debouncer:debounce1" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 58
-Info (12129): Elaborating entity "TimerAuxFSM" using architecture "A:behavioral" for hierarchy "TimerAuxFSM:timer_fsm" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 94
-Info (12129): Elaborating entity "TargetScoreSetter" using architecture "A:structural" for hierarchy "TargetScoreSetter:target_setter" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 105
-Info (12129): Elaborating entity "CounterNBits" using architecture "A:behavioral" for hierarchy "TargetScoreSetter:target_setter|CounterNBits:target_counter" File: /home/penacho/LSD/LSD-final-project/Fase4/TargetScoreSetter.vhd Line: 21
-Info (12129): Elaborating entity "ScoreDisplay" using architecture "A:structural" for hierarchy "ScoreDisplay:target_display" File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 113
-Info (12129): Elaborating entity "Bin2BCD" using architecture "A:behavioral" for hierarchy "ScoreDisplay:target_display|Bin2BCD:bin2bcd" File: /home/penacho/LSD/LSD-final-project/Fase4/ScoreDisplay.vhd Line: 18
-Info (12129): Elaborating entity "Bin7SegDecoder" using architecture "A:behavioral" for hierarchy "ScoreDisplay:target_display|Bin7SegDecoder:ten_7seg" File: /home/penacho/LSD/LSD-final-project/Fase4/ScoreDisplay.vhd Line: 25
-Info (278001): Inferred 2 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "ScoreDisplay:target_display|Bin2BCD:bin2bcd|Mod0" File: /home/penacho/LSD/LSD-final-project/Fase4/Bin2BCD.vhd Line: 18
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "ScoreDisplay:target_display|Bin2BCD:bin2bcd|Div0" File: /home/penacho/LSD/LSD-final-project/Fase4/Bin2BCD.vhd Line: 19
-Info (12130): Elaborated megafunction instantiation "ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Mod0" File: /home/penacho/LSD/LSD-final-project/Fase4/Bin2BCD.vhd Line: 18
-Info (12133): Instantiated megafunction "ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Mod0" with the following parameter: File: /home/penacho/LSD/LSD-final-project/Fase4/Bin2BCD.vhd Line: 18
+Info (12127): Elaborating entity "ReactionGame_Demo" for the top level hierarchy
+Info (12129): Elaborating entity "Debouncer" using architecture "A:behavioral" for hierarchy "Debouncer:debounce0" File: /home/penacho/LSD/LSD-final-project/Fase4/ReactionGame_Demo.vhd Line: 48
+Info (12129): Elaborating entity "ReactionGame" using architecture "A:structural" for hierarchy "ReactionGame:reaction_game" File: /home/penacho/LSD/LSD-final-project/Fase4/ReactionGame_Demo.vhd Line: 74
+Info (12129): Elaborating entity "SingleTurnFSM" using architecture "A:behavioral" for hierarchy "ReactionGame:reaction_game|SingleTurnFSM:turn_fsm" File: /home/penacho/LSD/LSD-final-project/Fase4/ReactionGame.vhd Line: 24
+Info (12129): Elaborating entity "TimerAuxFSM" using architecture "A:behavioral" for hierarchy "ReactionGame:reaction_game|TimerAuxFSM:timer_fsm" File: /home/penacho/LSD/LSD-final-project/Fase4/ReactionGame.vhd Line: 41
+Info (12129): Elaborating entity "CounterNBits" using architecture "A:behavioral" for hierarchy "ReactionGame:reaction_game|CounterNBits:rand_counter" File: /home/penacho/LSD/LSD-final-project/Fase4/ReactionGame.vhd Line: 50
+Info (12129): Elaborating entity "ScoreUnit" using architecture "A:structural" for hierarchy "ScoreUnit:scoreA" File: /home/penacho/LSD/LSD-final-project/Fase4/ReactionGame_Demo.vhd Line: 87
+Info (12129): Elaborating entity "ScoreCounter" using architecture "A:behavioral" for hierarchy "ScoreUnit:scoreA|ScoreCounter:counter" File: /home/penacho/LSD/LSD-final-project/Fase4/ScoreUnit.vhd Line: 22
+Info (12129): Elaborating entity "ScoreDisplay" using architecture "A:structural" for hierarchy "ScoreUnit:scoreA|ScoreDisplay:display" File: /home/penacho/LSD/LSD-final-project/Fase4/ScoreUnit.vhd Line: 33
+Info (12129): Elaborating entity "Bin2BCD" using architecture "A:behavioral" for hierarchy "ScoreUnit:scoreA|ScoreDisplay:display|Bin2BCD:bin2bcd" File: /home/penacho/LSD/LSD-final-project/Fase4/ScoreDisplay.vhd Line: 18
+Info (12129): Elaborating entity "Bin7SegDecoder" using architecture "A:behavioral" for hierarchy "ScoreUnit:scoreA|ScoreDisplay:display|Bin7SegDecoder:ten_7seg" File: /home/penacho/LSD/LSD-final-project/Fase4/ScoreDisplay.vhd Line: 25
+Info (278001): Inferred 6 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd|Mod0" File: /home/penacho/LSD/LSD-final-project/Fase4/Bin2BCD.vhd Line: 18
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd|Div0" File: /home/penacho/LSD/LSD-final-project/Fase4/Bin2BCD.vhd Line: 19
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "ScoreUnit:scoreA|ScoreDisplay:display|Bin2BCD:bin2bcd|Mod0" File: /home/penacho/LSD/LSD-final-project/Fase4/Bin2BCD.vhd Line: 18
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "ScoreUnit:scoreA|ScoreDisplay:display|Bin2BCD:bin2bcd|Div0" File: /home/penacho/LSD/LSD-final-project/Fase4/Bin2BCD.vhd Line: 19
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "ScoreUnit:turn_count_display|ScoreDisplay:display|Bin2BCD:bin2bcd|Mod0" File: /home/penacho/LSD/LSD-final-project/Fase4/Bin2BCD.vhd Line: 18
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "ScoreUnit:turn_count_display|ScoreDisplay:display|Bin2BCD:bin2bcd|Div0" File: /home/penacho/LSD/LSD-final-project/Fase4/Bin2BCD.vhd Line: 19
+Info (12130): Elaborated megafunction instantiation "ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0" File: /home/penacho/LSD/LSD-final-project/Fase4/Bin2BCD.vhd Line: 18
+Info (12133): Instantiated megafunction "ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Mod0" with the following parameter: File: /home/penacho/LSD/LSD-final-project/Fase4/Bin2BCD.vhd Line: 18
     Info (12134): Parameter "LPM_WIDTHN" = "7"
     Info (12134): Parameter "LPM_WIDTHD" = "7"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -612,8 +791,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/add_
     Info (12023): Found entity 1: add_sub_7pc File: /home/penacho/LSD/LSD-final-project/Fase4/db/add_sub_7pc.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
     Info (12023): Found entity 1: add_sub_8pc File: /home/penacho/LSD/LSD-final-project/Fase4/db/add_sub_8pc.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Div0" File: /home/penacho/LSD/LSD-final-project/Fase4/Bin2BCD.vhd Line: 19
-Info (12133): Instantiated megafunction "ScoreDisplay:target_display|Bin2BCD:bin2bcd|lpm_divide:Div0" with the following parameter: File: /home/penacho/LSD/LSD-final-project/Fase4/Bin2BCD.vhd Line: 19
+Info (12130): Elaborated megafunction instantiation "ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0" File: /home/penacho/LSD/LSD-final-project/Fase4/Bin2BCD.vhd Line: 19
+Info (12133): Instantiated megafunction "ScoreUnit:scoreB|ScoreDisplay:display|Bin2BCD:bin2bcd|lpm_divide:Div0" with the following parameter: File: /home/penacho/LSD/LSD-final-project/Fase4/Bin2BCD.vhd Line: 19
     Info (12134): Parameter "LPM_WIDTHN" = "7"
     Info (12134): Parameter "LPM_WIDTHD" = "4"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -624,45 +803,20 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/sign
     Info (12023): Found entity 1: sign_div_unsign_akh File: /home/penacho/LSD/LSD-final-project/Fase4/db/sign_div_unsign_akh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_84f.tdf
     Info (12023): Found entity 1: alt_u_div_84f File: /home/penacho/LSD/LSD-final-project/Fase4/db/alt_u_div_84f.tdf Line: 27
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "HEX0[0]" is stuck at GND File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 9
-    Warning (13410): Pin "HEX0[1]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 9
-    Warning (13410): Pin "HEX0[2]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 9
-    Warning (13410): Pin "HEX0[3]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 9
-    Warning (13410): Pin "HEX0[4]" is stuck at GND File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 9
-    Warning (13410): Pin "HEX0[5]" is stuck at GND File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 9
-    Warning (13410): Pin "HEX0[6]" is stuck at GND File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 9
-    Warning (13410): Pin "HEX1[0]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 10
-    Warning (13410): Pin "HEX1[1]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 10
-    Warning (13410): Pin "HEX1[2]" is stuck at GND File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 10
-    Warning (13410): Pin "HEX1[3]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 10
-    Warning (13410): Pin "HEX1[4]" is stuck at GND File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 10
-    Warning (13410): Pin "HEX1[5]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 10
-    Warning (13410): Pin "HEX1[6]" is stuck at GND File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 10
-    Warning (13410): Pin "HEX2[0]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 11
-    Warning (13410): Pin "HEX2[1]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 11
-    Warning (13410): Pin "HEX2[2]" is stuck at GND File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 11
-    Warning (13410): Pin "HEX2[3]" is stuck at GND File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 11
-    Warning (13410): Pin "HEX2[4]" is stuck at GND File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 11
-    Warning (13410): Pin "HEX2[5]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 11
-    Warning (13410): Pin "HEX2[6]" is stuck at GND File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 11
-    Warning (13410): Pin "HEX3[0]" is stuck at GND File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 12
-    Warning (13410): Pin "HEX3[1]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 12
-    Warning (13410): Pin "HEX3[2]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 12
-    Warning (13410): Pin "HEX3[3]" is stuck at GND File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 12
-    Warning (13410): Pin "HEX3[4]" is stuck at GND File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 12
-    Warning (13410): Pin "HEX3[5]" is stuck at GND File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 12
-    Warning (13410): Pin "HEX3[6]" is stuck at VCC File: /home/penacho/LSD/LSD-final-project/Fase4/ConfController.vhd Line: 12
 Info (286030): Timing-Driven Synthesis is running
+Info (17049): 1 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 371 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 3 input pins
-    Info (21059): Implemented 42 output pins
-    Info (21061): Implemented 326 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 30 warnings
-    Info: Peak virtual memory: 463 megabytes
-    Info: Processing ended: Wed May 29 16:41:26 2024
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "KEY[1]" File: /home/penacho/LSD/LSD-final-project/Fase4/ReactionGame_Demo.vhd Line: 8
+    Warning (15610): No output dependent on input pin "KEY[2]" File: /home/penacho/LSD/LSD-final-project/Fase4/ReactionGame_Demo.vhd Line: 8
+Info (21057): Implemented 771 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 6 input pins
+    Info (21059): Implemented 53 output pins
+    Info (21061): Implemented 712 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 474 megabytes
+    Info: Processing ended: Fri May 31 09:27:47 2024
     Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:18
 
