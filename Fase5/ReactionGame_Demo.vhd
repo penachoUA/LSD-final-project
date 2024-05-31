@@ -184,8 +184,8 @@ begin
 			end if;
 		end process;
 		
-	s_greenA <= (others => '1') when (s_ledOn = '1' and s_winA = '0') else (others => '0');
-	s_greenB <= (others => '1') when (s_ledOn = '1' and s_winB = '0') else (others => '0');
+	s_greenA <= (others => '1') when (s_ledOn = '1' and s_turn_state /= "011") else (others => '0');
+	s_greenB <= (others => '1') when (s_ledOn = '1' and s_turn_state /= "100") else (others => '0');
 	
 	---------- Board outputs ---------
 	HEX7 <= s_d7s_target_score(1) when s_system_state = "00" else (others => '1');	
