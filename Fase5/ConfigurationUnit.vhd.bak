@@ -1,0 +1,87 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity ConfigurationUnit is
+	port(
+		clk          : in  std_logic;
+		reset        : in  std_logic;
+		press        : in  std_logic;
+		timeExp      : in  std_logic;
+		newTime      : out std_logic;
+		timeVal      : out std_logic_vector(31 downto 0);
+		target_score : out std_logic_vector(5 downto 0);
+	);
+end;
+
+architecture Structural of ConfUnit is
+	signal s_click           : std_logic;
+	signal s_short_press     : std_logic;
+	signal s_long_press      : std_logic;
+	signal s_rapid_increment : std_logic;
+	signal s_target          : std_logic_vector(5 downto 0);
+	
+	signal s_1hz_blink  : std_logic;
+	signal s_10hz_pulse : std_logic;
+	
+	constant ONE_SECOND : std_logic_vector(31 downto 0) := x"02FAF080";
+begin
+	one_sec_blinker: entity work.BlinkGen(Behavioral)
+		generic map(STEPS => 50_000_000)
+		port map(
+			clk   => CLOCK_50,
+			blink => s_1hz_blink
+		);
+		
+	pulse10hz_gen: entity work.PulseGen(Behavioral)
+		generic map(MAX => 500_000)
+		port map(
+			clk   => CLOCK_50,
+			pulse => s_10hz_pulse
+		);
+	
+	debounce_press : entity work.Debouncer(Behavioral)
+     generic map(
+			kHzClkFreq		=> 50_000,
+			mSecMinInWidth => 100,
+			inPolarity		=> '0',
+			outPolarity 	=> '1'
+		)
+		port map(
+			refClk 	 => CLOCK_50,
+			dirtyIn	 => press,
+			pulsedOut => s_short_press
+		);
+
+	s_click <= not KEY(1);
+		
+	long_press_proc: process(CLOCK_50)
+		begin
+			if rising_edge(CLOCK_50) then
+				s_newTime     <= '0';
+				s_long_press  <= '0';
+				s_reset_timer <= '0';
+				
+				if s_short_press = '1' then
+					s_newTime <= '1';
+				end if;
+				
+				if (s_click = '1' and s_timeExp = '1') then
+					s_long_press <= '1';
+				end if;
+				
+				if s_click = '0' then
+					s_reset_timer <= '1';
+				end if;
+			end if;
+		end process;
+
+	s_rapid_increment <= s_10hz_pulse when s_long_press = '1' else '0';
+		
+	target_setter: entity work.TargetScoreSetter(Structural)
+		port map(
+			clk    => CLOCK_50,
+			reset  => SW(0),
+			click  => s_short_press or s_rapid_increment,
+			target => s_target
+		);
+end;

@@ -1,0 +1,45 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity TargetScoreButtonFSM is
+	port(
+		clk        : in  std_logic;
+		pressIn    : in  std_logic_vector(0 downto 0);
+		timeExp    : in  std_logic;
+		newTime    : out std_logic;
+		timeVal    : out std_logic_vector(31 downto 0);
+		shortPress : in  std_logic_vector(1 downto 1);
+		longPress  : out std_logic_vector(6 downto 0);
+	);
+end;
+
+architecture Structural of ConfController is
+	signal s_click           : std_logic;
+	signal s_short_click     : std_logic;
+	signal s_long_click      : std_logic;
+	
+	constant ONE_SECOND : std_logic_vector(31 downto 0) := x"02FAF080";
+begin	
+	process(CLOCK_50)
+		begin
+			if rising_edge(CLOCK_50) then
+				s_newTime     <= '0';
+				s_long_click  <= '0';
+				s_reset_timer <= '0';
+				
+				if s_short_click = '1' then
+					s_newTime <= '1';
+				end if;
+				
+				if (s_click = '1' and s_timeExp = '1') then
+					s_long_click <= '1';
+				end if;
+				
+				if s_click = '0' then
+					s_reset_timer <= '1';
+				end if;
+			end if;
+		end process;
+		
+	
+end;
