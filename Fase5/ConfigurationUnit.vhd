@@ -20,10 +20,9 @@ architecture Structural of ConfigurationUnit is
 	signal s_resetTimer : std_logic;
 
 	signal s_press          : std_logic;
-	signal s_short_press    : std_logic;
-	signal s_short_press_sync    : std_logic;
-	signal s_long_press     : std_logic;
-	signal s_fast_increment : std_logic;
+	signal s_short_press    : std_logic := '0';
+	signal s_long_press     : std_logic := '0';
+	signal s_fast_increment : std_logic := '0';
 	
 	signal s_10hz_pulse : std_logic;
 	
@@ -58,7 +57,7 @@ begin
 	press_type_proc: process(clk)
 		begin
 			if rising_edge(clk) then		
-				if s_short_press_sync = '1' then
+				if s_short_press = '1' then
 					s_newTime <= '1';
 				else
 					s_newTime <= '0';
@@ -82,9 +81,10 @@ begin
 
 	target_counter: entity work.CounterNBits(Behavioral)
 		generic map(
-			N	 => 6,
-			MIN => 1,
-			MAX => 50
+			N	   => 6,
+			MIN   => 1,
+			MAX   => 50,
+			START => 10
 		)
 		port map(
 			reset   => reset,

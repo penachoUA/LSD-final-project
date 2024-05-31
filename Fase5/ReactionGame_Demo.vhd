@@ -150,9 +150,10 @@ begin
 		
 	rand_counter : entity work.CounterNBits(Behavioral)
 		generic map(
-			N	 => 32,
-			MIN => 150_000_000, -- 3 seconds
-			MAX => 350_000_000  -- 7 seconds
+			N	   => 32,
+			MIN   => 150_000_000, -- 3 seconds
+			MAX   => 350_000_000,  -- 7 seconds
+			START => 150_000_000
 		)
 		port map(
 			reset   => s_global_reset or s_pause,

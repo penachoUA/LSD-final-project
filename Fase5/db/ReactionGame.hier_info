@@ -597,15 +597,12 @@ state[2] <= state[2].DB_MAX_OUTPUT_PORT_TYPE
 |ReactionGame_Demo|ConfigurationUnit:conf_unit
 clk => pulsegen:pulse10hz_gen.clk
 clk => s_long_press.CLK
-clk => s_resetTimer.CLK
 clk => s_newTime.CLK
-clk => s_short_press_sync.CLK
 clk => debouncer:debounce_press.refClk
 clk => counternbits:target_counter.clk
 reset => counternbits:target_counter.reset
 press => press_type_proc.IN0
 press => debouncer:debounce_press.dirtyIn
-press => s_resetTimer.DATAIN
 timeExp => press_type_proc.IN1
 newTime <= s_newTime.DB_MAX_OUTPUT_PORT_TYPE
 timeVal[0] <= <GND>
@@ -646,7 +643,7 @@ targetScore[2] <= counternbits:target_counter.valOut[2]
 targetScore[3] <= counternbits:target_counter.valOut[3]
 targetScore[4] <= counternbits:target_counter.valOut[4]
 targetScore[5] <= counternbits:target_counter.valOut[5]
-resetTimer <= s_resetTimer.DB_MAX_OUTPUT_PORT_TYPE
+resetTimer <= comb.DB_MAX_OUTPUT_PORT_TYPE
 longPress <= s_long_press.DB_MAX_OUTPUT_PORT_TYPE
 
 
