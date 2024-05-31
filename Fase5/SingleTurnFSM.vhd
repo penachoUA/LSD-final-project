@@ -56,7 +56,7 @@ begin
 			case pState is
 				when IDLE =>
 					if (clickA = '1' or clickB = '1') then
-						nState <= READY;
+						nState <= DELAY;
 					else
 						nState <= IDLE;
 					end if;
@@ -88,6 +88,8 @@ begin
 					end if;
 					
 				when WIN_A =>
+					ledOn <= '1';
+					
 					if clickB = '1' then
 						nState <= DELAY;
 					else
@@ -95,6 +97,8 @@ begin
 					end if;
 					
 				when WIN_B =>
+					ledOn <= '1';
+					
 					if clickA = '1' then
 						nState <= DELAY;
 					else

@@ -4,10 +4,10 @@ use IEEE.std_logic_1164.all;
 entity ReactionGame_Demo is
 	port(
 		CLOCK_50 : in  std_logic;
-		SW       : in  std_logic_vector(0 downto 0);
-		KEY      : in  std_logic_vector(2 downto 1);
+		SW       : in  std_logic_vector(17 downto 0);
+		KEY      : in  std_logic_vector(3 downto 0);
 		LEDG     : out std_logic_vector(7 downto 0);
-		LEDR     : out std_logic_vector(1 downto 0);
+		LEDR     : out std_logic_vector(4 downto 0);
 		HEX7     : out std_logic_vector(6 downto 0);
 		HEX6     : out std_logic_vector(6 downto 0);
 		HEX5     : out std_logic_vector(6 downto 0);
@@ -46,7 +46,22 @@ architecture Structural of ReactionGame_Demo is
 		"0000111"  -- t
 		);
 		
+	--- Player led group subtype ------
+	subtype PLAYER_LEDS is std_logic_vector(3 downto 0);
+	signal s_greenA : PLAYER_LEDS;
+	signal s_greenB : PLAYER_LEDS;
+	signal s_redA   : PLAYER_LEDS;
+	signal s_redB   : PLAYER_LEDS;
+	-----------------------------------
+		
+	-- Reset signals
 	signal s_global_reset   : std_logic;
+	signal s_pause          : std_logic;
+	
+	-- TimerAuxFSM signals
+	signal s_timeExp : std_logic;
+	signal s_newTime : std_logic;
+	signal s_timeVal : std_logic_vector(31 downto 0);
 	
 	-- SystemFSM signals
 	signal s_endConf        : std_logic;
@@ -55,11 +70,28 @@ architecture Structural of ReactionGame_Demo is
 	signal s_newTime_system : std_logic;
 	signal s_timeVal_system : std_logic_vector(31 downto 0);
 	
+	-- SingleTurnFSM signals
+	signal s_clickA : std_logic;
+	signal s_clickB : std_logic;
+	
+	signal s_timeExp_turn : std_logic;
+	signal s_newTime_turn : std_logic;
+	signal s_timeVal_turn : std_logic_vector(31 downto 0);
+	signal s_ledOn        : std_logic;
+	signal s_winA         : std_logic;
+	signal s_winB         : std_logic;
+	signal s_draw         : std_logic;
+	signal s_turn_state   : std_logic_vector(2 downto 0);
+	
+	signal s_randTime     : std_logic_vector(31 downto 0);
 begin
 	sync_inputs: process(CLOCK_50)
 	 begin
 		if rising_edge(CLOCK_50) then
-			s_global_reset <= SW(0);
+			s_global_reset <= SW(17);
+			s_pause        <= SW(0);
+			s_clickA       <= not KEY(0);
+			s_clickB       <= not KEY(3);
 		end if;
 	 end process;
 
@@ -92,11 +124,70 @@ begin
 		port map(
 			clk     => not CLOCK_50,
 			reset   => s_global_reset,
-			newTime => s_newTime_system,
-			timeVal => s_timeVal_system,
-			timeExp => s_timeExp_system
+			newTime => s_newTime,
+			timeVal => s_timeVal,
+			timeExp => s_timeExp
 		);
 	
+	rand_counter : entity work.CounterNBits(Behavioral)
+		generic map(
+			N	 => 32,
+			MIN => 150_000_000, -- 3 seconds
+			MAX => 350_000_000  -- 7 seconds
+		)
+		port map(
+			reset   => s_global_reset or s_pause,
+			clk     => CLOCK_50,
+			enable1 => '1',
+			enable2 => '1',
+			valOut  => s_randTime,
+			termCnt => open
+		);
+	
+	single_turn_fsm: entity work.SingleTurnFSM(Behavioral)
+		port map(
+			clk      => CLOCK_50,
+			reset    => s_global_reset or s_pause,
+			clickA   => s_clickA,
+			clickB   => s_clickB,
+			timeExp  => s_timeExp_turn,
+			randTime => s_randTime,
+			newTime  => s_newTime_turn,
+			timeVal  => s_timeVal_turn,
+			ledOn    => s_ledOn,
+			winA     => s_winA,
+			winB     => s_winB,
+			draw     => s_draw,
+			state    => s_turn_state
+		);
+		
+	-- timerAuxFSM multiplexing and demultiplexing
+	timer_signals_proc: process(CLOCK_50)
+		begin
+			if rising_edge(CLOCK_50) then
+				case s_system_state is
+					when "00" =>
+					when "01" =>
+						s_timeExp_turn <= s_timeExp;
+						s_timeVal      <= s_timeVal_turn;
+						s_newTime      <= s_newTime_turn;
+					when "11" =>
+						s_timeExp_system <= s_timeExp;
+						s_timeVal        <= s_timeVal_system;
+						s_newTime        <= s_newTime_system;
+					when others =>
+						s_timeExp_system <= '0';
+						s_timeExp_turn   <= '0';
+						s_timeVal        <= (others => '0');
+						s_newTime        <= '0';
+				end case;
+			end if;
+		end process;
+		
+	s_greenA <= (others => '1') when (s_ledOn = '1' and s_winA = '0') else (others => '0');
+	s_greenB <= (others => '1') when (s_ledOn = '1' and s_winB = '0') else (others => '0');
+	
+	---------- Board outputs ---------
 	HEX7 <= s_d7s_target_score(1) when s_system_state = "00" else (others => '1');	
 	HEX6 <= s_d7s_target_score(0) when s_system_state = "00" else (others => '1');
 	HEX5 <= s_d7s_round_count(1) when s_system_state = "01" else (others => '1');
@@ -118,6 +209,9 @@ begin
 			  TEST_WORD(3) when s_system_state = "01" else
 			  (others => '1');		
 		
-	LEDR <= s_system_state;
-	LEDG <= (others => '1') when s_system_state = "10" else (others => '0');
+	LEDR(1 downto 0) <= s_system_state;
+	LEDR(4 downto 2) <= s_turn_state;
+	
+	LEDG(3 downto 0) <= s_greenA;
+	LEDG(7 downto 4) <= s_greenB;
 end;

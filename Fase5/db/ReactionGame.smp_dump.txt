@@ -1,4 +1,12 @@
 
+State Machine - |ReactionGame_Demo|SingleTurnFSM:single_turn_fsm|pState
+Name pState.WIN_B pState.WIN_A pState.PLAY pState.DELAY pState.IDLE 
+pState.IDLE 0 0 0 0 0 
+pState.DELAY 0 0 0 1 1 
+pState.PLAY 0 0 1 0 1 
+pState.WIN_A 0 1 0 0 1 
+pState.WIN_B 1 0 0 0 1 
+
 State Machine - |ReactionGame_Demo|SystemFSM:systemFSM|pState
 Name pState.FINAL pState.GAME pState.CONF 
 pState.CONF 0 0 0 
