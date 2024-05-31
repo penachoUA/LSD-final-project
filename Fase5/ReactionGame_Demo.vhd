@@ -147,31 +147,14 @@ begin
 			timeVal => s_timeVal,
 			timeExp => s_timeExp
 		);
-		
-	rand_counter : entity work.CounterNBits(Behavioral)
-		generic map(
-			N	   => 32,
-			MIN   => 150_000_000, -- 3 seconds
-			MAX   => 350_000_000,  -- 7 seconds
-			START => 150_000_000
-		)
-		port map(
-			reset   => s_global_reset or s_pause,
-			clk     => CLOCK_50,
-			enable1 => '1',
-			enable2 => '1',
-			valOut  => s_randTime,
-			termCnt => open
-		);
 	
-	single_turn_fsm: entity work.SingleTurnFSM(Behavioral)
+	game_unit: entity work.GameUnit(Structural)
 		port map(
 			clk      => CLOCK_50,
 			reset    => s_global_reset or s_pause,
 			clickA   => s_clickA,
 			clickB   => s_clickB,
 			timeExp  => s_timeExp_turn,
-			randTime => s_randTime,
 			newTime  => s_newTime_turn,
 			timeVal  => s_timeVal_turn,
 			ledOn    => s_ledOn,

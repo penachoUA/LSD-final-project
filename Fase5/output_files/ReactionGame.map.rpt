@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ReactionGame
-Fri May 31 23:43:43 2024
+Fri May 31 23:55:22 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -13,7 +13,7 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |ReactionGame_Demo|SingleTurnFSM:single_turn_fsm|pState
+  8. State Machine - |ReactionGame_Demo|GameUnit:game_unit|SingleTurnFSM:single_turn_fsm|pState
   9. State Machine - |ReactionGame_Demo|SystemFSM:systemFSM|pState
  10. Registers Removed During Synthesis
  11. General Register Statistics
@@ -21,7 +21,7 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
  13. Multiplexer Restructuring Statistics (Restructuring Performed)
  14. Parameter Settings for User Entity Instance: BlinkGen:one_sec_blinker
  15. Parameter Settings for User Entity Instance: Debouncer:debounce2
- 16. Parameter Settings for User Entity Instance: CounterNBits:rand_counter
+ 16. Parameter Settings for User Entity Instance: GameUnit:game_unit|CounterNBits:rand_counter
  17. Parameter Settings for User Entity Instance: ConfigurationUnit:conf_unit|PulseGen:pulse10hz_gen
  18. Parameter Settings for User Entity Instance: ConfigurationUnit:conf_unit|Debouncer:debounce_press
  19. Parameter Settings for User Entity Instance: ConfigurationUnit:conf_unit|CounterNBits:target_counter
@@ -31,8 +31,8 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
  23. Port Connectivity Checks: "ScoreDisplay:target_score_display|Bin7SegDecoder:ten_7seg"
  24. Port Connectivity Checks: "ScoreDisplay:target_score_display"
  25. Port Connectivity Checks: "ConfigurationUnit:conf_unit|CounterNBits:target_counter"
- 26. Port Connectivity Checks: "SingleTurnFSM:single_turn_fsm"
- 27. Port Connectivity Checks: "CounterNBits:rand_counter"
+ 26. Port Connectivity Checks: "GameUnit:game_unit|CounterNBits:rand_counter"
+ 27. Port Connectivity Checks: "GameUnit:game_unit"
  28. Port Connectivity Checks: "SystemFSM:systemFSM"
  29. Post-Synthesis Netlist Statistics for Top Partition
  30. Elapsed Time Per Partition
@@ -63,7 +63,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri May 31 23:43:43 2024          ;
+; Analysis & Synthesis Status        ; Successful - Fri May 31 23:55:22 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; ReactionGame                                   ;
 ; Top-level Entity Name              ; ReactionGame_Demo                              ;
@@ -201,6 +201,7 @@ https://fpgasoftware.intel.com/eula.
 ; ScoreDisplay.vhd                 ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase5/ScoreDisplay.vhd                                ;         ;
 ; Bin7SegDecoder.vhd               ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase5/Bin7SegDecoder.vhd                              ;         ;
 ; Bin2BCD.vhd                      ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase5/Bin2BCD.vhd                                     ;         ;
+; GameUnit.vhd                     ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase5/GameUnit.vhd                                    ;         ;
 ; lpm_divide.tdf                   ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
 ; abs_divider.inc                  ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
 ; sign_div_unsign.inc              ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
@@ -259,8 +260,10 @@ https://fpgasoftware.intel.com/eula.
 ;       |CounterNBits:target_counter|          ; 15 (15)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ConfigurationUnit:conf_unit|CounterNBits:target_counter                                                                                           ; CounterNBits        ; work         ;
 ;       |Debouncer:debounce_press|             ; 64 (64)             ; 25 (25)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ConfigurationUnit:conf_unit|Debouncer:debounce_press                                                                                              ; Debouncer           ; work         ;
 ;       |PulseGen:pulse10hz_gen|               ; 32 (32)             ; 20 (20)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ConfigurationUnit:conf_unit|PulseGen:pulse10hz_gen                                                                                                ; PulseGen            ; work         ;
-;    |CounterNBits:rand_counter|               ; 75 (75)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|CounterNBits:rand_counter                                                                                                                         ; CounterNBits        ; work         ;
 ;    |Debouncer:debounce2|                     ; 67 (67)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|Debouncer:debounce2                                                                                                                               ; Debouncer           ; work         ;
+;    |GameUnit:game_unit|                      ; 104 (0)             ; 38 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|GameUnit:game_unit                                                                                                                                ; GameUnit            ; work         ;
+;       |CounterNBits:rand_counter|            ; 75 (75)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|GameUnit:game_unit|CounterNBits:rand_counter                                                                                                      ; CounterNBits        ; work         ;
+;       |SingleTurnFSM:single_turn_fsm|        ; 29 (29)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|GameUnit:game_unit|SingleTurnFSM:single_turn_fsm                                                                                                  ; SingleTurnFSM       ; work         ;
 ;    |ScoreDisplay:target_score_display|       ; 80 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:target_score_display                                                                                                                 ; ScoreDisplay        ; work         ;
 ;       |Bin2BCD:bin2bcd|                      ; 73 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:target_score_display|Bin2BCD:bin2bcd                                                                                                 ; Bin2BCD             ; work         ;
 ;          |lpm_divide:Div0|                   ; 31 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:target_score_display|Bin2BCD:bin2bcd|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
@@ -272,7 +275,6 @@ https://fpgasoftware.intel.com/eula.
 ;                |sign_div_unsign_dkh:divider| ; 42 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:target_score_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider                       ; sign_div_unsign_dkh ; work         ;
 ;                   |alt_u_div_e4f:divider|    ; 42 (42)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:target_score_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider|alt_u_div_e4f:divider ; alt_u_div_e4f       ; work         ;
 ;       |Bin7SegDecoder:uni_7seg|              ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:target_score_display|Bin7SegDecoder:uni_7seg                                                                                         ; Bin7SegDecoder      ; work         ;
-;    |SingleTurnFSM:single_turn_fsm|           ; 29 (29)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|SingleTurnFSM:single_turn_fsm                                                                                                                     ; SingleTurnFSM       ; work         ;
 ;    |SystemFSM:systemFSM|                     ; 2 (2)               ; 2 (2)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|SystemFSM:systemFSM                                                                                                                               ; SystemFSM           ; work         ;
 ;    |TimerAuxFSM:timer_fsm|                   ; 108 (108)           ; 33 (33)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|TimerAuxFSM:timer_fsm                                                                                                                             ; TimerAuxFSM         ; work         ;
 +----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
@@ -280,17 +282,17 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 Encoding Type:  One-Hot
-+---------------------------------------------------------------------------------------+
-; State Machine - |ReactionGame_Demo|SingleTurnFSM:single_turn_fsm|pState               ;
-+--------------+--------------+--------------+-------------+--------------+-------------+
-; Name         ; pState.WIN_B ; pState.WIN_A ; pState.PLAY ; pState.DELAY ; pState.IDLE ;
-+--------------+--------------+--------------+-------------+--------------+-------------+
-; pState.IDLE  ; 0            ; 0            ; 0           ; 0            ; 0           ;
-; pState.DELAY ; 0            ; 0            ; 0           ; 1            ; 1           ;
-; pState.PLAY  ; 0            ; 0            ; 1           ; 0            ; 1           ;
-; pState.WIN_A ; 0            ; 1            ; 0           ; 0            ; 1           ;
-; pState.WIN_B ; 1            ; 0            ; 0           ; 0            ; 1           ;
-+--------------+--------------+--------------+-------------+--------------+-------------+
++--------------------------------------------------------------------------------------------+
+; State Machine - |ReactionGame_Demo|GameUnit:game_unit|SingleTurnFSM:single_turn_fsm|pState ;
++--------------+--------------+--------------+-------------+--------------+------------------+
+; Name         ; pState.WIN_B ; pState.WIN_A ; pState.PLAY ; pState.DELAY ; pState.IDLE      ;
++--------------+--------------+--------------+-------------+--------------+------------------+
+; pState.IDLE  ; 0            ; 0            ; 0           ; 0            ; 0                ;
+; pState.DELAY ; 0            ; 0            ; 0           ; 1            ; 1                ;
+; pState.PLAY  ; 0            ; 0            ; 1           ; 0            ; 1                ;
+; pState.WIN_A ; 0            ; 1            ; 0           ; 0            ; 1                ;
+; pState.WIN_B ; 1            ; 0            ; 0           ; 0            ; 1                ;
++--------------+--------------+--------------+-------------+--------------+------------------+
 
 
 Encoding Type:  One-Hot
@@ -371,16 +373,16 @@ Encoding Type:  One-Hot
 ; TimerAuxFSM:timer_fsm|s_counter[28]                                  ; 2       ;
 ; TimerAuxFSM:timer_fsm|s_counter[29]                                  ; 2       ;
 ; TimerAuxFSM:timer_fsm|s_counter[30]                                  ; 2       ;
-; CounterNBits:rand_counter|cnt_value[7]                               ; 3       ;
-; CounterNBits:rand_counter|cnt_value[8]                               ; 3       ;
-; CounterNBits:rand_counter|cnt_value[12]                              ; 3       ;
-; CounterNBits:rand_counter|cnt_value[14]                              ; 3       ;
-; CounterNBits:rand_counter|cnt_value[27]                              ; 3       ;
-; CounterNBits:rand_counter|cnt_value[23]                              ; 3       ;
-; CounterNBits:rand_counter|cnt_value[22]                              ; 3       ;
-; CounterNBits:rand_counter|cnt_value[21]                              ; 3       ;
-; CounterNBits:rand_counter|cnt_value[20]                              ; 3       ;
-; CounterNBits:rand_counter|cnt_value[15]                              ; 3       ;
+; GameUnit:game_unit|CounterNBits:rand_counter|cnt_value[7]            ; 3       ;
+; GameUnit:game_unit|CounterNBits:rand_counter|cnt_value[8]            ; 3       ;
+; GameUnit:game_unit|CounterNBits:rand_counter|cnt_value[12]           ; 3       ;
+; GameUnit:game_unit|CounterNBits:rand_counter|cnt_value[14]           ; 3       ;
+; GameUnit:game_unit|CounterNBits:rand_counter|cnt_value[27]           ; 3       ;
+; GameUnit:game_unit|CounterNBits:rand_counter|cnt_value[23]           ; 3       ;
+; GameUnit:game_unit|CounterNBits:rand_counter|cnt_value[22]           ; 3       ;
+; GameUnit:game_unit|CounterNBits:rand_counter|cnt_value[21]           ; 3       ;
+; GameUnit:game_unit|CounterNBits:rand_counter|cnt_value[20]           ; 3       ;
+; GameUnit:game_unit|CounterNBits:rand_counter|cnt_value[15]           ; 3       ;
 ; Total number of inverted registers = 44                              ;         ;
 +----------------------------------------------------------------------+---------+
 
@@ -391,14 +393,14 @@ Encoding Type:  One-Hot
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------+
 ; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|s_timeVal[20]                                                          ;
-; 3:1                ; 22 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |ReactionGame_Demo|CounterNBits:rand_counter|cnt_value[24]                                ;
+; 3:1                ; 22 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |ReactionGame_Demo|GameUnit:game_unit|CounterNBits:rand_counter|cnt_value[24]             ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|ConfigurationUnit:conf_unit|CounterNBits:target_counter|cnt_value[5]   ;
 ; 5:1                ; 23 bits   ; 69 LEs        ; 46 LEs               ; 23 LEs                 ; Yes        ; |ReactionGame_Demo|Debouncer:debounce2|s_debounceCnt[0]                                   ;
 ; 5:1                ; 22 bits   ; 66 LEs        ; 44 LEs               ; 22 LEs                 ; Yes        ; |ReactionGame_Demo|ConfigurationUnit:conf_unit|Debouncer:debounce_press|s_debounceCnt[14] ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |ReactionGame_Demo|CounterNBits:rand_counter|cnt_value[23]                                ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |ReactionGame_Demo|GameUnit:game_unit|CounterNBits:rand_counter|cnt_value[23]             ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|ConfigurationUnit:conf_unit|CounterNBits:target_counter|cnt_value[3]   ;
 ; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|TimerAuxFSM:timer_fsm|s_counter[7]                                     ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |ReactionGame_Demo|SingleTurnFSM:single_turn_fsm|nState                                   ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |ReactionGame_Demo|GameUnit:game_unit|SingleTurnFSM:single_turn_fsm|nState                ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------+
 
 
@@ -425,16 +427,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: CounterNBits:rand_counter ;
-+----------------+-----------+-------------------------------------------+
-; Parameter Name ; Value     ; Type                                      ;
-+----------------+-----------+-------------------------------------------+
-; n              ; 32        ; Signed Integer                            ;
-; min            ; 150000000 ; Signed Integer                            ;
-; max            ; 350000000 ; Signed Integer                            ;
-; start          ; 150000000 ; Signed Integer                            ;
-+----------------+-----------+-------------------------------------------+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: GameUnit:game_unit|CounterNBits:rand_counter ;
++----------------+-----------+--------------------------------------------------------------+
+; Parameter Name ; Value     ; Type                                                         ;
++----------------+-----------+--------------------------------------------------------------+
+; n              ; 32        ; Signed Integer                                               ;
+; min            ; 150000000 ; Signed Integer                                               ;
+; max            ; 350000000 ; Signed Integer                                               ;
+; start          ; 150000000 ; Signed Integer                                               ;
++----------------+-----------+--------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -557,19 +559,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "SingleTurnFSM:single_turn_fsm"                                                      ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                             ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; wina ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; winb ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; draw ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-
-
 +-------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "CounterNBits:rand_counter"                                                             ;
+; Port Connectivity Checks: "GameUnit:game_unit|CounterNBits:rand_counter"                                          ;
 +---------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port    ; Type   ; Severity ; Details                                                                             ;
 +---------+--------+----------+-------------------------------------------------------------------------------------+
@@ -577,6 +568,17 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; enable2 ; Input  ; Info     ; Stuck at VCC                                                                        ;
 ; termcnt ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "GameUnit:game_unit"                                                                 ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; wina ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; winb ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; draw ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------------------------+
@@ -630,7 +632,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Fri May 31 23:43:35 2024
+    Info: Processing started: Fri May 31 23:55:14 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ReactionGame -c ReactionGame
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -672,6 +674,9 @@ Info (12021): Found 2 design units, including 1 entities, in source file Bin7Seg
 Info (12021): Found 2 design units, including 1 entities, in source file Bin2BCD.vhd
     Info (12022): Found design unit 1: Bin2BCD-Behavioral File: /home/penacho/LSD/LSD-final-project/Fase5/Bin2BCD.vhd Line: 13
     Info (12023): Found entity 1: Bin2BCD File: /home/penacho/LSD/LSD-final-project/Fase5/Bin2BCD.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file GameUnit.vhd
+    Info (12022): Found design unit 1: GameUnit-Structural File: /home/penacho/LSD/LSD-final-project/Fase5/GameUnit.vhd Line: 21
+    Info (12023): Found entity 1: GameUnit File: /home/penacho/LSD/LSD-final-project/Fase5/GameUnit.vhd Line: 4
 Info (12127): Elaborating entity "ReactionGame_Demo" for the top level hierarchy
 Warning (10541): VHDL Signal Declaration warning at ReactionGame_Demo.vhd(28): used implicit default value for signal "s_d7s_round_count" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 28
 Warning (10036): Verilog HDL or VHDL warning at ReactionGame_Demo.vhd(82): object "s_winA" assigned a value but never read File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 82
@@ -682,14 +687,15 @@ Info (12129): Elaborating entity "BlinkGen" using architecture "A:behavioral" fo
 Info (12129): Elaborating entity "Debouncer" using architecture "A:behavioral" for hierarchy "Debouncer:debounce2" File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 117
 Info (12129): Elaborating entity "SystemFSM" using architecture "A:behavioral" for hierarchy "SystemFSM:systemFSM" File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 130
 Info (12129): Elaborating entity "TimerAuxFSM" using architecture "A:behavioral" for hierarchy "TimerAuxFSM:timer_fsm" File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 142
-Info (12129): Elaborating entity "CounterNBits" using architecture "A:behavioral" for hierarchy "CounterNBits:rand_counter" File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 151
-Info (12129): Elaborating entity "SingleTurnFSM" using architecture "A:behavioral" for hierarchy "SingleTurnFSM:single_turn_fsm" File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 167
-Info (12129): Elaborating entity "ConfigurationUnit" using architecture "A:structural" for hierarchy "ConfigurationUnit:conf_unit" File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 184
+Info (12129): Elaborating entity "GameUnit" using architecture "A:structural" for hierarchy "GameUnit:game_unit" File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 151
+Info (12129): Elaborating entity "CounterNBits" using architecture "A:behavioral" for hierarchy "GameUnit:game_unit|CounterNBits:rand_counter" File: /home/penacho/LSD/LSD-final-project/Fase5/GameUnit.vhd Line: 24
+Info (12129): Elaborating entity "SingleTurnFSM" using architecture "A:behavioral" for hierarchy "GameUnit:game_unit|SingleTurnFSM:single_turn_fsm" File: /home/penacho/LSD/LSD-final-project/Fase5/GameUnit.vhd Line: 40
+Info (12129): Elaborating entity "ConfigurationUnit" using architecture "A:structural" for hierarchy "ConfigurationUnit:conf_unit" File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 167
 Warning (10541): VHDL Signal Declaration warning at ConfigurationUnit.vhd(20): used implicit default value for signal "s_resetTimer" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd Line: 20
 Info (12129): Elaborating entity "PulseGen" using architecture "A:behavioral" for hierarchy "ConfigurationUnit:conf_unit|PulseGen:pulse10hz_gen" File: /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd Line: 36
 Info (12129): Elaborating entity "Debouncer" using architecture "A:behavioral" for hierarchy "ConfigurationUnit:conf_unit|Debouncer:debounce_press" File: /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd Line: 43
 Info (12129): Elaborating entity "CounterNBits" using architecture "A:behavioral" for hierarchy "ConfigurationUnit:conf_unit|CounterNBits:target_counter" File: /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd Line: 82
-Info (12129): Elaborating entity "ScoreDisplay" using architecture "A:structural" for hierarchy "ScoreDisplay:target_score_display" File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 201
+Info (12129): Elaborating entity "ScoreDisplay" using architecture "A:structural" for hierarchy "ScoreDisplay:target_score_display" File: /home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd Line: 184
 Info (12129): Elaborating entity "Bin2BCD" using architecture "A:behavioral" for hierarchy "ScoreDisplay:target_score_display|Bin2BCD:bin2bcd" File: /home/penacho/LSD/LSD-final-project/Fase5/ScoreDisplay.vhd Line: 18
 Info (12129): Elaborating entity "Bin7SegDecoder" using architecture "A:behavioral" for hierarchy "ScoreDisplay:target_score_display|Bin7SegDecoder:ten_7seg" File: /home/penacho/LSD/LSD-final-project/Fase5/ScoreDisplay.vhd Line: 25
 Info (278001): Inferred 2 megafunctions from design logic
@@ -786,9 +792,9 @@ Info (21057): Implemented 664 device resources after synthesis - the final resou
     Info (21059): Implemented 74 output pins
     Info (21061): Implemented 567 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 61 warnings
-    Info: Peak virtual memory: 474 megabytes
-    Info: Processing ended: Fri May 31 23:43:43 2024
+    Info: Peak virtual memory: 473 megabytes
+    Info: Processing ended: Fri May 31 23:55:22 2024
     Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:18
+    Info: Total CPU time (on all processors): 00:00:19
 
 

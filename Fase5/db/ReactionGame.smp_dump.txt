@@ -1,5 +1,5 @@
 
-State Machine - |ReactionGame_Demo|SingleTurnFSM:single_turn_fsm|pState
+State Machine - |ReactionGame_Demo|GameUnit:game_unit|SingleTurnFSM:single_turn_fsm|pState
 Name pState.WIN_B pState.WIN_A pState.PLAY pState.DELAY pState.IDLE 
 pState.IDLE 0 0 0 0 0 
 pState.DELAY 0 0 0 1 1 
