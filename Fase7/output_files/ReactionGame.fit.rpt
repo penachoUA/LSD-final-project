@@ -1,5 +1,5 @@
 Fitter report for ReactionGame
-Sat Jun  1 17:32:04 2024
+Sat Jun  1 17:38:22 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                      ;
 +------------------------------------+------------------------------------------------+
-; Fitter Status                      ; Successful - Sat Jun  1 17:32:04 2024          ;
+; Fitter Status                      ; Successful - Sat Jun  1 17:38:22 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; ReactionGame                                   ;
 ; Top-level Entity Name              ; ReactionGame_Demo                              ;
@@ -159,7 +159,7 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   1.0%      ;
+;     Processor 2            ;   0.9%      ;
 ;     Processor 3            ;   0.9%      ;
 ;     Processor 4            ;   0.9%      ;
 +----------------------------+-------------+
@@ -2891,7 +2891,7 @@ Info (170195): Router estimated average interconnect usage is 0% of the availabl
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:02
-Info (11888): Total time spent on timing analysis during the Fitter is 0.35 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.34 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -2900,9 +2900,9 @@ Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Info (144001): Generated suppressed messages file /home/penacho/LSD/LSD-final-project/Fase7/output_files/ReactionGame.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 430 warnings
-    Info: Peak virtual memory: 1184 megabytes
-    Info: Processing ended: Sat Jun  1 17:32:05 2024
-    Info: Elapsed time: 00:00:14
+    Info: Peak virtual memory: 1181 megabytes
+    Info: Processing ended: Sat Jun  1 17:38:23 2024
+    Info: Elapsed time: 00:00:13
     Info: Total CPU time (on all processors): 00:00:21
 
 

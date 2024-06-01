@@ -335,6 +335,7 @@ begin
 	s_shifters_reset <= '0' when s_system_state = "10" else '1';	
 	
 	defeat_effect: entity work.RotateShiftUnit(Behavioral)
+		generic map(N => 4)
 		port map(
 			clk		=> CLOCK_50,
 			reset    => s_shifters_reset,
@@ -345,6 +346,7 @@ begin
 		);
 		
 	victory_effect: entity work.RotateShiftUnit(Behavioral)
+		generic map(N => 4)
 		port map(
 			clk		=> CLOCK_50,
 			reset    => s_shifters_reset,
