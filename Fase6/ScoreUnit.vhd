@@ -63,9 +63,10 @@ begin
 	victory_proc: process(clk)
 		begin
 			if rising_edge(clk) then
-				if s_scoreA = targetScore then
+				-- If reached target or opponent has negative score
+				if ((s_scoreA = targetScore) or (s_scoreB(6 downto 1) = "111111")) then
 					victoryA <= '1';
-				elsif s_scoreB = targetScore then
+				elsif ((s_scoreB = targetScore) or (s_scoreA(6 downto 1) = "111111")) then
 					victoryB <= '1';
 				else
 					victoryA <= '0';

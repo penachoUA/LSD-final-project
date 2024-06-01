@@ -6,8 +6,8 @@ entity ReactionGame_Demo is
 		CLOCK_50 : in  std_logic;
 		SW       : in  std_logic_vector(17 downto 0);
 		KEY      : in  std_logic_vector(3 downto 0);
-		LEDG     : out std_logic_vector(8 downto 0);
-		LEDR     : out std_logic_vector(8 downto 0);
+		LEDG     : out std_logic_vector(7 downto 0);
+		LEDR     : out std_logic_vector(7 downto 0);
 		HEX7     : out std_logic_vector(6 downto 0);
 		HEX6     : out std_logic_vector(6 downto 0);
 		HEX5     : out std_logic_vector(6 downto 0);
@@ -311,11 +311,18 @@ begin
 		end process;
 		
 	s_greenA <= (others => '1') when (s_ledOn = '1' and s_turn_state /= "011")    else
-					(others => '1') when (s_victoryA = '1' and s_system_state = "10") else
+					(others => '1') when s_victoryA = '1' else
 					(others => '0');
 	s_greenB <= (others => '1') when (s_ledOn = '1' and s_turn_state /= "100")    else
-					(others => '1') when (s_victoryB = '1' and s_system_state = "10") else
+					(others => '1') when s_victoryB = '1' else
 					(others => '0');
+					
+	s_redA <= (others => '1') when s_turn_state = "101"    else
+				 (others => '1') when s_victoryB = '1' else
+				 (others => '0');
+	s_redB <= (others => '1') when s_turn_state = "110"    else
+				 (others => '1') when s_victoryA = '1' else
+				 (others => '0');
 	
 	---------- Board outputs ---------
 	
@@ -354,8 +361,8 @@ begin
 			  (others => '1') when s_global_reset = '1'                          else
 			  (others => '1');		
 		
-	LEDR(1 downto 0) <= s_system_state;
-	LEDR(4 downto 2) <= s_turn_state;
+	LEDR(3 downto 0) <= s_redB;
+	LEDR(7 downto 4) <= s_redA;
 	
 	LEDG(3 downto 0) <= s_greenB;
 	LEDG(7 downto 4) <= s_greenA;
