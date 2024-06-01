@@ -110,7 +110,7 @@ architecture Structural of ReactionGame_Demo is
 	-- Aesthetic effects signals
 	signal s_1hz_blink      : std_logic;
 	signal s_2hz_pulse      : std_logic;
-	signal s_20hz_pulse     : std_logic;
+	signal s_10hz_pulse     : std_logic;
 	signal s_defeat_effect  : std_logic_vector(3 downto 0);
 	signal s_victory_effect : std_logic_vector(3 downto 0);
 begin
@@ -129,11 +129,11 @@ begin
 			blink => s_1hz_blink
 	);
 	
-	pulse_20hz: entity work.PulseGen(Behavioral)
-		generic map(MAX => 2_500_000)
+	pulse_10hz: entity work.PulseGen(Behavioral)
+		generic map(MAX => 5_000_000)
 		port map(
 			clk   => CLOCK_50,
-			pulse => s_20hz_pulse
+			pulse => s_10hz_pulse
 	);
 	
 	pulse_2hz: entity work.PulseGen(Behavioral)
@@ -304,7 +304,7 @@ begin
 	-- timerAuxFSM multiplexing and demultiplexing
 	timer_signals_proc: process(CLOCK_50)
 		begin
-			if rising_edge(CLOCK_50) then
+			if falling_edge(CLOCK_50) then
 				s_timer_reset <= s_global_reset;
 				
 				case s_system_state is
@@ -347,8 +347,8 @@ begin
 		port map(
 			clk		=> CLOCK_50,
 			reset    => s_shifters_reset,
-			enable   => s_20hz_pulse,
-			dataIn	=> "0111",
+			enable   => s_10hz_pulse,
+			dataIn	=> "0101",
 			dirLeft	=> '0',
 			dataOut	=> s_victory_effect
 		);
@@ -369,13 +369,6 @@ begin
 	
 	---------- Board outputs ---------
 	
-
-	--HEX7 <= s_d7s_target_score(0) when ((s_system_state = "00" and s_1hz_blink = '1') or s_longPress = '1' or s_system_state = "01") else 
-	--		  (others => '1'); -- This condition is a bit long but it provides conditional blinking only for slow
-			                   -- increment, it doesn't look good when increment is fast
-			  
-	-- HEX6 <= s_d7s_target_score(1) when ((s_system_state = "00" and s_1hz_blink = '1') or s_longPress = '1' or s_system_state = "01") else
-	--       (others => '1');
 	HEX7 <= (others => '1') when (s_system_state = "00" and s_1hz_blink = '0' and s_longPress = '0') else
 	        s_d7s_target_score(0);		  
 			  
@@ -408,9 +401,6 @@ begin
 			  s_d7s_scoreB(1) when s_system_state /= "00"                        else
 			  (others => '1') when s_global_reset = '1'                          else
 			  (others => '1');		
-		
-	--LEDR(3 downto 0) <= s_redB;
-	--LEDR(7 downto 4) <= s_redA;
 	
 	LEDR(3 downto 0) <= s_redB;
 	LEDR(7 downto 4) <= s_redA;

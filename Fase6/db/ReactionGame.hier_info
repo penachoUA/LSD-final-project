@@ -1,5 +1,20 @@
 |ReactionGame_Demo
 CLOCK_50 => blinkgen:one_sec_blinker.clk
+CLOCK_50 => s_pause.CLK
+CLOCK_50 => s_global_reset.CLK
+CLOCK_50 => pulsegen:pulse_10hz.clk
+CLOCK_50 => pulsegen:pulse_2hz.clk
+CLOCK_50 => debouncer:debounce0.refClk
+CLOCK_50 => debouncer:debounce1.refClk
+CLOCK_50 => debouncer:debounce2.refClk
+CLOCK_50 => debouncer:debounce3.refClk
+CLOCK_50 => systemfsm:systemFSM.clk
+CLOCK_50 => gameunit:game_unit.clk
+CLOCK_50 => configurationunit:conf_unit.clk
+CLOCK_50 => scoreunit:score_unit.clk
+CLOCK_50 => rotateshiftunit:defeat_effect.clk
+CLOCK_50 => rotateshiftunit:victory_effect.clk
+CLOCK_50 => timerauxfsm:timer_fsm.clk
 CLOCK_50 => s_timeExp_system.CLK
 CLOCK_50 => s_timeExp_turn.CLK
 CLOCK_50 => s_newTime.CLK
@@ -37,21 +52,6 @@ CLOCK_50 => s_timeVal[30].CLK
 CLOCK_50 => s_timeVal[31].CLK
 CLOCK_50 => s_timeExp_press.CLK
 CLOCK_50 => s_timer_reset.CLK
-CLOCK_50 => s_pause.CLK
-CLOCK_50 => s_global_reset.CLK
-CLOCK_50 => pulsegen:pulse_20hz.clk
-CLOCK_50 => pulsegen:pulse_2hz.clk
-CLOCK_50 => debouncer:debounce0.refClk
-CLOCK_50 => debouncer:debounce1.refClk
-CLOCK_50 => debouncer:debounce2.refClk
-CLOCK_50 => debouncer:debounce3.refClk
-CLOCK_50 => systemfsm:systemFSM.clk
-CLOCK_50 => gameunit:game_unit.clk
-CLOCK_50 => configurationunit:conf_unit.clk
-CLOCK_50 => scoreunit:score_unit.clk
-CLOCK_50 => rotateshiftunit:defeat_effect.clk
-CLOCK_50 => rotateshiftunit:victory_effect.clk
-CLOCK_50 => timerauxfsm:timer_fsm.clk
 SW[0] => s_pause.DATAIN
 SW[1] => ~NO_FANOUT~
 SW[2] => ~NO_FANOUT~
@@ -181,7 +181,7 @@ clk => s_cnt[25].CLK
 blink <= LessThan1.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|ReactionGame_Demo|PulseGen:pulse_20hz
+|ReactionGame_Demo|PulseGen:pulse_10hz
 clk => s_cnt[0].CLK
 clk => s_cnt[1].CLK
 clk => s_cnt[2].CLK
@@ -204,6 +204,7 @@ clk => s_cnt[18].CLK
 clk => s_cnt[19].CLK
 clk => s_cnt[20].CLK
 clk => s_cnt[21].CLK
+clk => s_cnt[22].CLK
 clk => pulse~reg0.CLK
 pulse <= pulse~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
