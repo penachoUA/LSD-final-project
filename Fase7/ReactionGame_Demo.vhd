@@ -239,7 +239,7 @@ begin
 			state    => s_turn_state
 		);
 		
-	s_conf_reset <= '1' when s_system_state = "10" else '0';	
+	s_conf_reset <= '1' when (s_system_state = "00" and s_score_reset = '1') else '0';	
 		
 	conf_unit : entity work.ConfigurationUnit(Structural)
 		port map(
