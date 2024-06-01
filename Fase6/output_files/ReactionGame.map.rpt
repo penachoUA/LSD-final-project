@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ReactionGame
-Sat Jun  1 12:56:41 2024
+Sat Jun  1 13:23:39 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -73,13 +73,13 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Jun  1 12:56:41 2024          ;
+; Analysis & Synthesis Status        ; Successful - Sat Jun  1 13:23:39 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; ReactionGame                                   ;
 ; Top-level Entity Name              ; ReactionGame_Demo                              ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 1,169                                          ;
-;     Total combinational functions  ; 1,161                                          ;
+; Total logic elements               ; 1,203                                          ;
+;     Total combinational functions  ; 1,195                                          ;
 ;     Dedicated logic registers      ; 295                                            ;
 ; Total registers                    ; 295                                            ;
 ; Total pins                         ; 97                                             ;
@@ -235,16 +235,16 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 1,169          ;
+; Estimated Total logic elements              ; 1,203          ;
 ;                                             ;                ;
-; Total combinational functions               ; 1161           ;
+; Total combinational functions               ; 1195           ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 383            ;
-;     -- 3 input functions                    ; 182            ;
-;     -- <=2 input functions                  ; 596            ;
+;     -- 4 input functions                    ; 420            ;
+;     -- 3 input functions                    ; 243            ;
+;     -- <=2 input functions                  ; 532            ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 780            ;
+;     -- normal mode                          ; 814            ;
 ;     -- arithmetic mode                      ; 381            ;
 ;                                             ;                ;
 ; Total registers                             ; 295            ;
@@ -257,8 +257,8 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
 ; Maximum fan-out                             ; 295            ;
-; Total fan-out                               ; 4115           ;
-; Average fan-out                             ; 2.49           ;
+; Total fan-out                               ; 4318           ;
+; Average fan-out                             ; 2.56           ;
 +---------------------------------------------+----------------+
 
 
@@ -267,40 +267,40 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                  ; Entity Name         ; Library Name ;
 +----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |ReactionGame_Demo                           ; 1161 (104)          ; 295 (39)                  ; 0           ; 0            ; 0       ; 0         ; 97   ; 0            ; |ReactionGame_Demo                                                                                                                                                   ; ReactionGame_Demo   ; work         ;
-;    |BlinkGen:one_sec_blinker|                ; 39 (39)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|BlinkGen:one_sec_blinker                                                                                                                          ; BlinkGen            ; work         ;
+; |ReactionGame_Demo                           ; 1195 (109)          ; 295 (39)                  ; 0           ; 0            ; 0       ; 0         ; 97   ; 0            ; |ReactionGame_Demo                                                                                                                                                   ; ReactionGame_Demo   ; work         ;
+;    |BlinkGen:one_sec_blinker|                ; 38 (38)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|BlinkGen:one_sec_blinker                                                                                                                          ; BlinkGen            ; work         ;
 ;    |ConfigurationUnit:conf_unit|             ; 49 (1)              ; 29 (3)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ConfigurationUnit:conf_unit                                                                                                                       ; ConfigurationUnit   ; work         ;
 ;       |CounterNBits:target_counter|          ; 16 (16)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ConfigurationUnit:conf_unit|CounterNBits:target_counter                                                                                           ; CounterNBits        ; work         ;
 ;       |PulseGen:pulse10hz_gen|               ; 32 (32)             ; 20 (20)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ConfigurationUnit:conf_unit|PulseGen:pulse10hz_gen                                                                                                ; PulseGen            ; work         ;
-;    |Debouncer:debounce0|                     ; 64 (64)             ; 25 (25)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|Debouncer:debounce0                                                                                                                               ; Debouncer           ; work         ;
-;    |Debouncer:debounce1|                     ; 68 (68)             ; 25 (25)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|Debouncer:debounce1                                                                                                                               ; Debouncer           ; work         ;
-;    |Debouncer:debounce2|                     ; 68 (68)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|Debouncer:debounce2                                                                                                                               ; Debouncer           ; work         ;
-;    |Debouncer:debounce3|                     ; 64 (64)             ; 25 (25)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|Debouncer:debounce3                                                                                                                               ; Debouncer           ; work         ;
+;    |Debouncer:debounce0|                     ; 65 (65)             ; 25 (25)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|Debouncer:debounce0                                                                                                                               ; Debouncer           ; work         ;
+;    |Debouncer:debounce1|                     ; 67 (67)             ; 25 (25)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|Debouncer:debounce1                                                                                                                               ; Debouncer           ; work         ;
+;    |Debouncer:debounce2|                     ; 67 (67)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|Debouncer:debounce2                                                                                                                               ; Debouncer           ; work         ;
+;    |Debouncer:debounce3|                     ; 65 (65)             ; 25 (25)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|Debouncer:debounce3                                                                                                                               ; Debouncer           ; work         ;
 ;    |GameUnit:game_unit|                      ; 108 (0)             ; 40 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|GameUnit:game_unit                                                                                                                                ; GameUnit            ; work         ;
 ;       |CounterNBits:rand_counter|            ; 74 (74)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|GameUnit:game_unit|CounterNBits:rand_counter                                                                                                      ; CounterNBits        ; work         ;
 ;       |SingleTurnFSM:single_turn_fsm|        ; 34 (34)             ; 8 (8)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|GameUnit:game_unit|SingleTurnFSM:single_turn_fsm                                                                                                  ; SingleTurnFSM       ; work         ;
-;    |ScoreDisplay:scoreA_display|             ; 112 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display                                                                                                                       ; ScoreDisplay        ; work         ;
-;       |Bin2BCD:bin2bcd|                      ; 98 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin2BCD:bin2bcd                                                                                                       ; Bin2BCD             ; work         ;
-;          |lpm_divide:Div0|                   ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin2BCD:bin2bcd|lpm_divide:Div0                                                                                       ; lpm_divide          ; work         ;
-;             |lpm_divide_ihm:auto_generated|  ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated                                                         ; lpm_divide_ihm      ; work         ;
-;                |sign_div_unsign_akh:divider| ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider                             ; sign_div_unsign_akh ; work         ;
-;                   |alt_u_div_84f:divider|    ; 43 (43)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider|alt_u_div_84f:divider       ; alt_u_div_84f       ; work         ;
-;          |lpm_divide:Mod0|                   ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin2BCD:bin2bcd|lpm_divide:Mod0                                                                                       ; lpm_divide          ; work         ;
-;             |lpm_divide_o9m:auto_generated|  ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated                                                         ; lpm_divide_o9m      ; work         ;
-;                |sign_div_unsign_dkh:divider| ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider                             ; sign_div_unsign_dkh ; work         ;
-;                   |alt_u_div_e4f:divider|    ; 55 (55)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider|alt_u_div_e4f:divider       ; alt_u_div_e4f       ; work         ;
+;    |ScoreDisplay:scoreA_display|             ; 122 (4)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display                                                                                                                       ; ScoreDisplay        ; work         ;
+;       |Bin2BCD:bin2bcd|                      ; 104 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin2BCD:bin2bcd                                                                                                       ; Bin2BCD             ; work         ;
+;          |lpm_divide:Div0|                   ; 45 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin2BCD:bin2bcd|lpm_divide:Div0                                                                                       ; lpm_divide          ; work         ;
+;             |lpm_divide_ihm:auto_generated|  ; 45 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated                                                         ; lpm_divide_ihm      ; work         ;
+;                |sign_div_unsign_akh:divider| ; 45 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider                             ; sign_div_unsign_akh ; work         ;
+;                   |alt_u_div_84f:divider|    ; 45 (45)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider|alt_u_div_84f:divider       ; alt_u_div_84f       ; work         ;
+;          |lpm_divide:Mod0|                   ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin2BCD:bin2bcd|lpm_divide:Mod0                                                                                       ; lpm_divide          ; work         ;
+;             |lpm_divide_o9m:auto_generated|  ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated                                                         ; lpm_divide_o9m      ; work         ;
+;                |sign_div_unsign_dkh:divider| ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider                             ; sign_div_unsign_dkh ; work         ;
+;                   |alt_u_div_e4f:divider|    ; 59 (59)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider|alt_u_div_e4f:divider       ; alt_u_div_e4f       ; work         ;
 ;       |Bin7SegDecoder:ten_7seg|              ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin7SegDecoder:ten_7seg                                                                                               ; Bin7SegDecoder      ; work         ;
 ;       |Bin7SegDecoder:uni_7seg|              ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|Bin7SegDecoder:uni_7seg                                                                                               ; Bin7SegDecoder      ; work         ;
-;    |ScoreDisplay:scoreB_display|             ; 112 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display                                                                                                                       ; ScoreDisplay        ; work         ;
-;       |Bin2BCD:bin2bcd|                      ; 98 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin2BCD:bin2bcd                                                                                                       ; Bin2BCD             ; work         ;
-;          |lpm_divide:Div0|                   ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin2BCD:bin2bcd|lpm_divide:Div0                                                                                       ; lpm_divide          ; work         ;
-;             |lpm_divide_ihm:auto_generated|  ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated                                                         ; lpm_divide_ihm      ; work         ;
-;                |sign_div_unsign_akh:divider| ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider                             ; sign_div_unsign_akh ; work         ;
-;                   |alt_u_div_84f:divider|    ; 43 (43)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider|alt_u_div_84f:divider       ; alt_u_div_84f       ; work         ;
-;          |lpm_divide:Mod0|                   ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin2BCD:bin2bcd|lpm_divide:Mod0                                                                                       ; lpm_divide          ; work         ;
-;             |lpm_divide_o9m:auto_generated|  ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated                                                         ; lpm_divide_o9m      ; work         ;
-;                |sign_div_unsign_dkh:divider| ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider                             ; sign_div_unsign_dkh ; work         ;
-;                   |alt_u_div_e4f:divider|    ; 55 (55)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider|alt_u_div_e4f:divider       ; alt_u_div_e4f       ; work         ;
+;    |ScoreDisplay:scoreB_display|             ; 122 (4)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display                                                                                                                       ; ScoreDisplay        ; work         ;
+;       |Bin2BCD:bin2bcd|                      ; 104 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin2BCD:bin2bcd                                                                                                       ; Bin2BCD             ; work         ;
+;          |lpm_divide:Div0|                   ; 45 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin2BCD:bin2bcd|lpm_divide:Div0                                                                                       ; lpm_divide          ; work         ;
+;             |lpm_divide_ihm:auto_generated|  ; 45 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated                                                         ; lpm_divide_ihm      ; work         ;
+;                |sign_div_unsign_akh:divider| ; 45 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider                             ; sign_div_unsign_akh ; work         ;
+;                   |alt_u_div_84f:divider|    ; 45 (45)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider|alt_u_div_84f:divider       ; alt_u_div_84f       ; work         ;
+;          |lpm_divide:Mod0|                   ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin2BCD:bin2bcd|lpm_divide:Mod0                                                                                       ; lpm_divide          ; work         ;
+;             |lpm_divide_o9m:auto_generated|  ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated                                                         ; lpm_divide_o9m      ; work         ;
+;                |sign_div_unsign_dkh:divider| ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider                             ; sign_div_unsign_dkh ; work         ;
+;                   |alt_u_div_e4f:divider|    ; 59 (59)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider|alt_u_div_e4f:divider       ; alt_u_div_e4f       ; work         ;
 ;       |Bin7SegDecoder:ten_7seg|              ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin7SegDecoder:ten_7seg                                                                                               ; Bin7SegDecoder      ; work         ;
 ;       |Bin7SegDecoder:uni_7seg|              ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|Bin7SegDecoder:uni_7seg                                                                                               ; Bin7SegDecoder      ; work         ;
 ;    |ScoreDisplay:target_score_display|       ; 80 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:target_score_display                                                                                                                 ; ScoreDisplay        ; work         ;
@@ -314,16 +314,16 @@ https://fpgasoftware.intel.com/eula.
 ;                |sign_div_unsign_dkh:divider| ; 42 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:target_score_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider                       ; sign_div_unsign_dkh ; work         ;
 ;                   |alt_u_div_e4f:divider|    ; 42 (42)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:target_score_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider|alt_u_div_e4f:divider ; alt_u_div_e4f       ; work         ;
 ;       |Bin7SegDecoder:uni_7seg|              ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:target_score_display|Bin7SegDecoder:uni_7seg                                                                                         ; Bin7SegDecoder      ; work         ;
-;    |ScoreDisplay:turn_count_display|         ; 112 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display                                                                                                                   ; ScoreDisplay        ; work         ;
-;       |Bin2BCD:bin2bcd|                      ; 98 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin2BCD:bin2bcd                                                                                                   ; Bin2BCD             ; work         ;
-;          |lpm_divide:Div0|                   ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin2BCD:bin2bcd|lpm_divide:Div0                                                                                   ; lpm_divide          ; work         ;
-;             |lpm_divide_ihm:auto_generated|  ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated                                                     ; lpm_divide_ihm      ; work         ;
-;                |sign_div_unsign_akh:divider| ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider                         ; sign_div_unsign_akh ; work         ;
-;                   |alt_u_div_84f:divider|    ; 43 (43)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider|alt_u_div_84f:divider   ; alt_u_div_84f       ; work         ;
-;          |lpm_divide:Mod0|                   ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin2BCD:bin2bcd|lpm_divide:Mod0                                                                                   ; lpm_divide          ; work         ;
-;             |lpm_divide_o9m:auto_generated|  ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated                                                     ; lpm_divide_o9m      ; work         ;
-;                |sign_div_unsign_dkh:divider| ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider                         ; sign_div_unsign_dkh ; work         ;
-;                   |alt_u_div_e4f:divider|    ; 55 (55)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider|alt_u_div_e4f:divider   ; alt_u_div_e4f       ; work         ;
+;    |ScoreDisplay:turn_count_display|         ; 122 (4)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display                                                                                                                   ; ScoreDisplay        ; work         ;
+;       |Bin2BCD:bin2bcd|                      ; 104 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin2BCD:bin2bcd                                                                                                   ; Bin2BCD             ; work         ;
+;          |lpm_divide:Div0|                   ; 45 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin2BCD:bin2bcd|lpm_divide:Div0                                                                                   ; lpm_divide          ; work         ;
+;             |lpm_divide_ihm:auto_generated|  ; 45 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated                                                     ; lpm_divide_ihm      ; work         ;
+;                |sign_div_unsign_akh:divider| ; 45 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider                         ; sign_div_unsign_akh ; work         ;
+;                   |alt_u_div_84f:divider|    ; 45 (45)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin2BCD:bin2bcd|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider|alt_u_div_84f:divider   ; alt_u_div_84f       ; work         ;
+;          |lpm_divide:Mod0|                   ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin2BCD:bin2bcd|lpm_divide:Mod0                                                                                   ; lpm_divide          ; work         ;
+;             |lpm_divide_o9m:auto_generated|  ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated                                                     ; lpm_divide_o9m      ; work         ;
+;                |sign_div_unsign_dkh:divider| ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider                         ; sign_div_unsign_dkh ; work         ;
+;                   |alt_u_div_e4f:divider|    ; 59 (59)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin2BCD:bin2bcd|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider|alt_u_div_e4f:divider   ; alt_u_div_e4f       ; work         ;
 ;       |Bin7SegDecoder:ten_7seg|              ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin7SegDecoder:ten_7seg                                                                                           ; Bin7SegDecoder      ; work         ;
 ;       |Bin7SegDecoder:uni_7seg|              ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|Bin7SegDecoder:uni_7seg                                                                                           ; Bin7SegDecoder      ; work         ;
 ;    |ScoreUnit:score_unit|                    ; 63 (10)             ; 23 (2)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ReactionGame_Demo|ScoreUnit:score_unit                                                                                                                              ; ScoreUnit           ; work         ;
@@ -447,22 +447,28 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------+
-; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|s_timeVal[13]                                                        ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|s_timeVal[25]                                                        ;
 ; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |ReactionGame_Demo|ScoreUnit:score_unit|ScoreCounter:turn_count|s_score[0]              ;
-; 3:1                ; 22 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |ReactionGame_Demo|GameUnit:game_unit|CounterNBits:rand_counter|cnt_value[13]           ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|ConfigurationUnit:conf_unit|CounterNBits:target_counter|cnt_value[5] ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|ScoreUnit:score_unit|ScoreCounter:counterA|s_score[3]                ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|ScoreUnit:score_unit|ScoreCounter:counterB|s_score[6]                ;
-; 5:1                ; 22 bits   ; 66 LEs        ; 44 LEs               ; 22 LEs                 ; Yes        ; |ReactionGame_Demo|Debouncer:debounce0|s_debounceCnt[11]                                ;
-; 5:1                ; 22 bits   ; 66 LEs        ; 44 LEs               ; 22 LEs                 ; Yes        ; |ReactionGame_Demo|Debouncer:debounce3|s_debounceCnt[13]                                ;
+; 3:1                ; 22 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |ReactionGame_Demo|GameUnit:game_unit|CounterNBits:rand_counter|cnt_value[10]           ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|ConfigurationUnit:conf_unit|CounterNBits:target_counter|cnt_value[0] ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|ScoreUnit:score_unit|ScoreCounter:counterA|s_score[6]                ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|ScoreUnit:score_unit|ScoreCounter:counterB|s_score[5]                ;
+; 5:1                ; 22 bits   ; 66 LEs        ; 44 LEs               ; 22 LEs                 ; Yes        ; |ReactionGame_Demo|Debouncer:debounce0|s_debounceCnt[20]                                ;
+; 5:1                ; 22 bits   ; 66 LEs        ; 44 LEs               ; 22 LEs                 ; Yes        ; |ReactionGame_Demo|Debouncer:debounce3|s_debounceCnt[8]                                 ;
 ; 5:1                ; 23 bits   ; 69 LEs        ; 46 LEs               ; 23 LEs                 ; Yes        ; |ReactionGame_Demo|Debouncer:debounce2|s_debounceCnt[11]                                ;
-; 5:1                ; 23 bits   ; 69 LEs        ; 46 LEs               ; 23 LEs                 ; Yes        ; |ReactionGame_Demo|Debouncer:debounce1|s_debounceCnt[10]                                ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|s_timeVal[28]                                                        ;
-; 6:1                ; 5 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|s_timeVal[15]                                                        ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |ReactionGame_Demo|GameUnit:game_unit|CounterNBits:rand_counter|cnt_value[20]           ;
+; 5:1                ; 23 bits   ; 69 LEs        ; 46 LEs               ; 23 LEs                 ; Yes        ; |ReactionGame_Demo|Debouncer:debounce1|s_debounceCnt[18]                                ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|s_timeVal[10]                                                        ;
+; 6:1                ; 5 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|s_timeVal[20]                                                        ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |ReactionGame_Demo|GameUnit:game_unit|CounterNBits:rand_counter|cnt_value[23]           ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|ConfigurationUnit:conf_unit|CounterNBits:target_counter|cnt_value[1] ;
-; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|TimerAuxFSM:timer_fsm|s_counter[15]                                  ;
-; 4:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; No         ; |ReactionGame_Demo|HEX0                                                                 ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |ReactionGame_Demo|TimerAuxFSM:timer_fsm|s_counter[9]                                   ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |ReactionGame_Demo|ScoreDisplay:turn_count_display|s_score[0]                           ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |ReactionGame_Demo|ScoreDisplay:scoreA_display|hexTen[2]                                ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |ReactionGame_Demo|ScoreDisplay:scoreB_display|s_score[0]                               ;
+; 4:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; No         ; |ReactionGame_Demo|HEX2                                                                 ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |ReactionGame_Demo|HEX5                                                                 ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 12 LEs               ; 4 LEs                  ; No         ; |ReactionGame_Demo|HEX3                                                                 ;
+; 6:1                ; 5 bits    ; 20 LEs        ; 15 LEs               ; 5 LEs                  ; No         ; |ReactionGame_Demo|HEX1                                                                 ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------+
 
 
@@ -844,20 +850,20 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     SCLR              ; 32                          ;
 ;     SLD               ; 2                           ;
 ;     plain             ; 133                         ;
-; cycloneiii_lcell_comb ; 1162                        ;
+; cycloneiii_lcell_comb ; 1196                        ;
 ;     arith             ; 381                         ;
 ;         1 data inputs ; 2                           ;
-;         2 data inputs ; 280                         ;
-;         3 data inputs ; 99                          ;
-;     normal            ; 781                         ;
+;         2 data inputs ; 262                         ;
+;         3 data inputs ; 117                         ;
+;     normal            ; 815                         ;
 ;         0 data inputs ; 31                          ;
 ;         1 data inputs ; 20                          ;
-;         2 data inputs ; 264                         ;
-;         3 data inputs ; 83                          ;
-;         4 data inputs ; 383                         ;
+;         2 data inputs ; 218                         ;
+;         3 data inputs ; 126                         ;
+;         4 data inputs ; 420                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 11.80                       ;
-; Average LUT depth     ; 6.24                        ;
+; Max LUT depth         ; 13.80                       ;
+; Average LUT depth     ; 6.84                        ;
 +-----------------------+-----------------------------+
 
 
@@ -876,7 +882,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Sat Jun  1 12:56:33 2024
+    Info: Processing started: Sat Jun  1 13:23:31 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ReactionGame -c ReactionGame
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -947,8 +953,9 @@ Info (12129): Elaborating entity "CounterNBits" using architecture "A:behavioral
 Info (12129): Elaborating entity "ScoreUnit" using architecture "A:structural" for hierarchy "ScoreUnit:score_unit" File: /home/penacho/LSD/LSD-final-project/Fase6/ReactionGame_Demo.vhd Line: 238
 Info (12129): Elaborating entity "ScoreCounter" using architecture "A:behavioral" for hierarchy "ScoreUnit:score_unit|ScoreCounter:counterA" File: /home/penacho/LSD/LSD-final-project/Fase6/ScoreUnit.vhd Line: 33
 Info (12129): Elaborating entity "ScoreDisplay" using architecture "A:structural" for hierarchy "ScoreDisplay:target_score_display" File: /home/penacho/LSD/LSD-final-project/Fase6/ReactionGame_Demo.vhd Line: 256
-Info (12129): Elaborating entity "Bin2BCD" using architecture "A:behavioral" for hierarchy "ScoreDisplay:target_score_display|Bin2BCD:bin2bcd" File: /home/penacho/LSD/LSD-final-project/Fase6/ScoreDisplay.vhd Line: 18
-Info (12129): Elaborating entity "Bin7SegDecoder" using architecture "A:behavioral" for hierarchy "ScoreDisplay:target_score_display|Bin7SegDecoder:ten_7seg" File: /home/penacho/LSD/LSD-final-project/Fase6/ScoreDisplay.vhd Line: 25
+Warning (10492): VHDL Process Statement warning at ScoreDisplay.vhd(34): signal "s_hexTen" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/penacho/LSD/LSD-final-project/Fase6/ScoreDisplay.vhd Line: 34
+Info (12129): Elaborating entity "Bin2BCD" using architecture "A:behavioral" for hierarchy "ScoreDisplay:target_score_display|Bin2BCD:bin2bcd" File: /home/penacho/LSD/LSD-final-project/Fase6/ScoreDisplay.vhd Line: 39
+Info (12129): Elaborating entity "Bin7SegDecoder" using architecture "A:behavioral" for hierarchy "ScoreDisplay:target_score_display|Bin7SegDecoder:ten_7seg" File: /home/penacho/LSD/LSD-final-project/Fase6/ScoreDisplay.vhd Line: 46
 Info (278001): Inferred 8 megafunctions from design logic
     Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "ScoreDisplay:target_score_display|Bin2BCD:bin2bcd|Div0" File: /home/penacho/LSD/LSD-final-project/Fase6/Bin2BCD.vhd Line: 19
     Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "ScoreDisplay:target_score_display|Bin2BCD:bin2bcd|Mod0" File: /home/penacho/LSD/LSD-final-project/Fase6/Bin2BCD.vhd Line: 18
@@ -1024,14 +1031,14 @@ Warning (21074): Design contains 16 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[14]" File: /home/penacho/LSD/LSD-final-project/Fase6/ReactionGame_Demo.vhd Line: 7
     Warning (15610): No output dependent on input pin "SW[15]" File: /home/penacho/LSD/LSD-final-project/Fase6/ReactionGame_Demo.vhd Line: 7
     Warning (15610): No output dependent on input pin "SW[16]" File: /home/penacho/LSD/LSD-final-project/Fase6/ReactionGame_Demo.vhd Line: 7
-Info (21057): Implemented 1267 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1301 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 23 input pins
     Info (21059): Implemented 74 output pins
-    Info (21061): Implemented 1170 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 26 warnings
-    Info: Peak virtual memory: 460 megabytes
-    Info: Processing ended: Sat Jun  1 12:56:41 2024
+    Info (21061): Implemented 1204 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 27 warnings
+    Info: Peak virtual memory: 473 megabytes
+    Info: Processing ended: Sat Jun  1 13:23:39 2024
     Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:20
+    Info: Total CPU time (on all processors): 00:00:17
 
 

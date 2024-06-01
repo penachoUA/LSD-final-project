@@ -1,5 +1,5 @@
 Flow report for ReactionGame
-Sat Jun  1 12:57:02 2024
+Sat Jun  1 13:23:59 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -41,15 +41,15 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Flow Summary                                                                        ;
 +------------------------------------+------------------------------------------------+
-; Flow Status                        ; Successful - Sat Jun  1 12:57:02 2024          ;
+; Flow Status                        ; Successful - Sat Jun  1 13:23:59 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; ReactionGame                                   ;
 ; Top-level Entity Name              ; ReactionGame_Demo                              ;
 ; Family                             ; Cyclone IV E                                   ;
 ; Device                             ; EP4CE115F29C7                                  ;
 ; Timing Models                      ; Final                                          ;
-; Total logic elements               ; 1,172 / 114,480 ( 1 % )                        ;
-;     Total combinational functions  ; 1,161 / 114,480 ( 1 % )                        ;
+; Total logic elements               ; 1,207 / 114,480 ( 1 % )                        ;
+;     Total combinational functions  ; 1,195 / 114,480 ( 1 % )                        ;
 ;     Dedicated logic registers      ; 295 / 114,480 ( < 1 % )                        ;
 ; Total registers                    ; 295                                            ;
 ; Total pins                         ; 97 / 529 ( 18 % )                              ;
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/01/2024 12:56:33 ;
+; Start date & time ; 06/01/2024 13:23:31 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; ReactionGame        ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------------+-----------------------------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name       ; Section Id                        ;
 +-------------------------------------+----------------------------------------+---------------+-------------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 90520743358884.171724299327167         ; --            ; --                ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 90520743358884.171724461128259         ; --            ; --                ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --                ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --                ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --                ; eda_board_design_signal_integrity ;
@@ -100,12 +100,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:08     ; 1.0                     ; 453 MB              ; 00:00:19                           ;
-; Fitter               ; 00:00:13     ; 1.0                     ; 1183 MB             ; 00:00:21                           ;
+; Analysis & Synthesis ; 00:00:07     ; 1.0                     ; 469 MB              ; 00:00:17                           ;
+; Fitter               ; 00:00:11     ; 1.0                     ; 1178 MB             ; 00:00:19                           ;
 ; Assembler            ; 00:00:02     ; 1.0                     ; 369 MB              ; 00:00:02                           ;
-; Timing Analyzer      ; 00:00:02     ; 1.1                     ; 562 MB              ; 00:00:02                           ;
-; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 621 MB              ; 00:00:01                           ;
-; Total                ; 00:00:25     ; --                      ; --                  ; 00:00:45                           ;
+; Timing Analyzer      ; 00:00:01     ; 1.1                     ; 558 MB              ; 00:00:02                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 621 MB              ; 00:00:00                           ;
+; Total                ; 00:00:22     ; --                      ; --                  ; 00:00:40                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
