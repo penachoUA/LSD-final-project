@@ -20,7 +20,7 @@ architecture Behavioral of SystemFSM is
 	
 	signal s_stateChange  : std_logic := '0';
 	
-	constant CELEBRATION_TIME : std_logic_vector(31 downto 0) := x"0EE6B280";
+	constant CELEBRATION_TIME : std_logic_vector(31 downto 0) := x"0EE6B280"; -- 5sec
 begin
 	sync_proc: process(clk)
 		begin

@@ -63,7 +63,7 @@ begin
 			if rising_edge(clk) then
 				if s_scoreA = targetScore then
 					victoryA <= '1';
-				elsif s_scoreA = targetScore then
+				elsif s_scoreB = targetScore then
 					victoryB <= '1';
 				else
 					victoryA <= '0';

@@ -56,6 +56,8 @@ architecture Structural of ReactionGame_Demo is
 		
 	-- Reset signals
 	signal s_global_reset   : std_logic;
+	signal s_game_reset     : std_logic;
+	signal s_score_reset    : std_logic;
 	signal s_timer_reset    : std_logic;
 	signal s_pause          : std_logic;
 	
@@ -133,7 +135,7 @@ begin
 		port map(
 			refClk 	 => CLOCK_50,
 			dirtyIn	 => KEY(0),
-			pulsedOut => s_clickA
+			pulsedOut => s_clickB
 		);
 		
 	debounce1 : entity work.Debouncer(Behavioral)
@@ -172,7 +174,7 @@ begin
 		port map(
 			refClk 	 => CLOCK_50,
 			dirtyIn	 => KEY(3),
-			pulsedOut => s_clickB
+			pulsedOut => s_clickA
 		);
 		
 	systemFSM: entity work.SystemFSM(Behavioral)
@@ -180,7 +182,7 @@ begin
 			clk           => CLOCK_50,
 			reset         => s_global_reset,
 			endConf       => s_endConf,
-			victory       => '0',
+			victory       => s_victoryA or s_victoryB,
 			timeExp       => s_timeExp_system,
 			newTime       => s_newTime_system,
 			timeVal       => s_timeVal_system,
@@ -196,10 +198,12 @@ begin
 			timeExp => s_timeExp
 		);
 	
+	s_game_reset <= '0' when s_system_state = "01" else '1';
+	
 	game_unit: entity work.GameUnit(Structural)
 		port map(
 			clk      => CLOCK_50,
-			reset    => s_global_reset or s_pause,
+			reset    => s_global_reset or s_pause or s_game_reset,
 			clickA   => s_clickA,
 			clickB   => s_clickB,
 			timeExp  => s_timeExp_turn,
@@ -226,11 +230,13 @@ begin
 			resetTimer    => s_press_reset,
 			longPress     => s_longPress
 		);
-		
+
+	s_score_reset <= '1' when s_system_state = "00" else '0';
+	
 	score_unit: entity work.ScoreUnit(Structural)
 	port map(
 		clk         => CLOCK_50,
-		reset       => s_global_reset,
+		reset       => s_global_reset or s_score_reset,
 		targetScore => '0' & s_targetScore,
 		winA        => s_winA,
 		winB        => s_winB,
@@ -286,7 +292,7 @@ begin
 						s_timeExp_turn <= s_timeExp;
 						s_timeVal      <= s_timeVal_turn;
 						s_newTime      <= s_newTime_turn;
-					when "11" =>
+					when "10" =>
 						s_timeExp_system <= s_timeExp;
 						s_timeVal        <= s_timeVal_system;
 						s_newTime        <= s_newTime_system;
@@ -300,8 +306,15 @@ begin
 			end if;
 		end process;
 		
-	s_greenA <= (others => '1') when (s_ledOn = '1' and s_turn_state /= "011") else (others => '0');
-	s_greenB <= (others => '1') when (s_ledOn = '1' and s_turn_state /= "100") else (others => '0');
+	s_greenA <= (others => '1') when (s_ledOn = '1' and s_turn_state /= "011")    else
+					(others => '1') when (s_victoryA = '1' and s_system_state = "10") else
+					(others => '0');
+	s_greenB <= (others => '1') when (s_ledOn = '1' and s_turn_state /= "100")    else
+					(others => '1') when (s_victoryB = '1' and s_system_state = "10") else
+					(others => '0');
+					
+	LEDG(8) <= s_victoryA;
+	LEDR(8) <= s_victoryB;
 	
 	---------- Board outputs ---------
 	
@@ -343,6 +356,6 @@ begin
 	LEDR(1 downto 0) <= s_system_state;
 	LEDR(4 downto 2) <= s_turn_state;
 	
-	LEDG(3 downto 0) <= s_greenA;
-	LEDG(7 downto 4) <= s_greenB;
+	LEDG(3 downto 0) <= s_greenB;
+	LEDG(7 downto 4) <= s_greenA;
 end;
