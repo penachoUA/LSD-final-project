@@ -16,6 +16,7 @@ entity ScoreUnit is
 		turnCount   : out std_logic_vector(6 downto 0);
 		victoryA    : out std_logic;
 		victoryB    : out std_logic;
+		jointLoss   : out std_logic;
 		firstTurn   : out std_logic
 	);
 end;
@@ -64,17 +65,24 @@ begin
 		begin
 			if rising_edge(clk) then
 				if reset = '1' then
-					victoryA <= '0';
-					victoryB <= '0';
+					victoryA  <= '0';
+					victoryB  <= '0';
+					jointLoss <= '0';
 				else
+					-- If both negative (game restarts)
+					if ((s_scoreA(6 downto 1) = "111111") and (s_scoreB(6 downto 1) = "111111")) then
+						jointLoss <= '1';
+	
 					-- If reached target or opponent has negative score
-					if ((s_scoreA = targetScore) or (s_scoreB(6 downto 1) = "111111")) then
+					elsif ((s_scoreA = targetScore) or (s_scoreB(6 downto 1) = "111111")) then
 						victoryA <= '1';
 					elsif ((s_scoreB = targetScore) or (s_scoreA(6 downto 1) = "111111")) then
 						victoryB <= '1';
+						
 					else
-						victoryA <= '0';
-						victoryB <= '0';
+						victoryA  <= '0';
+						victoryB  <= '0';
+						jointLoss <= '0';
 					end if;
 				end if;
 			end if;

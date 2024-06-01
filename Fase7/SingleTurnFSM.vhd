@@ -74,6 +74,8 @@ begin
 				
 					if timeExp = '1' then
 						nState <= PLAY;
+					elsif (clickA = '1' and clickB = '1') then
+						nState <= DELAY;
 					elsif clickA = '1' then
 						lossA  <= '1';
 						nState <= LOSS_A;

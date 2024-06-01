@@ -7,8 +7,7 @@ entity TimerAuxFSM is
 		  clk			: in  std_logic;
 		  newTime	: in  std_logic;
 		  timeVal	: in  std_logic_vector(31 downto 0);
-		  timeExp	: out std_logic;
-		  running   : out  std_logic
+		  timeExp	: out std_logic
 		  );
 end TimerAuxFSM;
 
@@ -19,7 +18,6 @@ begin
 	process(clk)
 	begin
 		if (rising_edge(clk)) then
-			running <= '0';
 			if (reset = '1') then
 				s_counter <= (others => '1');
 				s_cntZero <= '0';
@@ -31,7 +29,6 @@ begin
 					s_cntZero <= '1';
 				else
 					s_counter <= s_counter  - 1;
-					running <= '1';
 					s_cntZero <= '0';
 				end if;
 			end if;

@@ -3,14 +3,16 @@ use IEEE.std_logic_1164.all;
 
 entity SystemFSM is
 	port(
-		clk      : in  std_logic;
-		reset    : in  std_logic;
-		endConf  : in  std_logic;
-		victory  : in  std_logic;
-		timeExp  : in  std_logic;
-		newTime  : out std_logic;
-		timeVal  : out std_logic_vector(31 downto 0);
-		state    : out std_logic_vector(1 downto 0)
+		clk         : in  std_logic;
+		reset       : in  std_logic;
+		endConf     : in  std_logic;
+		victory     : in  std_logic;
+		loss        : in  std_logic;
+		timeExp     : in  std_logic;
+		newTime     : out std_logic;
+		timeVal     : out std_logic_vector(31 downto 0);
+		resetScore : out std_logic;
+		state       : out std_logic_vector(1 downto 0)
 	);
 end;
 
@@ -41,10 +43,15 @@ begin
 		
 	comb_proc : process(pState, endConf, victory, timeExp)
 		begin
-			timeVal <= (others => '-');
+			timeVal    <= (others => '-');
+			resetScore <= '0';
 			
 			case pState is
 				when CONF =>
+					if s_stateChange = '1' then
+						resetScore <= '1';
+					end if;
+				
 					if endConf = '1' then
 						nState <= GAME;
 					else
@@ -54,6 +61,9 @@ begin
 				when GAME =>
 					if victory = '1' then
 						nState <= FINAL;
+					elsif loss = '1' then
+						resetScore <= '1';
+						nState     <= GAME;
 					else
 						nState <= GAME;
 					end if;

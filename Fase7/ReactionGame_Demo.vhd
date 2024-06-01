@@ -105,6 +105,7 @@ architecture Structural of ReactionGame_Demo is
 	signal s_turnCount : std_logic_vector(6 downto 0);
 	signal s_victoryA  : std_logic;
 	signal s_victoryB  : std_logic;
+	signal s_jointLoss : std_logic;
 	signal s_firstTurn : std_logic;
 	
 	-- Aesthetic effects signals
@@ -201,9 +202,11 @@ begin
 			reset         => s_global_reset,
 			endConf       => s_endConf,
 			victory       => s_victoryA or s_victoryB,
+			loss          => s_jointLoss,
 			timeExp       => s_timeExp_system,
 			newTime       => s_newTime_system,
 			timeVal       => s_timeVal_system,
+			resetScore    => s_score_reset,
 			state         => s_system_state
 		);
 		
@@ -213,8 +216,7 @@ begin
 			reset   => s_timer_reset,
 			newTime => s_newTime,
 			timeVal => s_timeVal,
-			timeExp => s_timeExp,
-			running => LEDG(8)
+			timeExp => s_timeExp
 		);
 	
 	s_game_reset <= '0' when s_system_state = "01" else '1';
@@ -253,8 +255,6 @@ begin
 			resetTimer    => s_press_reset,
 			longPress     => s_longPress
 		);
-
-	s_score_reset <= '1' when s_system_state = "00" else '0';
 	
 	score_unit: entity work.ScoreUnit(Structural)
 	port map(
@@ -271,6 +271,7 @@ begin
 		turnCount   => s_turnCount,
 		victoryA    => s_victoryA,
 		victoryB    => s_victoryB,
+		jointLoss   => s_jointLoss,
 		firstTurn   => s_firstTurn 
 	);
 		
