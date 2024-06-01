@@ -1,0 +1,37 @@
+Quartus Prime Archive log --	/home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_tmp_archive.qarlog
+
+Archive:	/home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_tmp_archive.qar
+Date:		Sat Jun  1 12:35:30 2024
+Quartus Prime		22.1std.2 Build 922 07/20/2023 SC Lite Edition
+
+	=========== Files Selected: ===========
+/home/penacho/.intel_fpga_lite/22.1.2/quartus/linux64/assignment_defaults.qdf
+/home/penacho/LSD/LSD-final-project/Fase5/Bin2BCD.vhd
+/home/penacho/LSD/LSD-final-project/Fase5/Bin7SegDecoder.vhd
+/home/penacho/LSD/LSD-final-project/Fase5/BlinkGen.vhd
+/home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd
+/home/penacho/LSD/LSD-final-project/Fase5/CounterNBits.vhd
+/home/penacho/LSD/LSD-final-project/Fase5/Debouncer.vhd
+/home/penacho/LSD/LSD-final-project/Fase5/GameUnit.vhd
+/home/penacho/LSD/LSD-final-project/Fase5/PulseGen.vhd
+/home/penacho/LSD/LSD-final-project/Fase5/ReactionGame.qpf
+/home/penacho/LSD/LSD-final-project/Fase5/ReactionGame.qsf
+/home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_Demo.vhd
+/home/penacho/LSD/LSD-final-project/Fase5/ScoreCounter.vhd
+/home/penacho/LSD/LSD-final-project/Fase5/ScoreCounter_tb.vhd
+/home/penacho/LSD/LSD-final-project/Fase5/ScoreDisplay.vhd
+/home/penacho/LSD/LSD-final-project/Fase5/ScoreUnit.vhd
+/home/penacho/LSD/LSD-final-project/Fase5/SingleTurnFSM.vhd
+/home/penacho/LSD/LSD-final-project/Fase5/SystemFSM.vhd
+/home/penacho/LSD/LSD-final-project/Fase5/TimerAuxFSM.vhd
+/home/penacho/LSD/LSD-final-project/Fase5/top_level_schematic.bdf
+	======= Total: 20 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
+
+
+******* Archived project restoration attempt on Sat Jun  1 12:35:31 2024
+Source archive file:	/home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_tmp_archive.qar
+Archive was extracted into	/home/penacho/LSD/LSD-final-project/Fase6/
+		 - successfully.

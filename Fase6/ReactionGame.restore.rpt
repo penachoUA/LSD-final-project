@@ -1,0 +1,89 @@
+Restore Archived Project report for ReactionGame
+Sat Jun  1 12:35:31 2024
+Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Restore Archived Project Summary
+  3. Restore Archived Project Messages
+  4. Files Restored
+  5. Files Not Restored
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------+
+; Restore Archived Project Summary                                        ;
++---------------------------------+---------------------------------------+
+; Restore Archived Project Status ; Successful - Sat Jun  1 12:35:31 2024 ;
+; Revision Name                   ; ReactionGame                          ;
+; Top-level Entity Name           ; ReactionGame_Demo                     ;
+; Family                          ; Cyclone IV E                          ;
++---------------------------------+---------------------------------------+
+
+
++-----------------------------------+
+; Restore Archived Project Messages ;
++-----------------------------------+
+Info: Successfully restored '/home/penacho/LSD/LSD-final-project/Fase5/ReactionGame_tmp_archive.qar' into the '/home/penacho/LSD/LSD-final-project/Fase6' directory
+Info: Generated report 'ReactionGame.restore.rpt'
+
+
++-------------------------+
+; Files Restored          ;
++-------------------------+
+; File Name               ;
++-------------------------+
+; qar_info.json           ;
+; assignment_defaults.qdf ;
+; Bin2BCD.vhd             ;
+; Bin7SegDecoder.vhd      ;
+; BlinkGen.vhd            ;
+; ConfigurationUnit.vhd   ;
+; CounterNBits.vhd        ;
+; Debouncer.vhd           ;
+; GameUnit.vhd            ;
+; PulseGen.vhd            ;
+; ReactionGame.qpf        ;
+; ReactionGame.qsf        ;
+; ReactionGame_Demo.vhd   ;
+; ScoreCounter.vhd        ;
+; ScoreCounter_tb.vhd     ;
+; ScoreDisplay.vhd        ;
+; ScoreUnit.vhd           ;
+; SingleTurnFSM.vhd       ;
+; SystemFSM.vhd           ;
+; TimerAuxFSM.vhd         ;
+; top_level_schematic.bdf ;
++-------------------------+
+
+
++--------------------+
+; Files Not Restored ;
++--------------------+
+; File Name          ;
++--------------------+
+
+
