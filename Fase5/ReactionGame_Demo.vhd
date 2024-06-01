@@ -91,6 +91,7 @@ architecture Structural of ReactionGame_Demo is
 	signal s_press_reset    : std_logic;
 	signal s_targetScore    : std_logic_vector(5 downto 0);
 	signal s_longPress      : std_logic;
+	signal s_shortPress     : std_logic;
 	
 	-- ScoreUnit signals
 	signal s_scoreA    : std_logic_vector(6 downto 0);
@@ -133,6 +134,19 @@ begin
 			refClk 	 => CLOCK_50,
 			dirtyIn	 => KEY(0),
 			pulsedOut => s_clickA
+		);
+		
+	debounce1 : entity work.Debouncer(Behavioral)
+     generic map(
+			kHzClkFreq		=> 50_000,
+			mSecMinInWidth => 100,
+			inPolarity		=> '0',
+			outPolarity 	=> '1'
+		)
+		port map(
+			refClk 	 => CLOCK_50,
+			dirtyIn	 => KEY(1),
+			pulsedOut => s_shortPress
 		);
 
 	debounce2 : entity work.Debouncer(Behavioral)
@@ -204,6 +218,7 @@ begin
 			reset         => s_global_reset,
 			enable        => (not s_system_state(1)) and (not s_system_state(0)),
 			press         => not KEY(1),
+			shortPress    => s_shortPress,
 			timeExp       => s_timeExp_press,
 			newTime       => s_newTime_press,
 			timeVal       => s_timeVal_press,

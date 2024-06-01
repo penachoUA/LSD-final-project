@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Sat Jun  1 11:24:31 2024
+Analysis & Synthesis Status : Successful - Sat Jun  1 11:35:28 2024
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : ReactionGame
 Top-level Entity Name : ReactionGame_Demo
 Family : Cyclone IV E
-Total logic elements : 1,102
-    Total combinational functions : 1,091
-    Dedicated logic registers : 287
-Total registers : 287
+Total logic elements : 1,105
+    Total combinational functions : 1,096
+    Dedicated logic registers : 288
+Total registers : 288
 Total pins : 97
 Total virtual pins : 0
 Total memory bits : 0

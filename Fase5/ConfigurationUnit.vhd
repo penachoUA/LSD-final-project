@@ -7,6 +7,7 @@ entity ConfigurationUnit is
 		reset         : in  std_logic;
 		enable        : in  std_logic;
 		press         : in  std_logic;
+		shortPress    : in  std_logic;
 		timeExp       : in  std_logic;
 		newTime       : out std_logic;
 		timeVal       : out std_logic_vector(31 downto 0);
@@ -21,7 +22,6 @@ architecture Structural of ConfigurationUnit is
 	signal s_resetTimer : std_logic := '0';
 
 	signal s_press          : std_logic;
-	signal s_short_press    : std_logic := '0';
 	signal s_long_press     : std_logic := '0';
 	signal s_fast_increment : std_logic := '0';
 	
@@ -40,35 +40,22 @@ begin
 			clk   => clk,
 			pulse => s_10hz_pulse
 		);
-	
-	debounce_press : entity work.Debouncer(Behavioral)
-     generic map(
-			kHzClkFreq		=> 50_000,
-			mSecMinInWidth => 50,
-			inPolarity		=> '0',
-			outPolarity 	=> '1'
-		)
-		port map(
-			refClk 	 => clk,
-			dirtyIn	 => press,
-			pulsedOut => s_short_press
-		);
-	
+		
 	------ Press Duration FSM ----------
 	press_type_proc: process(clk)
 		begin
 			if rising_edge(clk) then		
-				if s_short_press = '1' then
+				if shortPress = '1' then
 					s_newTime <= '1';
 				else
 					s_newTime <= '0';
 				end if;
 				
-				--if press = '0' then
-				--	s_resetTimer <= '1';
-				--else
-				--	s_resetTimer <= '0';
-				--end if;
+				if press = '0' then
+					s_resetTimer <= '1';
+				else
+					s_resetTimer <= '0';
+				end if;
 				
 				if (press = '1' and timeExp = '1') then
 					s_long_press <= '1';
@@ -90,7 +77,7 @@ begin
 		port map(
 			reset   => reset,
 			clk     => clk,
-			enable1 => s_short_press or s_fast_increment,
+			enable1 => shortPress or s_fast_increment,
 			enable2 => enable,
 			valOut  => targetScore,
 			termCnt => open
