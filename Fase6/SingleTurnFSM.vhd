@@ -13,16 +13,16 @@ entity SingleTurnFSM is
 		timeVal  : out std_logic_vector(31 downto 0);
 		ledOn    : out std_logic;
 		winA     : out std_logic;
+		winB     : out std_logic;
 		lossA    : out std_logic;
 		lossB    : out std_logic;
-		winB     : out std_logic;
 		draw     : out std_logic;
 		state    : out std_logic_vector(2 downto 0)
 	);
 end;
 
 architecture Behavioral of SingleTurnFSM is
-	type TSTATE is (IDLE, DELAY, LOSS_A, LOSS_B, PLAY, WIN_A, WIN_B);
+	type TSTATE is (IDLE, DELAY, PLAY, WIN_A, WIN_B, LOSS_A, LOSS_B);
 	signal pState, nState : TSTATE;
 	
 	-- signal s_winA         : std_logic;
@@ -55,6 +55,8 @@ begin
 		begin
 			winA    <= '0';
 			winB    <= '0';
+			lossA   <= '0';
+			lossB   <= '0';
 			draw    <= '0';
 			ledOn   <= '0';
 			timeVal <= (others => '-');

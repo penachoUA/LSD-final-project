@@ -13,8 +13,6 @@ entity GameUnit is
 		ledOn    : out std_logic;
 		winA     : out std_logic;
 		winB     : out std_logic;
-		lossA    : out std_logic;
-		lossB    : out std_logic;
 		draw     : out std_logic;
 		state    : out std_logic_vector(2 downto 0)
 	);
@@ -52,8 +50,6 @@ begin
 			ledOn    => ledOn,
 			winA     => winA,
 			winB     => winB,
-			lossA    => lossA,
-			lossB    => lossB,
 			draw     => draw,
 			state    => state
 		);

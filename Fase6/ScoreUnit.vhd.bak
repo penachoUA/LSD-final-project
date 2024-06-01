@@ -8,8 +8,6 @@ entity ScoreUnit is
 		targetScore : in  std_logic_vector(6 downto 0);
 		winA        : in  std_logic;
 		winB        : in  std_logic;
-		lossA       : in  std_logic;
-		lossB       : in  std_logic;
 		draw        : in  std_logic;
 		scoreA      : out std_logic_vector(6 downto 0);
 		scoreB      : out std_logic_vector(6 downto 0);
@@ -36,7 +34,7 @@ begin
 			reset     => reset,
 			enable    => '1',
 			increment => winA,
-			decrement => lossA,
+			decrement => '0',
 			score     => s_scoreA
 		);
 	
@@ -46,16 +44,16 @@ begin
 			reset     => reset,
 			enable    => '1',
 			increment => winB,
-			decrement => lossB,
+			decrement => '0',
 			score     => s_scoreB
 	);
 	
-	turn_count : entity work.ScoreCounter(Behavioral)
+	turn_count_display : entity work.ScoreCounter(Behavioral)
 		port map(
 			clk       => clk,
 			reset     => reset,
 			enable    => '1',
-			increment => winA or winB or lossA or lossB,
+			increment => winA or winB,
 			decrement => '0',
 			score     => s_turnCount
 	);

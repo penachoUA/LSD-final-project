@@ -83,8 +83,6 @@ architecture Structural of ReactionGame_Demo is
 	signal s_ledOn        : std_logic;
 	signal s_winA         : std_logic;
 	signal s_winB         : std_logic;
-	signal s_lossA        : std_logic;
-	signal s_lossB        : std_logic;
 	signal s_draw         : std_logic;
 	signal s_turn_state   : std_logic_vector(2 downto 0);
 	
@@ -115,6 +113,8 @@ begin
 		if rising_edge(CLOCK_50) then
 			s_global_reset <= SW(17);
 			s_pause        <= SW(0);
+			--s_clickA       <= not KEY(0);
+			--s_clickB       <= not KEY(3);
 		end if;
 	 end process;
 		
@@ -212,8 +212,6 @@ begin
 			ledOn    => s_ledOn,
 			winA     => s_winA,
 			winB     => s_winB,
-			lossA    => s_lossA,
-			lossB    => s_lossB,
 			draw     => s_draw,
 			state    => s_turn_state
 		);
@@ -242,8 +240,6 @@ begin
 		targetScore => '0' & s_targetScore,
 		winA        => s_winA,
 		winB        => s_winB,
-		lossA       => s_lossA,
-		lossB       => s_lossB,
 		draw        => s_draw,
 		scoreA      => s_scoreA,
 		scoreB      => s_scoreB,
