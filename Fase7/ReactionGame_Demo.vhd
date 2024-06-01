@@ -123,27 +123,6 @@ begin
 		end if;
 	 end process;
 		
-	one_sec_blinker: entity work.BlinkGen(Behavioral)
-		generic map(STEPS => 50_000_000)
-		port map(
-			clk   => CLOCK_50,
-			blink => s_1hz_blink
-	);
-	
-	pulse_10hz: entity work.PulseGen(Behavioral)
-		generic map(MAX => 5_000_000)
-		port map(
-			clk   => CLOCK_50,
-			pulse => s_10hz_pulse
-	);
-	
-	pulse_2hz: entity work.PulseGen(Behavioral)
-		generic map(MAX => 25_000_000)
-		port map(
-			clk   => CLOCK_50,
-			pulse => s_2hz_pulse
-	);
-	
 	debounce0 : entity work.Debouncer(Behavioral)
      generic map(
 			kHzClkFreq		=> 50_000,
@@ -332,6 +311,29 @@ begin
 			end if;
 		end process;
 		
+	-------- Aesthetic effects components -------
+	one_sec_blinker: entity work.BlinkGen(Behavioral)
+		generic map(STEPS => 50_000_000)
+		port map(
+			clk   => CLOCK_50,
+			blink => s_1hz_blink
+	);
+	
+	pulse_10hz: entity work.PulseGen(Behavioral)
+		generic map(MAX => 5_000_000)
+		port map(
+			clk   => CLOCK_50,
+			pulse => s_10hz_pulse
+	);
+	
+	pulse_2hz: entity work.PulseGen(Behavioral)
+		generic map(MAX => 25_000_000)
+		port map(
+			clk   => CLOCK_50,
+			pulse => s_2hz_pulse
+	);
+		
+		
 	s_shifters_reset <= '0' when s_system_state = "10" else '1';	
 	
 	defeat_effect: entity work.RotateShiftUnit(Behavioral)
@@ -355,7 +357,8 @@ begin
 			dirLeft	=> '0',
 			dataOut	=> s_victory_effect
 		);
-		
+	--------------------------------
+	
 	s_greenA <= (others => '1')  when (s_ledOn = '1' and s_turn_state /= "011")    else
 					s_victory_effect when s_victoryA = '1' else
 					(others => '0');
@@ -372,43 +375,50 @@ begin
 	
 	---------- Board outputs ---------
 	
-	HEX7 <= (others => '1') when (s_system_state = "00" and s_1hz_blink = '0' and s_longPress = '0') else
+	HEX7 <= (others => '1') when s_global_reset = '1'                                                else
+			  (others => '1') when (s_system_state = "00" and s_1hz_blink = '0' and s_longPress = '0') else
 	        s_d7s_target_score(0);		  
 			  
-	HEX6 <= (others => '1') when (s_system_state = "00" and s_1hz_blink = '0' and s_longPress = '0') else
+	HEX6 <= (others => '1') when s_global_reset = '1'                                                else
+			  (others => '1') when (s_system_state = "00" and s_1hz_blink = '0' and s_longPress = '0') else
 	        s_d7s_target_score(1);
 			  
-	HEX5 <= s_d7s_turn_count(0) when s_system_state = "01" else (others => '1');
-	HEX4 <= s_d7s_turn_count(1) when s_system_state = "01" else (others => '1');
+	HEX5 <= (others => '1') when s_global_reset = '1'      else
+			  s_d7s_turn_count(0) when s_system_state = "01" else
+			  (others => '1');
+			  
+	HEX4 <= s_d7s_turn_count(1) when s_system_state = "01" else 
+			  (others => '1') when s_global_reset = '1'      else
+			  (others => '1');
 	
-	HEX3 <= CONF_WORD(0)    when s_system_state = "00"                         else
+	HEX3 <= (others => '1') when s_global_reset = '1'                          else
+			  CONF_WORD(0)    when s_system_state = "00"                         else
 			  TEST_WORD(0)    when (s_system_state = "01" and s_firstTurn = '1') else
 			  s_d7s_scoreA(0) when s_system_state /= "00"                        else
-			  (others => '1') when s_global_reset = '1'                          else
 			  (others => '1');
 			  
-	HEX2 <= CONF_WORD(1)    when s_system_state = "00"                         else
+	HEX2 <= (others => '1') when s_global_reset = '1'                          else
+			  CONF_WORD(1)    when s_system_state = "00"                         else
 			  TEST_WORD(1)    when (s_system_state = "01" and s_firstTurn = '1') else
 			  s_d7s_scoreA(1) when s_system_state /= "00"                        else
-			  (others => '1') when s_global_reset = '1'                          else
 			  (others => '1');
 			  
-	HEX1 <= CONF_WORD(2)    when s_system_state = "00"                         else
+	HEX1 <= (others => '1') when s_global_reset = '1'                          else
+			  CONF_WORD(2)    when s_system_state = "00"                         else
 			  TEST_WORD(2)    when (s_system_state = "01" and s_firstTurn = '1') else
 			  s_d7s_scoreB(0) when s_system_state /= "00"                        else
-			  (others => '1') when s_global_reset = '1'                          else
 			  (others => '1');
 			  
-	HEX0 <= CONF_WORD(3)    when s_system_state = "00"                         else
+	HEX0 <= (others => '1') when s_global_reset = '1'                          else
+			  CONF_WORD(3)    when s_system_state = "00"                         else
 			  TEST_WORD(3)    when (s_system_state = "01" and s_firstTurn = '1') else
 			  s_d7s_scoreB(1) when s_system_state /= "00"                        else
-			  (others => '1') when s_global_reset = '1'                          else
 			  (others => '1');		
 	
-	LEDR(3 downto 0) <= s_redB;
-	LEDR(7 downto 4) <= s_redA;
+	LEDR(3 downto 0) <= s_redB when s_global_reset = '0' else (others => '0');
+	LEDR(7 downto 4) <= s_redA when s_global_reset = '0' else (others => '0');
 	
 	
-	LEDG(3 downto 0) <= s_greenB;
-	LEDG(7 downto 4) <= s_greenA;
+	LEDG(3 downto 0) <= s_greenB when s_global_reset = '0' else (others => '0');
+	LEDG(7 downto 4) <= s_greenA when s_global_reset = '0' else (others => '0');
 end;
