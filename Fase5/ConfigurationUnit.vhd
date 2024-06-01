@@ -17,7 +17,7 @@ end;
 
 architecture Structural of ConfigurationUnit is
 	signal s_newTime    : std_logic;
-	signal s_resetTimer : std_logic;
+	signal s_resetTimer : std_logic := '0';
 
 	signal s_press          : std_logic;
 	signal s_short_press    : std_logic := '0';

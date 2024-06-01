@@ -14,7 +14,7 @@ entity ScoreCounter is
 end;
 
 architecture Behavioral of ScoreCounter is
-	signal s_score : unsigned(6 downto 0);
+	signal s_score : unsigned(6 downto 0) := (others => '0');
 begin
 	process(clk)
 		begin

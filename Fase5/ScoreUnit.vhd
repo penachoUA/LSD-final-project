@@ -13,7 +13,8 @@ entity ScoreUnit is
 		scoreB      : out std_logic_vector(6 downto 0);
 		turnCount   : out std_logic_vector(6 downto 0);
 		victoryA    : out std_logic;
-		victoryB    : out std_logic
+		victoryB    : out std_logic;
+		firstTurn   : out std_logic
 	);
 end;
 
@@ -22,6 +23,11 @@ architecture Structural of ScoreUnit is
 	signal s_scoreB    : std_logic_vector(6 downto 0);
 	signal s_turnCount : std_logic_vector(6 downto 0);
 begin
+	firstTurn <= '1' when s_turnCount = "0000000" else '0';
+	scoreA    <= s_scoreA;
+	scoreB    <= s_scoreB;
+	turnCount <= s_turnCount;
+
 	counterA: entity work.ScoreCounter(Behavioral)
 		port map(
 			clk       => clk,
@@ -47,7 +53,7 @@ begin
 			clk       => clk,
 			reset     => reset,
 			enable    => '1',
-			increment => winA or winB or draw,
+			increment => winA or winB,
 			decrement => '0',
 			score     => s_turnCount
 	);

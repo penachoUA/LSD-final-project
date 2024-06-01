@@ -23,78 +23,163 @@
 # Copying /home/penacho/.intel_fpga_lite/22.1.2/questa_fse/linux_x86_64/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase5/Debouncer.vhd}
+# vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase5/ScoreCounter.vhd}
 # Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 22:44:23 on May 31,2024
-# vcom -reportprogress 300 -93 -work work /home/penacho/LSD/LSD-final-project/Fase5/Debouncer.vhd 
+# Start time: 10:33:49 on Jun 01,2024
+# vcom -reportprogress 300 -93 -work work /home/penacho/LSD/LSD-final-project/Fase5/ScoreCounter.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
-# -- Compiling entity Debouncer
-# -- Compiling architecture Behavioral of Debouncer
-# End time: 22:44:23 on May 31,2024, Elapsed time: 0:00:00
+# -- Compiling entity ScoreCounter
+# -- Compiling architecture Behavioral of ScoreCounter
+# End time: 10:33:49 on Jun 01,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase5/CounterNBits.vhd}
-# Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 22:44:23 on May 31,2024
-# vcom -reportprogress 300 -93 -work work /home/penacho/LSD/LSD-final-project/Fase5/CounterNBits.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity CounterNBits
-# -- Compiling architecture Behavioral of CounterNBits
-# End time: 22:44:23 on May 31,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd}
-# Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 22:44:23 on May 31,2024
-# vcom -reportprogress 300 -93 -work work /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity ConfigurationUnit
-# -- Compiling architecture Structural of ConfigurationUnit
-# ** Error: (vcom-11) Could not find work.pulsegen.
-# ** Error (suppressible): /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd(37): (vcom-1195) Cannot find expanded name "work.PulseGen".
-# ** Error: /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd(37): Unknown expanded name.
-# -- Loading package NUMERIC_STD
-# -- Loading entity Debouncer
-# -- Loading entity CounterNBits
-# ** Error: /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd(91): (vcom-1436) Actual expression (infix expression) of formal "enable1" is not globally static.
-# ** Note: /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd(97): VHDL Compiler exiting
-# End time: 22:44:23 on May 31,2024, Elapsed time: 0:00:00
-# Errors: 4, Warnings: 0
-# ** Error: /home/penacho/.intel_fpga_lite/22.1.2/questa_fse/linux_x86_64/vcom failed.
-# Error in macro ./ReactionGame_run_msim_rtl_vhdl.do line 10
-# /home/penacho/.intel_fpga_lite/22.1.2/questa_fse/linux_x86_64/vcom failed.
-#     while executing
-# "vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit.vhd}"
+# 
 # 
 # stdin: <EOF>
-vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit_tb.vhd
+vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase5/ScoreCounter_tb.vhd
 # Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 22:44:29 on May 31,2024
-# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase5/ConfigurationUnit_tb.vhd 
+# Start time: 10:33:56 on Jun 01,2024
+# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase5/ScoreCounter_tb.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
-# -- Compiling entity ConfigurationUnit_tb
-# -- Compiling architecture Stimulus of ConfigurationUnit_tb
-# -- Loading entity ConfigurationUnit
-# End time: 22:44:29 on May 31,2024, Elapsed time: 0:00:00
+# -- Loading package NUMERIC_STD
+# -- Compiling entity ScoreCounter_tb
+# -- Compiling architecture Behavioral of ScoreCounter_tb
+# -- Loading entity ScoreCounter
+# End time: 10:33:56 on Jun 01,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vsim -i -l msim_transcript work.configurationunit_tb(stimulus)
-# vsim -i -l msim_transcript work.configurationunit_tb(stimulus) 
-# Start time: 22:44:40 on May 31,2024
+# Optimization canceled
+vsim -i -l msim_transcript work.scorecounter_tb(behavioral) -voptargs=+acc
+# vsim -i -l msim_transcript work.scorecounter_tb(behavioral) -voptargs="+acc" 
+# Start time: 10:34:16 on Jun 01,2024
 # ** Note: (vsim-3812) Design is being optimized...
-# ** Error: (vopt-11) Could not find work.configurationunit(structural).
+# ** Error: (vopt-11) Could not find work.scorecounter(structural).
 # Optimization failed
 # ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=1, Warnings=0.
 # Error loading design
-# End time: 22:44:41 on May 31,2024, Elapsed time: 0:00:01
+# End time: 10:34:17 on Jun 01,2024, Elapsed time: 0:00:01
 # Errors: 1, Warnings: 0
-# A time value could not be extracted from the current line
-# A time value could not be extracted from the current line
-# A time value could not be extracted from the current line
+vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase5/ScoreCounter_tb.vhd
+# Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 10:34:49 on Jun 01,2024
+# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase5/ScoreCounter_tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity ScoreCounter_tb
+# -- Compiling architecture Stimulus of ScoreCounter_tb
+# -- Loading entity ScoreCounter
+# End time: 10:34:49 on Jun 01,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -i -l msim_transcript -voptargs=+acc work.scorecounter_tb(stimulus)
+# vsim -i -l msim_transcript -voptargs="+acc" work.scorecounter_tb(stimulus) 
+# Start time: 10:35:00 on Jun 01,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: (vopt-11) Could not find work.scorecounter(structural).
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=1, Warnings=0.
+# Error loading design
+# End time: 10:35:00 on Jun 01,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vcom scorecounter.vhd
+# Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 10:36:11 on Jun 01,2024
+# vcom -reportprogress 300 scorecounter.vhd 
+# ** Error: (vcom-7) Failed to open design unit file "scorecounter.vhd" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 10:36:11 on Jun 01,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /home/penacho/.intel_fpga_lite/22.1.2/questa_fse/linux_x86_64/vcom failed.
+vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase5/ScoreCounter.vhd
+# Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 10:36:20 on Jun 01,2024
+# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase5/ScoreCounter.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity ScoreCounter
+# -- Compiling architecture Behavioral of ScoreCounter
+# End time: 10:36:20 on Jun 01,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase5/ScoreCounter_tb.vhd
+# Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 10:36:23 on Jun 01,2024
+# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase5/ScoreCounter_tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity ScoreCounter_tb
+# -- Compiling architecture Stimulus of ScoreCounter_tb
+# -- Loading entity ScoreCounter
+# End time: 10:36:23 on Jun 01,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -i -l msim_transcript -voptargs=+acc work.scorecounter_tb(stimulus)
+# vsim -i -l msim_transcript -voptargs="+acc" work.scorecounter_tb(stimulus) 
+# Start time: 10:36:34 on Jun 01,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: (vopt-11) Could not find work.scorecounter(structural).
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=1, Warnings=0.
+# Error loading design
+# End time: 10:36:34 on Jun 01,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vsim -i -l msim_transcript -voptargs=+acc work.scorecounter_tb(stimulus)
+# vsim -i -l msim_transcript -voptargs="+acc" work.scorecounter_tb(stimulus) 
+# Start time: 10:37:11 on Jun 01,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: (vopt-11) Could not find work.scorecounter(structural).
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=1, Warnings=0.
+# Error loading design
+# End time: 10:37:11 on Jun 01,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase5/ScoreCounter.vhd
+# Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 10:37:18 on Jun 01,2024
+# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase5/ScoreCounter.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity ScoreCounter
+# -- Compiling architecture Behavioral of ScoreCounter
+# End time: 10:37:18 on Jun 01,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase5/ScoreCounter_tb.vhd
+# Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 10:37:20 on Jun 01,2024
+# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase5/ScoreCounter_tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity ScoreCounter_tb
+# -- Compiling architecture Stimulus of ScoreCounter_tb
+# -- Loading entity ScoreCounter
+# End time: 10:37:20 on Jun 01,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -i -l msim_transcript -voptargs=+acc work.scorecounter_tb(stimulus)
+# vsim -i -l msim_transcript -voptargs="+acc" work.scorecounter_tb(stimulus) 
+# Start time: 10:37:29 on Jun 01,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.scorecounter_tb(stimulus)#1
+# Loading work.scorecounter(behavioral)#1
+add wave -position end  sim:/scorecounter_tb/s_clk
+add wave -position end  sim:/scorecounter_tb/s_reset
+add wave -position end  sim:/scorecounter_tb/s_enable
+add wave -position end  sim:/scorecounter_tb/s_increment
+add wave -position end  sim:/scorecounter_tb/s_decrement
+add wave -position end  sim:/scorecounter_tb/s_score
+run
+# End time: 10:38:19 on Jun 01,2024, Elapsed time: 0:00:50
+# Errors: 0, Warnings: 0
