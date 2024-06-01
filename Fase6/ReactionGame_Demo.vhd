@@ -6,8 +6,8 @@ entity ReactionGame_Demo is
 		CLOCK_50 : in  std_logic;
 		SW       : in  std_logic_vector(17 downto 0);
 		KEY      : in  std_logic_vector(3 downto 0);
-		LEDG     : out std_logic_vector(7 downto 0);
-		LEDR     : out std_logic_vector(7 downto 0);
+		LEDG     : out std_logic_vector(8 downto 0);
+		LEDR     : out std_logic_vector(8 downto 0);
 		HEX7     : out std_logic_vector(6 downto 0);
 		HEX6     : out std_logic_vector(6 downto 0);
 		HEX5     : out std_logic_vector(6 downto 0);
@@ -58,8 +58,10 @@ architecture Structural of ReactionGame_Demo is
 	signal s_global_reset   : std_logic;
 	signal s_game_reset     : std_logic;
 	signal s_score_reset    : std_logic;
+	signal s_conf_reset     : std_logic;
 	signal s_timer_reset    : std_logic;
 	signal s_pause          : std_logic;
+	signal s_shifters_reset : std_logic;
 	
 	-- TimerAuxFSM signals
 	signal s_timeExp : std_logic;
@@ -105,10 +107,12 @@ architecture Structural of ReactionGame_Demo is
 	signal s_victoryB  : std_logic;
 	signal s_firstTurn : std_logic;
 	
-	-- Blinkers
-	signal s_1hz_blink  : std_logic;
-	
-	signal s_randTime     : std_logic_vector(31 downto 0);
+	-- Aesthetic effects signals
+	signal s_1hz_blink      : std_logic;
+	signal s_2hz_pulse      : std_logic;
+	signal s_20hz_pulse     : std_logic;
+	signal s_defeat_effect  : std_logic_vector(3 downto 0);
+	signal s_victory_effect : std_logic_vector(3 downto 0);
 begin
 	sync_inputs: process(CLOCK_50)
 	 begin
@@ -123,6 +127,20 @@ begin
 		port map(
 			clk   => CLOCK_50,
 			blink => s_1hz_blink
+	);
+	
+	pulse_20hz: entity work.PulseGen(Behavioral)
+		generic map(MAX => 2_500_000)
+		port map(
+			clk   => CLOCK_50,
+			pulse => s_20hz_pulse
+	);
+	
+	pulse_2hz: entity work.PulseGen(Behavioral)
+		generic map(MAX => 25_000_000)
+		port map(
+			clk   => CLOCK_50,
+			pulse => s_2hz_pulse
 	);
 	
 	debounce0 : entity work.Debouncer(Behavioral)
@@ -195,7 +213,8 @@ begin
 			reset   => s_timer_reset,
 			newTime => s_newTime,
 			timeVal => s_timeVal,
-			timeExp => s_timeExp
+			timeExp => s_timeExp,
+			running => LEDG(8)
 		);
 	
 	s_game_reset <= '0' when s_system_state = "01" else '1';
@@ -218,10 +237,12 @@ begin
 			state    => s_turn_state
 		);
 		
+	s_conf_reset <= '1' when s_system_state = "10" else '0';	
+		
 	conf_unit : entity work.ConfigurationUnit(Structural)
 		port map(
 			clk           => CLOCK_50,
-			reset         => s_global_reset,
+			reset         => s_global_reset or s_conf_reset,
 			enable        => (not s_system_state(1)) and (not s_system_state(0)),
 			press         => not KEY(1),
 			shortPress    => s_shortPress,
@@ -304,65 +325,96 @@ begin
 						s_timeExp_press  <= '0';
 						s_timeExp_system <= '0';
 						s_timeExp_turn   <= '0';
-						s_timeVal        <= (others => '0');
+						s_timeVal        <= (others => '1');
 						s_newTime        <= '0';
 				end case;
 			end if;
 		end process;
 		
-	s_greenA <= (others => '1') when (s_ledOn = '1' and s_turn_state /= "011")    else
-					(others => '1') when s_victoryA = '1' else
+	s_shifters_reset <= '0' when s_system_state = "10" else '1';	
+	
+	defeat_effect: entity work.RotateShiftUnit(Behavioral)
+		port map(
+			clk		=> CLOCK_50,
+			reset    => s_shifters_reset,
+			enable   => s_2hz_pulse,
+			dataIn	=> "0111",
+			dirLeft	=> '1',
+			dataOut	=> s_defeat_effect
+		);
+		
+	victory_effect: entity work.RotateShiftUnit(Behavioral)
+		port map(
+			clk		=> CLOCK_50,
+			reset    => s_shifters_reset,
+			enable   => s_20hz_pulse,
+			dataIn	=> "0111",
+			dirLeft	=> '0',
+			dataOut	=> s_victory_effect
+		);
+		
+	s_greenA <= (others => '1')  when (s_ledOn = '1' and s_turn_state /= "011")    else
+					s_victory_effect when s_victoryA = '1' else
 					(others => '0');
 	s_greenB <= (others => '1') when (s_ledOn = '1' and s_turn_state /= "100")    else
-					(others => '1') when s_victoryB = '1' else
+					s_victory_effect when s_victoryB = '1' else
 					(others => '0');
 					
 	s_redA <= (others => '1') when s_turn_state = "101"    else
-				 (others => '1') when s_victoryB = '1' else
+				 s_defeat_effect when s_victoryB = '1' else
 				 (others => '0');
 	s_redB <= (others => '1') when s_turn_state = "110"    else
-				 (others => '1') when s_victoryA = '1' else
+				 s_defeat_effect when s_victoryA = '1' else
 				 (others => '0');
 	
 	---------- Board outputs ---------
 	
 
-	HEX7 <= s_d7s_target_score(0) when ((s_system_state = "00" and s_1hz_blink = '1') or s_longPress = '1' or s_system_state = "01") else 
-			  (others => '1'); -- This condition is a bit long but it provides conditional blinking only for slow
+	--HEX7 <= s_d7s_target_score(0) when ((s_system_state = "00" and s_1hz_blink = '1') or s_longPress = '1' or s_system_state = "01") else 
+	--		  (others => '1'); -- This condition is a bit long but it provides conditional blinking only for slow
 			                   -- increment, it doesn't look good when increment is fast
 			  
-	HEX6 <= s_d7s_target_score(1) when ((s_system_state = "00" and s_1hz_blink = '1') or s_longPress = '1' or s_system_state = "01") else
-	        (others => '1');
+	-- HEX6 <= s_d7s_target_score(1) when ((s_system_state = "00" and s_1hz_blink = '1') or s_longPress = '1' or s_system_state = "01") else
+	--       (others => '1');
+	HEX7 <= (others => '1') when (s_system_state = "00" and s_1hz_blink = '0' and s_longPress = '0') else
+	        s_d7s_target_score(0);		  
+			  
+	HEX6 <= (others => '1') when (s_system_state = "00" and s_1hz_blink = '0' and s_longPress = '0') else
+	        s_d7s_target_score(1);
 			  
 	HEX5 <= s_d7s_turn_count(0) when s_system_state = "01" else (others => '1');
 	HEX4 <= s_d7s_turn_count(1) when s_system_state = "01" else (others => '1');
 	
 	HEX3 <= CONF_WORD(0)    when s_system_state = "00"                         else
 			  TEST_WORD(0)    when (s_system_state = "01" and s_firstTurn = '1') else
-			  s_d7s_scoreA(0) when s_system_state = "01"                         else
+			  s_d7s_scoreA(0) when s_system_state /= "00"                        else
 			  (others => '1') when s_global_reset = '1'                          else
 			  (others => '1');
 			  
 	HEX2 <= CONF_WORD(1)    when s_system_state = "00"                         else
 			  TEST_WORD(1)    when (s_system_state = "01" and s_firstTurn = '1') else
-			  s_d7s_scoreA(1) when s_system_state = "01"                         else
+			  s_d7s_scoreA(1) when s_system_state /= "00"                        else
 			  (others => '1') when s_global_reset = '1'                          else
 			  (others => '1');
 			  
 	HEX1 <= CONF_WORD(2)    when s_system_state = "00"                         else
 			  TEST_WORD(2)    when (s_system_state = "01" and s_firstTurn = '1') else
-			  s_d7s_scoreB(0) when s_system_state = "01"                         else
+			  s_d7s_scoreB(0) when s_system_state /= "00"                        else
 			  (others => '1') when s_global_reset = '1'                          else
 			  (others => '1');
 			  
 	HEX0 <= CONF_WORD(3)    when s_system_state = "00"                         else
 			  TEST_WORD(3)    when (s_system_state = "01" and s_firstTurn = '1') else
-			  s_d7s_scoreB(1) when s_system_state = "01"                         else
+			  s_d7s_scoreB(1) when s_system_state /= "00"                        else
 			  (others => '1') when s_global_reset = '1'                          else
 			  (others => '1');		
 		
+	--LEDR(3 downto 0) <= s_redB;
+	--LEDR(7 downto 4) <= s_redA;
+	
 	LEDR(3 downto 0) <= s_redB;
 	LEDR(7 downto 4) <= s_redA;
+	
 	
 	LEDG(3 downto 0) <= s_greenB;
 	LEDG(7 downto 4) <= s_greenA;

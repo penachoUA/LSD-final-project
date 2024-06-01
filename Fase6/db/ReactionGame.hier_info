@@ -39,6 +39,8 @@ CLOCK_50 => s_timeExp_press.CLK
 CLOCK_50 => s_timer_reset.CLK
 CLOCK_50 => s_pause.CLK
 CLOCK_50 => s_global_reset.CLK
+CLOCK_50 => pulsegen:pulse_20hz.clk
+CLOCK_50 => pulsegen:pulse_2hz.clk
 CLOCK_50 => debouncer:debounce0.refClk
 CLOCK_50 => debouncer:debounce1.refClk
 CLOCK_50 => debouncer:debounce2.refClk
@@ -47,6 +49,8 @@ CLOCK_50 => systemfsm:systemFSM.clk
 CLOCK_50 => gameunit:game_unit.clk
 CLOCK_50 => configurationunit:conf_unit.clk
 CLOCK_50 => scoreunit:score_unit.clk
+CLOCK_50 => rotateshiftunit:defeat_effect.clk
+CLOCK_50 => rotateshiftunit:victory_effect.clk
 CLOCK_50 => timerauxfsm:timer_fsm.clk
 SW[0] => s_pause.DATAIN
 SW[1] => ~NO_FANOUT~
@@ -79,7 +83,7 @@ LEDG[4] <= s_greenA.DB_MAX_OUTPUT_PORT_TYPE
 LEDG[5] <= s_greenA.DB_MAX_OUTPUT_PORT_TYPE
 LEDG[6] <= s_greenA.DB_MAX_OUTPUT_PORT_TYPE
 LEDG[7] <= s_greenA.DB_MAX_OUTPUT_PORT_TYPE
-LEDG[8] <= <GND>
+LEDG[8] <= timerauxfsm:timer_fsm.running
 LEDR[0] <= s_redB.DB_MAX_OUTPUT_PORT_TYPE
 LEDR[1] <= s_redB.DB_MAX_OUTPUT_PORT_TYPE
 LEDR[2] <= s_redB.DB_MAX_OUTPUT_PORT_TYPE
@@ -175,6 +179,63 @@ clk => s_cnt[23].CLK
 clk => s_cnt[24].CLK
 clk => s_cnt[25].CLK
 blink <= LessThan1.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ReactionGame_Demo|PulseGen:pulse_20hz
+clk => s_cnt[0].CLK
+clk => s_cnt[1].CLK
+clk => s_cnt[2].CLK
+clk => s_cnt[3].CLK
+clk => s_cnt[4].CLK
+clk => s_cnt[5].CLK
+clk => s_cnt[6].CLK
+clk => s_cnt[7].CLK
+clk => s_cnt[8].CLK
+clk => s_cnt[9].CLK
+clk => s_cnt[10].CLK
+clk => s_cnt[11].CLK
+clk => s_cnt[12].CLK
+clk => s_cnt[13].CLK
+clk => s_cnt[14].CLK
+clk => s_cnt[15].CLK
+clk => s_cnt[16].CLK
+clk => s_cnt[17].CLK
+clk => s_cnt[18].CLK
+clk => s_cnt[19].CLK
+clk => s_cnt[20].CLK
+clk => s_cnt[21].CLK
+clk => pulse~reg0.CLK
+pulse <= pulse~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ReactionGame_Demo|PulseGen:pulse_2hz
+clk => s_cnt[0].CLK
+clk => s_cnt[1].CLK
+clk => s_cnt[2].CLK
+clk => s_cnt[3].CLK
+clk => s_cnt[4].CLK
+clk => s_cnt[5].CLK
+clk => s_cnt[6].CLK
+clk => s_cnt[7].CLK
+clk => s_cnt[8].CLK
+clk => s_cnt[9].CLK
+clk => s_cnt[10].CLK
+clk => s_cnt[11].CLK
+clk => s_cnt[12].CLK
+clk => s_cnt[13].CLK
+clk => s_cnt[14].CLK
+clk => s_cnt[15].CLK
+clk => s_cnt[16].CLK
+clk => s_cnt[17].CLK
+clk => s_cnt[18].CLK
+clk => s_cnt[19].CLK
+clk => s_cnt[20].CLK
+clk => s_cnt[21].CLK
+clk => s_cnt[22].CLK
+clk => s_cnt[23].CLK
+clk => s_cnt[24].CLK
+clk => pulse~reg0.CLK
+pulse <= pulse~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |ReactionGame_Demo|Debouncer:debounce0
@@ -383,6 +444,7 @@ reset => s_counter.OUTPUTSELECT
 reset => s_counter.OUTPUTSELECT
 reset => s_counter.OUTPUTSELECT
 reset => s_cntZero.OUTPUTSELECT
+reset => running.OUTPUTSELECT
 clk => s_cntZero.CLK
 clk => s_counter[0].CLK
 clk => s_counter[1].CLK
@@ -416,6 +478,7 @@ clk => s_counter[28].CLK
 clk => s_counter[29].CLK
 clk => s_counter[30].CLK
 clk => s_counter[31].CLK
+clk => running~reg0.CLK
 newTime => s_counter.OUTPUTSELECT
 newTime => s_counter.OUTPUTSELECT
 newTime => s_counter.OUTPUTSELECT
@@ -449,6 +512,7 @@ newTime => s_counter.OUTPUTSELECT
 newTime => s_counter.OUTPUTSELECT
 newTime => s_counter.OUTPUTSELECT
 newTime => s_cntZero.OUTPUTSELECT
+newTime => running.OUTPUTSELECT
 timeVal[0] => Add0.IN64
 timeVal[1] => Add0.IN63
 timeVal[2] => Add0.IN62
@@ -482,6 +546,7 @@ timeVal[29] => Add0.IN35
 timeVal[30] => Add0.IN34
 timeVal[31] => Add0.IN33
 timeExp <= s_cntZero.DB_MAX_OUTPUT_PORT_TYPE
+running <= running~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |ReactionGame_Demo|GameUnit:game_unit
@@ -861,6 +926,8 @@ clk => victoryB~reg0.CLK
 clk => victoryA~reg0.CLK
 clk => scorecounter:counterB.clk
 clk => scorecounter:turn_count.clk
+reset => victoryA.OUTPUTSELECT
+reset => victoryB.OUTPUTSELECT
 reset => scorecounter:counterA.reset
 reset => scorecounter:counterB.reset
 reset => scorecounter:turn_count.reset
@@ -1655,5 +1722,59 @@ decOut_n[3] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
 decOut_n[4] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
 decOut_n[5] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
 decOut_n[6] <= decOut_n.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ReactionGame_Demo|RotateShiftUnit:defeat_effect
+clk => s_shiftReg[0].CLK
+clk => s_shiftReg[1].CLK
+clk => s_shiftReg[2].CLK
+clk => s_shiftReg[3].CLK
+reset => s_shiftReg.OUTPUTSELECT
+reset => s_shiftReg.OUTPUTSELECT
+reset => s_shiftReg.OUTPUTSELECT
+reset => s_shiftReg.OUTPUTSELECT
+enable => s_shiftReg.OUTPUTSELECT
+enable => s_shiftReg.OUTPUTSELECT
+enable => s_shiftReg.OUTPUTSELECT
+enable => s_shiftReg.OUTPUTSELECT
+dataIn[0] => s_shiftReg.DATAB
+dataIn[1] => s_shiftReg.DATAB
+dataIn[2] => s_shiftReg.DATAB
+dataIn[3] => s_shiftReg.DATAB
+dirLeft => s_shiftReg.OUTPUTSELECT
+dirLeft => s_shiftReg.OUTPUTSELECT
+dirLeft => s_shiftReg.OUTPUTSELECT
+dirLeft => s_shiftReg.OUTPUTSELECT
+dataOut[0] <= s_shiftReg[0].DB_MAX_OUTPUT_PORT_TYPE
+dataOut[1] <= s_shiftReg[1].DB_MAX_OUTPUT_PORT_TYPE
+dataOut[2] <= s_shiftReg[2].DB_MAX_OUTPUT_PORT_TYPE
+dataOut[3] <= s_shiftReg[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ReactionGame_Demo|RotateShiftUnit:victory_effect
+clk => s_shiftReg[0].CLK
+clk => s_shiftReg[1].CLK
+clk => s_shiftReg[2].CLK
+clk => s_shiftReg[3].CLK
+reset => s_shiftReg.OUTPUTSELECT
+reset => s_shiftReg.OUTPUTSELECT
+reset => s_shiftReg.OUTPUTSELECT
+reset => s_shiftReg.OUTPUTSELECT
+enable => s_shiftReg.OUTPUTSELECT
+enable => s_shiftReg.OUTPUTSELECT
+enable => s_shiftReg.OUTPUTSELECT
+enable => s_shiftReg.OUTPUTSELECT
+dataIn[0] => s_shiftReg.DATAB
+dataIn[1] => s_shiftReg.DATAB
+dataIn[2] => s_shiftReg.DATAB
+dataIn[3] => s_shiftReg.DATAB
+dirLeft => s_shiftReg.OUTPUTSELECT
+dirLeft => s_shiftReg.OUTPUTSELECT
+dirLeft => s_shiftReg.OUTPUTSELECT
+dirLeft => s_shiftReg.OUTPUTSELECT
+dataOut[0] <= s_shiftReg[0].DB_MAX_OUTPUT_PORT_TYPE
+dataOut[1] <= s_shiftReg[1].DB_MAX_OUTPUT_PORT_TYPE
+dataOut[2] <= s_shiftReg[2].DB_MAX_OUTPUT_PORT_TYPE
+dataOut[3] <= s_shiftReg[3].DB_MAX_OUTPUT_PORT_TYPE
 
 
