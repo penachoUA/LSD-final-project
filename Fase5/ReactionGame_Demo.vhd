@@ -202,6 +202,7 @@ begin
 		port map(
 			clk           => CLOCK_50,
 			reset         => s_global_reset,
+			enable        => (not s_system_state(1)) and (not s_system_state(0)),
 			press         => not KEY(1),
 			timeExp       => s_timeExp_press,
 			newTime       => s_newTime_press,
@@ -290,11 +291,11 @@ begin
 	---------- Board outputs ---------
 	
 
-	HEX7 <= s_d7s_target_score(0) when (s_system_state = "00" and (s_1hz_blink = '1' or s_longPress = '1')) else 
+	HEX7 <= s_d7s_target_score(0) when ((s_system_state = "00" and s_1hz_blink = '1') or s_longPress = '1' or s_system_state = "01") else 
 			  (others => '1'); -- This condition is a bit long but it provides conditional blinking only for slow
 			                   -- increment, it doesn't look good when increment is fast
 			  
-	HEX6 <= s_d7s_target_score(1) when (s_system_state = "00" and (s_1hz_blink = '1' or s_longPress = '1')) else
+	HEX6 <= s_d7s_target_score(1) when ((s_system_state = "00" and s_1hz_blink = '1') or s_longPress = '1' or s_system_state = "01") else
 	        (others => '1');
 			  
 	HEX5 <= s_d7s_turn_count(0) when s_system_state = "01" else (others => '1');

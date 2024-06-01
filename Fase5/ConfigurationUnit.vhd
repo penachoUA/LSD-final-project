@@ -5,13 +5,14 @@ entity ConfigurationUnit is
 	port(
 		clk           : in  std_logic;
 		reset         : in  std_logic;
+		enable        : in  std_logic;
 		press         : in  std_logic;
 		timeExp       : in  std_logic;
 		newTime       : out std_logic;
 		timeVal       : out std_logic_vector(31 downto 0);
 		targetScore   : out std_logic_vector(5 downto 0);
 		resetTimer    : out std_logic;
-		longPress : out std_logic
+		longPress     : out std_logic -- needed to stop blinking during fast increment
 	);
 end;
 
@@ -90,7 +91,7 @@ begin
 			reset   => reset,
 			clk     => clk,
 			enable1 => s_short_press or s_fast_increment,
-			enable2 => '1',
+			enable2 => enable,
 			valOut  => targetScore,
 			termCnt => open
 		);

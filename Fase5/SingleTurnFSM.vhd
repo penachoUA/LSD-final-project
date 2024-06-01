@@ -79,13 +79,13 @@ begin
 					ledOn   <= '1';
 		
 					if ((clickA = '1' and clickB = '1') or timeExp = '1') then
-						s_draw   <= '1';
+						draw   <= '1';
 						nState <= DELAY;
 					elsif clickA = '1' then
-						s_winA   <= '1';
+						winA   <= '1';
 						nState <= WIN_A;
 					elsif clickB = '1' then
-						s_winB   <= '1';
+						winB   <= '1';
 						nState <= WIN_B;
 					else
 						nState <= PLAY;
