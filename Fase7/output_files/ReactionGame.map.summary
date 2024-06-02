@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Sun Jun  2 14:56:46 2024
+Analysis & Synthesis Status : Successful - Sun Jun  2 15:50:16 2024
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : ReactionGame
-Top-level Entity Name : ScoreCounter
+Top-level Entity Name : CounterNBits
 Family : Cyclone IV E
-Total logic elements : 16
-    Total combinational functions : 16
-    Dedicated logic registers : 7
-Total registers : 7
-Total pins : 12
+Total logic elements : 9
+    Total combinational functions : 9
+    Dedicated logic registers : 5
+Total registers : 5
+Total pins : 9
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0

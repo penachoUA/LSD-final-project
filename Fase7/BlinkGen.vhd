@@ -11,7 +11,7 @@ entity BlinkGen is
 end;
 
 architecture Behavioral of BlinkGen is
-	signal s_cnt : natural range 0 to STEPS-1;
+	signal s_cnt : natural range 0 to STEPS-1 := 0;
 begin
 	process(clk)
 	begin

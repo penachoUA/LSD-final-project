@@ -11,18 +11,19 @@ entity PulseGen is
 end;
 
 architecture Behavioral of PulseGen is
-	signal s_cnt : natural range 0 to MAX-1;
+	signal s_cnt : natural range 0 to MAX-1 := 0;
 begin
 	process(clk)
 	begin
-		if rising_edge(clk) then
-			pulse <= '0';
-			s_cnt <= s_cnt + 1;
-			
+		if rising_edge(clk) then	
 			if (s_cnt = MAX-1) then
 				s_cnt <= 0;
 				pulse <= '1';
+			else
+				s_cnt <= s_cnt + 1;
+				pulse <= '0';
 			end if;
+			
 		end if;
 	end process;
 end;

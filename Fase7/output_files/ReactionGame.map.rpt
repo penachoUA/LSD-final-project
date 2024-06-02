@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ReactionGame
-Sun Jun  2 14:56:46 2024
+Sun Jun  2 15:50:16 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -15,9 +15,10 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
   9. Multiplexer Restructuring Statistics (Restructuring Performed)
- 10. Post-Synthesis Netlist Statistics for Top Partition
- 11. Elapsed Time Per Partition
- 12. Analysis & Synthesis Messages
+ 10. Parameter Settings for User Entity Instance: Top-level Entity: |CounterNBits
+ 11. Post-Synthesis Netlist Statistics for Top Partition
+ 12. Elapsed Time Per Partition
+ 13. Analysis & Synthesis Messages
 
 
 
@@ -44,16 +45,16 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Jun  2 14:56:46 2024          ;
+; Analysis & Synthesis Status        ; Successful - Sun Jun  2 15:50:16 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; ReactionGame                                   ;
-; Top-level Entity Name              ; ScoreCounter                                   ;
+; Top-level Entity Name              ; CounterNBits                                   ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 16                                             ;
-;     Total combinational functions  ; 16                                             ;
-;     Dedicated logic registers      ; 7                                              ;
-; Total registers                    ; 7                                              ;
-; Total pins                         ; 12                                             ;
+; Total logic elements               ; 9                                              ;
+;     Total combinational functions  ; 9                                              ;
+;     Dedicated logic registers      ; 5                                              ;
+; Total registers                    ; 5                                              ;
+; Total pins                         ; 9                                              ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
 ; Embedded Multiplier 9-bit elements ; 0                                              ;
@@ -67,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                           ; EP4CE115F29C7      ;                    ;
-; Top-level entity name                                            ; ScoreCounter       ; ReactionGame       ;
+; Top-level entity name                                            ; CounterNBits       ; ReactionGame       ;
 ; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
@@ -160,7 +161,8 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -169,40 +171,40 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------+-----------------+-----------------+------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                               ; Library ;
 +----------------------------------+-----------------+-----------------+------------------------------------------------------------+---------+
-; ScoreCounter.vhd                 ; yes             ; User VHDL File  ; /home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter.vhd ;         ;
+; CounterNBits.vhd                 ; yes             ; User VHDL File  ; /home/penacho/LSD/LSD-final-project/Fase7/CounterNBits.vhd ;         ;
 +----------------------------------+-----------------+-----------------+------------------------------------------------------------+---------+
 
 
-+---------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                   ;
-+---------------------------------------------+-----------------+
-; Resource                                    ; Usage           ;
-+---------------------------------------------+-----------------+
-; Estimated Total logic elements              ; 16              ;
-;                                             ;                 ;
-; Total combinational functions               ; 16              ;
-; Logic element usage by number of LUT inputs ;                 ;
-;     -- 4 input functions                    ; 2               ;
-;     -- 3 input functions                    ; 0               ;
-;     -- <=2 input functions                  ; 14              ;
-;                                             ;                 ;
-; Logic elements by mode                      ;                 ;
-;     -- normal mode                          ; 5               ;
-;     -- arithmetic mode                      ; 11              ;
-;                                             ;                 ;
-; Total registers                             ; 7               ;
-;     -- Dedicated logic registers            ; 7               ;
-;     -- I/O registers                        ; 0               ;
-;                                             ;                 ;
-; I/O pins                                    ; 12              ;
-;                                             ;                 ;
-; Embedded Multiplier 9-bit elements          ; 0               ;
-;                                             ;                 ;
-; Maximum fan-out node                        ; increment~input ;
-; Maximum fan-out                             ; 8               ;
-; Total fan-out                               ; 91              ;
-; Average fan-out                             ; 1.94            ;
-+---------------------------------------------+-----------------+
++------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                ;
++---------------------------------------------+--------------+
+; Resource                                    ; Usage        ;
++---------------------------------------------+--------------+
+; Estimated Total logic elements              ; 9            ;
+;                                             ;              ;
+; Total combinational functions               ; 9            ;
+; Logic element usage by number of LUT inputs ;              ;
+;     -- 4 input functions                    ; 3            ;
+;     -- 3 input functions                    ; 5            ;
+;     -- <=2 input functions                  ; 1            ;
+;                                             ;              ;
+; Logic elements by mode                      ;              ;
+;     -- normal mode                          ; 9            ;
+;     -- arithmetic mode                      ; 0            ;
+;                                             ;              ;
+; Total registers                             ; 5            ;
+;     -- Dedicated logic registers            ; 5            ;
+;     -- I/O registers                        ; 0            ;
+;                                             ;              ;
+; I/O pins                                    ; 9            ;
+;                                             ;              ;
+; Embedded Multiplier 9-bit elements          ; 0            ;
+;                                             ;              ;
+; Maximum fan-out node                        ; cnt_value[0] ;
+; Maximum fan-out                             ; 8            ;
+; Total fan-out                               ; 58           ;
+; Average fan-out                             ; 1.81         ;
++---------------------------------------------+--------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -210,7 +212,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name  ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+--------------+
-; |ScoreCounter              ; 16 (16)             ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 12   ; 0            ; |ScoreCounter       ; ScoreCounter ; work         ;
+; |CounterNBits              ; 9 (9)               ; 5 (5)                     ; 0           ; 0            ; 0       ; 0         ; 9    ; 0            ; |CounterNBits       ; CounterNBits ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -220,12 +222,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 7     ;
-; Number of registers using Synchronous Clear  ; 6     ;
-; Number of registers using Synchronous Load   ; 6     ;
+; Total registers                              ; 5     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 6     ;
+; Number of registers using Clock Enable       ; 5     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -235,8 +237,21 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |ScoreCounter|s_score[1]   ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |CounterNBits|cnt_value[0] ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |CounterNBits ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; N              ; 4     ; Signed Integer                                      ;
+; MIN            ; 0     ; Signed Integer                                      ;
+; MAX            ; 15    ; Signed Integer                                      ;
+; START          ; 0     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +-----------------------------------------------------+
@@ -244,20 +259,17 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 12                          ;
-; cycloneiii_ff         ; 7                           ;
-;     ENA SCLR SLD      ; 6                           ;
-;     plain             ; 1                           ;
-; cycloneiii_lcell_comb ; 16                          ;
-;     arith             ; 11                          ;
-;         2 data inputs ; 11                          ;
-;     normal            ; 5                           ;
-;         1 data inputs ; 2                           ;
+; boundary_port         ; 9                           ;
+; cycloneiii_ff         ; 5                           ;
+;     ENA               ; 5                           ;
+; cycloneiii_lcell_comb ; 9                           ;
+;     normal            ; 9                           ;
 ;         2 data inputs ; 1                           ;
-;         4 data inputs ; 2                           ;
+;         3 data inputs ; 5                           ;
+;         4 data inputs ; 3                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 2.00                        ;
-; Average LUT depth     ; 1.42                        ;
+; Average LUT depth     ; 1.44                        ;
 +-----------------------+-----------------------------+
 
 
@@ -276,7 +288,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Sun Jun  2 14:56:40 2024
+    Info: Processing started: Sun Jun  2 15:50:10 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ReactionGame -c ReactionGame
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -339,17 +351,26 @@ Info (12021): Found 2 design units, including 1 entities, in source file RotateS
 Info (12021): Found 2 design units, including 1 entities, in source file Bin2BCD_tb.vhd
     Info (12022): Found design unit 1: Bin2BCD_tb-Stimulus File: /home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD_tb.vhd Line: 7
     Info (12023): Found entity 1: Bin2BCD_tb File: /home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD_tb.vhd Line: 4
-Info (12127): Elaborating entity "ScoreCounter" for the top level hierarchy
+Info (12021): Found 2 design units, including 1 entities, in source file BlinkGen_tb.vhd
+    Info (12022): Found design unit 1: BlinkGen_tb-Stimulus File: /home/penacho/LSD/LSD-final-project/Fase7/BlinkGen_tb.vhd Line: 7
+    Info (12023): Found entity 1: BlinkGen_tb File: /home/penacho/LSD/LSD-final-project/Fase7/BlinkGen_tb.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file PulseGen_tb.vhd
+    Info (12022): Found design unit 1: PulseGen_tb-Stimulus File: /home/penacho/LSD/LSD-final-project/Fase7/PulseGen_tb.vhd Line: 7
+    Info (12023): Found entity 1: PulseGen_tb File: /home/penacho/LSD/LSD-final-project/Fase7/PulseGen_tb.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file CounterNBits_tb.vhd
+    Info (12022): Found design unit 1: CounterNBits_tb-Stimulus File: /home/penacho/LSD/LSD-final-project/Fase7/CounterNBits_tb.vhd Line: 7
+    Info (12023): Found entity 1: CounterNBits_tb File: /home/penacho/LSD/LSD-final-project/Fase7/CounterNBits_tb.vhd Line: 4
+Info (12127): Elaborating entity "CounterNBits" for the top level hierarchy
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 28 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 5 input pins
-    Info (21059): Implemented 7 output pins
-    Info (21061): Implemented 16 logic cells
+Info (21057): Implemented 18 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
+    Info (21059): Implemented 5 output pins
+    Info (21061): Implemented 9 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 446 megabytes
-    Info: Processing ended: Sun Jun  2 14:56:46 2024
+    Info: Peak virtual memory: 456 megabytes
+    Info: Processing ended: Sun Jun  2 15:50:16 2024
     Info: Elapsed time: 00:00:06
     Info: Total CPU time (on all processors): 00:00:16
 

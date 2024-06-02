@@ -3,7 +3,6 @@ K4
 z2
 Z0 !s99 nomlopt
 R0
-R0
 !s11e vcom 2021.2 2021.04, Apr 14 2021
 13
 !s112 1.1
@@ -13,98 +12,109 @@ R0
 cModel Technology
 Z1 d/home/penacho/LSD/LSD-final-project/Fase7/simulation/questa
 T_opt
-!s110 1717337389
-V>Qb4CZA>?:Cb@8PL:^OjD3
-04 15 8 work scorecounter_tb stimulus 1
-=1-000ae431a4f1-665c7d2d-38772-2c8a
-!s124 OEM10U2 
+!s110 1717339924
+VLWlgA23:EAb4J[:FHo_Xk0
+Z2 04 15 8 work counternbits_tb stimulus 1
+=1-000ae431a4f1-665c8714-d1c03-4e7e
+Z3 !s124 OEM10U2 
 o-quiet -auto_acc_if_foreign -work work +acc
-tCvgOpt 0
+Z4 tCvgOpt 0
 n@_opt
-OL;O;2021.2;73
-Escorecounter
-Z2 w1717234827
-Z3 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
-Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
-Z5 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+Z5 OL;O;2021.2;73
+R1
+T_opt1
+!s110 1717340026
+VPVh5cRnUmQNERLf91kgzF0
+R2
+=1-000ae431a4f1-665c877a-b3946-4ec5
+R3
+o-quiet -auto_acc_if_foreign -work work
+R4
+n@_opt1
+R5
+Ecounternbits
+Z6 w1717195389
+Z7 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z8 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z9 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
 !i122 0
 R1
-Z6 8/home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter.vhd
-Z7 F/home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter.vhd
+Z10 8/home/penacho/LSD/LSD-final-project/Fase7/CounterNBits.vhd
+Z11 F/home/penacho/LSD/LSD-final-project/Fase7/CounterNBits.vhd
 l0
 L5 1
-VaLJKzYDm`Ul[:BCL1>NU_0
-!s100 AHla?jYFLZVoYdBS=fRA?1
-Z8 OL;C;2021.2;73
+VYfMS`=l:6Z25CleMfjVB`0
+!s100 :@[?FAkm[_BUBbA7>73Df0
+Z12 OL;C;2021.2;73
 31
-Z9 !s110 1717336655
+Z13 !s110 1717339897
 !i10b 1
-Z10 !s108 1717336655.000000
-Z11 !s90 -reportprogress|300|-93|-work|work|/home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter.vhd|
-Z12 !s107 /home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter.vhd|
+Z14 !s108 1717339897.000000
+Z15 !s90 -reportprogress|300|-93|-work|work|/home/penacho/LSD/LSD-final-project/Fase7/CounterNBits.vhd|
+Z16 !s107 /home/penacho/LSD/LSD-final-project/Fase7/CounterNBits.vhd|
 !i113 0
-Z13 o-93 -work work
-Z14 tExplicit 1 CvgOpt 0
+Z17 o-93 -work work
+Z18 tExplicit 1 CvgOpt 0
 Abehavioral
-R3
-R4
-R5
-Z15 DEx4 work 12 scorecounter 0 22 aLJKzYDm`Ul[:BCL1>NU_0
-!i122 0
-l18
-L16 20
-VM8ok2P:h@CDZamOn9dCVN0
-!s100 eZo37RWmldjo:_U7ciS9Y3
+R7
 R8
-31
 R9
-!i10b 1
-R10
-R11
+Z19 DEx4 work 12 counternbits 0 22 YfMS`=l:6Z25CleMfjVB`0
+!i122 0
+l27
+L22 30
+ViNk]doGg<lNC1OXGcmV800
+!s100 1CH`fX8CPM4Wm4dLM[`US2
 R12
-!i113 0
+31
 R13
+!i10b 1
 R14
-Escorecounter_tb
-Z16 w1717337360
-R4
-R5
-!i122 3
+R15
+R16
+!i113 0
+R17
+R18
+Ecounternbits_tb
+Z20 w1717339680
+R8
+R9
+!i122 1
 R1
-Z17 8/home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter_tb.vhd
-Z18 F/home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter_tb.vhd
+Z21 8/home/penacho/LSD/LSD-final-project/Fase7/CounterNBits_tb.vhd
+Z22 F/home/penacho/LSD/LSD-final-project/Fase7/CounterNBits_tb.vhd
 l0
 L4 1
-ViO`lQ;FPHGSPg3^8kkFU>1
-!s100 eB0WdQ?K`RWKc47ad`8GT2
-R8
+VT<25[<zE><LE;lmcQmb2L1
+!s100 fb;ldSilNRaM<kB0OE:UA3
+R12
 32
-Z19 !s110 1717337381
+Z23 !s110 1717339910
 !i10b 1
-Z20 !s108 1717337381.000000
-Z21 !s90 -reportprogress|300|-work|work|/home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter_tb.vhd|
-Z22 !s107 /home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter_tb.vhd|
+Z24 !s108 1717339910.000000
+Z25 !s90 -reportprogress|300|-work|work|/home/penacho/LSD/LSD-final-project/Fase7/CounterNBits_tb.vhd|
+Z26 !s107 /home/penacho/LSD/LSD-final-project/Fase7/CounterNBits_tb.vhd|
 !i113 0
-Z23 o-work work
-R14
+Z27 o-work work
+R18
 Astimulus
-R3
-R15
-R4
-R5
-DEx4 work 15 scorecounter_tb 0 22 iO`lQ;FPHGSPg3^8kkFU>1
-!i122 3
-l14
-L7 60
-V?61^glDe2BN`LOM0gdDzO2
-!s100 <Z?gmHY7STEi:[[k0C1Pn2
-R8
-32
+R7
 R19
-!i10b 1
-R20
-R21
-R22
-!i113 0
+R8
+R9
+DEx4 work 15 counternbits_tb 0 22 T<25[<zE><LE;lmcQmb2L1
+!i122 1
+l15
+L7 64
+V6V3H]V38e6n^lCI4K<f[i1
+!s100 m6MTE`I5@8:[3H5DZVa?j3
+R12
+32
 R23
-R14
+!i10b 1
+R24
+R25
+R26
+!i113 0
+R27
+R18
