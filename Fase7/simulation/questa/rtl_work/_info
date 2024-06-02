@@ -12,109 +12,95 @@ R0
 cModel Technology
 Z1 d/home/penacho/LSD/LSD-final-project/Fase7/simulation/questa
 T_opt
-!s110 1717339924
-VLWlgA23:EAb4J[:FHo_Xk0
-Z2 04 15 8 work counternbits_tb stimulus 1
-=1-000ae431a4f1-665c8714-d1c03-4e7e
-Z3 !s124 OEM10U2 
+!s110 1717346932
+V0aLHTc4MgHB6<9P[aX79L2
+04 16 8 work singleturnfsm_tb stimulus 1
+=1-000ae431a4f1-665ca274-774b7-64f4
+!s124 OEM10U2 
 o-quiet -auto_acc_if_foreign -work work +acc
-Z4 tCvgOpt 0
+tCvgOpt 0
 n@_opt
-Z5 OL;O;2021.2;73
-R1
-T_opt1
-!s110 1717340026
-VPVh5cRnUmQNERLf91kgzF0
-R2
-=1-000ae431a4f1-665c877a-b3946-4ec5
-R3
-o-quiet -auto_acc_if_foreign -work work
-R4
-n@_opt1
-R5
-Ecounternbits
-Z6 w1717195389
-Z7 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
-Z8 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
-Z9 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+OL;O;2021.2;73
+Esingleturnfsm
+Z2 w1717340873
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
 !i122 0
 R1
-Z10 8/home/penacho/LSD/LSD-final-project/Fase7/CounterNBits.vhd
-Z11 F/home/penacho/LSD/LSD-final-project/Fase7/CounterNBits.vhd
-l0
-L5 1
-VYfMS`=l:6Z25CleMfjVB`0
-!s100 :@[?FAkm[_BUBbA7>73Df0
-Z12 OL;C;2021.2;73
-31
-Z13 !s110 1717339897
-!i10b 1
-Z14 !s108 1717339897.000000
-Z15 !s90 -reportprogress|300|-93|-work|work|/home/penacho/LSD/LSD-final-project/Fase7/CounterNBits.vhd|
-Z16 !s107 /home/penacho/LSD/LSD-final-project/Fase7/CounterNBits.vhd|
-!i113 0
-Z17 o-93 -work work
-Z18 tExplicit 1 CvgOpt 0
-Abehavioral
-R7
-R8
-R9
-Z19 DEx4 work 12 counternbits 0 22 YfMS`=l:6Z25CleMfjVB`0
-!i122 0
-l27
-L22 30
-ViNk]doGg<lNC1OXGcmV800
-!s100 1CH`fX8CPM4Wm4dLM[`US2
-R12
-31
-R13
-!i10b 1
-R14
-R15
-R16
-!i113 0
-R17
-R18
-Ecounternbits_tb
-Z20 w1717339680
-R8
-R9
-!i122 1
-R1
-Z21 8/home/penacho/LSD/LSD-final-project/Fase7/CounterNBits_tb.vhd
-Z22 F/home/penacho/LSD/LSD-final-project/Fase7/CounterNBits_tb.vhd
+Z5 8/home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM.vhd
+Z6 F/home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM.vhd
 l0
 L4 1
-VT<25[<zE><LE;lmcQmb2L1
-!s100 fb;ldSilNRaM<kB0OE:UA3
-R12
-32
-Z23 !s110 1717339910
+VRV^jDidkbgJ@SaSRT3g`21
+!s100 6cXoYojS=4=9Z5R=mRGDb1
+Z7 OL;C;2021.2;73
+31
+Z8 !s110 1717346481
 !i10b 1
-Z24 !s108 1717339910.000000
-Z25 !s90 -reportprogress|300|-work|work|/home/penacho/LSD/LSD-final-project/Fase7/CounterNBits_tb.vhd|
-Z26 !s107 /home/penacho/LSD/LSD-final-project/Fase7/CounterNBits_tb.vhd|
+Z9 !s108 1717346481.000000
+Z10 !s90 -reportprogress|300|-93|-work|work|/home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM.vhd|
+Z11 !s107 /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM.vhd|
 !i113 0
-Z27 o-work work
-R18
-Astimulus
+Z12 o-93 -work work
+Z13 tExplicit 1 CvgOpt 0
+Abehavioral
+R3
+R4
+Z14 DEx4 work 13 singleturnfsm 0 22 RV^jDidkbgJ@SaSRT3g`21
+!i122 0
+l31
+L23 131
+VS70I4_@d>Y[N493T54OVm3
+!s100 j24<Og2PWKCK@4NA5V=<G1
 R7
-R19
+31
 R8
-R9
-DEx4 work 15 counternbits_tb 0 22 T<25[<zE><LE;lmcQmb2L1
-!i122 1
-l15
-L7 64
-V6V3H]V38e6n^lCI4K<f[i1
-!s100 m6MTE`I5@8:[3H5DZVa?j3
-R12
-32
-R23
 !i10b 1
-R24
-R25
-R26
+R9
+R10
+R11
 !i113 0
-R27
+R12
+R13
+Esingleturnfsm_tb
+Z15 w1717346896
+R3
+R4
+!i122 5
+R1
+Z16 8/home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd
+Z17 F/home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd
+l0
+L4 1
+VP1]f0k_b3dc3PPT8E[SKX0
+!s100 MdoATH[VH:Z;j?`KEE9TG2
+R7
+32
+Z18 !s110 1717346920
+!i10b 1
+Z19 !s108 1717346920.000000
+Z20 !s90 -reportprogress|300|-work|work|/home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd|
+Z21 !s107 /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd|
+!i113 0
+Z22 o-work work
+R13
+Astimulus
+R14
+R3
+R4
+DEx4 work 16 singleturnfsm_tb 0 22 P1]f0k_b3dc3PPT8E[SKX0
+!i122 5
+l22
+L7 164
+VzK4Do<X3Z@_hS:VPWFMm]2
+!s100 bB<iL<k6[o52VP;S@E5D`0
+R7
+32
 R18
+!i10b 1
+R19
+R20
+R21
+!i113 0
+R22
+R13

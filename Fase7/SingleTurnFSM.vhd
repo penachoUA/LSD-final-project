@@ -16,7 +16,6 @@ entity SingleTurnFSM is
 		winB     : out std_logic;
 		lossA    : out std_logic;
 		lossB    : out std_logic;
-		draw     : out std_logic;
 		state    : out std_logic_vector(2 downto 0)
 	);
 end;
@@ -53,7 +52,6 @@ begin
 			winB    <= '0';
 			lossA   <= '0';
 			lossB   <= '0';
-			draw    <= '0';
 			ledOn   <= '0';
 			timeVal <= (others => '-');
 			
@@ -107,7 +105,6 @@ begin
 					ledOn   <= '1';
 		
 					if ((clickA = '1' and clickB = '1') or timeExp = '1') then
-						draw   <= '1';
 						nState <= DELAY;
 					elsif clickA = '1' then
 						winA   <= '1';

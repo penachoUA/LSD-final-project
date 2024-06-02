@@ -156,10 +156,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "draw",
-					"strict" : false
-				},
-				{
 					"name" : "state[0]",
 					"strict" : false
 				},

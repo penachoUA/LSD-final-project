@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ReactionGame
-Sun Jun  2 16:02:35 2024
+Sun Jun  2 17:10:20 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -45,7 +45,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Jun  2 16:02:35 2024          ;
+; Analysis & Synthesis Status        ; Successful - Sun Jun  2 17:10:20 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; ReactionGame                                   ;
 ; Top-level Entity Name              ; SingleTurnFSM                                  ;
@@ -54,7 +54,7 @@ https://fpgasoftware.intel.com/eula.
 ;     Total combinational functions  ; 66                                             ;
 ;     Dedicated logic registers      ; 8                                              ;
 ; Total registers                    ; 8                                              ;
-; Total pins                         ; 79                                             ;
+; Total pins                         ; 78                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
 ; Embedded Multiplier 9-bit elements ; 0                                              ;
@@ -161,7 +161,8 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -183,9 +184,9 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;             ;
 ; Total combinational functions               ; 66          ;
 ; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 53          ;
-;     -- 3 input functions                    ; 10          ;
-;     -- <=2 input functions                  ; 3           ;
+;     -- 4 input functions                    ; 48          ;
+;     -- 3 input functions                    ; 14          ;
+;     -- <=2 input functions                  ; 4           ;
 ;                                             ;             ;
 ; Logic elements by mode                      ;             ;
 ;     -- normal mode                          ; 66          ;
@@ -195,14 +196,14 @@ https://fpgasoftware.intel.com/eula.
 ;     -- Dedicated logic registers            ; 8           ;
 ;     -- I/O registers                        ; 0           ;
 ;                                             ;             ;
-; I/O pins                                    ; 79          ;
+; I/O pins                                    ; 78          ;
 ;                                             ;             ;
 ; Embedded Multiplier 9-bit elements          ; 0           ;
 ;                                             ;             ;
 ; Maximum fan-out node                        ; pState.PLAY ;
 ; Maximum fan-out                             ; 40          ;
-; Total fan-out                               ; 385         ;
-; Average fan-out                             ; 1.66        ;
+; Total fan-out                               ; 377         ;
+; Average fan-out                             ; 1.64        ;
 +---------------------------------------------+-------------+
 
 
@@ -211,7 +212,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+---------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name   ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+---------------+--------------+
-; |SingleTurnFSM             ; 66 (66)             ; 8 (8)                     ; 0           ; 0            ; 0       ; 0         ; 79   ; 0            ; |SingleTurnFSM      ; SingleTurnFSM ; work         ;
+; |SingleTurnFSM             ; 66 (66)             ; 8 (8)                     ; 0           ; 0            ; 0       ; 0         ; 78   ; 0            ; |SingleTurnFSM      ; SingleTurnFSM ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+---------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -263,17 +264,17 @@ Encoding Type:  One-Hot
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 79                          ;
+; boundary_port         ; 78                          ;
 ; cycloneiii_ff         ; 8                           ;
 ;     plain             ; 8                           ;
 ; cycloneiii_lcell_comb ; 66                          ;
 ;     normal            ; 66                          ;
-;         2 data inputs ; 3                           ;
-;         3 data inputs ; 10                          ;
-;         4 data inputs ; 53                          ;
+;         2 data inputs ; 4                           ;
+;         3 data inputs ; 14                          ;
+;         4 data inputs ; 48                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 4.00                        ;
-; Average LUT depth     ; 1.83                        ;
+; Average LUT depth     ; 1.86                        ;
 +-----------------------+-----------------------------+
 
 
@@ -292,7 +293,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Sun Jun  2 16:02:28 2024
+    Info: Processing started: Sun Jun  2 17:10:12 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ReactionGame -c ReactionGame
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -311,7 +312,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file Debounc
 Info (12021): Found 1 design units, including 1 entities, in source file top_level_schematic.bdf
     Info (12023): Found entity 1: top_level_schematic
 Info (12021): Found 2 design units, including 1 entities, in source file SingleTurnFSM.vhd
-    Info (12022): Found design unit 1: SingleTurnFSM-Behavioral File: /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM.vhd Line: 24
+    Info (12022): Found design unit 1: SingleTurnFSM-Behavioral File: /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM.vhd Line: 23
     Info (12023): Found entity 1: SingleTurnFSM File: /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file CounterNBits.vhd
     Info (12022): Found design unit 1: CounterNBits-Behavioral File: /home/penacho/LSD/LSD-final-project/Fase7/CounterNBits.vhd Line: 22
@@ -335,13 +336,13 @@ Info (12021): Found 2 design units, including 1 entities, in source file Bin2BCD
     Info (12022): Found design unit 1: Bin2BCD-Behavioral File: /home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD.vhd Line: 13
     Info (12023): Found entity 1: Bin2BCD File: /home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file GameUnit.vhd
-    Info (12022): Found design unit 1: GameUnit-Structural File: /home/penacho/LSD/LSD-final-project/Fase7/GameUnit.vhd Line: 23
+    Info (12022): Found design unit 1: GameUnit-Structural File: /home/penacho/LSD/LSD-final-project/Fase7/GameUnit.vhd Line: 22
     Info (12023): Found entity 1: GameUnit File: /home/penacho/LSD/LSD-final-project/Fase7/GameUnit.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file ScoreCounter.vhd
     Info (12022): Found design unit 1: ScoreCounter-Behavioral File: /home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter.vhd Line: 16
     Info (12023): Found entity 1: ScoreCounter File: /home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file ScoreUnit.vhd
-    Info (12022): Found design unit 1: ScoreUnit-Structural File: /home/penacho/LSD/LSD-final-project/Fase7/ScoreUnit.vhd Line: 24
+    Info (12022): Found design unit 1: ScoreUnit-Structural File: /home/penacho/LSD/LSD-final-project/Fase7/ScoreUnit.vhd Line: 23
     Info (12023): Found entity 1: ScoreUnit File: /home/penacho/LSD/LSD-final-project/Fase7/ScoreUnit.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file ScoreCounter_tb.vhd
     Info (12022): Found design unit 1: ScoreCounter_tb-Stimulus File: /home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter_tb.vhd Line: 7
@@ -364,18 +365,21 @@ Info (12021): Found 2 design units, including 1 entities, in source file PulseGe
 Info (12021): Found 2 design units, including 1 entities, in source file CounterNBits_tb.vhd
     Info (12022): Found design unit 1: CounterNBits_tb-Stimulus File: /home/penacho/LSD/LSD-final-project/Fase7/CounterNBits_tb.vhd Line: 7
     Info (12023): Found entity 1: CounterNBits_tb File: /home/penacho/LSD/LSD-final-project/Fase7/CounterNBits_tb.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file SingleTurnFSM_tb.vhd
+    Info (12022): Found design unit 1: SingleTurnFSM_tb-Stimulus File: /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd Line: 7
+    Info (12023): Found entity 1: SingleTurnFSM_tb File: /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd Line: 4
 Info (12127): Elaborating entity "SingleTurnFSM" for the top level hierarchy
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 145 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 144 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 37 input pins
-    Info (21059): Implemented 42 output pins
+    Info (21059): Implemented 41 output pins
     Info (21061): Implemented 66 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 446 megabytes
-    Info: Processing ended: Sun Jun  2 16:02:35 2024
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:18
+    Info: Peak virtual memory: 463 megabytes
+    Info: Processing ended: Sun Jun  2 17:10:20 2024
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:17
 
 
