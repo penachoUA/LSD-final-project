@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ReactionGame
-Sun Jun  2 14:45:36 2024
+Sun Jun  2 14:56:46 2024
 Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 
 
@@ -14,11 +14,10 @@ Quartus Prime Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0
- 10. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
- 11. Post-Synthesis Netlist Statistics for Top Partition
- 12. Elapsed Time Per Partition
- 13. Analysis & Synthesis Messages
+  9. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 10. Post-Synthesis Netlist Statistics for Top Partition
+ 11. Elapsed Time Per Partition
+ 12. Analysis & Synthesis Messages
 
 
 
@@ -45,16 +44,16 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Jun  2 14:45:36 2024          ;
+; Analysis & Synthesis Status        ; Successful - Sun Jun  2 14:56:46 2024          ;
 ; Quartus Prime Version              ; 22.1std.2 Build 922 07/20/2023 SC Lite Edition ;
 ; Revision Name                      ; ReactionGame                                   ;
-; Top-level Entity Name              ; Bin2BCD                                        ;
+; Top-level Entity Name              ; ScoreCounter                                   ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; 98                                             ;
-;     Total combinational functions  ; 98                                             ;
-;     Dedicated logic registers      ; 0                                              ;
-; Total registers                    ; 0                                              ;
-; Total pins                         ; 15                                             ;
+; Total logic elements               ; 16                                             ;
+;     Total combinational functions  ; 16                                             ;
+;     Dedicated logic registers      ; 7                                              ;
+; Total registers                    ; 7                                              ;
+; Total pins                         ; 12                                             ;
 ; Total virtual pins                 ; 0                                              ;
 ; Total memory bits                  ; 0                                              ;
 ; Embedded Multiplier 9-bit elements ; 0                                              ;
@@ -68,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                           ; EP4CE115F29C7      ;                    ;
-; Top-level entity name                                            ; Bin2BCD            ; ReactionGame       ;
+; Top-level entity name                                            ; ScoreCounter       ; ReactionGame       ;
 ; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
@@ -157,81 +156,62 @@ https://fpgasoftware.intel.com/eula.
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                  ;
-+----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                              ; Library ;
-+----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------+---------+
-; Bin2BCD.vhd                      ; yes             ; User VHDL File               ; /home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD.vhd                                     ;         ;
-; lpm_divide.tdf                   ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
-; abs_divider.inc                  ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
-; sign_div_unsign.inc              ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
-; aglobal221.inc                   ; yes             ; Megafunction                 ; /home/penacho/.intel_fpga_lite/22.1.2/quartus/libraries/megafunctions/aglobal221.inc      ;         ;
-; db/lpm_divide_o9m.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/penacho/LSD/LSD-final-project/Fase7/db/lpm_divide_o9m.tdf                           ;         ;
-; db/sign_div_unsign_dkh.tdf       ; yes             ; Auto-Generated Megafunction  ; /home/penacho/LSD/LSD-final-project/Fase7/db/sign_div_unsign_dkh.tdf                      ;         ;
-; db/alt_u_div_e4f.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/penacho/LSD/LSD-final-project/Fase7/db/alt_u_div_e4f.tdf                            ;         ;
-; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/penacho/LSD/LSD-final-project/Fase7/db/add_sub_7pc.tdf                              ;         ;
-; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/penacho/LSD/LSD-final-project/Fase7/db/add_sub_8pc.tdf                              ;         ;
-; db/lpm_divide_ihm.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/penacho/LSD/LSD-final-project/Fase7/db/lpm_divide_ihm.tdf                           ;         ;
-; db/sign_div_unsign_akh.tdf       ; yes             ; Auto-Generated Megafunction  ; /home/penacho/LSD/LSD-final-project/Fase7/db/sign_div_unsign_akh.tdf                      ;         ;
-; db/alt_u_div_84f.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/penacho/LSD/LSD-final-project/Fase7/db/alt_u_div_84f.tdf                            ;         ;
-+----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                      ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                               ; Library ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------+---------+
+; ScoreCounter.vhd                 ; yes             ; User VHDL File  ; /home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter.vhd ;         ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------+---------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                                                                                                                             ;
-+---------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+
-; Resource                                    ; Usage                                                                                                                     ;
-+---------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 98                                                                                                                        ;
-;                                             ;                                                                                                                           ;
-; Total combinational functions               ; 98                                                                                                                        ;
-; Logic element usage by number of LUT inputs ;                                                                                                                           ;
-;     -- 4 input functions                    ; 13                                                                                                                        ;
-;     -- 3 input functions                    ; 28                                                                                                                        ;
-;     -- <=2 input functions                  ; 57                                                                                                                        ;
-;                                             ;                                                                                                                           ;
-; Logic elements by mode                      ;                                                                                                                           ;
-;     -- normal mode                          ; 65                                                                                                                        ;
-;     -- arithmetic mode                      ; 33                                                                                                                        ;
-;                                             ;                                                                                                                           ;
-; Total registers                             ; 0                                                                                                                         ;
-;     -- Dedicated logic registers            ; 0                                                                                                                         ;
-;     -- I/O registers                        ; 0                                                                                                                         ;
-;                                             ;                                                                                                                           ;
-; I/O pins                                    ; 15                                                                                                                        ;
-;                                             ;                                                                                                                           ;
-; Embedded Multiplier 9-bit elements          ; 0                                                                                                                         ;
-;                                             ;                                                                                                                           ;
-; Maximum fan-out node                        ; lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider|alt_u_div_e4f:divider|add_sub_4_result_int[5]~8 ;
-; Maximum fan-out                             ; 14                                                                                                                        ;
-; Total fan-out                               ; 257                                                                                                                       ;
-; Average fan-out                             ; 2.01                                                                                                                      ;
-+---------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                   ;
++---------------------------------------------+-----------------+
+; Resource                                    ; Usage           ;
++---------------------------------------------+-----------------+
+; Estimated Total logic elements              ; 16              ;
+;                                             ;                 ;
+; Total combinational functions               ; 16              ;
+; Logic element usage by number of LUT inputs ;                 ;
+;     -- 4 input functions                    ; 2               ;
+;     -- 3 input functions                    ; 0               ;
+;     -- <=2 input functions                  ; 14              ;
+;                                             ;                 ;
+; Logic elements by mode                      ;                 ;
+;     -- normal mode                          ; 5               ;
+;     -- arithmetic mode                      ; 11              ;
+;                                             ;                 ;
+; Total registers                             ; 7               ;
+;     -- Dedicated logic registers            ; 7               ;
+;     -- I/O registers                        ; 0               ;
+;                                             ;                 ;
+; I/O pins                                    ; 12              ;
+;                                             ;                 ;
+; Embedded Multiplier 9-bit elements          ; 0               ;
+;                                             ;                 ;
+; Maximum fan-out node                        ; increment~input ;
+; Maximum fan-out                             ; 8               ;
+; Total fan-out                               ; 91              ;
+; Average fan-out                             ; 1.94            ;
++---------------------------------------------+-----------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                               ;
-+----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; Compilation Hierarchy Node             ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                      ; Entity Name         ; Library Name ;
-+----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |Bin2BCD                               ; 98 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 15   ; 0            ; |Bin2BCD                                                                                                 ; Bin2BCD             ; work         ;
-;    |lpm_divide:Div0|                   ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Bin2BCD|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
-;       |lpm_divide_ihm:auto_generated|  ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Bin2BCD|lpm_divide:Div0|lpm_divide_ihm:auto_generated                                                   ; lpm_divide_ihm      ; work         ;
-;          |sign_div_unsign_akh:divider| ; 43 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Bin2BCD|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider                       ; sign_div_unsign_akh ; work         ;
-;             |alt_u_div_84f:divider|    ; 43 (43)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Bin2BCD|lpm_divide:Div0|lpm_divide_ihm:auto_generated|sign_div_unsign_akh:divider|alt_u_div_84f:divider ; alt_u_div_84f       ; work         ;
-;    |lpm_divide:Mod0|                   ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Bin2BCD|lpm_divide:Mod0                                                                                 ; lpm_divide          ; work         ;
-;       |lpm_divide_o9m:auto_generated|  ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Bin2BCD|lpm_divide:Mod0|lpm_divide_o9m:auto_generated                                                   ; lpm_divide_o9m      ; work         ;
-;          |sign_div_unsign_dkh:divider| ; 55 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Bin2BCD|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider                       ; sign_div_unsign_dkh ; work         ;
-;             |alt_u_div_e4f:divider|    ; 55 (55)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Bin2BCD|lpm_divide:Mod0|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider|alt_u_div_e4f:divider ; alt_u_div_e4f       ; work         ;
-+----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+---------------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                       ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name  ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+--------------+
+; |ScoreCounter              ; 16 (16)             ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 12   ; 0            ; |ScoreCounter       ; ScoreCounter ; work         ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -240,60 +220,23 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
+; Total registers                              ; 7     ;
+; Number of registers using Synchronous Clear  ; 6     ;
+; Number of registers using Synchronous Load   ; 6     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 6     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0 ;
-+------------------------+----------------+------------------------+
-; Parameter Name         ; Value          ; Type                   ;
-+------------------------+----------------+------------------------+
-; LPM_WIDTHN             ; 7              ; Untyped                ;
-; LPM_WIDTHD             ; 7              ; Untyped                ;
-; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
-; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
-; LPM_PIPELINE           ; 0              ; Untyped                ;
-; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
-; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
-; CBXI_PARAMETER         ; lpm_divide_o9m ; Untyped                ;
-; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
-; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
-; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
-; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
-; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
-; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
-+------------------------+----------------+------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: lpm_divide:Div0 ;
-+------------------------+----------------+------------------------+
-; Parameter Name         ; Value          ; Type                   ;
-+------------------------+----------------+------------------------+
-; LPM_WIDTHN             ; 7              ; Untyped                ;
-; LPM_WIDTHD             ; 4              ; Untyped                ;
-; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
-; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
-; LPM_PIPELINE           ; 0              ; Untyped                ;
-; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
-; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
-; CBXI_PARAMETER         ; lpm_divide_ihm ; Untyped                ;
-; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
-; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
-; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
-; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
-; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
-; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
-+------------------------+----------------+------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |ScoreCounter|s_score[1]   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
 +-----------------------------------------------------+
@@ -301,20 +244,20 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 15                          ;
-; cycloneiii_lcell_comb ; 102                         ;
-;     arith             ; 33                          ;
-;         2 data inputs ; 6                           ;
-;         3 data inputs ; 27                          ;
-;     normal            ; 69                          ;
-;         0 data inputs ; 8                           ;
-;         1 data inputs ; 4                           ;
-;         2 data inputs ; 43                          ;
-;         3 data inputs ; 1                           ;
-;         4 data inputs ; 13                          ;
+; boundary_port         ; 12                          ;
+; cycloneiii_ff         ; 7                           ;
+;     ENA SCLR SLD      ; 6                           ;
+;     plain             ; 1                           ;
+; cycloneiii_lcell_comb ; 16                          ;
+;     arith             ; 11                          ;
+;         2 data inputs ; 11                          ;
+;     normal            ; 5                           ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 1                           ;
+;         4 data inputs ; 2                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 9.80                        ;
-; Average LUT depth     ; 9.24                        ;
+; Max LUT depth         ; 2.00                        ;
+; Average LUT depth     ; 1.42                        ;
 +-----------------------+-----------------------------+
 
 
@@ -333,7 +276,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-    Info: Processing started: Sun Jun  2 14:45:29 2024
+    Info: Processing started: Sun Jun  2 14:56:40 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ReactionGame -c ReactionGame
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -385,8 +328,8 @@ Info (12021): Found 2 design units, including 1 entities, in source file ScoreUn
     Info (12022): Found design unit 1: ScoreUnit-Structural File: /home/penacho/LSD/LSD-final-project/Fase7/ScoreUnit.vhd Line: 24
     Info (12023): Found entity 1: ScoreUnit File: /home/penacho/LSD/LSD-final-project/Fase7/ScoreUnit.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file ScoreCounter_tb.vhd
-    Info (12022): Found design unit 1: ScoreCounter_tb-Stimulus File: /home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter_tb.vhd Line: 8
-    Info (12023): Found entity 1: ScoreCounter_tb File: /home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter_tb.vhd Line: 5
+    Info (12022): Found design unit 1: ScoreCounter_tb-Stimulus File: /home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter_tb.vhd Line: 7
+    Info (12023): Found entity 1: ScoreCounter_tb File: /home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter_tb.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file RotateShiftUnit.vhd
     Info (12022): Found design unit 1: RotateShiftUnit-Behavioral File: /home/penacho/LSD/LSD-final-project/Fase7/RotateShiftUnit.vhd Line: 16
     Info (12023): Found entity 1: RotateShiftUnit File: /home/penacho/LSD/LSD-final-project/Fase7/RotateShiftUnit.vhd Line: 4
@@ -396,49 +339,18 @@ Info (12021): Found 2 design units, including 1 entities, in source file RotateS
 Info (12021): Found 2 design units, including 1 entities, in source file Bin2BCD_tb.vhd
     Info (12022): Found design unit 1: Bin2BCD_tb-Stimulus File: /home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD_tb.vhd Line: 7
     Info (12023): Found entity 1: Bin2BCD_tb File: /home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD_tb.vhd Line: 4
-Info (12127): Elaborating entity "Bin2BCD" for the top level hierarchy
-Info (278001): Inferred 2 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: /home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD.vhd Line: 19
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: /home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD.vhd Line: 20
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod0" File: /home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD.vhd Line: 19
-Info (12133): Instantiated megafunction "lpm_divide:Mod0" with the following parameter: File: /home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD.vhd Line: 19
-    Info (12134): Parameter "LPM_WIDTHN" = "7"
-    Info (12134): Parameter "LPM_WIDTHD" = "7"
-    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
-    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
-Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_o9m.tdf
-    Info (12023): Found entity 1: lpm_divide_o9m File: /home/penacho/LSD/LSD-final-project/Fase7/db/lpm_divide_o9m.tdf Line: 25
-Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_dkh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_dkh File: /home/penacho/LSD/LSD-final-project/Fase7/db/sign_div_unsign_dkh.tdf Line: 25
-Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_e4f.tdf
-    Info (12023): Found entity 1: alt_u_div_e4f File: /home/penacho/LSD/LSD-final-project/Fase7/db/alt_u_div_e4f.tdf Line: 27
-Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
-    Info (12023): Found entity 1: add_sub_7pc File: /home/penacho/LSD/LSD-final-project/Fase7/db/add_sub_7pc.tdf Line: 23
-Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
-    Info (12023): Found entity 1: add_sub_8pc File: /home/penacho/LSD/LSD-final-project/Fase7/db/add_sub_8pc.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0" File: /home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD.vhd Line: 20
-Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter: File: /home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD.vhd Line: 20
-    Info (12134): Parameter "LPM_WIDTHN" = "7"
-    Info (12134): Parameter "LPM_WIDTHD" = "4"
-    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
-    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
-Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_ihm.tdf
-    Info (12023): Found entity 1: lpm_divide_ihm File: /home/penacho/LSD/LSD-final-project/Fase7/db/lpm_divide_ihm.tdf Line: 25
-Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_akh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_akh File: /home/penacho/LSD/LSD-final-project/Fase7/db/sign_div_unsign_akh.tdf Line: 25
-Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_84f.tdf
-    Info (12023): Found entity 1: alt_u_div_84f File: /home/penacho/LSD/LSD-final-project/Fase7/db/alt_u_div_84f.tdf Line: 27
+Info (12127): Elaborating entity "ScoreCounter" for the top level hierarchy
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 113 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 7 input pins
-    Info (21059): Implemented 8 output pins
-    Info (21061): Implemented 98 logic cells
+Info (21057): Implemented 28 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 5 input pins
+    Info (21059): Implemented 7 output pins
+    Info (21061): Implemented 16 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 432 megabytes
-    Info: Processing ended: Sun Jun  2 14:45:36 2024
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:17
+    Info: Peak virtual memory: 446 megabytes
+    Info: Processing ended: Sun Jun  2 14:56:46 2024
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:16
 
 

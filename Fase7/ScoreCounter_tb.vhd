@@ -1,6 +1,5 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
-use IEEE.numeric_std.all;
 
 entity ScoreCounter_tb is
 end;
@@ -22,52 +21,46 @@ begin
             decrement => s_decrement,
             score     => s_score
         );
+        
+    clk_proc: process
+    begin
+        s_clk <= '0'; wait for 100 ns;
+        s_clk <= '1'; wait for 100 ns;
+    end process;
+    
+    stim_proc: process
+    begin
+        -- Reset
+        s_reset <= '1';
+        wait for 200 ns;
+        s_reset <= '0';
+        wait for 200 ns;
+        
+        -- Enable
+        s_enable <= '1';
+        wait for 200 ns;
+        
+        -- Increment
+        s_increment <= '1';
+        wait for 1500 ns;
+        s_increment <= '0';
+        
+        -- Decrement
+        s_decrement <= '1';
+        wait for 500 ns;
+        s_decrement <= '0';
+		  
+		  -- Disable
+        s_enable <= '0';
+        wait for 200 ns;
+		  
+		  s_increment <= '1';
+        wait for 400 ns;
+		  
+		  -- Reset
+		  s_reset <= '1';
+        wait for 200 ns;
 
-    clk_proc : process
-		begin
-			s_clk <= '0'; wait for 100 ns;
-			s_clk <= '1'; wait for 100 ns;
-		end process;
-
-    stimulus_proc: process
-		 begin
-			  s_reset <= '1';
-			  wait for 200 ns;
-			  s_reset <= '0';
-			  wait for 200 ns;
-
-			  s_enable <= '1';
-			  s_increment <= '1';
-			  wait for 600 ns;
-			  s_increment <= '0';
-			  wait for 200 ns;
-
-			  s_increment <= '1';
-			  wait for 200 ns;
-			  s_increment <= '0';
-			  wait for 200 ns;
-
-			  s_decrement <= '1';
-			  wait for 200 ns;
-			  s_decrement <= '0';
-			  wait for 200 ns;
-
-			  s_increment <= '1';
-			  wait for 200 ns;
-			  s_increment <= '0';
-			  wait for 200 ns;
-
-			  s_increment <= '1';
-			  wait for 200 ns;
-			  s_increment <= '0';
-			  wait for 200 ns;
-
-			  s_enable <= '0';
-			  s_increment <= '1';
-			  wait for 200 ns;
-			  s_increment <= '0';
-			  wait for 200 ns;
-
-			  wait;
-		 end process;
+        wait;
+    end process;
 end;

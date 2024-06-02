@@ -4,63 +4,51 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "bcdUni[0]",
+					"name" : "score[0]",
 					"strict" : false
 				},
 				{
-					"name" : "bcdUni[1]",
+					"name" : "score[1]",
 					"strict" : false
 				},
 				{
-					"name" : "bcdUni[2]",
+					"name" : "score[2]",
 					"strict" : false
 				},
 				{
-					"name" : "bcdUni[3]",
+					"name" : "score[3]",
 					"strict" : false
 				},
 				{
-					"name" : "bcdTen[0]",
+					"name" : "score[4]",
 					"strict" : false
 				},
 				{
-					"name" : "bcdTen[1]",
+					"name" : "score[5]",
 					"strict" : false
 				},
 				{
-					"name" : "bcdTen[2]",
+					"name" : "score[6]",
 					"strict" : false
 				},
 				{
-					"name" : "bcdTen[3]",
+					"name" : "enable",
 					"strict" : false
 				},
 				{
-					"name" : "binIn[0]",
+					"name" : "increment",
 					"strict" : false
 				},
 				{
-					"name" : "binIn[1]",
+					"name" : "reset",
 					"strict" : false
 				},
 				{
-					"name" : "binIn[6]",
+					"name" : "clk",
 					"strict" : false
 				},
 				{
-					"name" : "binIn[5]",
-					"strict" : false
-				},
-				{
-					"name" : "binIn[4]",
-					"strict" : false
-				},
-				{
-					"name" : "binIn[3]",
-					"strict" : false
-				},
-				{
-					"name" : "binIn[2]",
+					"name" : "decrement",
 					"strict" : false
 				}
 			]

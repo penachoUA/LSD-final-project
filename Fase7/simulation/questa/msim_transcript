@@ -23,78 +23,116 @@
 # Copying /home/penacho/.intel_fpga_lite/22.1.2/questa_fse/linux_x86_64/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD.vhd}
+# vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter.vhd}
 # Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 14:41:48 on Jun 02,2024
-# vcom -reportprogress 300 -93 -work work /home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD.vhd 
+# Start time: 14:57:35 on Jun 02,2024
+# vcom -reportprogress 300 -93 -work work /home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
-# -- Compiling entity Bin2BCD
-# -- Compiling architecture Behavioral of Bin2BCD
-# End time: 14:41:48 on Jun 02,2024, Elapsed time: 0:00:00
+# -- Compiling entity ScoreCounter
+# -- Compiling architecture Behavioral of ScoreCounter
+# End time: 14:57:35 on Jun 02,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # 
 # stdin: <EOF>
-vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD_tb.vhd
+vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter_tb.vhd
 # Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 14:41:59 on Jun 02,2024
-# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD_tb.vhd 
+# Start time: 14:57:46 on Jun 02,2024
+# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter_tb.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
-# -- Compiling entity Bin2BCD_tb
-# -- Compiling architecture Stimulus of Bin2BCD_tb
+# -- Compiling entity ScoreCounter_tb
+# -- Compiling architecture Stimulus of ScoreCounter_tb
 # -- Loading package NUMERIC_STD
-# -- Loading entity Bin2BCD
-# End time: 14:41:59 on Jun 02,2024, Elapsed time: 0:00:00
+# -- Loading entity ScoreCounter
+# End time: 14:57:46 on Jun 02,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vsim -i -l msim_transcript work.bin2bcd_tb(stimulus) -voptargs=+acc
-# vsim -i -l msim_transcript work.bin2bcd_tb(stimulus) -voptargs="+acc" 
-# Start time: 14:42:11 on Jun 02,2024
+vsim -i -l msim_transcript work.scorecounter_tb(stimulus) -voptargs=+acc
+# vsim -i -l msim_transcript work.scorecounter_tb(stimulus) -voptargs="+acc" 
+# Start time: 14:57:58 on Jun 02,2024
 # ** Note: (vsim-3812) Design is being optimized...
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
-# Loading work.bin2bcd_tb(stimulus)#1
-# Loading work.bin2bcd(behavioral)#1
+# Loading work.scorecounter_tb(stimulus)#1
+# Loading work.scorecounter(behavioral)#1
 add wave -position insertpoint  \
-sim:/bin2bcd_tb/s_binIn \
-sim:/bin2bcd_tb/s_bcdUni \
-sim:/bin2bcd_tb/s_bcdTen
+sim:/scorecounter_tb/s_clk \
+sim:/scorecounter_tb/s_reset \
+sim:/scorecounter_tb/s_enable \
+sim:/scorecounter_tb/s_increment \
+sim:/scorecounter_tb/s_decrement \
+sim:/scorecounter_tb/s_score
 run
-vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD_tb.vhd
+vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter_tb.vhd
 # Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 14:46:00 on Jun 02,2024
-# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD_tb.vhd 
+# Start time: 15:04:58 on Jun 02,2024
+# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter_tb.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
-# -- Compiling entity Bin2BCD_tb
-# -- Compiling architecture Stimulus of Bin2BCD_tb
+# -- Compiling entity ScoreCounter_tb
+# -- Compiling architecture Stimulus of ScoreCounter_tb
 # -- Loading package NUMERIC_STD
-# -- Loading entity Bin2BCD
-# End time: 14:46:00 on Jun 02,2024, Elapsed time: 0:00:00
+# -- Loading entity ScoreCounter
+# End time: 15:04:58 on Jun 02,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vsim -i -l msim_transcript -voptargs=+acc work.bin2bcd_tb(stimulus)
-# End time: 14:46:12 on Jun 02,2024, Elapsed time: 0:04:01
+run
+vsim -i -l msim_transcript -voptargs=+acc work.scorecounter_tb(stimulus)
+# End time: 15:05:28 on Jun 02,2024, Elapsed time: 0:07:30
 # Errors: 0, Warnings: 0
-# vsim -i -l msim_transcript -voptargs="+acc" work.bin2bcd_tb(stimulus) 
-# Start time: 14:46:12 on Jun 02,2024
+# vsim -i -l msim_transcript -voptargs="+acc" work.scorecounter_tb(stimulus) 
+# Start time: 15:05:28 on Jun 02,2024
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
-# Loading work.bin2bcd_tb(stimulus)#1
-# Loading work.bin2bcd(behavioral)#1
+# Loading work.scorecounter_tb(stimulus)#1
+# Loading work.scorecounter(behavioral)#1
 add wave -position insertpoint  \
-sim:/bin2bcd_tb/s_binIn \
-sim:/bin2bcd_tb/s_bcdUni \
-sim:/bin2bcd_tb/s_bcdTen
+sim:/scorecounter_tb/s_clk \
+sim:/scorecounter_tb/s_reset \
+sim:/scorecounter_tb/s_enable \
+sim:/scorecounter_tb/s_increment \
+sim:/scorecounter_tb/s_decrement \
+sim:/scorecounter_tb/s_score
 run
-# End time: 14:49:13 on Jun 02,2024, Elapsed time: 0:03:01
+vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter_tb.vhd
+# Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 15:09:41 on Jun 02,2024
+# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter_tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ScoreCounter_tb
+# -- Compiling architecture Stimulus of ScoreCounter_tb
+# -- Loading package NUMERIC_STD
+# -- Loading entity ScoreCounter
+# End time: 15:09:41 on Jun 02,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+vsim -i -l msim_transcript -voptargs=+acc work.scorecounter_tb(stimulus)
+# End time: 15:09:49 on Jun 02,2024, Elapsed time: 0:04:21
+# Errors: 0, Warnings: 0
+# vsim -i -l msim_transcript -voptargs="+acc" work.scorecounter_tb(stimulus) 
+# Start time: 15:09:49 on Jun 02,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.scorecounter_tb(stimulus)#1
+# Loading work.scorecounter(behavioral)#1
+add wave -position insertpoint  \
+sim:/scorecounter_tb/s_clk \
+sim:/scorecounter_tb/s_reset \
+sim:/scorecounter_tb/s_enable \
+sim:/scorecounter_tb/s_increment \
+sim:/scorecounter_tb/s_decrement \
+sim:/scorecounter_tb/s_score
+run
