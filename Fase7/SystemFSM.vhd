@@ -28,7 +28,7 @@ begin
 		begin
 			if rising_edge(clk) then
 				if reset = '1' then
-					pState    <= CONF;
+					pState        <= CONF;
 					s_stateChange <= '0';
 				else
 					if pState /= nState then
@@ -36,12 +36,13 @@ begin
 					else
 						s_stateChange <= '0';
 					end if;
+					
 					pState <= nState;
 				end if;
 			end if;
 		end process;
 		
-	comb_proc : process(pState, endConf, victory, timeExp)
+	comb_proc : process(pState, endConf, victory, loss, timeExp, s_stateChange)
 		begin
 			timeVal    <= (others => '-');
 			resetScore <= '0';

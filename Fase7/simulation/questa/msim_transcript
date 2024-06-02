@@ -23,139 +23,51 @@
 # Copying /home/penacho/.intel_fpga_lite/22.1.2/questa_fse/linux_x86_64/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM.vhd}
+# vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/SystemFSM.vhd}
 # Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 17:41:21 on Jun 02,2024
-# vcom -reportprogress 300 -93 -work work /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM.vhd 
+# Start time: 20:27:10 on Jun 02,2024
+# vcom -reportprogress 300 -93 -work work /home/penacho/LSD/LSD-final-project/Fase7/SystemFSM.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
-# -- Compiling entity SingleTurnFSM
-# -- Compiling architecture Behavioral of SingleTurnFSM
-# End time: 17:41:21 on Jun 02,2024, Elapsed time: 0:00:00
+# -- Compiling entity SystemFSM
+# -- Compiling architecture Behavioral of SystemFSM
+# End time: 20:27:10 on Jun 02,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # 
 # stdin: <EOF>
-vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd
+vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/SystemFSM_tb.vhd
 # Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 17:41:36 on Jun 02,2024
-# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd 
+# Start time: 20:27:22 on Jun 02,2024
+# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/SystemFSM_tb.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
-# -- Compiling entity SingleTurnFSM_tb
-# -- Compiling architecture Stimulus of SingleTurnFSM_tb
-# -- Loading entity SingleTurnFSM
-# End time: 17:41:37 on Jun 02,2024, Elapsed time: 0:00:01
+# -- Compiling entity SystemFSM_tb
+# -- Compiling architecture Stimulus of SystemFSM_tb
+# -- Loading entity SystemFSM
+# End time: 20:27:22 on Jun 02,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vsim -i -l msim_transcript work.singleturnfsm_tb(stimulus) -voptargs=+acc
-# vsim -i -l msim_transcript work.singleturnfsm_tb(stimulus) -voptargs="+acc" 
-# Start time: 17:41:48 on Jun 02,2024
+vsim -i -l msim_transcript work.systemfsm_tb(stimulus) -voptargs=+acc
+# vsim -i -l msim_transcript work.systemfsm_tb(stimulus) -voptargs="+acc" 
+# Start time: 20:27:33 on Jun 02,2024
 # ** Note: (vsim-3812) Design is being optimized...
-# ** Note: (vopt-143) Recognized 1 FSM in architecture body "SingleTurnFSM(Behavioral)".
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "SystemFSM(Behavioral)".
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
-# Loading work.singleturnfsm_tb(stimulus)#1
-# Loading work.singleturnfsm(behavioral)#1
+# Loading work.systemfsm_tb(stimulus)#1
+# Loading work.systemfsm(behavioral)#1
 add wave -position insertpoint  \
-sim:/singleturnfsm_tb/s_clk \
-sim:/singleturnfsm_tb/s_reset \
-sim:/singleturnfsm_tb/s_clickA \
-sim:/singleturnfsm_tb/s_clickB \
-sim:/singleturnfsm_tb/s_timeExp \
-sim:/singleturnfsm_tb/s_randTime \
-sim:/singleturnfsm_tb/s_newTime \
-sim:/singleturnfsm_tb/s_timeVal \
-sim:/singleturnfsm_tb/s_ledOn \
-sim:/singleturnfsm_tb/s_winA \
-sim:/singleturnfsm_tb/s_winB \
-sim:/singleturnfsm_tb/s_lossA \
-sim:/singleturnfsm_tb/s_lossB \
-sim:/singleturnfsm_tb/s_state
-run
-vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd
-# Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 17:47:18 on Jun 02,2024
-# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity SingleTurnFSM_tb
-# -- Compiling architecture Stimulus of SingleTurnFSM_tb
-# -- Loading entity SingleTurnFSM
-# ** Error: /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd(160): near "'": syntax error
-# ** Error: /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd(162): near "'": syntax error
-# ** Note: /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd(170): VHDL Compiler exiting
-# End time: 17:47:18 on Jun 02,2024, Elapsed time: 0:00:00
-# Errors: 2, Warnings: 0
-vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd
-# Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 17:47:35 on Jun 02,2024
-# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity SingleTurnFSM_tb
-# -- Compiling architecture Stimulus of SingleTurnFSM_tb
-# -- Loading entity SingleTurnFSM
-# ** Error: /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd(162): near "'": syntax error
-# ** Note: /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd(170): VHDL Compiler exiting
-# End time: 17:47:35 on Jun 02,2024, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd
-# Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 17:47:44 on Jun 02,2024
-# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity SingleTurnFSM_tb
-# -- Compiling architecture Stimulus of SingleTurnFSM_tb
-# -- Loading entity SingleTurnFSM
-# ** Error: /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd(162): near "'": syntax error
-# ** Note: /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd(170): VHDL Compiler exiting
-# End time: 17:47:44 on Jun 02,2024, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd
-# Questa Intel Starter FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 17:48:40 on Jun 02,2024
-# vcom -reportprogress 300 -work work /home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM_tb.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity SingleTurnFSM_tb
-# -- Compiling architecture Stimulus of SingleTurnFSM_tb
-# -- Loading entity SingleTurnFSM
-# End time: 17:48:40 on Jun 02,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim -i -l msim_transcript -voptargs=+acc work.singleturnfsm_tb(stimulus)
-# End time: 17:48:52 on Jun 02,2024, Elapsed time: 0:07:04
-# Errors: 0, Warnings: 0
-# vsim -i -l msim_transcript -voptargs="+acc" work.singleturnfsm_tb(stimulus) 
-# Start time: 17:48:52 on Jun 02,2024
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading work.singleturnfsm_tb(stimulus)#1
-# Loading work.singleturnfsm(behavioral)#1
-add wave -position insertpoint  \
-sim:/singleturnfsm_tb/s_clk \
-sim:/singleturnfsm_tb/s_reset \
-sim:/singleturnfsm_tb/s_clickA \
-sim:/singleturnfsm_tb/s_clickB \
-sim:/singleturnfsm_tb/s_timeExp \
-sim:/singleturnfsm_tb/s_randTime \
-sim:/singleturnfsm_tb/s_newTime \
-sim:/singleturnfsm_tb/s_timeVal \
-sim:/singleturnfsm_tb/s_ledOn \
-sim:/singleturnfsm_tb/s_winA \
-sim:/singleturnfsm_tb/s_winB \
-sim:/singleturnfsm_tb/s_lossA \
-sim:/singleturnfsm_tb/s_lossB \
-sim:/singleturnfsm_tb/s_state
-run
-run
+sim:/systemfsm_tb/s_clk \
+sim:/systemfsm_tb/s_reset \
+sim:/systemfsm_tb/s_endConf \
+sim:/systemfsm_tb/s_victory \
+sim:/systemfsm_tb/s_loss \
+sim:/systemfsm_tb/s_timeExp \
+sim:/systemfsm_tb/s_newTime \
+sim:/systemfsm_tb/s_timeVal \
+sim:/systemfsm_tb/s_resetScore \
+sim:/systemfsm_tb/s_state
 run
