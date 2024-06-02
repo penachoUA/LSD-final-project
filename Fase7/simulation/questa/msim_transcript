@@ -71,3 +71,5 @@ sim:/systemfsm_tb/s_timeVal \
 sim:/systemfsm_tb/s_resetScore \
 sim:/systemfsm_tb/s_state
 run
+# End time: 21:22:07 on Jun 02,2024, Elapsed time: 0:54:34
+# Errors: 0, Warnings: 0
