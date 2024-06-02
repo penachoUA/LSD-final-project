@@ -333,7 +333,6 @@ begin
 			pulse => s_2hz_pulse
 	);
 		
-		
 	s_shifters_reset <= '0' when s_system_state = "10" else '1';	
 	
 	defeat_effect: entity work.RotateShiftUnit(Behavioral)

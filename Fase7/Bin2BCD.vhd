@@ -11,10 +11,14 @@ entity Bin2BCD is
 end;
 
 architecture Behavioral of Bin2BCD is
-	signal s_in : unsigned(6 downto 0);
+	signal s_in  : unsigned(6 downto 0);
+	signal s_uni : unsigned(6 downto 0);
+	signal s_ten : unsigned(6 downto 0);
 begin
-	s_in <= unsigned(binIn);
+	s_in  <= unsigned(binIn);
+	s_uni <= s_in rem 10;
+	s_ten <= s_in / 10;
 	
-	bcdUni <= std_logic_vector(s_in rem 10)(3 downto 0);
-	bcdTen <= std_logic_vector(s_in / 10)(3 downto 0);
+	bcdUni <= std_logic_vector(resize(s_uni, bcdUni'length));
+	bcdTen <= std_logic_vector(resize(s_ten, bcdTen'length));
 end;

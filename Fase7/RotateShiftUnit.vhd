@@ -7,8 +7,8 @@ entity RotateShiftUnit is
 		clk		: in  std_logic;
 		reset    : in  std_logic;
 		enable   : in  std_logic;
-		dataIn	: in  std_logic_vector(N-1 downto 0);
 		dirLeft	: in  std_logic;
+		dataIn	: in  std_logic_vector(N-1 downto 0);
 		dataOut	: out std_logic_vector(N-1 downto 0)
 	);
 end;

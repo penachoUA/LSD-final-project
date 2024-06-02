@@ -1,0 +1,24 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/SystemFSM.vhd}
+vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/TimerAuxFSM.vhd}
+vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/ReactionGame_Demo.vhd}
+vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/Debouncer.vhd}
+vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/SingleTurnFSM.vhd}
+vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/CounterNBits.vhd}
+vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/ConfigurationUnit.vhd}
+vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/PulseGen.vhd}
+vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/BlinkGen.vhd}
+vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/ScoreDisplay.vhd}
+vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/Bin7SegDecoder.vhd}
+vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/Bin2BCD.vhd}
+vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/GameUnit.vhd}
+vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/ScoreCounter.vhd}
+vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/ScoreUnit.vhd}
+vcom -93 -work work {/home/penacho/LSD/LSD-final-project/Fase7/RotateShiftUnit.vhd}
+

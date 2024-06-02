@@ -13,7 +13,6 @@ architecture Stimulus of ScoreCounter_tb is
     signal s_decrement : std_logic;
     signal s_score     : std_logic_vector(6 downto 0);
 begin
-    -- Instantiate the ScoreCounter
     uut: entity work.ScoreCounter(Behavioral)
         port map(
             clk       => s_clk,

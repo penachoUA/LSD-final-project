@@ -1,0 +1,60 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity Bin2BCD_tb is
+end;
+
+architecture Stimulus of Bin2BCD_tb is
+	signal s_binIn  : std_logic_vector(6 downto 0);
+	signal s_bcdUni : std_logic_vector(3 downto 0);
+	signal s_bcdTen : std_logic_vector(3 downto 0);
+begin
+	uut: entity work.Bin2BCD(Behavioral)
+		port map(
+			binIn  => s_binIn,
+			bcdUni => s_bcdUni,
+			bcdTen => s_bcdTen
+		);
+		
+	stim_proc: process
+		begin
+			-- Test case 1: Binary 0
+			s_binIn <= "0000000";
+			wait for 200 ns;
+			
+			-- Test case 2: Binary 5
+			s_binIn <= "0000101";
+			wait for 200 ns;
+			
+			-- Test case 3: Binary 9
+			s_binIn <= "0001001";
+			wait for 200 ns;
+			
+			-- Test case 4: Binary 10
+			s_binIn <= "0001010";
+			wait for 200 ns;
+
+			-- Test case 5: Binary 15
+			s_binIn <= "0001111";
+			wait for 200 ns;
+
+			-- Test case 6: Binary 20
+			s_binIn <= "0010100";
+			wait for 200 ns;
+			
+			-- Test case 7: Binary 30
+			s_binIn <= "0011110";
+			wait for 200 ns;
+			
+			-- Test case 8: Binary 50
+			s_binIn <= "0110010";
+			wait for 200 ns;
+
+			-- Test case 9: Binary 63
+			s_binIn <= "0111111";
+			wait for 200 ns;
+
+			-- End of test
+			wait;
+		end process;
+end;

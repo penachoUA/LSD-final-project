@@ -11,7 +11,7 @@ entity SystemFSM is
 		timeExp     : in  std_logic;
 		newTime     : out std_logic;
 		timeVal     : out std_logic_vector(31 downto 0);
-		resetScore : out std_logic;
+		resetScore  : out std_logic;
 		state       : out std_logic_vector(1 downto 0)
 	);
 end;
