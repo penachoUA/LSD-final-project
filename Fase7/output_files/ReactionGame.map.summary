@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Sun Jun  2 15:50:16 2024
+Analysis & Synthesis Status : Successful - Sun Jun  2 16:02:35 2024
 Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
 Revision Name : ReactionGame
-Top-level Entity Name : CounterNBits
+Top-level Entity Name : SingleTurnFSM
 Family : Cyclone IV E
-Total logic elements : 9
-    Total combinational functions : 9
-    Dedicated logic registers : 5
-Total registers : 5
-Total pins : 9
+Total logic elements : 66
+    Total combinational functions : 66
+    Dedicated logic registers : 8
+Total registers : 8
+Total pins : 79
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0

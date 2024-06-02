@@ -87,7 +87,6 @@ architecture Structural of ReactionGame_Demo is
 	signal s_winB         : std_logic;
 	signal s_lossA        : std_logic;
 	signal s_lossB        : std_logic;
-	signal s_draw         : std_logic;
 	signal s_turn_state   : std_logic_vector(2 downto 0);
 	
 	-- ConfigurationUnit signals
@@ -214,7 +213,6 @@ begin
 			winB     => s_winB,
 			lossA    => s_lossA,
 			lossB    => s_lossB,
-			draw     => s_draw,
 			state    => s_turn_state
 		);
 		
@@ -244,7 +242,6 @@ begin
 		winB        => s_winB,
 		lossA       => s_lossA,
 		lossB       => s_lossB,
-		draw        => s_draw,
 		scoreA      => s_scoreA,
 		scoreB      => s_scoreB,
 		turnCount   => s_turnCount,

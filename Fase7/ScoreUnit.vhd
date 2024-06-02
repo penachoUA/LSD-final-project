@@ -10,7 +10,6 @@ entity ScoreUnit is
 		winB        : in  std_logic;
 		lossA       : in  std_logic;
 		lossB       : in  std_logic;
-		draw        : in  std_logic;
 		scoreA      : out std_logic_vector(6 downto 0);
 		scoreB      : out std_logic_vector(6 downto 0);
 		turnCount   : out std_logic_vector(6 downto 0);

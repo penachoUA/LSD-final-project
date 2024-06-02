@@ -25,10 +25,6 @@ architecture Behavioral of SingleTurnFSM is
 	type TSTATE is (IDLE, DELAY, PLAY, WIN_A, WIN_B, LOSS_A, LOSS_B);
 	signal pState, nState : TSTATE;
 	
-	-- signal s_winA         : std_logic;
-	-- signal s_winB         : std_logic;
-	-- signal s_draw         : std_logic;
-	
 	signal s_stateChange  : std_logic := '0';
 	
 	constant MAX_WAIT   : std_logic_vector(31 downto 0) := x"1DCD6500"; -- 10 seconds
@@ -75,6 +71,8 @@ begin
 					if timeExp = '1' then
 						nState <= PLAY;
 					elsif (clickA = '1' and clickB = '1') then
+						lossA <= '1';
+						lossB <= '1';
 						nState <= DELAY;
 					elsif clickA = '1' then
 						lossA  <= '1';
@@ -143,15 +141,6 @@ begin
 					nState <= IDLE;
 			end case;
 		end process;
-		
-	--sync_mealy_outs: process(clk)
-	--	begin
-	--		if rising_edge(clk) then
-	--			winA <= s_winA;
-	--			winB <= s_winB;
-	--			draw <= s_draw;		
-	--		end if;
-	--	end process;
 		
 	with pState select
 		state <= "000" when IDLE,
