@@ -1,5 +1,5 @@
 
-State Machine - |SingleTurnFSM|pState
+State Machine - |ReactionGame_Demo|GameUnit:game_unit|SingleTurnFSM:single_turn_fsm|pState
 Name pState.LOSS_B pState.LOSS_A pState.WIN_B pState.WIN_A pState.PLAY pState.DELAY pState.IDLE 
 pState.IDLE 0 0 0 0 0 0 0 
 pState.DELAY 0 0 0 0 0 1 1 
@@ -8,3 +8,9 @@ pState.WIN_A 0 0 0 1 0 0 1
 pState.WIN_B 0 0 1 0 0 0 1 
 pState.LOSS_A 0 1 0 0 0 0 1 
 pState.LOSS_B 1 0 0 0 0 0 1 
+
+State Machine - |ReactionGame_Demo|SystemFSM:systemFSM|pState
+Name pState.FINAL pState.GAME pState.CONF 
+pState.CONF 0 0 0 
+pState.GAME 0 1 1 
+pState.FINAL 1 0 1 
