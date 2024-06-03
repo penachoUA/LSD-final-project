@@ -4,319 +4,315 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "LEDG[0]",
+					"name" : "newTime",
 					"strict" : false
 				},
 				{
-					"name" : "LEDG[1]",
+					"name" : "timeVal[0]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDG[2]",
+					"name" : "timeVal[1]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDG[3]",
+					"name" : "timeVal[2]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDG[4]",
+					"name" : "timeVal[3]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDG[5]",
+					"name" : "timeVal[4]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDG[6]",
+					"name" : "timeVal[5]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDG[7]",
+					"name" : "timeVal[6]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[0]",
+					"name" : "timeVal[7]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[1]",
+					"name" : "timeVal[8]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[2]",
+					"name" : "timeVal[9]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[3]",
+					"name" : "timeVal[10]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[4]",
+					"name" : "timeVal[11]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[5]",
+					"name" : "timeVal[12]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[6]",
+					"name" : "timeVal[13]",
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[7]",
+					"name" : "timeVal[14]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX7[0]",
+					"name" : "timeVal[15]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX7[1]",
+					"name" : "timeVal[16]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX7[2]",
+					"name" : "timeVal[17]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX7[3]",
+					"name" : "timeVal[18]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX7[4]",
+					"name" : "timeVal[19]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX7[5]",
+					"name" : "timeVal[20]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX7[6]",
+					"name" : "timeVal[21]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX6[0]",
+					"name" : "timeVal[22]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX6[1]",
+					"name" : "timeVal[23]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX6[2]",
+					"name" : "timeVal[24]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX6[3]",
+					"name" : "timeVal[25]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX6[4]",
+					"name" : "timeVal[26]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX6[5]",
+					"name" : "timeVal[27]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX6[6]",
+					"name" : "timeVal[28]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX5[0]",
+					"name" : "timeVal[29]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX5[1]",
+					"name" : "timeVal[30]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX5[2]",
+					"name" : "timeVal[31]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX5[3]",
+					"name" : "ledOn",
 					"strict" : false
 				},
 				{
-					"name" : "HEX5[4]",
+					"name" : "winA",
 					"strict" : false
 				},
 				{
-					"name" : "HEX5[5]",
+					"name" : "winB",
 					"strict" : false
 				},
 				{
-					"name" : "HEX5[6]",
+					"name" : "lossA",
 					"strict" : false
 				},
 				{
-					"name" : "HEX4[0]",
+					"name" : "lossB",
 					"strict" : false
 				},
 				{
-					"name" : "HEX4[1]",
+					"name" : "state[0]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX4[2]",
+					"name" : "state[1]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX4[3]",
+					"name" : "state[2]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX4[4]",
+					"name" : "randTime[0]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX4[5]",
+					"name" : "randTime[1]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX4[6]",
+					"name" : "randTime[2]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX3[0]",
+					"name" : "randTime[3]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX3[1]",
+					"name" : "randTime[4]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX3[2]",
+					"name" : "randTime[5]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX3[3]",
+					"name" : "randTime[6]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX3[4]",
+					"name" : "randTime[7]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX3[5]",
+					"name" : "randTime[8]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX3[6]",
+					"name" : "randTime[9]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX2[0]",
+					"name" : "randTime[10]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX2[1]",
+					"name" : "randTime[11]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX2[2]",
+					"name" : "randTime[12]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX2[3]",
+					"name" : "randTime[13]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX2[4]",
+					"name" : "randTime[14]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX2[5]",
+					"name" : "randTime[15]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX2[6]",
+					"name" : "randTime[16]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX1[0]",
+					"name" : "randTime[17]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX1[1]",
+					"name" : "randTime[18]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX1[2]",
+					"name" : "randTime[19]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX1[3]",
+					"name" : "randTime[20]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX1[4]",
+					"name" : "randTime[21]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX1[5]",
+					"name" : "randTime[22]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX1[6]",
+					"name" : "randTime[23]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX0[0]",
+					"name" : "randTime[24]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX0[1]",
+					"name" : "randTime[25]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX0[2]",
+					"name" : "randTime[26]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX0[3]",
+					"name" : "randTime[27]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX0[4]",
+					"name" : "randTime[28]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX0[5]",
+					"name" : "randTime[29]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX0[6]",
+					"name" : "randTime[30]",
 					"strict" : false
 				},
 				{
-					"name" : "CLOCK_50",
+					"name" : "randTime[31]",
 					"strict" : false
 				},
 				{
-					"name" : "SW[17]",
+					"name" : "clickA",
 					"strict" : false
 				},
 				{
-					"name" : "KEY[1]",
+					"name" : "clickB",
 					"strict" : false
 				},
 				{
-					"name" : "SW[0]",
+					"name" : "timeExp",
 					"strict" : false
 				},
 				{
-					"name" : "KEY[0]",
+					"name" : "reset",
 					"strict" : false
 				},
 				{
-					"name" : "KEY[3]",
-					"strict" : false
-				},
-				{
-					"name" : "KEY[2]",
+					"name" : "clk",
 					"strict" : false
 				}
 			]
